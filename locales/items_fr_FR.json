@@ -4747,37 +4747,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4003.png"
   },
   {
-    "id": 4004,
-    "name": "Sabre spectral",
-    "price": 2800,
-    "desc": "Propriété active - Ancre d'âme (0 sec) Vous marquez le sol sous vos pieds. 4 sec plus tard, vous retournez à l'emplacement de la marque. Vous pouvez relancer cet effet à tout moment pendant la durée d'Ancre d'âme pour retourner à l'emplacement de la marque plus tôt.",
-    "stats": {
-      "AD": {
-        "value": 50,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Ligne de vie",
-        "price": 1600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4003.png"
-      },
-      {
-        "name": "Dague dentelée",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4004.png"
-  },
-  {
     "id": 4005,
     "name": "Mandat impérial",
     "price": 2250,

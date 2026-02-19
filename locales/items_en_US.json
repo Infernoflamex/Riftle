@@ -4988,42 +4988,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4003.png"
   },
   {
-    "id": 4004,
-    "name": "Spectral Cutlass",
-    "price": 2800,
-    "desc": "50 Attack Damage 15 Lethality Active - Soul Anchor (0s) Mark your current location. After 4 seconds, return to that location. You may recast at any point during Soul Anchor's duration to return to your marked location early.",
-    "stats": {
-      "AD": {
-        "value": 50,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      },
-      "Lethality": {
-        "value": 15,
-        "icon": "🗡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Lifeline",
-        "price": 1600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4003.png"
-      },
-      {
-        "name": "Serrated Dirk",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4004.png"
-  },
-  {
     "id": 4005,
     "name": "Imperial Mandate",
     "price": 2250,

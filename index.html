@@ -1037,8 +1037,22 @@ function showMsg(id, type, msg) {
 function addTry(cid, ok, text, img) {
   const c=document.getElementById(cid), d=document.createElement('div');
   d.className='attempt'+(ok?' correct':'');
+  d.style.cssText += ';display:flex;align-items:center;gap:8px;flex-wrap:nowrap;';
   if(img){const i=document.createElement('img');i.src=img;i.alt='';d.appendChild(i);}
-  const s=document.createElement('span');s.textContent=text;d.appendChild(s);
+  const s=document.createElement('span');s.textContent=text;s.style.flex='1';d.appendChild(s);
+  // Add pick count badge
+  const partMap={'champ-attempts':'p1','item2-attempts':'p2','item3-attempts':'p3','abil-attempts':'p4','skin-attempts':'p5'};
+  const part=partMap[cid];
+  if(part){
+    const name=text.replace(/^[✓✗] /,'').replace(/^[^:]+: /,'').trim();
+    const count=getGuessCount(part,name);
+    if(count>0){
+      const badge=document.createElement('span');
+      badge.style.cssText='font-size:.7em;color:var(--gold);background:rgba(200,155,60,.15);border:1px solid var(--gold-dark);padding:1px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;';
+      badge.textContent=count+'× choisi';
+      d.appendChild(badge);
+    }
+  }
   c.insertBefore(d,c.firstChild);
 }
 function setCount(id,n){ document.getElementById(id).querySelector('span').textContent=n; }
@@ -1098,8 +1112,8 @@ function renderCatalogue(champs, tabIdx) {
       div.appendChild(img); div.appendChild(nm); grid.appendChild(div);
     });
   } else {
-    // Part 2: items with components; Part 3: all items
-    const pool = (tabIdx===2 ? ITEMS : getItemPool()).sort((a,b)=>a.name.localeCompare(b.name));
+    // Part 2: items with components; Part 3: all items — both sorted by ascending price
+    const pool = (tabIdx===2 ? ITEMS : getItemPool()).slice().sort((a,b)=>a.price-b.price);
     const seen = new Set();
     const list = pool.filter(i=>{
       if(seen.has(i.name.toLowerCase())) return false;
@@ -1271,6 +1285,7 @@ function submitChamp(){
     showMsg('champ-result','fail',t('incorrect')+'!');
   }
   inp.value='';
+  saveProgress();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1340,6 +1355,7 @@ function submitItem2(){
   recordGuess('p2', found.name);
   renderStatsPanel('item2-stats-panel', 'p2', '📊 Statistiques du jour');
   inp.value='';
+  saveProgress();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1402,6 +1418,7 @@ function submitItem3(){
   recordGuess('p3', found.name);
   renderStatsPanel('item3-stats-panel', 'p3', '📊 Statistiques du jour');
   inp.value='';
+  saveProgress();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1516,6 +1533,7 @@ function submitAbil(){
   recordGuess('p4', found.name);
   renderStatsPanel('abil-stats-panel', 'p4', '📊 Statistiques du jour');
   inp.value='';
+  saveProgress();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1766,6 +1784,7 @@ function submitSkinChamp() {
     }
   }
   inp.value = '';
+  saveProgress();
 }
 
 // ── Phase 2: bonus — guess the exact skin name (1 try) ────────────────
@@ -1804,6 +1823,7 @@ function submitSkinName() {
   document.getElementById('skin-answer').classList.add('show');
   unlock(4, 'skin-next');
   inp.value = '';
+  saveProgress();
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1882,28 +1902,8 @@ function renderStatsPanel(containerId, part, title) {
   el.innerHTML = html;
 }
 
-// Override addTry to append pick count badge on each attempt row
-const _addTryOrig = addTry;
-function addTry(cid, ok, text, img) {
-  _addTryOrig(cid, ok, text, img);
-  // Try to extract the name from the text (after ✓/✗ prefix)
-  const name = text.replace(/^[✓✗] /, '').replace(/^.*?: /, '').trim();
-  // Determine which part we're in based on container id
-  const partMap = {'champ-attempts':'p1','item2-attempts':'p2','item3-attempts':'p3','abil-attempts':'p4','skin-attempts':'p5'};
-  const part = partMap[cid];
-  if (!part || !name) return;
-  const count = getGuessCount(part, name);
-  if (count <= 0) return;
-  // Add count badge to the most recently prepended attempt
-  const container = document.getElementById(cid);
-  if (!container || !container.firstChild) return;
-  const badge = document.createElement('span');
-  badge.style.cssText = 'margin-left:auto;font-size:.72em;color:var(--gold);background:rgba(200,155,60,.15);border:1px solid var(--gold-dark);padding:1px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;';
-  badge.textContent = count + '× choisi';
-  container.firstChild.appendChild(badge);
-}
-
-// ── Daily seeded random ──────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════
+// FINAL SCORE
 // Returns a seeded PRNG based on today's date so targets are the same for everyone
 function getDailyRng() {
   const d = new Date();
@@ -1941,11 +1941,142 @@ function showFinalScore(){
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// PROGRESS SAVE / RESTORE
+// ═══════════════════════════════════════════════════════════════════
+function saveProgress() {
+  const data = {
+    date: todayKey(),
+    scores: S.scores,
+    done: S.done,
+    champWrong: S.champWrong,
+    champGuessed: [...S.champGuessed],
+    champRows: S.champRows.map(r=>({champId:r.champ.id, targetId:r.target.id})),
+    item2Wrong: S.item2Wrong,
+    item2Guessed: [...S.item2Guessed],
+    item3Wrong: S.item3Wrong,
+    item3Guessed: [...S.item3Guessed],
+    abilWrong: S.abilWrong,
+    abilGuessed: [...S.abilGuessed],
+    skinWrong: S.skinWrong,
+    skinGuessed: [...S.skinGuessed],
+    skinChampFound: skinChampFound,
+    skinBonusUsed: skinBonusUsed,
+    // Store attempt history for re-render
+    attempts: {
+      champ: collectAttempts('champ-attempts'),
+      item2: collectAttempts('item2-attempts'),
+      item3: collectAttempts('item3-attempts'),
+      abil: collectAttempts('abil-attempts'),
+      skin: collectAttempts('skin-attempts'),
+    }
+  };
+  try { localStorage.setItem('loldle_progress', JSON.stringify(data)); } catch(e){}
+}
+
+function collectAttempts(id) {
+  const el = document.getElementById(id); if(!el) return [];
+  return [...el.querySelectorAll('.attempt')].reverse().map(d=>({
+    ok: d.classList.contains('correct'),
+    text: d.querySelector('span')?.textContent || '',
+    img: d.querySelector('img')?.src || ''
+  }));
+}
+
+function restoreProgress(data) {
+  if (!data || data.date !== todayKey()) return false;
+  S.scores = data.scores || S.scores;
+  S.done = data.done || S.done;
+  S.champWrong = data.champWrong || 0;
+  S.champGuessed = new Set(data.champGuessed || []);
+  S.item2Wrong = data.item2Wrong || 0;
+  S.item2Guessed = new Set(data.item2Guessed || []);
+  S.item3Wrong = data.item3Wrong || 0;
+  S.item3Guessed = new Set(data.item3Guessed || []);
+  S.abilWrong = data.abilWrong || 0;
+  S.abilGuessed = new Set(data.abilGuessed || []);
+  S.skinWrong = data.skinWrong || 0;
+  S.skinGuessed = new Set(data.skinGuessed || []);
+  skinChampFound = data.skinChampFound || false;
+  skinBonusUsed = data.skinBonusUsed || false;
+
+  // Re-render attempt history
+  if (data.attempts) {
+    Object.entries({champ:'champ-attempts',item2:'item2-attempts',item3:'item3-attempts',abil:'abil-attempts',skin:'skin-attempts'})
+      .forEach(([key,domId])=>{
+        const list = data.attempts[key] || [];
+        list.forEach(a=>addTry(domId, a.ok, a.text, a.img||''));
+      });
+  }
+
+  // Restore unlock states
+  S.done.forEach((done,i)=>{
+    if(done){
+      const tab=document.getElementById('tab'+i);
+      if(tab){tab.classList.add('done');tab.querySelector('.num').textContent='✓';}
+    }
+  });
+
+  // Restore part-specific UI
+  if (S.done[1]) { document.getElementById('item2-next').disabled=false; }
+  if (S.done[2]) { document.getElementById('item3-next').disabled=false; }
+  if (S.done[3]) { document.getElementById('abil-next').disabled=false; revealAbilFull(); }
+  if (S.done[4]) {
+    const sNext=document.getElementById('skin-next'); if(sNext) sNext.disabled=false;
+    drawSkin(true);
+    document.getElementById('skin-answer').classList.add('show');
+  }
+  if (skinChampFound) {
+    document.getElementById('skin-phase1').querySelector('input').disabled=true;
+    document.getElementById('skin-phase2').style.display='';
+    // Re-init skin name autocomplete
+    const champSkins=SKINS.filter(s=>s.championId===S.skinTarget.championId);
+    makeAC('skin-name-input','skin-name-ac',
+      q=>(q?champSkins.filter(s=>norm(s.name).includes(q)):champSkins).map(s=>({label:s.name})),
+      submitSkinName,new Set());
+    if(skinBonusUsed) document.getElementById('skin-name-input').disabled=true;
+  }
+
+  // Restore comps/stats display
+  renderComps();
+  renderStats();
+  setCount('champ-counter', S.champWrong);
+  setCount('item2-counter', S.item2Wrong);
+  setCount('item3-counter', S.item3Wrong);
+  setCount('abil-counter', S.abilWrong);
+  setCount('skin-counter', S.skinWrong);
+
+  // Show descriptions if enough errors
+  if(S.item2Wrong>=5){
+    const d=document.getElementById('item2-desc');
+    const desc=S.item2Target?.desc?.trim();
+    d.textContent=desc?('📖 '+desc):'(Pas de description)';
+    d.classList.add('show');
+  }
+  if(S.item3Wrong>=5){
+    const d=document.getElementById('item3-desc');
+    const desc=S.item3Target?.desc?.trim();
+    d.textContent=desc?('📖 '+desc):'(Pas de description)';
+    d.classList.add('show');
+  }
+
+  return true;
+}
+
+// Save progress after every submit action — patch all submit functions
+// We wrap by renaming originals with a suffix _inner
+
+// ═══════════════════════════════════════════════════════════════════
 // BOOT
 // ═══════════════════════════════════════════════════════════════════
 loadLang('fr_FR').then(()=>{
   applyI18n();
+  // Always init targets with daily seed first
   initChamp();initItem2();initItem3();initAbil();initSkin();
+  // Then try to restore saved progress for today
+  try {
+    const saved = JSON.parse(localStorage.getItem('loldle_progress') || 'null');
+    if (saved) restoreProgress(saved);
+  } catch(e){}
   updateCatalogue();
 }).catch(err=>{
   document.body.innerHTML=`<div style="color:#C89B3C;font-family:Cinzel,serif;text-align:center;padding:60px;font-size:1.1em;">

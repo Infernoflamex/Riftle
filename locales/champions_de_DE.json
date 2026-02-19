@@ -1,0 +1,1034 @@
+[
+  {
+    "id": "Aatrox",
+    "name": "Aatrox",
+    "title": "Die Klinge der Düsteren",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Aatrox.png"
+  },
+  {
+    "id": "Ahri",
+    "name": "Ahri",
+    "title": "die neunschwänzige Füchsin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ahri.png"
+  },
+  {
+    "id": "Akali",
+    "name": "Akali",
+    "title": "die rebellische Assassine",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Akali.png"
+  },
+  {
+    "id": "Akshan",
+    "name": "Akshan",
+    "title": "der rebellische Wächter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Akshan.png"
+  },
+  {
+    "id": "Alistar",
+    "name": "Alistar",
+    "title": "der Minotaurus",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Alistar.png"
+  },
+  {
+    "id": "Ambessa",
+    "name": "Ambessa",
+    "title": "Matriarchin des Krieges",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ambessa.png"
+  },
+  {
+    "id": "Amumu",
+    "name": "Amumu",
+    "title": "die traurige Mumie",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Amumu.png"
+  },
+  {
+    "id": "Anivia",
+    "name": "Anivia",
+    "title": "der Kryophönix",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Anivia.png"
+  },
+  {
+    "id": "Annie",
+    "name": "Annie",
+    "title": "das Kind der Finsternis",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Annie.png"
+  },
+  {
+    "id": "Aphelios",
+    "name": "Aphelios",
+    "title": "die Waffe der Lunari",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Aphelios.png"
+  },
+  {
+    "id": "Ashe",
+    "name": "Ashe",
+    "title": "die Frostbogenschützin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ashe.png"
+  },
+  {
+    "id": "AurelionSol",
+    "name": "Aurelion Sol",
+    "title": "der Sternenschmied",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/AurelionSol.png"
+  },
+  {
+    "id": "Aurora",
+    "name": "Aurora",
+    "title": "die Hexe zwischen den Welten",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Aurora.png"
+  },
+  {
+    "id": "Azir",
+    "name": "Azir",
+    "title": "der Imperator des Sandes",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Azir.png"
+  },
+  {
+    "id": "Bard",
+    "name": "Bard",
+    "title": "der wandelnde Beschützer",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Bard.png"
+  },
+  {
+    "id": "Belveth",
+    "name": "Bel'Veth",
+    "title": "die Kaiserin der Leere",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Belveth.png"
+  },
+  {
+    "id": "Blitzcrank",
+    "name": "Blitzcrank",
+    "title": "der große Dampfgolem",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Blitzcrank.png"
+  },
+  {
+    "id": "Brand",
+    "name": "Brand",
+    "title": "die brennende Vergeltung",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Brand.png"
+  },
+  {
+    "id": "Braum",
+    "name": "Braum",
+    "title": "das Herz Freljords",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Braum.png"
+  },
+  {
+    "id": "Briar",
+    "name": "Briar",
+    "title": "der gebändigte Hunger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Briar.png"
+  },
+  {
+    "id": "Caitlyn",
+    "name": "Caitlyn",
+    "title": "der Sheriff von Piltover",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Caitlyn.png"
+  },
+  {
+    "id": "Camille",
+    "name": "Camille",
+    "title": "der stählerne Schatten",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Camille.png"
+  },
+  {
+    "id": "Cassiopeia",
+    "name": "Cassiopeia",
+    "title": "die Umarmung der Schlange",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Cassiopeia.png"
+  },
+  {
+    "id": "Chogath",
+    "name": "Cho'Gath",
+    "title": "der Schrecken der Leere",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Chogath.png"
+  },
+  {
+    "id": "Corki",
+    "name": "Corki",
+    "title": "der kühne Bombenschütze",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Corki.png"
+  },
+  {
+    "id": "Darius",
+    "name": "Darius",
+    "title": "die Hand von Noxus",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Darius.png"
+  },
+  {
+    "id": "Diana",
+    "name": "Diana",
+    "title": "der Hohn des Mondes",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Diana.png"
+  },
+  {
+    "id": "DrMundo",
+    "name": "Dr. Mundo",
+    "title": "der Irre von Zhaun",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/DrMundo.png"
+  },
+  {
+    "id": "Draven",
+    "name": "Draven",
+    "title": "der ruhmreiche Scharfrichter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Draven.png"
+  },
+  {
+    "id": "Ekko",
+    "name": "Ekko",
+    "title": "der Zeitbrecher",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ekko.png"
+  },
+  {
+    "id": "Elise",
+    "name": "Elise",
+    "title": "die Spinnenkönigin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Elise.png"
+  },
+  {
+    "id": "Evelynn",
+    "name": "Evelynn",
+    "title": "Umarmung der Qual",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Evelynn.png"
+  },
+  {
+    "id": "Ezreal",
+    "name": "Ezreal",
+    "title": "der verwegene Forscher",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ezreal.png"
+  },
+  {
+    "id": "Fiddlesticks",
+    "name": "Fiddlesticks",
+    "title": "das uralte Unheil",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Fiddlesticks.png"
+  },
+  {
+    "id": "Fiora",
+    "name": "Fiora",
+    "title": "die große Duellantin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Fiora.png"
+  },
+  {
+    "id": "Fizz",
+    "name": "Fizz",
+    "title": "der Gezeitentäuscher",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Fizz.png"
+  },
+  {
+    "id": "Galio",
+    "name": "Galio",
+    "title": "der Koloss",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Galio.png"
+  },
+  {
+    "id": "Gangplank",
+    "name": "Gangplank",
+    "title": "die Salzwassergeißel",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Gangplank.png"
+  },
+  {
+    "id": "Garen",
+    "name": "Garen",
+    "title": "die Macht von Demacia",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Garen.png"
+  },
+  {
+    "id": "Gnar",
+    "name": "Gnar",
+    "title": "das fehlende Bindeglied",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Gnar.png"
+  },
+  {
+    "id": "Gragas",
+    "name": "Gragas",
+    "title": "der Unruhestifter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Gragas.png"
+  },
+  {
+    "id": "Graves",
+    "name": "Graves",
+    "title": "der Gesetzlose",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Graves.png"
+  },
+  {
+    "id": "Gwen",
+    "name": "Gwen",
+    "title": "Die begnadete Näherin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Gwen.png"
+  },
+  {
+    "id": "Hecarim",
+    "name": "Hecarim",
+    "title": "der Schatten des Krieges",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Hecarim.png"
+  },
+  {
+    "id": "Heimerdinger",
+    "name": "Heimerdinger",
+    "title": "der verehrte Erfinder",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Heimerdinger.png"
+  },
+  {
+    "id": "Hwei",
+    "name": "Hwei",
+    "title": "der Visionär",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Hwei.png"
+  },
+  {
+    "id": "Illaoi",
+    "name": "Illaoi",
+    "title": "die Krakenpriesterin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Illaoi.png"
+  },
+  {
+    "id": "Irelia",
+    "name": "Irelia",
+    "title": "die Klingentänzerin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Irelia.png"
+  },
+  {
+    "id": "Ivern",
+    "name": "Ivern",
+    "title": "der Hüter der Haine",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ivern.png"
+  },
+  {
+    "id": "Janna",
+    "name": "Janna",
+    "title": "die Wut des Sturms",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Janna.png"
+  },
+  {
+    "id": "JarvanIV",
+    "name": "Jarvan IV.",
+    "title": "das Vorbild von Demacia",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/JarvanIV.png"
+  },
+  {
+    "id": "Jax",
+    "name": "Jax",
+    "title": "der Großmeister der Waffen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Jax.png"
+  },
+  {
+    "id": "Jayce",
+    "name": "Jayce",
+    "title": "der Verteidiger von Morgen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Jayce.png"
+  },
+  {
+    "id": "Jhin",
+    "name": "Jhin",
+    "title": "der Virtuose",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Jhin.png"
+  },
+  {
+    "id": "Jinx",
+    "name": "Jinx",
+    "title": "die Schießwütige",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Jinx.png"
+  },
+  {
+    "id": "KSante",
+    "name": "K'Sante",
+    "title": "der Stolz von Nazumah",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/KSante.png"
+  },
+  {
+    "id": "Kaisa",
+    "name": "Kai'Sa",
+    "title": "Tochter der Leere",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kaisa.png"
+  },
+  {
+    "id": "Kalista",
+    "name": "Kalista",
+    "title": "der Speer der Rache",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kalista.png"
+  },
+  {
+    "id": "Karma",
+    "name": "Karma",
+    "title": "die Erleuchtete",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Karma.png"
+  },
+  {
+    "id": "Karthus",
+    "name": "Karthus",
+    "title": "der Todessänger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Karthus.png"
+  },
+  {
+    "id": "Kassadin",
+    "name": "Kassadin",
+    "title": "der Leerengänger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kassadin.png"
+  },
+  {
+    "id": "Katarina",
+    "name": "Katarina",
+    "title": "die unheimliche Klinge",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Katarina.png"
+  },
+  {
+    "id": "Kayle",
+    "name": "Kayle",
+    "title": "die Rechtschaffene",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kayle.png"
+  },
+  {
+    "id": "Kayn",
+    "name": "Kayn",
+    "title": "der Schatten des Todes",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kayn.png"
+  },
+  {
+    "id": "Kennen",
+    "name": "Kennen",
+    "title": "das Herz des Sturms",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kennen.png"
+  },
+  {
+    "id": "Khazix",
+    "name": "Kha'Zix",
+    "title": "Räuber der Leere",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Khazix.png"
+  },
+  {
+    "id": "Kindred",
+    "name": "Kindred",
+    "title": "die ewigen Jäger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kindred.png"
+  },
+  {
+    "id": "Kled",
+    "name": "Kled",
+    "title": "der übellaunige Streiter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Kled.png"
+  },
+  {
+    "id": "KogMaw",
+    "name": "Kog'Maw",
+    "title": "der Schlund des Abgrunds",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/KogMaw.png"
+  },
+  {
+    "id": "Leblanc",
+    "name": "LeBlanc",
+    "title": "die Täuscherin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Leblanc.png"
+  },
+  {
+    "id": "LeeSin",
+    "name": "Lee Sin",
+    "title": "der blinde Mönch",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/LeeSin.png"
+  },
+  {
+    "id": "Leona",
+    "name": "Leona",
+    "title": "der strahlende Sonnenaufgang",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Leona.png"
+  },
+  {
+    "id": "Lillia",
+    "name": "Lillia",
+    "title": "die scheue Blüte",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Lillia.png"
+  },
+  {
+    "id": "Lissandra",
+    "name": "Lissandra",
+    "title": "die Eishexe",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Lissandra.png"
+  },
+  {
+    "id": "Lucian",
+    "name": "Lucian",
+    "title": "der Läuterer",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Lucian.png"
+  },
+  {
+    "id": "Lulu",
+    "name": "Lulu",
+    "title": "die Zauberin der Fae",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Lulu.png"
+  },
+  {
+    "id": "Lux",
+    "name": "Lux",
+    "title": "die Lady des Lichts",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Lux.png"
+  },
+  {
+    "id": "Malphite",
+    "name": "Malphite",
+    "title": "der Splitter des Monolithen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Malphite.png"
+  },
+  {
+    "id": "Malzahar",
+    "name": "Malzahar",
+    "title": "der Prophet der Leere",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Malzahar.png"
+  },
+  {
+    "id": "Maokai",
+    "name": "Maokai",
+    "title": "der verdorbene Baumriese",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Maokai.png"
+  },
+  {
+    "id": "MasterYi",
+    "name": "Master Yi",
+    "title": "der Wuju-Schwertkämpfer",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/MasterYi.png"
+  },
+  {
+    "id": "Mel",
+    "name": "Mel",
+    "title": "das Spiegelbild der Seele",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Mel.png"
+  },
+  {
+    "id": "Milio",
+    "name": "Milio",
+    "title": "Die schützende Flamme",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Milio.png"
+  },
+  {
+    "id": "MissFortune",
+    "name": "Miss Fortune",
+    "title": "die Kopfgeldjägerin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/MissFortune.png"
+  },
+  {
+    "id": "Mordekaiser",
+    "name": "Mordekaiser",
+    "title": "der eiserne Albtraum",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Mordekaiser.png"
+  },
+  {
+    "id": "Morgana",
+    "name": "Morgana",
+    "title": "die Gefallene",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Morgana.png"
+  },
+  {
+    "id": "Naafiri",
+    "name": "Naafiri",
+    "title": "der Hund der hundert Bisse",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Naafiri.png"
+  },
+  {
+    "id": "Nami",
+    "name": "Nami",
+    "title": "die Gezeitenruferin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nami.png"
+  },
+  {
+    "id": "Nasus",
+    "name": "Nasus",
+    "title": "der Bewahrer des Sandes",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nasus.png"
+  },
+  {
+    "id": "Nautilus",
+    "name": "Nautilus",
+    "title": "der Titan der Tiefen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nautilus.png"
+  },
+  {
+    "id": "Neeko",
+    "name": "Neeko",
+    "title": "das wissbegierige Chamäleon",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Neeko.png"
+  },
+  {
+    "id": "Nidalee",
+    "name": "Nidalee",
+    "title": "die bestialische Jägerin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nidalee.png"
+  },
+  {
+    "id": "Nilah",
+    "name": "Nilah",
+    "title": "die ungezügelte Freude",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nilah.png"
+  },
+  {
+    "id": "Nocturne",
+    "name": "Nocturne",
+    "title": "der ewige Albtraum",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nocturne.png"
+  },
+  {
+    "id": "Nunu",
+    "name": "Nunu & Willump",
+    "title": "der Junge und sein Yeti",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Nunu.png"
+  },
+  {
+    "id": "Olaf",
+    "name": "Olaf",
+    "title": "der Berserker",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Olaf.png"
+  },
+  {
+    "id": "Orianna",
+    "name": "Orianna",
+    "title": "die Aufziehpuppe",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Orianna.png"
+  },
+  {
+    "id": "Ornn",
+    "name": "Ornn",
+    "title": "der Gott der Vulkanschmiede",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ornn.png"
+  },
+  {
+    "id": "Pantheon",
+    "name": "Pantheon",
+    "title": "der unbeugsame Speer",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Pantheon.png"
+  },
+  {
+    "id": "Poppy",
+    "name": "Poppy",
+    "title": "die Hüterin des Hammers",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Poppy.png"
+  },
+  {
+    "id": "Pyke",
+    "name": "Pyke",
+    "title": "der Schlitzer vom Bluthafen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Pyke.png"
+  },
+  {
+    "id": "Qiyana",
+    "name": "Qiyana",
+    "title": "Gebieterin der Elemente",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Qiyana.png"
+  },
+  {
+    "id": "Quinn",
+    "name": "Quinn",
+    "title": "Demacias Schwingen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Quinn.png"
+  },
+  {
+    "id": "Rakan",
+    "name": "Rakan",
+    "title": "der Publikumsliebling",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Rakan.png"
+  },
+  {
+    "id": "Rammus",
+    "name": "Rammus",
+    "title": "das Panzergürteltier",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Rammus.png"
+  },
+  {
+    "id": "RekSai",
+    "name": "Rek'Sai",
+    "title": "die Leerenwühlerin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/RekSai.png"
+  },
+  {
+    "id": "Rell",
+    "name": "Rell",
+    "title": "die eiserne Jungfrau",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Rell.png"
+  },
+  {
+    "id": "Renata",
+    "name": "Renata Glasc",
+    "title": "die Chem-Baronin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Renata.png"
+  },
+  {
+    "id": "Renekton",
+    "name": "Renekton",
+    "title": "der Schlächter des Sandes",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Renekton.png"
+  },
+  {
+    "id": "Rengar",
+    "name": "Rengar",
+    "title": "der stolze Jäger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Rengar.png"
+  },
+  {
+    "id": "Riven",
+    "name": "Riven",
+    "title": "die Verbannte",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Riven.png"
+  },
+  {
+    "id": "Rumble",
+    "name": "Rumble",
+    "title": "die mechanisierte Bedrohung",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Rumble.png"
+  },
+  {
+    "id": "Ryze",
+    "name": "Ryze",
+    "title": "der Runenmagier",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ryze.png"
+  },
+  {
+    "id": "Samira",
+    "name": "Samira",
+    "title": "die Wüstenrose",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Samira.png"
+  },
+  {
+    "id": "Sejuani",
+    "name": "Sejuani",
+    "title": "Zorn des Nordens",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Sejuani.png"
+  },
+  {
+    "id": "Senna",
+    "name": "Senna",
+    "title": "die Erlöserin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Senna.png"
+  },
+  {
+    "id": "Seraphine",
+    "name": "Seraphine",
+    "title": "das verträumte Goldkehlchen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Seraphine.png"
+  },
+  {
+    "id": "Sett",
+    "name": "Sett",
+    "title": "der Boss",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Sett.png"
+  },
+  {
+    "id": "Shaco",
+    "name": "Shaco",
+    "title": "der dunkle Hofnarr",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Shaco.png"
+  },
+  {
+    "id": "Shen",
+    "name": "Shen",
+    "title": "das Auge des Zwielichts",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Shen.png"
+  },
+  {
+    "id": "Shyvana",
+    "name": "Shyvana",
+    "title": "der Halbdrache",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Shyvana.png"
+  },
+  {
+    "id": "Singed",
+    "name": "Singed",
+    "title": "der verrückte Chemiker",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Singed.png"
+  },
+  {
+    "id": "Sion",
+    "name": "Sion",
+    "title": "der untote Moloch",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Sion.png"
+  },
+  {
+    "id": "Sivir",
+    "name": "Sivir",
+    "title": "die Kampfmeisterin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Sivir.png"
+  },
+  {
+    "id": "Skarner",
+    "name": "Skarner",
+    "title": "der Urherrscher",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Skarner.png"
+  },
+  {
+    "id": "Smolder",
+    "name": "Smolder",
+    "title": "der feurige Welpling",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Smolder.png"
+  },
+  {
+    "id": "Sona",
+    "name": "Sona",
+    "title": "die Virtuosin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Sona.png"
+  },
+  {
+    "id": "Soraka",
+    "name": "Soraka",
+    "title": "das Sternenkind",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Soraka.png"
+  },
+  {
+    "id": "Swain",
+    "name": "Swain",
+    "title": "der noxianische Großgeneral",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Swain.png"
+  },
+  {
+    "id": "Sylas",
+    "name": "Sylas",
+    "title": "Sprenger der Ketten",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Sylas.png"
+  },
+  {
+    "id": "Syndra",
+    "name": "Syndra",
+    "title": "die dunkle Herrscherin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Syndra.png"
+  },
+  {
+    "id": "TahmKench",
+    "name": "Tahm Kench",
+    "title": "Der König des Flusses",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/TahmKench.png"
+  },
+  {
+    "id": "Taliyah",
+    "name": "Taliyah",
+    "title": "die Felsenweberin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Taliyah.png"
+  },
+  {
+    "id": "Talon",
+    "name": "Talon",
+    "title": "der Klingenschatten",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Talon.png"
+  },
+  {
+    "id": "Taric",
+    "name": "Taric",
+    "title": "der Schild von Valoran",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Taric.png"
+  },
+  {
+    "id": "Teemo",
+    "name": "Teemo",
+    "title": "der flinke Späher",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Teemo.png"
+  },
+  {
+    "id": "Thresh",
+    "name": "Thresh",
+    "title": "der Kettenwächter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Thresh.png"
+  },
+  {
+    "id": "Tristana",
+    "name": "Tristana",
+    "title": "die Yordle-Schützin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Tristana.png"
+  },
+  {
+    "id": "Trundle",
+    "name": "Trundle",
+    "title": "der Trollkönig",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Trundle.png"
+  },
+  {
+    "id": "Tryndamere",
+    "name": "Tryndamere",
+    "title": "der Barbarenkönig",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Tryndamere.png"
+  },
+  {
+    "id": "TwistedFate",
+    "name": "Twisted Fate",
+    "title": "der Meister der Karten",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/TwistedFate.png"
+  },
+  {
+    "id": "Twitch",
+    "name": "Twitch",
+    "title": "die Seuchenratte",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Twitch.png"
+  },
+  {
+    "id": "Udyr",
+    "name": "Udyr",
+    "title": "der Geistwanderer",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Udyr.png"
+  },
+  {
+    "id": "Urgot",
+    "name": "Urgot",
+    "title": "der Chemtech-Terror",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Urgot.png"
+  },
+  {
+    "id": "Varus",
+    "name": "Varus",
+    "title": "der Pfeil der Vergeltung",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Varus.png"
+  },
+  {
+    "id": "Vayne",
+    "name": "Vayne",
+    "title": "die Jägerin der Nacht",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Vayne.png"
+  },
+  {
+    "id": "Veigar",
+    "name": "Veigar",
+    "title": "der kleine Meister des Bösen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Veigar.png"
+  },
+  {
+    "id": "Velkoz",
+    "name": "Vel'Koz",
+    "title": "das Auge der Leere",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Velkoz.png"
+  },
+  {
+    "id": "Vex",
+    "name": "Vex",
+    "title": "die Schwarzseherin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Vex.png"
+  },
+  {
+    "id": "Vi",
+    "name": "Vi",
+    "title": "Piltovers Vollstreckerin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Vi.png"
+  },
+  {
+    "id": "Viego",
+    "name": "Viego",
+    "title": "der gestürzte König",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Viego.png"
+  },
+  {
+    "id": "Viktor",
+    "name": "Viktor",
+    "title": "Der Herold des Arcane",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Viktor.png"
+  },
+  {
+    "id": "Vladimir",
+    "name": "Vladimir",
+    "title": "der blutrote Schnitter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Vladimir.png"
+  },
+  {
+    "id": "Volibear",
+    "name": "Volibear",
+    "title": "der unerbittliche Sturm",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Volibear.png"
+  },
+  {
+    "id": "Warwick",
+    "name": "Warwick",
+    "title": "Zhauns entfesselter Zorn",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Warwick.png"
+  },
+  {
+    "id": "MonkeyKing",
+    "name": "Wukong",
+    "title": "der Affenkönig",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/MonkeyKing.png"
+  },
+  {
+    "id": "Xayah",
+    "name": "Xayah",
+    "title": "die Rebellin",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Xayah.png"
+  },
+  {
+    "id": "Xerath",
+    "name": "Xerath",
+    "title": "der aufgestiegene Magier",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Xerath.png"
+  },
+  {
+    "id": "XinZhao",
+    "name": "Xin Zhao",
+    "title": "der Seneschall von Demacia",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/XinZhao.png"
+  },
+  {
+    "id": "Yasuo",
+    "name": "Yasuo",
+    "title": "der entehrte Krieger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Yasuo.png"
+  },
+  {
+    "id": "Yone",
+    "name": "Yone",
+    "title": "der unvergessene Krieger",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Yone.png"
+  },
+  {
+    "id": "Yorick",
+    "name": "Yorick",
+    "title": "der Hirte der verlorenen Seelen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Yorick.png"
+  },
+  {
+    "id": "Yunara",
+    "name": "Yunara",
+    "title": "der unerschütterliche Glaube",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Yunara.png"
+  },
+  {
+    "id": "Yuumi",
+    "name": "Yuumi",
+    "title": "die magische Katze",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Yuumi.png"
+  },
+  {
+    "id": "Zaahen",
+    "name": "Zaahen",
+    "title": "Der Ungespaltene",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zaahen.png"
+  },
+  {
+    "id": "Zac",
+    "name": "Zac",
+    "title": "die Geheimwaffe",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zac.png"
+  },
+  {
+    "id": "Zed",
+    "name": "Zed",
+    "title": "der Meister der Schatten",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zed.png"
+  },
+  {
+    "id": "Zeri",
+    "name": "Zeri",
+    "title": "Der Funke von Zhaun",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zeri.png"
+  },
+  {
+    "id": "Ziggs",
+    "name": "Ziggs",
+    "title": "der Hexplosions-Experte",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Ziggs.png"
+  },
+  {
+    "id": "Zilean",
+    "name": "Zilean",
+    "title": "der Zeitwächter",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zilean.png"
+  },
+  {
+    "id": "Zoe",
+    "name": "Zoe",
+    "title": "der Aspekt des Zwielichts",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zoe.png"
+  },
+  {
+    "id": "Zyra",
+    "name": "Zyra",
+    "title": "die Gebieterin der Dornen",
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/champion/Zyra.png"
+  }
+]

@@ -1,0 +1,2682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RIFTle</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Exo+2:wght@300;400;600;700&display=swap');
+:root{
+  --gold:#C89B3C;--gold-light:#F0E6D3;--gold-dark:#785A28;
+  --blue-dark:#0A1428;--blue-panel:#091428;--blue-bright:#4FC3F7;
+  --silver:#A0A0A0;--red:#C8272C;--green:#1E7A1E;--text:#F0E6D3;--border:#463714;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--blue-dark);color:var(--text);font-family:'Exo 2',sans-serif;min-height:100vh;overflow-x:hidden;
+  /* ══════════════════════════════════════════════════════════════════
+     BACKGROUND IMAGE — change the url() below to your image path
+     Example: background-image: url('images/my-bg.jpg'), radial-gradient(...
+     Use background-size:cover and background-position:center for full coverage
+     ══════════════════════════════════════════════════════════════════ */
+  background-image:radial-gradient(ellipse at 20% 20%,rgba(200,155,60,.08) 0%,transparent 60%),
+                   radial-gradient(ellipse at 80% 80%,rgba(30,58,95,.4) 0%,transparent 60%);}
+
+/* ── HEADER ── */
+header{text-align:center;padding:24px 20px 16px;border-bottom:1px solid var(--border);position:relative;}
+header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.logo{font-family:'Cinzel',serif;font-size:2.4em;font-weight:900;background:linear-gradient(135deg,#C89B3C,#F0E6D3,#C89B3C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:6px;}
+.logo span{-webkit-text-fill-color:var(--blue-bright);}
+.subtitle{color:var(--silver);font-size:.82em;letter-spacing:3px;margin-top:4px;}
+
+/* ── LANG + TABS ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;background:rgba(0,0,0,.25);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;}
+.topbar-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.lang-wrap{display:flex;align-items:center;gap:8px;}
+.lang-wrap label{color:var(--silver);font-size:.75em;letter-spacing:2px;text-transform:uppercase;}
+.lang-select{background:rgba(0,0,0,.6);border:1px solid var(--border);color:var(--gold-light);font-family:'Exo 2',sans-serif;font-size:.85em;padding:5px 26px 5px 10px;cursor:pointer;outline:none;border-radius:2px;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C89B3C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
+.lang-select:hover,.lang-select:focus{border-color:var(--gold);}
+.lang-select:disabled{opacity:.4;}
+.lang-select option{background:#0A1428;color:var(--gold-light);}
+.lang-loading{display:none;color:var(--silver);font-size:.75em;}
+.lang-loading.show{display:inline;}
+/* Mode buttons */
+.mode-wrap{display:flex;gap:4px;}
+.mode-btn{padding:5px 12px;background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;border-radius:2px;}
+.mode-btn:hover{border-color:var(--gold);color:var(--gold-light);}
+.mode-btn.active{background:linear-gradient(135deg,rgba(200,155,60,.3),rgba(200,155,60,.1));border-color:var(--gold);color:var(--gold);}
+/* Feedback icon */
+.feedback-icon{color:var(--silver);opacity:.55;transition:opacity .2s,color .2s;display:flex;align-items:center;text-decoration:none;}
+.feedback-icon:hover{opacity:1;color:var(--gold);}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;}
+.tab{padding:7px 14px;background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;border-radius:2px;}
+.tab:hover{border-color:var(--gold);color:var(--gold-light);}
+.tab.active{background:linear-gradient(135deg,rgba(200,155,60,.3),rgba(200,155,60,.1));border-color:var(--gold);color:var(--gold);}
+.tab .num{display:inline-block;width:16px;height:16px;background:var(--gold-dark);border-radius:50%;font-size:.72em;line-height:16px;text-align:center;margin-right:5px;color:var(--gold-light);}
+.tab.done .num{background:var(--green);}
+.tab.done{border-color:var(--green);color:#6fcf6f;}
+/* Endless mode panel */
+#endless-panel{background:var(--blue-dark);min-height:calc(100vh - 140px);}
+.endless-modes{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:24px;}
+.endless-card{background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(9,20,40,.9));border:1px solid var(--border);padding:20px 28px;cursor:pointer;transition:all .2s;min-width:140px;position:relative;border-radius:2px;}
+.endless-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-dark),transparent);}
+.endless-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.endless-card .ec-icon{font-size:1.8em;margin-bottom:8px;}
+.endless-card .ec-name{font-family:'Cinzel',serif;color:var(--gold-light);font-size:.85em;letter-spacing:2px;}
+.endless-score-box{background:rgba(0,0,0,.4);border:1px solid var(--border);padding:12px 20px;display:inline-block;margin-bottom:16px;}
+.endless-score-box span{font-family:'Cinzel',serif;font-size:1.6em;color:var(--gold);}
+.endless-score-box div{color:var(--silver);font-size:.75em;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.endless-game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.endless-streak{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1em;letter-spacing:2px;}
+.endless-back{background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;padding:5px 12px;cursor:pointer;border-radius:2px;transition:all .2s;}
+.endless-back:hover{border-color:var(--gold);color:var(--gold);}
+.endless-game-over{background:rgba(200,39,44,.15);border:1px solid var(--red);padding:18px;text-align:center;margin-top:14px;display:none;}
+.endless-game-over.show{display:block;}
+.endless-game-over h3{color:#ff8080;font-family:'Cinzel',serif;font-size:1.1em;letter-spacing:2px;margin-bottom:8px;}
+.endless-game-over p{color:var(--silver);font-size:.85em;}
+
+/* ── LAYOUT: sidebar + main ── */
+.page-layout{display:flex;gap:0;min-height:calc(100vh - 140px);}
+.catalogue{width:220px;min-width:180px;max-width:240px;background:rgba(0,0,0,.3);border-right:1px solid var(--border);padding:0;flex-shrink:0;position:sticky;top:0;align-self:flex-start;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+.catalogue.cat-hidden{display:none!important;}
+.catalogue-title{font-family:'Cinzel',serif;font-size:.75em;color:var(--gold);letter-spacing:2px;text-transform:uppercase;padding:10px 8px 6px;border-bottom:1px solid var(--border);margin-bottom:0;flex-shrink:0;}
+.catalogue-search{width:100%;background:rgba(0,0,0,.4);border:none;border-bottom:1px solid var(--border);color:var(--text);font-family:'Exo 2',sans-serif;font-size:.78em;padding:7px 10px;outline:none;flex-shrink:0;}
+.catalogue-search:focus{background:rgba(200,155,60,.08);}
+.cat-grid-scroll{flex:1;overflow-y:auto;padding:8px;}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.cat-item{cursor:default;position:relative;border:1px solid transparent;border-radius:2px;overflow:hidden;transition:border-color .15s;}
+.cat-item img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.cat-item .cat-name{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);font-size:.55em;color:var(--gold-light);padding:2px 3px;text-align:center;display:none;line-height:1.2;}
+.cat-item:hover{border-color:var(--gold);}
+.cat-item:hover .cat-name{display:block;}
+.cat-item.guessed{opacity:.35;filter:grayscale(.8);}
+.cat-item.correct{border-color:var(--green);box-shadow:0 0 6px rgba(30,122,30,.6);}
+
+.main-content{flex:1;padding:24px 20px;overflow-x:hidden;}
+.section{display:none;}.section.active{display:block;}
+
+/* ── PANELS ── */
+.panel{background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(9,20,40,.9));border:1px solid var(--border);padding:24px;position:relative;margin-bottom:18px;}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.panel-title{font-family:'Cinzel',serif;font-size:1em;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.panel-title::before{content:'';display:inline-block;width:16px;height:1px;background:var(--gold);}
+.section-header{margin-bottom:18px;}
+.section-header h2{font-family:'Cinzel',serif;font-size:1.25em;color:var(--gold);letter-spacing:4px;}
+.section-header p{color:var(--silver);font-size:.82em;margin-top:4px;}
+
+/* ── INPUTS ── */
+.input-row{display:flex;gap:10px;position:relative;}
+.autocomplete-wrapper{flex:1;position:relative;}
+input[type="text"]{width:100%;background:rgba(0,0,0,.4);border:1px solid var(--border);color:var(--text);font-family:'Exo 2',sans-serif;font-size:1em;padding:11px 14px;outline:none;transition:border-color .2s;}
+input[type="text"]:focus{border-color:var(--gold);}
+input[type="text"]::placeholder{color:rgba(160,160,160,.5);}
+input[type="text"]:disabled{opacity:.5;cursor:not-allowed;}
+.autocomplete-list{position:absolute;top:100%;left:0;right:0;background:var(--blue-panel);border:1px solid var(--border);border-top:none;max-height:200px;overflow-y:auto;z-index:200;display:none;}
+.autocomplete-list.open{display:block;}
+.autocomplete-list div{padding:9px 14px;cursor:pointer;font-size:.88em;display:flex;align-items:center;gap:10px;transition:background .15s;}
+.autocomplete-list div:hover,.autocomplete-list div.ac-sel{background:rgba(200,155,60,.25);}
+.autocomplete-list div.already-guessed{opacity:.35;cursor:not-allowed;pointer-events:none;text-decoration:line-through;}
+.autocomplete-list img{width:26px;height:26px;object-fit:cover;border-radius:2px;}
+button.btn{background:linear-gradient(135deg,var(--gold-dark),var(--gold));border:none;color:var(--blue-dark);font-family:'Cinzel',serif;font-weight:600;font-size:.82em;letter-spacing:2px;padding:11px 20px;cursor:pointer;text-transform:uppercase;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);transition:all .2s;white-space:nowrap;}
+button.btn:hover{filter:brightness(1.2);transform:translateY(-1px);}
+button.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);color:var(--gold);clip-path:none;}
+
+/* ── MESSAGES & ATTEMPTS ── */
+.result-msg{margin-top:12px;padding:12px;text-align:center;font-size:.92em;font-weight:600;letter-spacing:1px;display:none;}
+.result-msg.success{background:rgba(30,122,30,.3);border:1px solid #2a7a2a;color:#6fcf6f;display:block;}
+.result-msg.fail{background:rgba(200,39,44,.2);border:1px solid var(--red);color:#ff8080;display:block;}
+.result-msg.hint{background:rgba(79,195,247,.1);border:1px solid rgba(79,195,247,.4);color:var(--blue-bright);display:block;}
+.attempts{margin-top:12px;}
+.attempt{display:flex;align-items:center;gap:8px;padding:8px;background:rgba(0,0,0,.2);border-left:3px solid var(--red);margin-bottom:6px;font-size:.83em;color:#ff8080;animation:fadeIn .3s ease;}
+.attempt.correct{border-left-color:var(--green);color:#6fcf6f;}
+.attempt img{width:26px;height:26px;border-radius:2px;}
+.wrong-counter{font-size:.73em;color:var(--silver);text-align:right;margin-top:7px;}
+.wrong-counter span{color:var(--gold);}
+.answer-reveal{margin-top:16px;padding:16px;background:rgba(0,0,0,.4);border:1px solid var(--gold-dark);text-align:center;display:none;}
+.answer-reveal.show{display:block;}
+.answer-reveal img{width:56px;height:56px;margin-bottom:7px;}
+.answer-reveal strong{color:var(--gold);font-family:'Cinzel',serif;font-size:1.1em;}
+
+/* ── CLUE BOX ── */
+.clue-box{background:rgba(0,0,0,.5);border:1px solid var(--gold-dark);padding:18px;text-align:center;margin-bottom:16px;}
+.clue-label{font-size:.72em;letter-spacing:3px;color:var(--silver);margin-bottom:7px;text-transform:uppercase;}
+.clue-value{font-family:'Cinzel',serif;font-size:1.6em;color:var(--gold-light);font-style:italic;}
+
+/* ── PART 1: WORDLE GRID ── */
+.champ-guess-table{width:100%;border-collapse:collapse;margin-top:12px;}
+.champ-guess-table th{font-size:.7em;letter-spacing:1.5px;color:var(--silver);text-transform:uppercase;padding:6px 4px;text-align:center;border-bottom:1px solid var(--border);}
+.champ-guess-table td{padding:5px 3px;text-align:center;border-bottom:1px solid rgba(70,55,20,.3);}
+.cgt-img{width:38px;height:38px;border-radius:2px;object-fit:cover;}
+.cgt-cell{display:inline-block;padding:5px 10px;border-radius:3px;font-size:.8em;font-weight:600;min-width:60px;}
+.cgt-correct{background:rgba(30,122,30,.5);border:1px solid var(--green);color:#6fcf6f;}
+.cgt-wrong{background:rgba(200,39,44,.2);border:1px solid var(--red);color:#ff8080;}
+.cgt-partial{background:rgba(180,130,0,.3);border:1px solid #b8820a;color:#f0c040;}
+
+/* ── PART 2: ITEM COMPONENTS ── */
+.item-components{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:12px;min-height:70px;}
+.item-comp{text-align:center;background:rgba(0,0,0,.4);border:1px solid var(--border);padding:8px 6px;width:88px;transition:opacity .4s;display:flex;flex-direction:column;align-items:center;}
+.item-comp img{width:48px;height:48px;object-fit:contain;display:block;margin:0 auto 5px;flex-shrink:0;}
+.item-comp .comp-name{font-size:.7em;color:var(--silver);word-break:break-word;line-height:1.3;text-align:center;}
+.item-comp .price{color:var(--gold);font-size:.75em;margin-top:3px;}
+.item-comp.locked{opacity:.2;filter:grayscale(1);}
+.item-desc{background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.3);color:var(--blue-bright);padding:11px 14px;font-size:.83em;margin-bottom:10px;display:none;}
+.item-desc.show{display:block;}
+
+/* ── PART 3: STATS ── */
+.stats-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;justify-content:center;}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;background:rgba(0,0,0,.3);border:1px solid var(--border);font-size:.83em;min-width:160px;width:auto;flex-shrink:0;}
+.stat-icon-label{display:flex;align-items:center;gap:6px;color:var(--silver);}
+.stat-emoji{font-size:1.05em;}
+.stat-val{color:var(--gold-light);font-weight:600;margin-left:12px;}
+
+/* ── PART 4: ABILITY ── */
+.ability-clue-box{display:flex;gap:14px;align-items:center;background:rgba(0,0,0,.5);border:1px solid rgba(79,195,247,.3);padding:16px;margin-bottom:12px;}
+.spell-icon-wrap{flex-shrink:0;width:68px;height:68px;border:2px solid var(--border);position:relative;overflow:hidden;}
+.spell-icon-wrap img{width:68px;height:68px;display:block;transition:filter .5s,transform .5s;}
+.spell-icon-wrap img.bw{filter:grayscale(1) brightness(.5);}
+.key-badge{position:absolute;bottom:-8px;right:-8px;background:var(--gold-dark);color:var(--gold-light);font-family:'Cinzel',serif;font-size:.65em;font-weight:700;width:18px;height:18px;border-radius:3px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gold);opacity:0;transition:opacity .3s;}
+.key-badge.show{opacity:1;}
+.ability-ratio-text{font-family:'Exo 2',sans-serif;font-size:1em;color:var(--blue-bright);flex:1;line-height:1.6;word-break:break-word;overflow-wrap:anywhere;}
+.ability-hints{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;justify-content:center;}
+.hint-pill{padding:5px 12px;border:1px solid var(--border);font-size:.74em;color:var(--silver);letter-spacing:.8px;transition:all .3s;}
+.hint-pill.revealed{border-color:var(--gold-dark);color:var(--gold-light);background:rgba(200,155,60,.15);}
+
+/* ── PART 5: SKIN ── */
+#skin-display-wrapper{position:relative;width:100%;max-width:500px;height:280px;margin:0 auto 14px;border:1px solid var(--border);background:#000;overflow:hidden;display:block;}
+#skin-canvas{display:block;width:100%;height:100%;}
+.progress-bar{height:4px;background:rgba(200,155,60,.2);border:1px solid var(--border);margin-bottom:12px;border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transition:width .8s ease;}
+.skin-progress{text-align:center;color:var(--silver);font-size:.83em;margin-bottom:7px;}
+
+/* ── DAILY STATS SIDEBAR ── */
+.stats-panel{background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(9,20,40,.9));border:1px solid var(--border);padding:16px;margin-bottom:14px;position:relative;}
+.stats-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.stats-title{font-family:'Cinzel',serif;font-size:.8em;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.stats-guess-item{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:.8em;}
+.stats-guess-label{color:var(--gold-light);min-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.stats-guess-bar-wrap{flex:2;background:rgba(0,0,0,.3);border:1px solid var(--border);height:16px;border-radius:2px;overflow:hidden;}
+.stats-guess-bar{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transition:width .6s ease;min-width:3px;}
+.stats-guess-pct{color:var(--silver);font-size:.75em;min-width:38px;text-align:right;}
+.stats-no-data{color:var(--silver);font-size:.78em;font-style:italic;}
+#final-score{display:none;}#final-score.show{display:block;}
+.victory{text-align:center;padding:32px 20px;}
+.victory h2{font-family:'Cinzel',serif;font-size:1.8em;color:var(--gold);margin-bottom:8px;letter-spacing:4px;}
+.score-stars{font-size:2em;letter-spacing:8px;margin:12px 0;}
+.score-table{width:100%;border-collapse:collapse;margin:16px 0;}
+.score-table td,.score-table th{padding:10px;border:1px solid var(--border);text-align:left;}
+.score-table th{background:rgba(200,155,60,.15);color:var(--gold);font-family:'Cinzel',serif;font-size:.83em;}
+.score-table td:last-child{color:var(--gold);text-align:right;font-weight:600;}
+
+/* ── MISC ── */
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--blue-dark);}::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Responsive */
+@media(max-width:640px){
+  .catalogue{width:140px;min-width:120px;}
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .main-content{padding:14px 10px;}
+}
+@media(max-width:480px){
+  .page-layout{flex-direction:column;}
+  .catalogue{width:100%;max-width:100%;height:auto;max-height:200px;border-right:none;border-bottom:1px solid var(--border);}
+  .cat-grid-scroll{max-height:140px;overflow-y:auto;}
+}
+
+/* ── ENDLESS DIFFICULTY CARDS ── */
+.endless-section-block{margin-bottom:20px;background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(9,20,40,.9));border:1px solid var(--border);padding:16px;position:relative;}
+.endless-section-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.endless-section-title{font-family:'Cinzel',serif;color:var(--gold);font-size:.88em;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.endless-diff-row{display:flex;gap:10px;flex-wrap:wrap;}
+.endless-card{flex:1;min-width:130px;background:rgba(0,0,0,.3);border:1px solid var(--border);padding:14px 12px;cursor:pointer;transition:all .2s;text-align:center;border-radius:2px;}
+.endless-card:hover{border-color:var(--gold);transform:translateY(-2px);background:rgba(200,155,60,.08);}
+.ec-diff{font-family:'Cinzel',serif;font-size:.8em;letter-spacing:2px;font-weight:700;padding:3px 10px;border-radius:2px;display:inline-block;margin-bottom:6px;}
+.ec-diff.easy{background:rgba(30,122,30,.3);border:1px solid var(--green);color:#6fcf6f;}
+.ec-diff.medium{background:rgba(180,130,0,.3);border:1px solid #b8820a;color:#f0c040;}
+.ec-diff.hard{background:rgba(200,39,44,.2);border:1px solid var(--red);color:#ff8080;}
+.ec-diff.hell{background:rgba(120,0,120,.3);border:1px solid #aa00aa;color:#e060e0;}
+.ec-desc{font-size:.73em;color:var(--silver);line-height:1.4;margin-top:4px;}
+/* skin canvas quarter mode */
+#endless-skin-wrap{position:relative;width:100%;max-width:700px;margin:0 auto 14px;border:1px solid var(--border);}
+#endless-skin-wrap.quarter{width:50%;max-width:350px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">RIF<span>tle</span></div>
+  <div class="subtitle" data-i18n="subtitle">Cinq épreuves · Indices progressifs · Devenez légende</div>
+</header>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="lang-wrap">
+      <label for="lang-select" data-i18n="lang_label">🌐 Langue :</label>
+      <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+        <option value="fr_FR">🇫🇷 Français</option>
+        <option value="en_US">🇬🇧 English</option>
+      </select>
+      <span class="lang-loading" id="lang-loading">⏳</span>
+    </div>
+    <div class="mode-wrap">
+      <button class="mode-btn active" id="mode-classic" onclick="setMode('classic')" title="Mode classique — 5 épreuves du jour">⚔ <span data-i18n="mode_classic">Classique</span></button>
+      <button class="mode-btn" id="mode-endless" onclick="setMode('endless')" title="Mode infini — choisissez une épreuve et jouez jusqu'à une erreur">∞ <span data-i18n="mode_endless">Infini</span></button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs-bar">
+    <button class="tab active" onclick="switchTab(0)" id="tab0"><span class="num">1</span><span data-i18n="tab1">Titre</span></button>
+    <button class="tab" onclick="switchTab(1)" id="tab1"><span class="num">2</span><span data-i18n="tab2">Composants</span></button>
+    <button class="tab" onclick="switchTab(2)" id="tab2"><span class="num">3</span><span data-i18n="tab3">Stats</span></button>
+    <button class="tab" onclick="switchTab(3)" id="tab3"><span class="num">4</span><span data-i18n="tab4">Capacité</span></button>
+    <button class="tab" onclick="switchTab(4)" id="tab4"><span class="num">5</span><span data-i18n="tab5">Skin</span></button>
+    <button class="tab" onclick="showFinalScore()" style="margin-left:8px;border-color:var(--gold);color:var(--gold);" id="results-tab">🏆</button>
+  </div>
+  <a class="feedback-icon" href="mailto:votre@email.com?subject=RIFTle%20-%20Suggestion%20%2F%20Erreur" title="Signaler une erreur ou suggestion">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  </a>
+</div>
+
+<div id="classic-view">
+<div class="page-layout">
+
+<!-- ═══════════════ CATALOGUE SIDEBAR ═══════════════ -->
+<aside class="catalogue" id="catalogue">
+  <div class="catalogue-title" id="cat-title" data-i18n="cat_champions">Champions</div>
+  <input type="text" class="catalogue-search" id="cat-search" placeholder="🔍 Rechercher…" oninput="filterCatalogue(this.value)">
+  <div class="cat-grid-scroll">
+    <div class="cat-grid" id="cat-grid"></div>
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN GAME AREA ═══════════════ -->
+<div class="main-content">
+
+<!-- PART 1 -->
+<section class="section active" id="sec0">
+  <div class="section-header">
+    <h2>⚔ <span data-i18n="p1_title">Quel champion ?</span></h2>
+    <p data-i18n="p1_sub">Devinez le champion d'après son titre · Les colonnes vous guident</p>
+  </div>
+  <div class="panel">
+    <div class="clue-box">
+      <div class="clue-label" data-i18n="p1_clue_label">Titre</div>
+      <div class="clue-value" id="champ-title-display">—</div>
+    </div>
+    <div class="panel-title" data-i18n="p1_your_answer">Votre réponse</div>
+    <div class="input-row">
+      <div class="autocomplete-wrapper">
+        <input type="text" id="champ-input" data-i18n-placeholder="p1_placeholder" placeholder="Nom du champion…" autocomplete="off">
+        <div class="autocomplete-list" id="champ-ac"></div>
+      </div>
+      <button class="btn" onclick="submitChamp()" data-i18n="guess_btn">Deviner</button>
+    </div>
+    <div class="wrong-counter" id="champ-counter"><span data-i18n="tries">Essais</span> : <span>0</span></div>
+    <!-- Wordle-style guess table -->
+    <div id="champ-guess-area" style="overflow-x:auto;"></div>
+    <div class="result-msg" id="champ-result"></div>
+    <div class="answer-reveal" id="champ-answer">
+      <img id="champ-answer-img" src="" alt="">
+      <br><strong id="champ-answer-name"></strong>
+    </div>
+    <div id="champ-stats-panel" style="margin-top:14px;"></div>
+  </div>
+  <button class="btn secondary" onclick="switchTab(1)" style="display:block;margin:0 auto;" id="champ-next" disabled data-i18n="next_part">Partie suivante →</button>
+</section>
+
+<!-- PART 2 -->
+<section class="section" id="sec1">
+  <div class="section-header">
+    <h2>🛡 <span data-i18n="p2_title">Quel objet ?</span></h2>
+    <p data-i18n="p2_sub">Composants révélés 1 par 1 · Description après 5 erreurs</p>
+  </div>
+  <div class="panel">
+    <div class="panel-title" data-i18n="p2_comps">Composants révélés</div>
+    <div class="item-components" id="item-comps-display"></div>
+    <div class="item-desc" id="item2-desc"></div>
+    <div class="clue-box" style="padding:12px;">
+      <div class="clue-label" data-i18n="p2_price">Prix total</div>
+      <div class="clue-value" style="font-size:1.3em;" id="item-price-display">—</div>
+    </div>
+    <div class="panel-title" style="margin-top:12px;" data-i18n="p2_your_answer">Votre réponse</div>
+    <div class="input-row">
+      <div class="autocomplete-wrapper">
+        <input type="text" id="item2-input" data-i18n-placeholder="item_placeholder" placeholder="Nom de l'objet…" autocomplete="off">
+        <div class="autocomplete-list" id="item2-ac"></div>
+      </div>
+      <button class="btn" onclick="submitItem2()" data-i18n="guess_btn">Deviner</button>
+    </div>
+    <div class="wrong-counter" id="item2-counter"><span data-i18n="tries">Essais</span> : <span>0</span></div>
+    <div class="attempts" id="item2-attempts"></div>
+    <div class="result-msg" id="item2-result"></div>
+    <div class="answer-reveal" id="item2-answer"><img id="item2-answer-img" src="" alt=""><br><strong id="item2-answer-name"></strong></div>
+    <div id="item2-stats-panel" style="margin-top:14px;"></div>
+  </div>
+  <button class="btn secondary" onclick="switchTab(2)" style="display:block;margin:0 auto;" id="item2-next" disabled data-i18n="next_part">Partie suivante →</button>
+</section>
+
+<!-- PART 3 -->
+<section class="section" id="sec2">
+  <div class="section-header">
+    <h2>📊 <span data-i18n="p3_title">Identifiez l'objet</span></h2>
+    <p data-i18n="p3_sub">Devinez l'objet d'après ses stats · Description après 5 erreurs</p>
+  </div>
+  <div class="panel">
+    <div class="panel-title" data-i18n="p3_stats">Statistiques</div>
+    <div class="stats-grid" id="stats-display"></div>
+    <div class="item-desc" id="item3-desc"></div>
+    <div class="input-row">
+      <div class="autocomplete-wrapper">
+        <input type="text" id="item3-input" data-i18n-placeholder="item_placeholder" placeholder="Nom de l'objet…" autocomplete="off">
+        <div class="autocomplete-list" id="item3-ac"></div>
+      </div>
+      <button class="btn" onclick="submitItem3()" data-i18n="guess_btn">Deviner</button>
+    </div>
+    <div class="wrong-counter" id="item3-counter"><span data-i18n="tries">Essais</span> : <span>0</span></div>
+    <div class="attempts" id="item3-attempts"></div>
+    <div class="result-msg" id="item3-result"></div>
+    <div class="answer-reveal" id="item3-answer"><img id="item3-answer-img" src="" alt=""><br><strong id="item3-answer-name"></strong></div>
+    <div id="item3-stats-panel" style="margin-top:14px;"></div>
+  </div>
+  <button class="btn secondary" onclick="switchTab(3)" style="display:block;margin:0 auto;" id="item3-next" disabled data-i18n="next_part">Partie suivante →</button>
+</section>
+
+<!-- PART 4 -->
+<section class="section" id="sec3">
+  <div class="section-header">
+    <h2>✨ <span data-i18n="p4_title">Quel champion ?</span></h2>
+    <p data-i18n="p4_sub">Devinez le champion d'après la description de sa capacité</p>
+  </div>
+  <div class="panel">
+    <div class="ability-clue-box">
+      <div class="spell-icon-wrap" id="ability-icon-wrap" style="visibility:hidden;">
+        <img id="ability-img" src="" alt="Sort" class="bw">
+        <div class="key-badge" id="ability-key-badge">?</div>
+      </div>
+      <div class="ability-ratio-text" id="ability-ratio-display">Chargement…</div>
+    </div>
+    <div style="text-align:center;margin-bottom:10px;">
+      <button class="btn secondary" id="hint-btn" onclick="requestHint()" style="font-size:.76em;padding:7px 16px;">💡 <span data-i18n="use_hint">Utiliser un indice</span></button>
+      <span id="hint-btn-status" style="color:var(--silver);font-size:.76em;margin-left:8px;"></span>
+    </div>
+    <div class="ability-hints" id="ability-hints-row">
+      <div class="hint-pill" id="ah-1" style="display:none;"></div>
+      <div class="hint-pill" id="ah-2" style="display:none;"></div>
+      <div class="hint-pill" id="ah-3" style="display:none;"></div>
+    </div>
+    <div class="panel-title" data-i18n="p4_your_answer">Votre réponse — Le champion</div>
+    <div class="input-row">
+      <div class="autocomplete-wrapper">
+        <input type="text" id="abil-input" data-i18n-placeholder="p1_placeholder" placeholder="Nom du champion…" autocomplete="off">
+        <div class="autocomplete-list" id="abil-ac"></div>
+      </div>
+      <button class="btn" onclick="submitAbil()" data-i18n="guess_btn">Deviner</button>
+    </div>
+    <div class="wrong-counter" id="abil-counter"><span data-i18n="tries">Essais</span> : <span>0</span></div>
+    <div class="attempts" id="abil-attempts"></div>
+    <div class="result-msg" id="abil-result"></div>
+    <div class="answer-reveal" id="abil-answer">
+      <img id="abil-answer-img" src="" alt="" style="width:64px;height:64px;border:2px solid var(--gold);">
+      <br><strong id="abil-answer-name"></strong>
+      <div id="abil-answer-info" style="color:var(--silver);font-size:.82em;margin-top:4px;"></div>
+    </div>
+    <div id="abil-stats-panel" style="margin-top:14px;"></div>
+  </div>
+  <button class="btn secondary" onclick="switchTab(4)" style="display:block;margin:0 auto;" id="abil-next" disabled data-i18n="next_part">Partie suivante →</button>
+</section>
+
+<!-- PART 5 -->
+<section class="section" id="sec4">
+  <div class="section-header">
+    <h2>🎨 <span data-i18n="p5_title">Quel skin ?</span></h2>
+    <p data-i18n="p5_sub">Devine le champion — puis le skin exact pour un bonus !</p>
+  </div>
+  <div class="panel">
+    <div id="skin-display-wrapper">
+      <canvas id="skin-canvas" width="500" height="280"></canvas>
+    </div>
+    <!-- Phase 1: guess champion -->
+    <div id="skin-phase1">
+      <div class="panel-title" style="margin-top:11px;" data-i18n="p5_phase1_title">Quel champion est ce skin ?</div>
+      <div class="input-row" style="margin-top:6px;">
+        <div class="autocomplete-wrapper">
+          <input type="text" id="skin-champ-input" data-i18n-placeholder="p1_placeholder" placeholder="Nom du champion…" autocomplete="off">
+          <div class="autocomplete-list" id="skin-champ-ac"></div>
+        </div>
+        <button class="btn" onclick="submitSkinChamp()" data-i18n="guess_btn">Deviner</button>
+      </div>
+      <div class="wrong-counter" id="skin-counter"><span data-i18n="tries">Essais</span> : <span>0</span></div>
+      <div class="attempts" id="skin-attempts"></div>
+      <div class="result-msg" id="skin-result"></div>
+    </div>
+    <!-- Phase 2: bonus skin guess (only shown after champion found) -->
+    <div id="skin-phase2" style="display:none;">
+      <div class="result-msg success" style="display:block;margin-bottom:10px;" id="skin-phase2-banner">🎯 Correct ! Maintenant devine le skin exact pour un bonus !</div>
+      <div class="panel-title" data-i18n="p5_phase2_title">Quel skin exactement ? (1 essai)</div>
+      <div class="input-row" style="margin-top:6px;">
+        <div class="autocomplete-wrapper">
+          <input type="text" id="skin-name-input" data-i18n-placeholder="p5_placeholder" placeholder="Nom du skin…" autocomplete="off">
+          <div class="autocomplete-list" id="skin-name-ac"></div>
+        </div>
+        <button class="btn" onclick="submitSkinName()" data-i18n="guess_btn">Deviner</button>
+      </div>
+      <div class="result-msg" id="skin-name-result"></div>
+    </div>
+    <div class="answer-reveal" id="skin-answer">
+      <img id="skin-answer-img" src="" alt="" style="max-width:100%;max-height:200px;border:1px solid var(--gold);display:block;margin:0 auto 8px;">
+      <br><strong id="skin-answer-name"></strong>
+    </div>
+    <div id="skin-stats-panel" style="margin-top:14px;"></div>
+  </div>
+  <button class="btn" onclick="showFinalScore()" style="display:block;margin:0 auto;" id="skin-next" data-i18n="see_results">Voir mes résultats 🏆</button>
+</section>
+
+<!-- FINAL SCORE -->
+<div id="final-score">
+  <div class="panel victory">
+    <div style="color:var(--gold-dark);font-size:1.1em;letter-spacing:8px;margin:8px 0;">◆ ◆ ◆</div>
+    <h2 data-i18n="results_title">Résultats du Jour</h2>
+    <div class="score-stars" id="final-stars"></div>
+    <table class="score-table">
+      <thead><tr><th data-i18n="th_trial">Épreuve</th><th data-i18n="th_result">Résultat</th><th data-i18n="th_pts">Points</th></tr></thead>
+      <tbody id="score-tbody"></tbody>
+    </table>
+    <p style="color:var(--gold);font-family:'Cinzel',serif;font-size:1.1em;" id="final-msg"></p>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+      <button class="btn secondary" onclick="switchTab(0)">← Retour au jeu</button>
+      
+    </div>
+  </div>
+</div>
+
+</div><!-- /main-content -->
+</div><!-- /page-layout -->
+</div><!-- /classic-view -->
+
+<!-- ═══════════════ ENDLESS MODE PANEL ═══════════════ -->
+<div id="endless-panel" style="display:none;">
+  <div class="page-layout" style="min-height:calc(100vh - 100px);">
+  <div class="main-content">
+  <div id="endless-select-screen">
+    <h2 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.4em;letter-spacing:4px;margin-bottom:8px;text-align:center;">∞ Mode Infini</h2>
+    <p style="color:var(--silver);font-size:.87em;margin-bottom:22px;text-align:center;">Choisissez une épreuve et une difficulté — une seule erreur et c'est terminé !</p>
+
+    <!-- Composants -->
+    <div class="endless-section-block">
+      <div class="endless-section-title">🛡 Composants d'Objet</div>
+      <div class="endless-diff-row">
+        <div class="endless-card" onclick="startEndless(1,'easy')">
+          <div class="ec-diff easy">Facile</div>
+          <div class="ec-desc">Tous composants + prix total</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(1,'medium')">
+          <div class="ec-diff medium">Moyen</div>
+          <div class="ec-desc">Tous composants, sans prix</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(1,'hard')">
+          <div class="ec-diff hard">Difficile</div>
+          <div class="ec-desc">1 composant seulement, sans prix</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="endless-section-block">
+      <div class="endless-section-title">📊 Stats d'Objet</div>
+      <div class="endless-diff-row">
+        <div class="endless-card" onclick="startEndless(2,'easy')">
+          <div class="ec-diff easy">Facile</div>
+          <div class="ec-desc">Stats + description</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(2,'hard')">
+          <div class="ec-diff hard">Difficile</div>
+          <div class="ec-desc">Stats uniquement</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capacité -->
+    <div class="endless-section-block">
+      <div class="endless-section-title">✨ Capacité de Champion</div>
+      <div class="endless-diff-row">
+        <div class="endless-card" onclick="startEndless(3,'easy')">
+          <div class="ec-diff easy">Facile</div>
+          <div class="ec-desc">Image + nom du sort + description</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(3,'medium')">
+          <div class="ec-diff medium">Moyen</div>
+          <div class="ec-desc">Nom du sort + description</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(3,'hard')">
+          <div class="ec-diff hard">Difficile</div>
+          <div class="ec-desc">Description uniquement</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skin -->
+    <div class="endless-section-block">
+      <div class="endless-section-title">🎨 Skin Mystère</div>
+      <div class="endless-diff-row">
+        <div class="endless-card" onclick="startEndless(4,'easy')">
+          <div class="ec-diff easy">Facile</div>
+          <div class="ec-desc">Image floue, couleurs</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(4,'hard')">
+          <div class="ec-diff hard">Difficile</div>
+          <div class="ec-desc">Image floue, noir & blanc</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(4,'hell')">
+          <div class="ec-diff hell">Enfer</div>
+          <div class="ec-desc">¼ de l'image, flou, N&B</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="endless-best-scores" style="text-align:center;margin-top:16px;color:var(--silver);font-size:.8em;"></div>
+  </div>
+
+  <div id="endless-game-screen" style="display:none;">
+    <div class="endless-game-header">
+      <button class="endless-back" onclick="endlessBackToMenu()">← Choisir une épreuve</button>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span id="endless-diff-badge" style="font-size:.72em;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:2px;"></span>
+        <div class="endless-streak">🔥 Série : <span id="endless-streak-val">0</span></div>
+      </div>
+    </div>
+    <div id="endless-game-container"></div>
+    <div class="endless-game-over" id="endless-game-over">
+      <h3>💀 Partie terminée !</h3>
+      <p>Score final : <strong id="endless-final-score" style="color:var(--gold);"></strong></p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+        <button class="btn" onclick="restartEndless()">Rejouer</button>
+        <button class="btn secondary" onclick="endlessBackToMenu()">Changer d'épreuve</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════════════
+const VERSION = '16.3.1';
+const DD = `https://ddragon.leagueoflegends.com/cdn/${VERSION}`;
+
+// ── i18n strings ──────────────────────────────────────────────────
+const I18N = {
+  fr_FR: {
+    subtitle:'Cinq épreuves · Indices progressifs · Devenez légende',
+    lang_label:'🌐 Langue :',
+    tab1:'Titre', tab2:'Composants', tab3:'Stats', tab4:'Capacité', tab5:'Skin',
+    cat_champions:'Champions', cat_items:'Objets',
+    p1_title:'Quel champion ?', p1_sub:'Devinez le champion d\'après son titre · Les colonnes vous guident',
+    p1_clue_label:'Titre', p1_your_answer:'Votre réponse', p1_placeholder:'Nom du champion…',
+    p2_title:'Quel objet ?', p2_sub:'Composants révélés 1 par 1 · Description après 5 erreurs',
+    p2_comps:'Composants révélés', p2_price:'Prix total', p2_your_answer:'Votre réponse',
+    item_placeholder:'Nom de l\'objet…',
+    p3_title:'Identifiez l\'objet', p3_sub:'Devinez l\'objet d\'après ses stats · Description après 5 erreurs', p3_stats:'Statistiques',
+    p4_title:'Quel champion ?', p4_sub:'Devinez le champion d\'après la description de sa capacité',
+    p4_your_answer:'Votre réponse — Le champion',
+    p5_title:'Quel skin ?', p5_sub:'À chaque erreur, des zones rectangulaires aléatoires sont révélées et l\'image se débloque progressivement', p5_placeholder:'Nom du skin…',
+    use_hint:'Utiliser un indice', reveal_more:'+ Révéler plus', next_part:'Partie suivante →',
+    guess_btn:'Deviner', tries:'Essais', see_results:'Voir mes résultats 🏆',
+    results_title:'Résultats du Jour', th_trial:'Épreuve', th_result:'Résultat', th_pts:'Points',
+    replay:'Rejouer',
+    col_name:'Nom', col_gender:'Genre', col_region:'Région', col_race:'Race', col_skins:'Skins',
+    correct:'Correct', incorrect:'Incorrect', already:'Déjà proposé',
+    unknown_champ:'Champion introuvable', unknown_item:'Objet inconnu', unknown_skin:'Skin inconnu',
+    hint_key:'Touche', hint_spell:'Sort', hint_img:'Image N&B révélée (rotée)',
+    hints_avail:'indice(s) disponible(s)', hints_all:'Tous les indices révélés',
+    make_error:'Faites une erreur pour débloquer', no_hint:'Aucun indice disponible',
+    desc_revealed:'Indice : description révélée !', desc_hint:'Indice : description de l\'objet révélée !',
+    zone:'Zone révélée',
+    server_needed:'Lance un serveur local : python -m http.server 8000\nPuis ouvre http://localhost:8000/loldle.html',
+    score_labels:['Titre Champion','Composants Objet','Stats Objet','Capacité Champion','Skin Mystère'],
+    score_done:['Réussi','Échoué','Non joué'],
+    score_msgs:['Entraîne-toi encore…','Continue comme ça !','Pas mal du tout !','Très bon joueur !','Légendaire ! 🏆'],
+    correct_champ:'🏆 Correct ! C\'est ',
+    correct_item:'🏆 Correct ! C\'est ',
+    correct_abil:'🏆 Correct ! C\'est une capacité de ',
+    correct_skin:'🏆 Correct ! C\'est le skin ',
+    no_desc:'(Pas de description disponible)',
+    filter_search:'Rechercher…',
+    partial_region:'Region proche',
+    mode_classic:'Classique', mode_endless:'Infini',
+    endless_intro:'Choisissez une épreuve et jouez sans fin — une seule erreur et c\'est terminé !',
+    endless_back:'Choisir une épreuve', endless_streak:'Série',
+    endless_gameover:'Partie terminée !', endless_score_msg:'Score final :',
+    endless_retry:'Rejouer', endless_change:'Changer d\'épreuve',
+    endless_best:'Meilleur score',
+  },
+  en_US: {
+    subtitle:'Five challenges · Progressive hints · Become legend',
+    lang_label:'🌐 Language:',
+    tab1:'Title', tab2:'Components', tab3:'Stats', tab4:'Ability', tab5:'Skin',
+    cat_champions:'Champions', cat_items:'Items',
+    p1_title:'Which champion?', p1_sub:'Guess the champion from their title · Columns guide you',
+    p1_clue_label:'Title', p1_your_answer:'Your answer', p1_placeholder:'Champion name…',
+    p2_title:'Which item?', p2_sub:'Components revealed 1 by 1 · Description after 5 errors',
+    p2_comps:'Revealed components', p2_price:'Total price', p2_your_answer:'Your answer',
+    item_placeholder:'Item name…',
+    p3_title:'Identify the item', p3_sub:'Guess the item from its stats · Description after 5 errors', p3_stats:'Statistics',
+    p4_title:'Which champion?', p4_sub:'Guess the champion from the ability description',
+    p4_your_answer:'Your answer — The champion',
+    p5_title:'Which skin?', p5_sub:'Each error reveals random rectangles and progressively unblurs the image', p5_placeholder:'Skin name…',
+    use_hint:'Use a hint', reveal_more:'+ Reveal more', next_part:'Next part →',
+    guess_btn:'Guess', tries:'Tries', see_results:'See results 🏆',
+    results_title:'Today\'s Results', th_trial:'Challenge', th_result:'Result', th_pts:'Points',
+    replay:'Play again',
+    col_name:'Name', col_gender:'Gender', col_region:'Region', col_race:'Race', col_skins:'Skins',
+    correct:'Correct', incorrect:'Incorrect', already:'Already guessed',
+    unknown_champ:'Champion not found', unknown_item:'Unknown item', unknown_skin:'Unknown skin',
+    hint_key:'Key', hint_spell:'Spell', hint_img:'B&W image revealed (rotated)',
+    hints_avail:'hint(s) available', hints_all:'All hints revealed',
+    make_error:'Make an error to unlock', no_hint:'No hint available',
+    desc_revealed:'Hint: description revealed!', desc_hint:'Hint: item description revealed!',
+    zone:'Revealed area',
+    server_needed:'Start a local server: python -m http.server 8000\nThen open http://localhost:8000/loldle.html',
+    score_labels:['Champion Title','Item Components','Item Stats','Champion Ability','Mystery Skin'],
+    score_done:['Success','Failed','Not played'],
+    score_msgs:['Keep practicing…','Keep it up!','Not bad!','Great player!','Legendary! 🏆'],
+    correct_champ:'🏆 Correct! It\'s ',
+    correct_item:'🏆 Correct! It\'s ',
+    correct_abil:'🏆 Correct! It\'s a ',
+    correct_skin:'🏆 Correct! It\'s the skin ',
+    no_desc:'(No description available)',
+    filter_search:'Search…',
+    partial_region:'Close region',
+    mode_classic:'Classic', mode_endless:'Endless',
+    endless_intro:'Choose a challenge and play forever — one wrong answer and it\'s over!',
+    endless_back:'Choose a challenge', endless_streak:'Streak',
+    endless_gameover:'Game Over!', endless_score_msg:'Final score:',
+    endless_retry:'Play again', endless_change:'Change challenge',
+    endless_best:'Best score',
+  },
+  es_ES: {
+    subtitle:'Cinco pruebas · Pistas progresivas · Conviértete en leyenda',
+    lang_label:'🌐 Idioma:',
+    tab1:'Título', tab2:'Componentes', tab3:'Stats', tab4:'Habilidad', tab5:'Skin',
+    cat_champions:'Campeones', cat_items:'Objetos',
+    p1_title:'¿Qué campeón?', p1_sub:'Adivina el campeón por su título',
+    p1_clue_label:'Título', p1_your_answer:'Tu respuesta', p1_placeholder:'Nombre del campeón…',
+    p2_title:'¿Qué objeto?', p2_sub:'Componentes revelados 1 por 1 · Descripción tras 5 errores',
+    p2_comps:'Componentes revelados', p2_price:'Precio total', p2_your_answer:'Tu respuesta',
+    item_placeholder:'Nombre del objeto…',
+    p3_title:'Identifica el objeto', p3_sub:'Adivina el objeto por sus stats', p3_stats:'Estadísticas',
+    p4_title:'¿Qué campeón?', p4_sub:'Adivina el campeón por la descripción de su habilidad',
+    p4_your_answer:'Tu respuesta — El campeón',
+    p5_title:'¿Qué skin?', p5_sub:'La zona revelada crece con cada error', p5_placeholder:'Nombre del skin…',
+    use_hint:'Usar pista', reveal_more:'+ Revelar más', next_part:'Siguiente →',
+    guess_btn:'Adivinar', tries:'Intentos', see_results:'Ver resultados 🏆',
+    results_title:'Resultados', th_trial:'Prueba', th_result:'Resultado', th_pts:'Puntos',
+    replay:'Jugar de nuevo',
+    col_name:'Nombre', col_gender:'Género', col_region:'Región', col_race:'Raza', col_skins:'Skins',
+    correct:'Correcto', incorrect:'Incorrecto', already:'Ya propuesto',
+    unknown_champ:'Campeón no encontrado', unknown_item:'Objeto desconocido', unknown_skin:'Skin desconocido',
+    hint_key:'Tecla', hint_spell:'Hechizo', hint_img:'Imagen B&N revelada',
+    hints_avail:'pista(s) disponible(s)', hints_all:'Todas las pistas reveladas',
+    make_error:'Haz un error para desbloquear', no_hint:'Sin pistas disponibles',
+    desc_revealed:'Pista: ¡descripción revelada!', desc_hint:'Pista: ¡descripción revelada!',
+    zone:'Zona revelada',
+    server_needed:'Inicia servidor: python -m http.server 8000',
+    score_labels:['Título Campeón','Componentes','Stats','Habilidad','Skin Misterio'],
+    score_done:['Éxito','Fallido','No jugado'],
+    score_msgs:['¡Sigue practicando!','¡Sigue así!','¡Nada mal!','¡Gran jugador!','¡Legendario! 🏆'],
+    correct_champ:'🏆 ¡Correcto! Es ',
+    correct_item:'🏆 ¡Correcto! Es ',
+    correct_abil:'🏆 ¡Correcto! Es una habilidad de ',
+    correct_skin:'🏆 ¡Correcto! Es el skin ',
+    no_desc:'(Sin descripción disponible)',
+    filter_search:'Buscar…',
+    partial_region:'Región cercana',
+  },
+  de_DE: {
+    subtitle:'Fünf Herausforderungen · Progressive Hinweise · Werde zur Legende',
+    lang_label:'🌐 Sprache:',
+    tab1:'Titel', tab2:'Komponenten', tab3:'Stats', tab4:'Fähigkeit', tab5:'Skin',
+    cat_champions:'Champions', cat_items:'Items',
+    p1_title:'Welcher Champion?', p1_sub:'Rate den Champion anhand seines Titels',
+    p1_clue_label:'Titel', p1_your_answer:'Deine Antwort', p1_placeholder:'Champion-Name…',
+    p2_title:'Welches Item?', p2_sub:'Komponenten 1 pro 1 aufgedeckt · Beschreibung nach 5 Fehlern',
+    p2_comps:'Aufgedeckte Komponenten', p2_price:'Gesamtpreis', p2_your_answer:'Deine Antwort',
+    item_placeholder:'Item-Name…',
+    p3_title:'Item identifizieren', p3_sub:'Rate das Item anhand seiner Stats', p3_stats:'Statistiken',
+    p4_title:'Welcher Champion?', p4_sub:'Rate den Champion anhand der Fähigkeitsbeschreibung',
+    p4_your_answer:'Deine Antwort — Der Champion',
+    p5_title:'Welcher Skin?', p5_sub:'Der enthüllte Bereich wächst mit jedem Fehler', p5_placeholder:'Skin-Name…',
+    use_hint:'Hinweis verwenden', reveal_more:'+ Mehr enthüllen', next_part:'Weiter →',
+    guess_btn:'Raten', tries:'Versuche', see_results:'Ergebnisse sehen 🏆',
+    results_title:'Ergebnisse', th_trial:'Aufgabe', th_result:'Ergebnis', th_pts:'Punkte',
+    replay:'Nochmal spielen',
+    col_name:'Name', col_gender:'Geschlecht', col_region:'Region', col_race:'Rasse', col_skins:'Skins',
+    correct:'Richtig', incorrect:'Falsch', already:'Bereits vorgeschlagen',
+    unknown_champ:'Champion nicht gefunden', unknown_item:'Unbekanntes Item', unknown_skin:'Unbekannter Skin',
+    hint_key:'Taste', hint_spell:'Zauber', hint_img:'S/W-Bild enthüllt (gedreht)',
+    hints_avail:'Hinweis(e) verfügbar', hints_all:'Alle Hinweise enthüllt',
+    make_error:'Mach einen Fehler um zu entsperren', no_hint:'Kein Hinweis verfügbar',
+    desc_revealed:'Hinweis: Beschreibung enthüllt!', desc_hint:'Hinweis: Item-Beschreibung enthüllt!',
+    zone:'Enthüllter Bereich',
+    server_needed:'Lokalen Server starten: python -m http.server 8000',
+    score_labels:['Champion-Titel','Item-Komponenten','Item-Stats','Champion-Fähigkeit','Mystery-Skin'],
+    score_done:['Erfolg','Gescheitert','Nicht gespielt'],
+    score_msgs:['Weiter üben…','Mach weiter so!','Nicht schlecht!','Guter Spieler!','Legendär! 🏆'],
+    correct_champ:'🏆 Richtig! Es ist ',
+    correct_item:'🏆 Richtig! Es ist ',
+    correct_abil:'🏆 Richtig! Es ist eine Fähigkeit von ',
+    correct_skin:'🏆 Richtig! Es ist der Skin ',
+    no_desc:'(Keine Beschreibung verfügbar)',
+    filter_search:'Suchen…',
+    partial_region:'Ähnliche Region',
+  },
+  ko_KR: {
+    subtitle:'다섯 가지 도전 · 단계별 힌트 · 전설이 되어라',
+    lang_label:'🌐 언어:',
+    tab1:'칭호', tab2:'구성품', tab3:'스탯', tab4:'스킬', tab5:'스킨',
+    cat_champions:'챔피언', cat_items:'아이템',
+    p1_title:'어떤 챔피언?', p1_sub:'챔피언 칭호로 맞춰보세요',
+    p1_clue_label:'칭호', p1_your_answer:'정답 입력', p1_placeholder:'챔피언 이름…',
+    p2_title:'어떤 아이템?', p2_sub:'구성품 1개씩 공개 · 5번 틀리면 설명 공개',
+    p2_comps:'공개된 구성품', p2_price:'총 가격', p2_your_answer:'정답 입력',
+    item_placeholder:'아이템 이름…',
+    p3_title:'아이템 식별', p3_sub:'스탯으로 아이템을 맞춰보세요', p3_stats:'스탯',
+    p4_title:'어떤 챔피언?', p4_sub:'스킬 설명으로 챔피언을 맞춰보세요',
+    p4_your_answer:'정답 입력 — 챔피언',
+    p5_title:'어떤 스킨?', p5_sub:'틀릴수록 더 많은 영역이 공개됩니다', p5_placeholder:'스킨 이름…',
+    use_hint:'힌트 사용', reveal_more:'+ 더 공개', next_part:'다음 파트 →',
+    guess_btn:'추측', tries:'시도', see_results:'결과 보기 🏆',
+    results_title:'오늘의 결과', th_trial:'도전', th_result:'결과', th_pts:'점수',
+    replay:'다시 하기',
+    col_name:'이름', col_gender:'성별', col_region:'지역', col_race:'종족', col_skins:'스킨수',
+    correct:'정답', incorrect:'오답', already:'이미 시도함',
+    unknown_champ:'챔피언을 찾을 수 없음', unknown_item:'알 수 없는 아이템', unknown_skin:'알 수 없는 스킨',
+    hint_key:'키', hint_spell:'스킬', hint_img:'흑백 이미지 공개(회전)',
+    hints_avail:'힌트 사용 가능', hints_all:'모든 힌트 공개됨',
+    make_error:'틀려야 힌트가 열립니다', no_hint:'사용 가능한 힌트 없음',
+    desc_revealed:'힌트: 설명 공개!', desc_hint:'힌트: 아이템 설명 공개!',
+    zone:'공개 영역',
+    server_needed:'로컬 서버 실행: python -m http.server 8000',
+    score_labels:['챔피언 칭호','아이템 구성품','아이템 스탯','챔피언 스킬','미스터리 스킨'],
+    score_done:['성공','실패','미도전'],
+    score_msgs:['더 연습하세요…','계속 해보세요!','꽤 잘하네요!','훌륭한 플레이어!','전설적! 🏆'],
+    correct_champ:'🏆 정답! ',
+    correct_item:'🏆 정답! ',
+    correct_abil:'🏆 정답! 이 스킬은 ',
+    correct_skin:'🏆 정답! 스킨: ',
+    no_desc:'(설명 없음)',
+    filter_search:'검색…',
+    partial_region:'비슷한 지역',
+  },
+};
+
+function t(key) { return (I18N[currentLang] || I18N.fr_FR)[key] || key; }
+
+function applyI18n() {
+  const lang = I18N[currentLang] || I18N.fr_FR;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (lang[k] !== undefined) el.textContent = lang[k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (lang[k] !== undefined) el.placeholder = lang[k];
+  });
+  const catSearch = document.getElementById('cat-search');
+  if (catSearch) catSearch.placeholder = lang.filter_search || 'Search…';
+}
+
+// ── Champion metadata for Part 1 wordle grid ──────────────────────
+// Gender: M/F, Region (LoL lore), Race, skin count
+// This is static data - DDragon doesn't provide it
+const CHAMP_META = {
+  Aatrox:{gender:'M',region:'Runeterra',race:'Darkin',skins:15},
+  Ahri:{gender:'F',region:'Ionia',race:'Vastaya',skins:23},
+  Akali:{gender:'F',region:'Ionia',race:'Human',skins:15},
+  Akshan:{gender:'M',region:'Shurima',race:'Human',skins:5},
+  Alistar:{gender:'M',region:'Runeterra',race:'Minotaur',skins:16},
+  Amumu:{gender:'M',region:'Shurima',race:'Undead',skins:17},
+  Anivia:{gender:'F',region:'Freljord',race:'Elemental',skins:13},
+  Annie:{gender:'F',region:'Noxus',race:'Human',skins:14},
+  Aphelios:{gender:'M',region:'Targon',race:'Human',skins:8},
+  Ashe:{gender:'F',region:'Freljord',race:'Human',skins:17},
+  AurelionSol:{gender:'M',region:'Targon',race:'Dragon',skins:7},
+  Azir:{gender:'M',region:'Shurima',race:'Ascended',skins:9},
+  Bard:{gender:'M',region:'Cosmic',race:'Cosmic',skins:10},
+  Belveth:{gender:'F',region:'Void',race:'Void',skins:5},
+  Blitzcrank:{gender:'M',region:'Zaun',race:'Golem',skins:16},
+  Brand:{gender:'M',region:'Freljord',race:'Undead',skins:14},
+  Braum:{gender:'M',region:'Freljord',race:'Human',skins:11},
+  Briar:{gender:'F',region:'Noxus',race:'Vampire',skins:5},
+  Caitlyn:{gender:'F',region:'Piltover',race:'Human',skins:16},
+  Camille:{gender:'F',region:'Piltover',race:'Cyborg',skins:8},
+  Cassiopeia:{gender:'F',region:'Noxus',race:'Naga',skins:10},
+  Chogath:{gender:'M',region:'Void',race:'Void',skins:12},
+  Corki:{gender:'M',region:'Piltover',race:'Yordle',skins:13},
+  Darius:{gender:'M',region:'Noxus',race:'Human',skins:15},
+  Diana:{gender:'F',region:'Targon',race:'Human',skins:12},
+  Draven:{gender:'M',region:'Noxus',race:'Human',skins:12},
+  DrMundo:{gender:'M',region:'Zaun',race:'Mutant',skins:14},
+  Ekko:{gender:'M',region:'Zaun',race:'Human',skins:13},
+  Elise:{gender:'F',region:'Shadow Isles',race:'Spider',skins:11},
+  Evelynn:{gender:'F',region:'Runeterra',race:'Demon',skins:13},
+  Ezreal:{gender:'M',region:'Piltover',race:'Human',skins:18},
+  Fiddlesticks:{gender:'M',region:'Runeterra',race:'Demon',skins:13},
+  Fiora:{gender:'F',region:'Demacia',race:'Human',skins:12},
+  Fizz:{gender:'M',region:'Runeterra',race:'Vastaya',skins:13},
+  Galio:{gender:'M',region:'Demacia',race:'Golem',skins:12},
+  Gangplank:{gender:'M',region:'Bilgewater',race:'Human',skins:12},
+  Garen:{gender:'M',region:'Demacia',race:'Human',skins:15},
+  Gnar:{gender:'M',region:'Freljord',race:'Yordle',skins:11},
+  Gragas:{gender:'M',region:'Freljord',race:'Human',skins:14},
+  Graves:{gender:'M',region:'Bilgewater',race:'Human',skins:17},
+  Gwen:{gender:'F',region:'Shadow Isles',race:'Elemental',skins:6},
+  Hecarim:{gender:'M',region:'Shadow Isles',race:'Undead',skins:12},
+  Heimerdinger:{gender:'M',region:'Piltover',race:'Yordle',skins:12},
+  Illaoi:{gender:'F',region:'Bilgewater',race:'Human',skins:9},
+  Irelia:{gender:'F',region:'Ionia',race:'Human',skins:14},
+  Ivern:{gender:'M',region:'Ionia',race:'Elemental',skins:7},
+  Janna:{gender:'F',region:'Zaun',race:'Elemental',skins:15},
+  JarvanIV:{gender:'M',region:'Demacia',race:'Human',skins:12},
+  Jax:{gender:'M',region:'Runeterra',race:'Undefined',skins:15},
+  Jayce:{gender:'M',region:'Piltover',race:'Human',skins:13},
+  Jhin:{gender:'M',region:'Ionia',race:'Human',skins:11},
+  Jinx:{gender:'F',region:'Zaun',race:'Human',skins:16},
+  Kaisa:{gender:'F',region:'Void',race:'Human',skins:14},
+  Kalista:{gender:'F',region:'Shadow Isles',race:'Undead',skins:8},
+  Karma:{gender:'F',region:'Ionia',race:'Human',skins:13},
+  Karthus:{gender:'M',region:'Shadow Isles',race:'Undead',skins:13},
+  Kassadin:{gender:'M',region:'Void',race:'Human',skins:13},
+  Katarina:{gender:'F',region:'Noxus',race:'Human',skins:17},
+  Kayle:{gender:'F',region:'Demacia',race:'Celestial',skins:15},
+  Kayn:{gender:'M',region:'Ionia',race:'Human',skins:9},
+  Kennen:{gender:'M',region:'Ionia',race:'Yordle',skins:12},
+  Khazix:{gender:'M',region:'Void',race:'Void',skins:12},
+  Kindred:{gender:'F',region:'Runeterra',race:'Elemental',skins:9},
+  Kled:{gender:'M',region:'Noxus',race:'Yordle',skins:8},
+  KogMaw:{gender:'M',region:'Void',race:'Void',skins:14},
+  KSante:{gender:'M',region:'Shurima',race:'Human',skins:7},
+  Leblanc:{gender:'F',region:'Noxus',race:'Human',skins:13},
+  LeeSin:{gender:'M',region:'Ionia',race:'Human',skins:18},
+  Leona:{gender:'F',region:'Targon',race:'Human',skins:14},
+  Lillia:{gender:'F',region:'Ionia',race:'Vastaya',skins:9},
+  Lissandra:{gender:'F',region:'Freljord',race:'Human',skins:10},
+  Lucian:{gender:'M',region:'Demacia',race:'Human',skins:14},
+  Lulu:{gender:'F',region:'Bandle City',race:'Yordle',skins:17},
+  Lux:{gender:'F',region:'Demacia',race:'Human',skins:24},
+  Malphite:{gender:'M',region:'Shurima',race:'Golem',skins:14},
+  Malzahar:{gender:'M',region:'Void',race:'Human',skins:12},
+  Maokai:{gender:'M',region:'Shadow Isles',race:'Elemental',skins:13},
+  MasterYi:{gender:'M',region:'Ionia',race:'Human',skins:16},
+  MissFortune:{gender:'F',region:'Bilgewater',race:'Human',skins:18},
+  MonkeyKing:{gender:'M',region:'Ionia',race:'Vastaya',skins:11},
+  Mordekaiser:{gender:'M',region:'Noxus',race:'Undead',skins:12},
+  Morgana:{gender:'F',region:'Demacia',race:'Celestial',skins:16},
+  Naafiri:{gender:'F',region:'Shurima',race:'Darkin',skins:5},
+  Nami:{gender:'F',region:'Runeterra',race:'Vastaya',skins:13},
+  Nasus:{gender:'M',region:'Shurima',race:'Ascended',skins:14},
+  Nautilus:{gender:'M',region:'Bilgewater',race:'Human',skins:12},
+  Neeko:{gender:'F',region:'Ionia',race:'Vastaya',skins:10},
+  Nidalee:{gender:'F',region:'Shurima',race:'Vastaya',skins:16},
+  Nilah:{gender:'F',region:'Runeterra',race:'Human',skins:5},
+  Nocturne:{gender:'M',region:'Runeterra',race:'Demon',skins:14},
+  Nunu:{gender:'M',region:'Freljord',race:'Human',skins:12},
+  Olaf:{gender:'M',region:'Freljord',race:'Human',skins:11},
+  Orianna:{gender:'F',region:'Piltover',race:'Golem',skins:13},
+  Ornn:{gender:'M',region:'Freljord',race:'Elemental',skins:8},
+  Pantheon:{gender:'M',region:'Targon',race:'Human',skins:13},
+  Poppy:{gender:'F',region:'Demacia',race:'Yordle',skins:12},
+  Pyke:{gender:'M',region:'Bilgewater',race:'Undead',skins:12},
+  Qiyana:{gender:'F',region:'Ixtal',race:'Human',skins:9},
+  Quinn:{gender:'F',region:'Demacia',race:'Human',skins:10},
+  Rakan:{gender:'M',region:'Ionia',race:'Vastaya',skins:11},
+  Rammus:{gender:'M',region:'Shurima',race:'Vastaya',skins:13},
+  RekSai:{gender:'F',region:'Void',race:'Void',skins:8},
+  Rell:{gender:'F',region:'Noxus',race:'Human',skins:7},
+  Renata:{gender:'F',region:'Zaun',race:'Human',skins:6},
+  Renekton:{gender:'M',region:'Shurima',race:'Ascended',skins:13},
+  Rengar:{gender:'M',region:'Shurima',race:'Vastaya',skins:10},
+  Riven:{gender:'F',region:'Noxus',race:'Human',skins:14},
+  Rumble:{gender:'M',region:'Bandle City',race:'Yordle',skins:10},
+  Ryze:{gender:'M',region:'Runeterra',race:'Human',skins:14},
+  Samira:{gender:'F',region:'Noxus',race:'Human',skins:8},
+  Sejuani:{gender:'F',region:'Freljord',race:'Human',skins:11},
+  Senna:{gender:'F',region:'Shadow Isles',race:'Undead',skins:10},
+  Seraphine:{gender:'F',region:'Piltover',race:'Human',skins:11},
+  Sett:{gender:'M',region:'Ionia',race:'Vastaya',skins:11},
+  Shaco:{gender:'M',region:'Runeterra',race:'Demon',skins:14},
+  Shen:{gender:'M',region:'Ionia',race:'Human',skins:13},
+  Shyvana:{gender:'F',region:'Demacia',race:'Dragon',skins:13},
+  Singed:{gender:'M',region:'Zaun',race:'Human',skins:14},
+  Sion:{gender:'M',region:'Noxus',race:'Undead',skins:12},
+  Sivir:{gender:'F',region:'Shurima',race:'Human',skins:14},
+  Skarner:{gender:'M',region:'Shurima',race:'Brackern',skins:9},
+  Smolder:{gender:'M',region:'Runeterra',race:'Dragon',skins:5},
+  Sona:{gender:'F',region:'Demacia',race:'Human',skins:15},
+  Soraka:{gender:'F',region:'Targon',race:'Celestial',skins:14},
+  Swain:{gender:'M',region:'Noxus',race:'Human',skins:11},
+  Sylas:{gender:'M',region:'Demacia',race:'Human',skins:10},
+  Syndra:{gender:'F',region:'Ionia',race:'Human',skins:13},
+  TahmKench:{gender:'M',region:'Runeterra',race:'Demon',skins:10},
+  Taliyah:{gender:'F',region:'Shurima',race:'Human',skins:9},
+  Talon:{gender:'M',region:'Noxus',race:'Human',skins:11},
+  Taric:{gender:'M',region:'Targon',race:'Human',skins:9},
+  Teemo:{gender:'M',region:'Bandle City',race:'Yordle',skins:18},
+  Thresh:{gender:'M',region:'Shadow Isles',race:'Undead',skins:16},
+  Tristana:{gender:'F',region:'Bandle City',race:'Yordle',skins:16},
+  Trundle:{gender:'M',region:'Freljord',race:'Troll',skins:11},
+  Tryndamere:{gender:'M',region:'Freljord',race:'Human',skins:15},
+  TwistedFate:{gender:'M',region:'Bilgewater',race:'Human',skins:15},
+  Twitch:{gender:'M',region:'Zaun',race:'Vastaya',skins:14},
+  Udyr:{gender:'M',region:'Freljord',race:'Human',skins:12},
+  Urgot:{gender:'M',region:'Zaun',race:'Cyborg',skins:10},
+  Varus:{gender:'M',region:'Ionia',race:'Darkin',skins:16},
+  Vayne:{gender:'F',region:'Demacia',race:'Human',skins:16},
+  Veigar:{gender:'M',region:'Bandle City',race:'Yordle',skins:18},
+  Velkoz:{gender:'M',region:'Void',race:'Void',skins:10},
+  Vex:{gender:'F',region:'Shadow Isles',race:'Yordle',skins:8},
+  Vi:{gender:'F',region:'Piltover',race:'Human',skins:12},
+  Viego:{gender:'M',region:'Shadow Isles',race:'Undead',skins:9},
+  Viktor:{gender:'M',region:'Zaun',race:'Cyborg',skins:12},
+  Vladimir:{gender:'M',region:'Noxus',race:'Vampire',skins:14},
+  Volibear:{gender:'M',region:'Freljord',race:'Elemental',skins:12},
+  Warwick:{gender:'M',region:'Zaun',race:'Mutant',skins:14},
+  Xayah:{gender:'F',region:'Ionia',race:'Vastaya',skins:11},
+  Xerath:{gender:'M',region:'Shurima',race:'Ascended',skins:10},
+  XinZhao:{gender:'M',region:'Demacia',race:'Human',skins:13},
+  Yasuo:{gender:'M',region:'Ionia',race:'Human',skins:18},
+  Yone:{gender:'M',region:'Ionia',race:'Undead',skins:10},
+  Yorick:{gender:'M',region:'Shadow Isles',race:'Undead',skins:10},
+  Yuumi:{gender:'F',region:'Bandle City',race:'Vastaya',skins:10},
+  Zac:{gender:'M',region:'Zaun',race:'Mutant',skins:10},
+  Zed:{gender:'M',region:'Ionia',race:'Human',skins:14},
+  Zeri:{gender:'F',region:'Zaun',race:'Human',skins:9},
+  Ziggs:{gender:'M',region:'Zaun',race:'Yordle',skins:14},
+  Zilean:{gender:'M',region:'Runeterra',race:'Human',skins:10},
+  Zoe:{gender:'F',region:'Targon',race:'Celestial',skins:10},
+  Zyra:{gender:'F',region:'Ixtal',race:'Elemental',skins:12},
+  Hwei:{gender:'M',region:'Ionia',race:'Human',skins:6},
+  Milio:{gender:'M',region:'Ixtal',race:'Human',skins:6},
+  Aurora:{gender:'F',region:'Freljord',race:'Vastaya',skins:5},
+  Ambessa:{gender:'F',region:'Noxus',race:'Human',skins:5},
+};
+
+// Region groupings for partial match
+const REGION_GROUPS = {
+  'Ionia':['Ionia'],
+  'Noxus':['Noxus'],
+  'Demacia':['Demacia'],
+  'Freljord':['Freljord'],
+  'Piltover':['Piltover','Zaun'],
+  'Zaun':['Piltover','Zaun'],
+  'Shadow Isles':['Shadow Isles'],
+  'Shurima':['Shurima'],
+  'Targon':['Targon'],
+  'Void':['Void'],
+  'Bilgewater':['Bilgewater'],
+  'Bandle City':['Bandle City'],
+  'Runeterra':['Runeterra'],
+  'Ixtal':['Ixtal'],
+  'Cosmic':['Cosmic','Targon'],
+};
+function regionClose(a,b){
+  if(a===b) return 'correct';
+  const ga=REGION_GROUPS[a]||[a], gb=REGION_GROUPS[b]||[b];
+  return ga.some(r=>gb.includes(r)) ? 'partial' : 'wrong';
+}
+
+// ── Hardcoded Abilities (fallback) ──
+const ABILITIES = [
+  {championId:'Ahri',name:"Orbe de Tromperie",key:'Q',ratio:'0.35 AP par instance (aller + retour)',img:`${DD}/img/spell/AhriOrbOfDeception.png`},
+  {championId:'Ahri',name:"Rafale de Feu Follet",key:'W',ratio:'0.4 AP par feu follet (3 instances)',img:`${DD}/img/spell/AhriFoxFire.png`},
+  {championId:'Yasuo',name:"Frappe du Vent",key:'Q',ratio:'1.05 AD total — Tornade knockup',img:`${DD}/img/spell/YasuoQW.png`},
+  {championId:'Lux',name:"Lier de Lumière",key:'Q',ratio:'0.7 AP — Immobilisation en chaîne',img:`${DD}/img/spell/LuxLightBinding.png`},
+  {championId:'Lux',name:"Faisceau Final",key:'R',ratio:'1.0 AP + 0.25 AP/level up',img:`${DD}/img/spell/LuxMaliceCannon.png`},
+  {championId:'Zed',name:"Marque de l'Assassin",key:'R',ratio:'100% bonus AD différé',img:`${DD}/img/spell/ZedDeathMark.png`},
+  {championId:'Jinx',name:"Super Méga Roquette de Mort",key:'R',ratio:'3.0 AD + 25% PV manquants',img:`${DD}/img/spell/JinxR.png`},
+  {championId:'Thresh',name:"Lancer de la Mort",key:'Q',ratio:'0.5 AP — Crochet à 2 phases',img:`${DD}/img/spell/ThreshQ.png`},
+  {championId:'Ezreal',name:"Frappe Mystique",key:'Q',ratio:'1.3 AD + 0.4 AP — Réinitialise les autos',img:`${DD}/img/spell/EzrealQ.png`},
+  {championId:'Darius',name:"Appel du Noxus",key:'R',ratio:'0.75 AD — Exécution (reset sur kill)',img:`${DD}/img/spell/DariusExecute.png`},
+  {championId:'Syndra',name:"Accablement",key:'R',ratio:'0.2 AP × nombre de sphères (min 7)',img:`${DD}/img/spell/SyndraR.png`},
+  {championId:'Katarina',name:"Dague Mortelle",key:'R',ratio:'0.25 AP par lame (× 10 lames)',img:`${DD}/img/spell/KatarinaR.png`},
+  {championId:'Vayne',name:"Condamnation",key:'E',ratio:'% max PV par stack Argent (physique)',img:`${DD}/img/spell/VayneCondemnation.png`},
+  {championId:'Viktor',name:"Chaos de la Gravité",key:'R',ratio:'0.45 AP + 0.05 AP/s — Tornades en chaîne',img:`${DD}/img/spell/ViktorChaosStorm.png`},
+  {championId:'Orianna',name:"Commande : Tourbillon",key:'R',ratio:'0.7 AP — Tire toutes les cibles vers la Balle',img:`${DD}/img/spell/OrianaDetonateCommand.png`},
+  {championId:'Morgana',name:"Liens de Sorcière",key:'Q',ratio:'0.9 AP — Immobilisation 2–3 secondes',img:`${DD}/img/spell/MorganaQ.png`},
+  {championId:'Leona',name:"Lever de Soleil",key:'R',ratio:'0.8 AP — Zone solaire (délai 1.5s)',img:`${DD}/img/spell/LeonaR.png`},
+  {championId:'Shen',name:"Garde du Crépuscule",key:'R',ratio:'Téléportation globale — bouclier allié',img:`${DD}/img/spell/ShenR.png`},
+  {championId:'MissFortune',name:"Balles Bondissantes",key:'Q',ratio:'1.0 AD + 0.35 AP — Rebond sur cible',img:`${DD}/img/spell/MissFortuneBulletTime.png`},
+  {championId:'Nautilus',name:"Ancre Titanesque",key:'Q',ratio:'0 AP — Grappin (CC si terrain/ennemi)',img:`${DD}/img/spell/NautilusAnchorDrag.png`},
+];
+
+const SKINS = [
+  {championId:'Jinx',name:"Jinx Classique",imgUrl:`${DD}/img/champion/splash/Jinx_0.jpg`},
+  {championId:'Lux',name:"Élémentariste Lux",imgUrl:`${DD}/img/champion/splash/Lux_6.jpg`},
+  {championId:'Yasuo',name:"Projet : Yasuo",imgUrl:`${DD}/img/champion/splash/Yasuo_4.jpg`},
+  {championId:'Ahri',name:"K/DA Ahri",imgUrl:`${DD}/img/champion/splash/Ahri_20.jpg`},
+  {championId:'Zed',name:"Projet : Zed",imgUrl:`${DD}/img/champion/splash/Zed_4.jpg`},
+  {championId:'Thresh',name:"Thresh Classique",imgUrl:`${DD}/img/champion/splash/Thresh_0.jpg`},
+  {championId:'Ezreal',name:"Pulsefire Ezreal",imgUrl:`${DD}/img/champion/splash/Ezreal_7.jpg`},
+  {championId:'Vayne',name:"Dragon Slayer Vayne",imgUrl:`${DD}/img/champion/splash/Vayne_4.jpg`},
+  {championId:'Viktor',name:"Créateur Viktor",imgUrl:`${DD}/img/champion/splash/Viktor_8.jpg`},
+  {championId:'Leona',name:"Leona Classique",imgUrl:`${DD}/img/champion/splash/Leona_0.jpg`},
+  {championId:'Darius',name:"Darius Classique",imgUrl:`${DD}/img/champion/splash/Darius_0.jpg`},
+  {championId:'Katarina',name:"Katarina Classique",imgUrl:`${DD}/img/champion/splash/Katarina_0.jpg`},
+  {championId:'Jinx',name:"Arcane Jinx",imgUrl:`${DD}/img/champion/splash/Jinx_14.jpg`},
+  {championId:'Yasuo',name:"Yasuo Classique",imgUrl:`${DD}/img/champion/splash/Yasuo_0.jpg`},
+  {championId:'Morgana',name:"Morgana Classique",imgUrl:`${DD}/img/champion/splash/Morgana_0.jpg`},
+  {championId:'Shen',name:"Shen Classique",imgUrl:`${DD}/img/champion/splash/Shen_0.jpg`},
+  {championId:'Lux',name:"Lux Classique",imgUrl:`${DD}/img/champion/splash/Lux_0.jpg`},
+  {championId:'Ahri',name:"Ahri Classique",imgUrl:`${DD}/img/champion/splash/Ahri_0.jpg`},
+];
+
+// ── Live data ──
+let CHAMPIONS = [];
+let ITEMS = [];
+let currentLang = 'fr_FR';
+const langCache = {};
+
+// ── State ──
+const S = {
+  scores:[0,0,0,0,0], done:[false,false,false,false,false],
+  champTarget:null, champWrong:0, champGuessed:new Set(), champRows:[],
+  item2Target:null, item2Wrong:0, item2Guessed:new Set(),
+  item3Target:null, item3Wrong:0, item3Guessed:new Set(),
+  abilTarget:null,  abilWrong:0,  abilGuessed:new Set(),
+  skinTarget:null,  skinWrong:0,  skinGuessed:new Set(),
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// LANGUAGE LOADING
+// ═══════════════════════════════════════════════════════════════════
+async function loadLang(lang) {
+  if (langCache[lang]) { applyLang(langCache[lang], lang); return; }
+  setLangLoading(true);
+  try {
+    const [cr, ir] = await Promise.all([
+      fetch(`./locales/champions_${lang}.json`),
+      fetch(`./locales/items_${lang}.json`)
+    ]);
+    if (!cr.ok) throw new Error(`champions_${lang}.json (${cr.status})`);
+    if (!ir.ok) throw new Error(`items_${lang}.json (${ir.status})`);
+    const [champions, rawItems] = await Promise.all([cr.json(), ir.json()]);
+
+    let abilitiesData = null;
+    try { const r=await fetch(`./locales/abilities_${lang}.json`); if(r.ok) abilitiesData=await r.json(); } catch(e){}
+
+    let skinsData = langCache['__skins__'] || null;
+    if(!skinsData){
+      try {
+        const r=await fetch('./locales/skins.json');
+        if(r.ok){ skinsData=await r.json(); langCache['__skins__']=skinsData; console.log('✅ skins.json loaded:',skinsData.length,'skins'); }
+        else console.warn('⚠️ skins.json HTTP',r.status);
+      } catch(e){ console.warn('⚠️ skins.json not found:',e.message); }
+    }
+
+    const items = rawItems.filter(i=>i.price>0).map(i=>({
+      ...i,
+      img:`${DD}/img/item/${i.id}.png`,
+      components:(i.components||[]).map(c=>({...c,img:c.img&&c.img.startsWith('http')?c.img:`${DD}/img/item/${c.img||c.imgId||''}.png`}))
+    }));
+
+    const cached = {champions, items, abilities:abilitiesData, skins:skinsData};
+    langCache[lang] = cached;
+    applyLang(cached, lang);
+  } catch(err) {
+    console.error(err);
+    showLangError(err.message);
+  } finally { setLangLoading(false); }
+}
+
+function applyLang(data, lang) {
+  CHAMPIONS = data.champions;
+  ITEMS = data.items;
+  currentLang = lang;
+  if (data.abilities?.length) { ABILITIES.length=0; data.abilities.forEach(a=>ABILITIES.push(a)); }
+  if (data.skins?.length)     { SKINS.length=0;     data.skins.forEach(s=>SKINS.push(s)); }
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.value = lang;
+}
+
+function setLangLoading(on) {
+  document.getElementById('lang-loading').classList.toggle('show', on);
+  const sel = document.getElementById('lang-select');
+  if (sel) sel.disabled = on;
+}
+function showLangError(msg) {
+  const el = document.getElementById('lang-loading');
+  el.textContent = '❌ ' + msg;
+  el.classList.add('show');
+  setTimeout(()=>{ el.textContent='⏳'; el.classList.remove('show'); },4000);
+}
+
+async function setLang(lang) {
+  if (lang === currentLang) return;
+  // Save current target IDs
+  const saved = {
+    champId: S.champTarget?.id,
+    item2Id: S.item2Target?.id,
+    item3Id: S.item3Target?.id,
+  };
+  await loadLang(lang);
+  applyI18n();
+  updateCatalogue();
+  // Restore targets in new language
+  if (saved.champId) {
+    const c = CHAMPIONS.find(x=>x.id===saved.champId);
+    if (c) { S.champTarget=c; document.getElementById('champ-title-display').textContent=c.title; }
+  }
+  if (saved.item2Id) {
+    const it = ITEMS.find(x=>x.id===saved.item2Id);
+    if (it) { S.item2Target=it; renderComps(); }
+  }
+  if (saved.item3Id) {
+    const it = ITEMS.find(x=>x.id===saved.item3Id);
+    if (it) { S.item3Target=it; renderStats(); }
+  }
+  // Re-display the ability description in the new language
+  if (S.abilTarget && !S.done[3]) {
+    // Find the same ability in the newly loaded ABILITIES array (matching championId + key)
+    const savedAbil = { championId: S.abilTarget.championId, key: S.abilTarget.key };
+    const newAbil = ABILITIES.find(a => a.championId === savedAbil.championId && a.key === savedAbil.key);
+    if (newAbil) {
+      S.abilTarget = newAbil;
+      const rawText = newAbil.rawDesc || newAbil.ratio || '???';
+      const displayText = anonymizeText(rawText, newAbil.championId);
+      const el = document.getElementById('ability-ratio-display');
+      if (el) {
+        el.textContent = displayText;
+        const len = displayText.length;
+        el.style.fontSize = len>400?'.72em':len>250?'.82em':len>150?'.9em':'1em';
+      }
+    }
+  }
+  refreshAutocompletes();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════════════════════════
+const cImg = id => `${DD}/img/champion/${id}.png`;
+const rand  = arr => arr[Math.floor(Math.random() * arr.length)];
+function norm(str) { return (str||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+
+function showMsg(id, type, msg) {
+  const el=document.getElementById(id); el.className='result-msg '+type; el.textContent=msg;
+}
+function addTry(cid, ok, text, img) {
+  const c=document.getElementById(cid), d=document.createElement('div');
+  d.className='attempt'+(ok?' correct':'');
+  d.style.cssText += ';display:flex;align-items:center;gap:8px;flex-wrap:nowrap;';
+  if(img){const i=document.createElement('img');i.src=img;i.alt='';d.appendChild(i);}
+  const s=document.createElement('span');s.textContent=text;s.style.flex='1';d.appendChild(s);
+  // Add pick count badge
+  const partMap={'champ-attempts':'p1','item2-attempts':'p2','item3-attempts':'p3','abil-attempts':'p4','skin-attempts':'p5'};
+  const part=partMap[cid];
+  if(part){
+    const name=text.replace(/^[✓✗] /,'').replace(/^[^:]+: /,'').trim();
+    const count=getGuessCount(part,name);
+    if(count>0){
+      const badge=document.createElement('span');
+      badge.style.cssText='font-size:.7em;color:var(--gold);background:rgba(200,155,60,.15);border:1px solid var(--gold-dark);padding:1px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;';
+      badge.textContent=count+'× choisi';
+      d.appendChild(badge);
+    }
+  }
+  c.insertBefore(d,c.firstChild);
+}
+function setCount(id,n){ document.getElementById(id).querySelector('span').textContent=n; }
+function unlock(i,btnId){
+  S.done[i]=true;
+  document.getElementById(btnId).disabled=false;
+  const tab=document.getElementById('tab'+i);
+  tab.classList.add('done'); tab.querySelector('.num').textContent='✓';
+}
+function showAnswer(revId,imgId,nameId,imgSrc,name){
+  if(imgId) document.getElementById(imgId).src=imgSrc;
+  if(nameId) document.getElementById(nameId).textContent=name;
+  document.getElementById(revId).classList.add('show');
+}
+function switchTab(i){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec'+i).classList.add('active');
+  document.getElementById('tab'+i).classList.add('active');
+  document.getElementById('final-score').classList.remove('show');
+  const cat=document.getElementById('catalogue');
+  if(cat) cat.classList.toggle('cat-hidden',i===4);
+  updateCatalogue();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CATALOGUE SIDEBAR
+// ═══════════════════════════════════════════════════════════════════
+function updateCatalogue() {
+  const tab = [...document.querySelectorAll('.tab')].findIndex(t=>t.classList.contains('active'));
+  const useChamps = (tab === 0 || tab === 3);
+  const catTitle = document.getElementById('cat-title');
+  if (catTitle) catTitle.textContent = useChamps ? t('cat_champions') : t('cat_items');
+  renderCatalogue(useChamps, tab);
+}
+
+let catFilter = '';
+function filterCatalogue(q) { catFilter = norm(q); const tab=[...document.querySelectorAll('.tab')].findIndex(t=>t.classList.contains('active')); renderCatalogue(tab===0||tab===3, tab); }
+function isChampCat() {
+  const tab = [...document.querySelectorAll('.tab')].findIndex(t=>t.classList.contains('active'));
+  return tab===0 || tab===3;
+}
+
+function renderCatalogue(champs, tabIdx) {
+  const grid = document.getElementById('cat-grid'); if(!grid) return;
+  grid.innerHTML='';
+  if (champs) {
+    const list = catFilter
+      ? CHAMPIONS.filter(c=>norm(c.name).startsWith(catFilter)||norm(c.id).startsWith(catFilter))
+      : CHAMPIONS;
+    list.forEach(c=>{
+      const div=document.createElement('div'); div.className='cat-item';
+      if(S.champGuessed.has(c.name.toLowerCase())) div.classList.add('guessed');
+      if(S.champTarget && c.id===S.champTarget.id && S.done[0]) div.classList.add('correct');
+      const img=document.createElement('img'); img.src=cImg(c.id); img.alt=c.name; img.loading='lazy';
+      const nm=document.createElement('div'); nm.className='cat-name'; nm.textContent=c.name;
+      div.appendChild(img); div.appendChild(nm); grid.appendChild(div);
+    });
+  } else {
+    // Part 2: items with components; Part 3: all items — both sorted by ascending price
+    const pool = (tabIdx===2 ? ITEMS : getItemPool()).slice().sort((a,b)=>a.price-b.price);
+    const seen = new Set();
+    const list = pool.filter(i=>{
+      if(seen.has(i.name.toLowerCase())) return false;
+      seen.add(i.name.toLowerCase());
+      return catFilter ? norm(i.name).startsWith(catFilter) : true;
+    });
+    list.forEach(i=>{
+      const div=document.createElement('div'); div.className='cat-item';
+      const img=document.createElement('img'); img.src=i.img; img.alt=i.name; img.loading='lazy';
+      const nm=document.createElement('div'); nm.className='cat-name'; nm.textContent=i.name;
+      div.appendChild(img); div.appendChild(nm); grid.appendChild(div);
+    });
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// AUTOCOMPLETE
+// ═══════════════════════════════════════════════════════════════════
+const acCursors={};
+function makeAC(inputId,listId,getResults,submitFn,guessedSet){
+  const inp=document.getElementById(inputId), lst=document.getElementById(listId);
+  acCursors[listId]=-1;
+  function render(q){
+    lst.innerHTML=''; acCursors[listId]=-1;
+    if(!q){lst.classList.remove('open');return;}
+    const all=getResults(q).slice(0,12);
+    if(!all.length){lst.classList.remove('open');return;}
+    const sorted=[...all.filter(r=>!guessedSet||!guessedSet.has(r.label.toLowerCase())),...all.filter(r=>guessedSet&&guessedSet.has(r.label.toLowerCase()))];
+    sorted.forEach(r=>{
+      const used=guessedSet&&guessedSet.has(r.label.toLowerCase());
+      const d=document.createElement('div'); if(used) d.classList.add('already-guessed');
+      if(r.img){const im=document.createElement('img');im.src=r.img;im.alt='';d.appendChild(im);}
+      const sp=document.createElement('span');sp.textContent=r.label+(used?' ✗':'');d.appendChild(sp);
+      if(!used) d.addEventListener('mousedown',e=>{e.preventDefault();inp.value=r.label;lst.classList.remove('open');acCursors[listId]=-1;});
+      lst.appendChild(d);
+    });
+    lst.classList.add('open');
+  }
+  inp.addEventListener('input',()=>render(norm(inp.value.trim())));
+  inp.addEventListener('keydown',e=>{
+    const items=[...lst.querySelectorAll('div:not(.already-guessed)')];
+    let idx=acCursors[listId];
+    if(e.key==='ArrowDown'){e.preventDefault();idx=Math.min(idx+1,items.length-1);acCursors[listId]=idx;lst.querySelectorAll('div').forEach(d=>d.classList.remove('ac-sel'));if(items[idx])items[idx].classList.add('ac-sel');}
+    else if(e.key==='ArrowUp'){e.preventDefault();idx=Math.max(idx-1,0);acCursors[listId]=idx;lst.querySelectorAll('div').forEach(d=>d.classList.remove('ac-sel'));if(items[idx])items[idx].classList.add('ac-sel');}
+    else if(e.key==='Enter'){e.preventDefault();const pick=idx>=0?idx:0;if(items.length>0&&items[pick])inp.value=items[pick].querySelector('span').textContent;lst.classList.remove('open');acCursors[listId]=-1;submitFn();}
+    else if(e.key==='Escape'){lst.classList.remove('open');acCursors[listId]=-1;}
+  });
+  document.addEventListener('click',e=>{if(!lst.contains(e.target)&&e.target!==inp)lst.classList.remove('open');});
+}
+
+function refreshAutocompletes(){
+  makeAC('champ-input','champ-ac',
+    q=>CHAMPIONS.filter(c=>norm(c.name).startsWith(q)||norm(c.id).startsWith(q)).map(c=>({label:c.name,img:cImg(c.id)})),
+    submitChamp,S.champGuessed);
+  const pool=getItemPool().sort((a,b)=>a.price-b.price);
+  makeAC('item2-input','item2-ac',
+    q=>{const s=new Set();return pool.filter(i=>{if(!norm(i.name).startsWith(q))return false;if(s.has(i.name.toLowerCase()))return false;s.add(i.name.toLowerCase());return true;}).map(i=>({label:i.name,img:i.img}));},
+    submitItem2,S.item2Guessed);
+  makeAC('item3-input','item3-ac',
+    q=>{const s=new Set();return ITEMS.filter(i=>{if(!norm(i.name).startsWith(q))return false;if(s.has(i.name.toLowerCase()))return false;s.add(i.name.toLowerCase());return true;}).map(i=>({label:i.name,img:i.img}));},
+    submitItem3,S.item3Guessed);
+  makeAC('abil-input','abil-ac',
+    q=>CHAMPIONS.filter(c=>norm(c.name).startsWith(q)).map(c=>({label:c.name,img:cImg(c.id)})),
+    submitAbil,S.abilGuessed);
+  makeAC('skin-champ-input','skin-champ-ac',
+    q=>CHAMPIONS.filter(c=>norm(c.name).startsWith(q)||norm(c.id).startsWith(q)).map(c=>({label:c.name,img:cImg(c.id)})),
+    submitSkinChamp,S.skinGuessed);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// RESET
+// ═══════════════════════════════════════════════════════════════════
+function resetAll(){
+  Object.assign(S,{
+    scores:[0,0,0,0,0],done:[false,false,false,false,false],
+    champTarget:null,champWrong:0,champGuessed:new Set(),champRows:[],
+    item2Target:null,item2Wrong:0,item2Guessed:new Set(),
+    item3Target:null,item3Wrong:0,item3Guessed:new Set(),
+    abilTarget:null,abilWrong:0,abilGuessed:new Set(),
+    skinTarget:null,skinWrong:0,skinGuessed:new Set(),
+  });
+  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.remove('done');t.querySelector('.num').textContent=i+1;});
+  ['champ','item2','item3','abil','skin'].forEach(p=>{
+    const att=document.getElementById(p+'-attempts');if(att)att.innerHTML='';
+    const res=document.getElementById(p+'-result');if(res)res.className='result-msg';
+    const ans=document.getElementById(p+'-answer');if(ans)ans.classList.remove('show');
+  });
+  ['champ-input','item2-input','item3-input','abil-input','skin-champ-input','skin-name-input'].forEach(id=>{const el=document.getElementById(id);if(el){el.value='';el.disabled=false;}});
+  ['champ-next','item2-next','item3-next','abil-next','skin-next'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=true;});
+  document.getElementById('item2-desc').classList.remove('show');
+  document.getElementById('item3-desc').classList.remove('show');
+  document.getElementById('final-score').classList.remove('show');
+  const sp2 = document.getElementById('skin-phase2'); if(sp2) sp2.style.display='none';
+  const ga=document.getElementById('champ-guess-area'); if(ga) ga.innerHTML='';
+  initChamp();initItem2();initItem3();initAbil();initSkin();
+  switchTab(0);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PART 1 — CHAMPION TITLE + WORDLE GRID
+// ═══════════════════════════════════════════════════════════════════
+function initChamp(){
+  S.champTarget=dailyRand(CHAMPIONS, 1); S.champWrong=0; S.champRows=[];
+  document.getElementById('champ-title-display').textContent=S.champTarget.title;
+  setCount('champ-counter',0);
+  renderChampTable();
+  makeAC('champ-input','champ-ac',
+    q=>CHAMPIONS.filter(c=>norm(c.name).startsWith(q)||norm(c.id).startsWith(q)).map(c=>({label:c.name,img:cImg(c.id)})),
+    submitChamp,S.champGuessed);
+}
+
+function renderChampTable(){
+  const area=document.getElementById('champ-guess-area');
+  if(!S.champRows.length){area.innerHTML='';return;}
+  const lang=currentLang;
+  let html=`<table class="champ-guess-table"><thead><tr>
+    <th>${t('col_name')}</th>
+    <th>${t('col_gender')}</th>
+    <th>${t('col_region')}</th>
+    <th>${t('col_race')}</th>
+    <th>${t('col_skins')}</th>
+  </tr></thead><tbody>`;
+  S.champRows.forEach(row=>{
+    const {champ,meta,target,tmeta}=row;
+    const genderOk  = meta.gender===tmeta.gender;
+    const regionRes = regionClose(meta.region,tmeta.region);
+    const raceOk    = meta.race===tmeta.race;
+    const skinsOk   = meta.skins===tmeta.skins ? 'correct' : (Math.abs(meta.skins-tmeta.skins)<=3?'partial':'wrong');
+    const isWin     = champ.id===target.id;
+    function cell(cls,val){return `<td><span class="cgt-cell cgt-${cls}">${val}</span></td>`;}
+    html+=`<tr>
+      <td style="white-space:nowrap;"><img class="cgt-img" src="${cImg(champ.id)}" alt=""> <small>${champ.name}</small></td>
+      ${cell(genderOk?'correct':'wrong', meta.gender==='M'?'♂':'♀')}
+      ${cell(regionRes, meta.region+(regionRes==='partial'?'~':''))}
+      ${cell(raceOk?'correct':'wrong', meta.race)}
+      ${cell(skinsOk, meta.skins+(skinsOk!=='correct'?(meta.skins<tmeta.skins?' ↑':' ↓'):''))}
+    </tr>`;
+  });
+  html+='</tbody></table>';
+  area.innerHTML=html;
+}
+
+function submitChamp(){
+  if(S.done[0]) return;
+  const inp=document.getElementById('champ-input');
+  const val=inp.value.trim().replace(/ ✗$/,''); if(!val) return;
+  const found=CHAMPIONS.find(c=>norm(c.name)===norm(val)||norm(c.id)===norm(val));
+  if(!found){showMsg('champ-result','fail',t('unknown_champ')+': '+val);inp.value='';return;}
+  if(S.champGuessed.has(found.name.toLowerCase())){showMsg('champ-result','hint',t('already')+': '+found.name);inp.value='';return;}
+  S.champGuessed.add(found.name.toLowerCase());
+  recordGuess('p1', found.name);
+  renderStatsPanel('champ-stats-panel', 'p1', '📊 Statistiques du jour');
+  const meta  = CHAMP_META[found.id]   || {gender:'?',region:'?',race:'?',skins:0};
+  const tmeta = CHAMP_META[S.champTarget.id] || {gender:'?',region:'?',race:'?',skins:0};
+  S.champRows.unshift({champ:found,meta,target:S.champTarget,tmeta});
+  renderChampTable();
+  // Update catalogue
+  const catEl=document.querySelector(`#cat-grid .cat-item:has(img[src="${cImg(found.id)}"])`);
+  // Simple: re-render catalogue
+  renderCatalogue(true);
+  if(found.id===S.champTarget.id){
+    showMsg('champ-result','success',t('correct_champ')+found.name+' !');
+    S.scores[0]=Math.max(1,10-S.champWrong);
+    unlock(0,'champ-next'); inp.disabled=true;
+    showAnswer('champ-answer','champ-answer-img','champ-answer-name',cImg(found.id),found.name);
+  } else {
+    S.champWrong++;
+    setCount('champ-counter',S.champWrong);
+    showMsg('champ-result','fail',t('incorrect')+'!');
+  }
+  inp.value='';
+  saveProgress();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PART 2 — ITEM COMPONENTS
+// ═══════════════════════════════════════════════════════════════════
+function getItemPool(){
+  // Items with components AND non-empty desc
+  const seen=new Set();
+  return ITEMS.filter(i=>{
+    if(!i.components||i.components.length===0) return false;
+    if(seen.has(i.name.toLowerCase())) return false;
+    seen.add(i.name.toLowerCase()); return true;
+  });
+}
+
+function initItem2(){
+  const pool=getItemPool(); S.item2Target=dailyRand(pool, 2); S.item2Wrong=0;
+  document.getElementById('item-price-display').textContent=S.item2Target.price+' 🪙';
+  document.getElementById('item2-desc').classList.remove('show');
+  setCount('item2-counter',0); renderComps();
+  makeAC('item2-input','item2-ac',
+    q=>{const s=new Set();return pool.filter(i=>{if(!norm(i.name).startsWith(q))return false;if(s.has(i.name.toLowerCase()))return false;s.add(i.name.toLowerCase());return true;}).map(i=>({label:i.name,img:i.img}));},
+    submitItem2,S.item2Guessed);
+}
+
+function renderComps(){
+  const t2=S.item2Target, revealed=Math.min(t2.components.length,Math.max(1,S.item2Wrong));
+  const el=document.getElementById('item-comps-display'); el.innerHTML='';
+  t2.components.forEach((c,i)=>{
+    const locked=i>=revealed;
+    el.innerHTML+=`<div class="item-comp${locked?' locked':''}">
+      <img src="${locked?'':c.img}" alt="" ${locked?'style="opacity:0"':''}>
+      <span class="comp-name">${locked?'???':c.name}</span>
+      <span class="price">${locked?'':'🪙 '+c.price}</span>
+    </div>`;
+  });
+  if(S.item2Wrong>=5){
+    const d=document.getElementById('item2-desc');
+    const desc=t2.desc&&t2.desc.trim();
+    d.textContent=desc?('📖 '+desc):t('no_desc');
+    d.classList.add('show');
+  }
+}
+
+function submitItem2(){
+  if(S.done[1]) return;
+  const inp=document.getElementById('item2-input');
+  const val=inp.value.trim().replace(/ ✗$/,''); if(!val) return;
+  const pool=getItemPool();
+  const found=pool.find(i=>norm(i.name)===norm(val));
+  if(!found){addTry('item2-attempts',false,t('unknown_item')+': '+val);inp.value='';return;}
+  if(S.item2Guessed.has(found.name.toLowerCase())){showMsg('item2-result','hint',t('already')+': '+found.name);inp.value='';return;}
+  if(norm(found.name)===norm(S.item2Target.name)){
+    addTry('item2-attempts',true,'✓ '+found.name,found.img);
+    showMsg('item2-result','success',t('correct_item')+found.name+' !');
+    S.scores[1]=Math.max(1,10-S.item2Wrong);
+    S.item2Wrong=S.item2Target.components.length; renderComps();
+    unlock(1,'item2-next'); inp.disabled=true;
+    showAnswer('item2-answer','item2-answer-img','item2-answer-name',S.item2Target.img,S.item2Target.name);
+  } else {
+    S.item2Wrong++; S.item2Guessed.add(found.name.toLowerCase());
+    addTry('item2-attempts',false,'✗ '+found.name,found.img);
+    setCount('item2-counter',S.item2Wrong); renderComps();
+    if(S.item2Wrong===5) showMsg('item2-result','hint',t('desc_hint'));
+    else showMsg('item2-result','fail',t('incorrect')+'!');
+  }
+  recordGuess('p2', found.name);
+  renderStatsPanel('item2-stats-panel', 'p2', '📊 Statistiques du jour');
+  inp.value='';
+  saveProgress();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PART 3 — ITEM STATS
+// ═══════════════════════════════════════════════════════════════════
+function renderStats(){
+  const sg=document.getElementById('stats-display'); sg.innerHTML='';
+  const it=S.item3Target;
+  Object.entries(it.stats).forEach(([label,stat])=>{
+    let icon='📊', displayVal;
+    if(stat&&typeof stat==='object'&&'value' in stat){
+      icon=stat.icon||'📊';
+      displayVal=typeof stat.value==='string'?stat.value:'+'+stat.value;
+    } else {
+      const v=stat;
+      displayVal=typeof v==='string'?(v.includes('%')?v:'+'+v):'+'+v;
+    }
+    sg.innerHTML+=`<div class="stat-row">
+      <span class="stat-icon-label"><span class="stat-emoji">${icon}</span> ${label}</span>
+      <span class="stat-val">${displayVal}</span>
+    </div>`;
+  });
+}
+
+function initItem3(){
+  const seen=new Set();
+  const pool=ITEMS.filter(i=>{
+    if(S.item2Target&&i.id===S.item2Target.id)return false;
+    if(seen.has(i.name.toLowerCase()))return false;
+    seen.add(i.name.toLowerCase());return true;
+  });
+  S.item3Target=dailyRand(pool, 3); S.item3Wrong=0;
+  document.getElementById('item3-desc').classList.remove('show');
+  renderStats(); setCount('item3-counter',0);
+  makeAC('item3-input','item3-ac',
+    q=>{const s=new Set();return ITEMS.filter(i=>{if(!norm(i.name).startsWith(q))return false;if(s.has(i.name.toLowerCase()))return false;s.add(i.name.toLowerCase());return true;}).map(i=>({label:i.name,img:i.img}));},
+    submitItem3,S.item3Guessed);
+}
+
+function submitItem3(){
+  if(S.done[2]) return;
+  const inp=document.getElementById('item3-input');
+  const val=inp.value.trim().replace(/ ✗$/,''); if(!val) return;
+  const found=ITEMS.find(i=>norm(i.name)===norm(val));
+  if(!found){addTry('item3-attempts',false,t('unknown_item')+': '+val);inp.value='';return;}
+  if(S.item3Guessed.has(found.name.toLowerCase())){showMsg('item3-result','hint',t('already')+': '+found.name);inp.value='';return;}
+  if(norm(found.name)===norm(S.item3Target.name)){
+    addTry('item3-attempts',true,'✓ '+found.name,found.img);
+    showMsg('item3-result','success',t('correct_item')+found.name+' !');
+    S.scores[2]=Math.max(1,10-S.item3Wrong);
+    unlock(2,'item3-next');inp.disabled=true;
+    showAnswer('item3-answer','item3-answer-img','item3-answer-name',S.item3Target.img,S.item3Target.name);
+  } else {
+    S.item3Wrong++;S.item3Guessed.add(found.name.toLowerCase());
+    addTry('item3-attempts',false,'✗ '+found.name,found.img);
+    setCount('item3-counter',S.item3Wrong);
+    if(S.item3Wrong===5){const d=document.getElementById('item3-desc');const desc=S.item3Target.desc&&S.item3Target.desc.trim();d.textContent=desc?('📖 '+desc):t('no_desc');d.classList.add('show');showMsg('item3-result','hint',t('desc_revealed'));}
+    else showMsg('item3-result','fail',t('incorrect')+'!');
+  }
+  recordGuess('p3', found.name);
+  renderStatsPanel('item3-stats-panel', 'p3', '📊 Statistiques du jour');
+  inp.value='';
+  saveProgress();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PART 4 — ABILITY
+// ═══════════════════════════════════════════════════════════════════
+// Min description quality filter: must have enough content to be a clue
+const MIN_DESC_LEN = 40;
+const TRIVIAL_PATTERNS = [
+  /^inflige \d/i, /^traite \d/i, /^soigne \d/i, /^damages? \d/i,
+  /infligeant des dégâts\.?$/i, /deal damage\.?$/i,
+];
+function isGoodAbilDesc(text){
+  if(!text||text.length<MIN_DESC_LEN) return false;
+  for(const p of TRIVIAL_PATTERNS){ if(p.test(text.trim())) return false; }
+  return true;
+}
+
+function anonymizeText(text,champId){
+  if(!text||!champId) return text;
+  const champ=CHAMPIONS.find(c=>c.id===champId);
+  const names=[champId];
+  if(champ){
+    names.push(champ.name);
+    champ.name.split(/\s+/).forEach(w=>{if(w.length>2)names.push(w);});
+    if(champ.title) champ.title.split(/\s+/).forEach(w=>{if(w.length>3)names.push(w);});
+  }
+  let r=text;
+  for(const n of names){ r=r.replace(new RegExp(n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),'???'); }
+  return r;
+}
+
+function pickAbility(){
+  const good=ABILITIES.filter(a=>{
+    const text=a.ratio||a.rawDesc||'';
+    return isGoodAbilDesc(text);
+  });
+  return dailyRand(good.length>0?good:ABILITIES, 4);
+}
+
+let abilHintsAvailable=0,abilHintsUsed=0;
+
+function initAbil(){
+  S.abilTarget=pickAbility();S.abilWrong=0;
+  abilHintsAvailable=0;abilHintsUsed=0;
+  // Always prefer rawDesc (full description), fall back to ratio if needed
+  const rawText=S.abilTarget.rawDesc||S.abilTarget.ratio||'???';
+  const displayText=anonymizeText(rawText,S.abilTarget.championId);
+  const el=document.getElementById('ability-ratio-display');
+  el.textContent=displayText;
+  // Adaptive font size: shrink automatically for long descriptions
+  const len=displayText.length;
+  el.style.fontSize=len>400?'.72em':len>250?'.82em':len>150?'.9em':'1em';
+  setCount('abil-counter',0);
+  const wrap=document.getElementById('ability-icon-wrap'); wrap.style.visibility='hidden';
+  const img=document.getElementById('ability-img'); img.src=S.abilTarget.img; img.className='bw'; img.style.transform='rotate(0deg)';
+  img.onerror=()=>{img.style.visibility='hidden';};
+  document.getElementById('ability-key-badge').className='key-badge';
+  ['ah-1','ah-2','ah-3'].forEach(id=>{const el=document.getElementById(id);el.textContent='';el.style.display='none';el.classList.remove('revealed');});
+  makeAC('abil-input','abil-ac',
+    q=>CHAMPIONS.filter(c=>norm(c.name).startsWith(q)).map(c=>({label:c.name,img:cImg(c.id)})),
+    submitAbil,S.abilGuessed);
+  updateHintBtn();
+}
+
+function updateHintBtn(){
+  const avail=S.abilWrong-abilHintsUsed;
+  const btn=document.getElementById('hint-btn'), status=document.getElementById('hint-btn-status');
+  if(!btn)return;
+  if(S.done[3]){btn.disabled=true;return;}
+  if(abilHintsUsed>=3){btn.disabled=true;status.textContent=t('hints_all');return;}
+  if(avail>0){btn.disabled=false;status.textContent=avail+' '+t('hints_avail');}
+  else{btn.disabled=true;status.textContent=S.abilWrong===0?t('make_error'):t('no_hint');}
+}
+
+function requestHint(){
+  if(abilHintsUsed>=S.abilWrong||abilHintsUsed>=3)return;
+  abilHintsUsed++;
+  const ab=S.abilTarget;
+  if(abilHintsUsed===1){const h=document.getElementById('ah-1');h.textContent='🎮 '+t('hint_key')+' : '+ab.key;h.style.display='';h.classList.add('revealed');const b=document.getElementById('ability-key-badge');b.textContent=ab.key;b.className='key-badge show';}
+  else if(abilHintsUsed===2){const h=document.getElementById('ah-2');h.textContent='🔍 '+t('hint_spell')+' : '+ab.name;h.style.display='';h.classList.add('revealed');}
+  else if(abilHintsUsed===3){const h=document.getElementById('ah-3');h.textContent='🖼 '+t('hint_img');h.style.display='';h.classList.add('revealed');document.getElementById('ability-icon-wrap').style.visibility='visible';const angles=[90,180,270];document.getElementById('ability-img').style.transform='rotate('+angles[Math.floor(Math.random()*3)]+'deg)';}
+  updateHintBtn();
+}
+
+function revealAbilFull(){
+  document.getElementById('ability-icon-wrap').style.visibility='visible';
+  const img=document.getElementById('ability-img');img.className='';img.style.transform='rotate(0deg)';img.style.filter='none';
+}
+
+function submitAbil(){
+  if(S.done[3]) return;
+  const inp=document.getElementById('abil-input');
+  const val=inp.value.trim().replace(/ ✗$/,''); if(!val) return;
+  const found=CHAMPIONS.find(c=>norm(c.name)===norm(val));
+  if(!found){addTry('abil-attempts',false,t('unknown_champ')+': '+val);inp.value='';return;}
+  if(S.abilGuessed.has(found.name.toLowerCase())){showMsg('abil-result','hint',t('already')+': '+found.name);inp.value='';return;}
+  if(found.id===S.abilTarget.championId){
+    addTry('abil-attempts',true,'✓ '+found.name,cImg(found.id));
+    showMsg('abil-result','success',t('correct_abil')+found.name+' !');
+    S.scores[3]=Math.max(1,10-S.abilWrong);
+    unlock(3,'abil-next');inp.disabled=true; revealAbilFull();
+    document.getElementById('abil-answer-img').src=S.abilTarget.img;
+    document.getElementById('abil-answer-name').textContent=S.abilTarget.name;
+    document.getElementById('abil-answer-info').textContent=found.name+' — '+t('hint_key')+' '+S.abilTarget.key;
+    document.getElementById('abil-answer').classList.add('show');
+  } else {
+    S.abilWrong++;S.abilGuessed.add(found.name.toLowerCase());
+    addTry('abil-attempts',false,'✗ '+found.name,cImg(found.id));
+    setCount('abil-counter',S.abilWrong); updateHintBtn();
+    showMsg('abil-result','fail',t('incorrect')+'! (+1 '+t('hints_avail')+')');
+  }
+  recordGuess('p4', found.name);
+  renderStatsPanel('abil-stats-panel', 'p4', '📊 Statistiques du jour');
+  inp.value='';
+  saveProgress();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PART 5 — SKIN  (zoom reveal + champion guess first)
+// ═══════════════════════════════════════════════════════════════════
+
+// Canvas dimensions (logical)
+const SKIN_W = 500, SKIN_H = 280;
+
+// ── ZOOM CONFIG ─────────────────────────────────────────────────────
+// Change ZOOM_START to make the initial zoom tighter (higher = more zoomed in)
+// Change ZOOM_STEP to control how much it unzooms per wrong answer
+// Change ZOOM_ERRORS to set how many errors before fully revealed (max 20)
+const ZOOM_START  = 3.0;   // ← initial zoom multiplier (e.g. 2 = zoomed 2x)
+const ZOOM_STEP   = 0.3;   // ← how much zoom decreases per wrong answer
+const ZOOM_ERRORS = 9999;  // ← wrong answers before full reveal (effectively unlimited)
+// ────────────────────────────────────────────────────────────────────
+
+// Skin state
+let skinImg = null;
+let skinZoomX = 0.5;   // focal point (0-1) seeded from skin name
+let skinZoomY = 0.5;
+
+// Extra state for two-phase
+let skinChampFound = false;  // true after champion correctly guessed
+let skinBonusUsed  = false;  // true after bonus skin guess attempted
+
+function initSkin() {
+  S.skinTarget = dailyRand(SKINS, 5); S.skinWrong = 0;
+  skinImg = null; skinChampFound = false; skinBonusUsed = false;
+  setCount('skin-counter', 0);
+
+  // Seed a random zoom focal point from the skin name
+  let seed = 0;
+  for (let i = 0; i < S.skinTarget.name.length; i++) seed = (seed * 31 + S.skinTarget.name.charCodeAt(i)) | 0;
+  const prng = mulberry32(seed);
+  // Avoid extreme edges (stay within 20%-80% of the image)
+  skinZoomX = 0.2 + prng() * 0.6;
+  skinZoomY = 0.2 + prng() * 0.6;
+
+  // Reset UI phases
+  document.getElementById('skin-phase1').style.display = '';
+  document.getElementById('skin-phase2').style.display = 'none';
+  const ni = document.getElementById('skin-champ-input'); if(ni){ni.value='';ni.disabled=false;}
+  const ni2 = document.getElementById('skin-name-input'); if(ni2){ni2.value='';ni2.disabled=false;}
+  const nr = document.getElementById('skin-name-result'); if(nr) nr.className='result-msg';
+  document.getElementById('skin-attempts').innerHTML = '';
+  document.getElementById('skin-result').className = 'result-msg';
+  document.getElementById('skin-answer').classList.remove('show');
+
+  updateSkinProgress();
+
+  // Load image then draw
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    skinImg = img;
+    // Compute focal point in terms of the *natural* image proportions
+    // so the random spot is always within the visible rendered area
+    // regardless of whether the image is wider or taller than the canvas
+    const natW = img.naturalWidth || SKIN_W;
+    const natH = img.naturalHeight || SKIN_H;
+    // Keep focal within the safe inner 20-80% zone scaled to natural size
+    const prng2 = mulberry32(seed + 1);
+    skinZoomX = 0.2 + prng2() * 0.6;
+    skinZoomY = 0.2 + prng2() * 0.6;
+    drawSkin();
+  };
+  img.onerror = () => { skinImg = null; drawSkinPlaceholder(); };  img.src = S.skinTarget.imgUrl;
+
+  // Autocomplete: champion names for phase 1
+  makeAC('skin-champ-input', 'skin-champ-ac',
+    q => CHAMPIONS.filter(c => norm(c.name).startsWith(q) || norm(c.id).startsWith(q)).map(c => ({ label: c.name, img: cImg(c.id) })),
+    submitSkinChamp, S.skinGuessed);
+}
+
+function mulberry32(seed) {
+  return function() {
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function currentZoom() {
+  return Math.max(1.0, ZOOM_START - S.skinWrong * ZOOM_STEP);
+}
+
+function updateSkinProgress() {
+  // Progress bar removed — nothing to update
+}
+
+function drawSkin(forceFullReveal) {
+  const canvas = document.getElementById('skin-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, SKIN_W, SKIN_H);
+
+  if (!skinImg) { drawSkinPlaceholder(); return; }
+
+  // "cover" scale: scale image so it fills the canvas fully (no black bars)
+  const natW = skinImg.naturalWidth || SKIN_W;
+  const natH = skinImg.naturalHeight || SKIN_H;
+  const scale = Math.max(SKIN_W / natW, SKIN_H / natH);
+  const scaledW = natW * scale;
+  const scaledH = natH * scale;
+
+  if (forceFullReveal) {
+    // Center the scaled image on canvas
+    const ox = (SKIN_W - scaledW) / 2;
+    const oy = (SKIN_H - scaledH) / 2;
+    ctx.drawImage(skinImg, ox, oy, scaledW, scaledH);
+    return;
+  }
+
+  const zoom = currentZoom();
+
+  // t goes from 0 (start) to 1 (fully unzoomed)
+  const t = Math.min(1, Math.max(0, 1 - (zoom - 1.0) / (ZOOM_START - 1.0)));
+  // Interpolate focal point toward center as we unzoom
+  const focalX = skinZoomX + (0.5 - skinZoomX) * t;
+  const focalY = skinZoomY + (0.5 - skinZoomY) * t;
+
+  // In scaled-image space: how big is the visible window
+  const winW = scaledW / zoom;
+  const winH = scaledH / zoom;
+
+  // Focal position in scaled-image coords
+  const fcx = focalX * scaledW;
+  const fcy = focalY * scaledH;
+
+  // Source rect clamped so it stays within the scaled image
+  const sx = Math.max(0, Math.min(scaledW - winW, fcx - winW / 2));
+  const sy = Math.max(0, Math.min(scaledH - winH, fcy - winH / 2));
+
+  // Draw: map [sx,sy,winW,winH] in image space → full canvas
+  ctx.drawImage(skinImg,
+    sx / scale, sy / scale, winW / scale, winH / scale,
+    0, 0, SKIN_W, SKIN_H);
+
+  // Subtle gold border
+  ctx.save();
+  ctx.strokeStyle = 'rgba(200,155,60,0.5)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(1, 1, SKIN_W - 2, SKIN_H - 2);
+  ctx.restore();
+}
+
+function drawSkinPlaceholder() {
+  const canvas = document.getElementById('skin-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0A1428';
+  ctx.fillRect(0, 0, SKIN_W, SKIN_H);
+  ctx.fillStyle = '#C89B3C';
+  ctx.font = '15px Cinzel, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('Serveur local requis', SKIN_W / 2, 100);
+  ctx.fillStyle = '#A0A0A0';
+  ctx.font = '12px monospace';
+  ctx.fillText('python -m http.server 8000', SKIN_W / 2, 130);
+  ctx.font = '11px sans-serif';
+  ctx.fillText('http://localhost:8000/loldle.html', SKIN_W / 2, 155);
+}
+
+// ── Phase 1: guess the champion ──────────────────────────────────────
+function submitSkinChamp() {
+  if (S.done[4]) return;
+  const inp = document.getElementById('skin-champ-input');
+  const val = inp.value.trim().replace(/ ✗$/, ''); if (!val) return;
+
+  const found = CHAMPIONS.find(c => norm(c.name) === norm(val) || norm(c.id) === norm(val));
+  if (!found) { addTry('skin-attempts', false, t('unknown_champ') + ': ' + val); inp.value = ''; return; }
+  if (S.skinGuessed.has(found.name.toLowerCase())) { showMsg('skin-result', 'hint', t('already') + ': ' + found.name); inp.value = ''; return; }
+  S.skinGuessed.add(found.name.toLowerCase());
+  recordGuess('p5', found.name);
+  renderStatsPanel('skin-stats-panel', 'p5', '📊 Statistiques du jour');
+
+  const correctChamp = (found.id === S.skinTarget.championId || norm(found.name) === norm(S.skinTarget.championName || S.skinTarget.championId));
+
+  if (correctChamp) {
+    addTry('skin-attempts', true, '✓ ' + found.name, cImg(found.id));
+    showMsg('skin-result', 'success', '🏆 Champion correct ! Maintenant devine le skin exact !');
+    inp.disabled = true;
+    skinChampFound = true;
+
+    // Save actual wrong count for scoring before we override it for the zoom
+    const actualWrong = S.skinWrong;
+
+    // Force full image reveal
+    drawSkin(true);
+
+    // Show phase 2 bonus
+    document.getElementById('skin-phase2').style.display = '';
+
+    // Filter skins for this champion using the actual championId from the target
+    const targetChampId = S.skinTarget.championId;
+    const champSkins = SKINS.filter(s => s.championId === targetChampId);
+    // If no match by championId, fall back to championName match
+    const skinPool = champSkins.length > 0
+      ? champSkins
+      : SKINS.filter(s => norm(s.championName || s.championId) === norm(found.id) || norm(s.championName || s.championId) === norm(found.name));
+
+    makeAC('skin-name-input', 'skin-name-ac',
+      q => (q ? skinPool.filter(s => norm(s.name).includes(q)) : skinPool).map(s => ({ label: s.name })),
+      submitSkinName, new Set());
+
+    // Immediately show dropdown so player can see all skins for this champion
+    const ni2 = document.getElementById('skin-name-input');
+    if (ni2) {
+      ni2.focus();
+      // Show all champion skins immediately in the dropdown
+      const lst2 = document.getElementById('skin-name-ac');
+      if (lst2) {
+        lst2.innerHTML = '';
+        skinPool.slice(0, 20).forEach(s => {
+          const d = document.createElement('div');
+          const sp = document.createElement('span'); sp.textContent = s.name;
+          d.appendChild(sp);
+          d.addEventListener('mousedown', e => { e.preventDefault(); ni2.value = s.name; lst2.classList.remove('open'); });
+          lst2.appendChild(d);
+        });
+        lst2.classList.add('open');
+      }
+    }
+
+    // Base score for finding champion
+    S.scores[4] = Math.max(1, 10 - actualWrong);
+  } else {
+    S.skinWrong++;
+    setCount('skin-counter', S.skinWrong);
+    addTry('skin-attempts', false, '✗ ' + found.name, cImg(found.id));
+    showMsg('skin-result', 'fail', t('incorrect') + '!');
+    drawSkin();
+
+    // After ZOOM_ERRORS wrong answers, fully reveal and end
+    if (S.skinWrong >= ZOOM_ERRORS) {
+      drawSkin(true);
+      showMsg('skin-result', 'fail', '❌ Plus d\'essais ! Le champion était : ' + (S.skinTarget.championName || S.skinTarget.championId));
+      inp.disabled = true;
+      const ansImg = document.getElementById('skin-answer-img');
+      if (ansImg) ansImg.src = S.skinTarget.imgUrl;
+      document.getElementById('skin-answer-name').textContent = S.skinTarget.name + ' (' + (S.skinTarget.championName || S.skinTarget.championId) + ')';
+      document.getElementById('skin-answer').classList.add('show');
+      S.scores[4] = 0;
+      unlock(4, 'skin-next');
+    }
+  }
+  inp.value = '';
+  saveProgress();
+}
+
+// ── Phase 2: bonus — guess the exact skin name (1 try) ────────────────
+function submitSkinName() {
+  if (skinBonusUsed || !skinChampFound) return;
+  skinBonusUsed = true;
+  const inp = document.getElementById('skin-name-input');
+  const val = inp.value.trim().replace(/ ✗$/, ''); if (!val) return;
+
+  const found = SKINS.find(s => norm(s.name) === norm(val));
+  if (!found) {
+    showMsg('skin-name-result', 'fail', t('unknown_skin') + ': ' + val);
+    inp.disabled = true;
+    drawSkin(true);
+    const ansImg = document.getElementById('skin-answer-img');
+    if (ansImg) ansImg.src = S.skinTarget.imgUrl;
+    document.getElementById('skin-answer-name').textContent = S.skinTarget.name + ' (' + (S.skinTarget.championName || S.skinTarget.championId) + ')';
+    document.getElementById('skin-answer').classList.add('show');
+    unlock(4, 'skin-next');
+    return;
+  }
+
+  inp.disabled = true;
+
+  if (norm(found.name) === norm(S.skinTarget.name)) {
+    showMsg('skin-name-result', 'success', '🏆 Parfait ! Skin exact trouvé ! +1 point bonus !');
+    S.scores[4] = Math.min(11, S.scores[4] + 1);
+  } else {
+    showMsg('skin-name-result', 'fail', '✗ ' + found.name + ' — Le bon skin était : ' + S.skinTarget.name);
+  }
+
+  drawSkin(true);
+  const ansImg = document.getElementById('skin-answer-img');
+  if (ansImg) ansImg.src = S.skinTarget.imgUrl;
+  document.getElementById('skin-answer-name').textContent = S.skinTarget.name + ' (' + (S.skinTarget.championName || S.skinTarget.championId) + ')';
+  document.getElementById('skin-answer').classList.add('show');
+  unlock(4, 'skin-next');
+  inp.value = '';
+  saveProgress();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// DAILY STATS  (localStorage — stores how many players guessed what)
+// ═══════════════════════════════════════════════════════════════════
+// Stats are stored per day. Each champion/skin/item guess is tallied.
+// On a real hosted site, replace this localStorage version with a
+// backend API call (e.g. POST /api/stats { date, part, guess }).
+//
+// ── HOW TO SWITCH TO A REAL BACKEND ──────────────────────────────
+// Replace the two functions below (loadStats / saveStats) with
+// fetch() calls to your own API endpoint.
+// ─────────────────────────────────────────────────────────────────
+
+function todayKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function loadStats() {
+  try {
+    const raw = localStorage.getItem('loldle_stats_' + todayKey());
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+
+function saveStats(stats) {
+  try {
+    localStorage.setItem('loldle_stats_' + todayKey(), JSON.stringify(stats));
+  } catch(e) {}
+}
+
+// Record a guess (part = 'p1'|'p2'|'p3'|'p4'|'p5', label = guess text)
+function recordGuess(part, label) {
+  const stats = loadStats();
+  if (!stats[part]) stats[part] = {};
+  stats[part][label] = (stats[part][label] || 0) + 1;
+  saveStats(stats);
+}
+
+// Get count for a specific guess
+function getGuessCount(part, label) {
+  const stats = loadStats();
+  return (stats[part] || {})[label] || 0;
+}
+
+// Get sorted list of {label, count} for a part
+function getPartStats(part, topN = 8) {
+  const stats = loadStats();
+  const partData = stats[part] || {};
+  const entries = Object.entries(partData).map(([label, count]) => ({ label, count }));
+  entries.sort((a, b) => b.count - a.count);
+  return entries.slice(0, topN);
+}
+
+// Render stats panel showing counts with bars
+function renderStatsPanel(containerId, part, title) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const items = getPartStats(part);
+  if (!items.length) {
+    el.innerHTML = `<div class="stats-panel"><div class="stats-title">${title}</div><div class="stats-no-data">Aucune donnée aujourd'hui</div></div>`;
+    return;
+  }
+  const maxCount = items[0].count;
+  let html = `<div class="stats-panel"><div class="stats-title">${title}</div>`;
+  items.forEach(({ label, count }) => {
+    const barW = maxCount > 0 ? Math.round(count / maxCount * 100) : 0;
+    html += `<div class="stats-guess-item">
+      <span class="stats-guess-label" title="${label}">${label}</span>
+      <div class="stats-guess-bar-wrap"><div class="stats-guess-bar" style="width:${barW}%"></div></div>
+      <span class="stats-guess-pct">${count}×</span>
+    </div>`;
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// FINAL SCORE
+// Returns a seeded PRNG based on today's date so targets are the same for everyone
+function getDailyRng() {
+  const d = new Date();
+  // Combine year+month+day into a single seed
+  let seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
+  return mulberry32(seed);
+}
+
+function dailyRand(arr, salt) {
+  // salt lets each part pick a different item from the same day
+  const d = new Date();
+  let seed = (d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate()) ^ (salt * 0x9e3779b9);
+  const rng = mulberry32(seed);
+  return arr[Math.floor(rng() * arr.length)];
+}
+// ═══════════════════════════════════════════════════════════════════
+// FINAL SCORE
+// ═══════════════════════════════════════════════════════════════════
+function showFinalScore(){
+  const lang=I18N[currentLang]||I18N.fr_FR;
+  let total=0;
+  const tbody=document.getElementById('score-tbody');tbody.innerHTML='';
+  S.scores.forEach((s,i)=>{
+    const done=S.done[i],pts=done?s:0;total+=pts;
+    const status=done?(pts>0?lang.score_done[0]:lang.score_done[1]):lang.score_done[2];
+    const icon = done ? (pts>0?'✅':'❌') : '⏳';
+    tbody.innerHTML+=`<tr><td>${icon} ${lang.score_labels[i]}</td><td>${status}</td><td>${pts} pts</td></tr>`;
+  });
+  const allDone = S.done.every(Boolean);
+  const stars = allDone ? Math.min(5,Math.max(1,Math.round(total/4))) : 0;
+  document.getElementById('final-stars').textContent = allDone ? ('⭐'.repeat(stars)+'☆'.repeat(5-stars)) : '⏳⏳⏳⏳⏳';
+  document.getElementById('final-msg').textContent = allDone ? lang.score_msgs[stars-1] : 'Terminez toutes les épreuves pour voir votre score final !';
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('final-score').classList.add('show');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PROGRESS SAVE / RESTORE
+// ═══════════════════════════════════════════════════════════════════
+function saveProgress() {
+  const data = {
+    date: todayKey(),
+    scores: S.scores,
+    done: S.done,
+    champWrong: S.champWrong,
+    champGuessed: [...S.champGuessed],
+    champRows: S.champRows.map(r=>({champId:r.champ.id, targetId:r.target.id})),
+    item2Wrong: S.item2Wrong,
+    item2Guessed: [...S.item2Guessed],
+    item3Wrong: S.item3Wrong,
+    item3Guessed: [...S.item3Guessed],
+    abilWrong: S.abilWrong,
+    abilGuessed: [...S.abilGuessed],
+    skinWrong: S.skinWrong,
+    skinGuessed: [...S.skinGuessed],
+    skinChampFound: skinChampFound,
+    skinBonusUsed: skinBonusUsed,
+    // Store attempt history for re-render
+    attempts: {
+      champ: collectAttempts('champ-attempts'),
+      item2: collectAttempts('item2-attempts'),
+      item3: collectAttempts('item3-attempts'),
+      abil: collectAttempts('abil-attempts'),
+      skin: collectAttempts('skin-attempts'),
+    }
+  };
+  try { localStorage.setItem('loldle_progress', JSON.stringify(data)); } catch(e){}
+}
+
+function collectAttempts(id) {
+  const el = document.getElementById(id); if(!el) return [];
+  return [...el.querySelectorAll('.attempt')].reverse().map(d=>({
+    ok: d.classList.contains('correct'),
+    text: d.querySelector('span')?.textContent || '',
+    img: d.querySelector('img')?.src || ''
+  }));
+}
+
+function restoreProgress(data) {
+  if (!data || data.date !== todayKey()) return false;
+  S.scores = data.scores || S.scores;
+  S.done = data.done || S.done;
+  S.champWrong = data.champWrong || 0;
+  S.champGuessed = new Set(data.champGuessed || []);
+  S.item2Wrong = data.item2Wrong || 0;
+  S.item2Guessed = new Set(data.item2Guessed || []);
+  S.item3Wrong = data.item3Wrong || 0;
+  S.item3Guessed = new Set(data.item3Guessed || []);
+  S.abilWrong = data.abilWrong || 0;
+  S.abilGuessed = new Set(data.abilGuessed || []);
+  S.skinWrong = data.skinWrong || 0;
+  S.skinGuessed = new Set(data.skinGuessed || []);
+  skinChampFound = data.skinChampFound || false;
+  skinBonusUsed = data.skinBonusUsed || false;
+
+  // Re-render Part 1 wordle table from saved champRows
+  if (data.champRows && data.champRows.length) {
+    S.champRows = data.champRows.map(r => {
+      const champ  = CHAMPIONS.find(c => c.id === r.champId);
+      const target = CHAMPIONS.find(c => c.id === r.targetId) || S.champTarget;
+      if (!champ || !target) return null;
+      const meta  = CHAMP_META[champ.id]  || {gender:"?",region:"?",race:"?",skins:0};
+      const tmeta = CHAMP_META[target.id] || {gender:"?",region:"?",race:"?",skins:0};
+      return { champ, meta, target, tmeta };
+    }).filter(Boolean);
+    renderChampTable();
+  }
+
+  // Re-render attempt history for parts 2-5
+  if (data.attempts) {
+    Object.entries({item2:"item2-attempts",item3:"item3-attempts",abil:"abil-attempts",skin:"skin-attempts"})
+      .forEach(([key,domId])=>{
+        const list = data.attempts[key] || [];
+        list.forEach(a=>addTry(domId, a.ok, a.text, a.img||""));
+      });
+  }
+
+  // Restore unlock states
+  S.done.forEach((done,i)=>{
+    if(done){
+      const tab=document.getElementById('tab'+i);
+      if(tab){tab.classList.add('done');tab.querySelector('.num').textContent='✓';}
+    }
+  });
+
+  // Restore part-specific UI
+  if (S.done[1]) { document.getElementById('item2-next').disabled=false; }
+  if (S.done[2]) { document.getElementById('item3-next').disabled=false; }
+  if (S.done[3]) { document.getElementById('abil-next').disabled=false; revealAbilFull(); }
+  if (S.done[4]) {
+    const sNext=document.getElementById('skin-next'); if(sNext) sNext.disabled=false;
+    drawSkin(true);
+    document.getElementById('skin-answer').classList.add('show');
+  }
+  if (skinChampFound) {
+    document.getElementById('skin-phase1').querySelector('input').disabled=true;
+    document.getElementById('skin-phase2').style.display='';
+    // Re-init skin name autocomplete
+    const champSkins=SKINS.filter(s=>s.championId===S.skinTarget.championId);
+    makeAC('skin-name-input','skin-name-ac',
+      q=>(q?champSkins.filter(s=>norm(s.name).includes(q)):champSkins).map(s=>({label:s.name})),
+      submitSkinName,new Set());
+    if(skinBonusUsed) document.getElementById('skin-name-input').disabled=true;
+  }
+
+  // Restore comps/stats display
+  renderComps();
+  renderStats();
+  setCount('champ-counter', S.champWrong);
+  setCount('item2-counter', S.item2Wrong);
+  setCount('item3-counter', S.item3Wrong);
+  setCount('abil-counter', S.abilWrong);
+  setCount('skin-counter', S.skinWrong);
+
+  // Show descriptions if enough errors
+  if(S.item2Wrong>=5){
+    const d=document.getElementById('item2-desc');
+    const desc=S.item2Target?.desc?.trim();
+    d.textContent=desc?('📖 '+desc):'(Pas de description)';
+    d.classList.add('show');
+  }
+  if(S.item3Wrong>=5){
+    const d=document.getElementById('item3-desc');
+    const desc=S.item3Target?.desc?.trim();
+    d.textContent=desc?('📖 '+desc):'(Pas de description)';
+    d.classList.add('show');
+  }
+
+  return true;
+}
+
+// Save progress after every submit action — patch all submit functions
+// We wrap by renaming originals with a suffix _inner
+
+// ═══════════════════════════════════════════════════════════════════
+// MODE SWITCH (Classic / Endless)
+// ═══════════════════════════════════════════════════════════════════
+let currentMode = 'classic';
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('mode-classic').classList.toggle('active', mode === 'classic');
+  document.getElementById('mode-endless').classList.toggle('active', mode === 'endless');
+  const classicView  = document.getElementById('classic-view');
+  const endlessPanel = document.getElementById('endless-panel');
+  const tabsBar      = document.getElementById('tabs-bar');
+  const resultsTab   = document.getElementById('results-tab');
+  if (mode === 'classic') {
+    classicView.style.display  = '';
+    endlessPanel.style.display = 'none';
+    if (tabsBar)    tabsBar.style.display    = '';
+    if (resultsTab) resultsTab.style.display = '';
+  } else {
+    classicView.style.display  = 'none';
+    endlessPanel.style.display = 'block';
+    if (tabsBar)    tabsBar.style.display    = 'none';
+    if (resultsTab) resultsTab.style.display = 'none';
+    showEndlessBestScores();
+    document.getElementById('endless-select-screen').style.display = 'block';
+    document.getElementById('endless-game-screen').style.display   = 'none';
+  }
+}
+
+// ── Endless State ────────────────────────────────────────────────
+let endlessState = { modeIdx:null, diff:'easy', streak:0, active:false, target:null, guessed:null, wrongCount:0 };
+
+function showEndlessBestScores() {
+  const box = document.getElementById('endless-best-scores');
+  if (!box) return;
+  const keys = ['1_easy','1_medium','1_hard','2_easy','2_hard','3_easy','3_medium','3_hard','4_easy','4_hard','4_hell'];
+  const labels = {
+    '1_easy':'Compos Facile','1_medium':'Compos Moyen','1_hard':'Compos Difficile',
+    '2_easy':'Stats Facile','2_hard':'Stats Difficile',
+    '3_easy':'Capa Facile','3_medium':'Capa Moyen','3_hard':'Capa Difficile',
+    '4_easy':'Skin Facile','4_hard':'Skin Difficile','4_hell':'Skin Enfer'
+  };
+  const parts = keys.map(k => {
+    const v = parseInt(localStorage.getItem('endless_best_'+k)||'0');
+    if (!v) return '';
+    return '<span style="margin:2px 6px;white-space:nowrap;">' + labels[k] + ' <strong style="color:var(--gold)">' + v + '</strong></span>';
+  }).filter(Boolean);
+  box.innerHTML = parts.length
+    ? '<div style="margin-top:6px;">Meilleurs scores : ' + parts.join('') + '</div>'
+    : '';
+}
+
+function startEndless(modeIdx, diff) {
+  endlessState.modeIdx = modeIdx;
+  endlessState.diff    = diff || 'easy';
+  endlessState.streak  = 0;
+  endlessState.active  = true;
+  document.getElementById('endless-select-screen').style.display = 'none';
+  document.getElementById('endless-game-screen').style.display   = 'block';
+  document.getElementById('endless-game-over').classList.remove('show');
+  document.getElementById('endless-streak-val').textContent = '0';
+  // Show diff badge
+  const badge = document.getElementById('endless-diff-badge');
+  if (badge) {
+    const labels = {easy:'Facile',medium:'Moyen',hard:'Difficile',hell:'Enfer'};
+    const colors = {easy:'rgba(30,122,30,.4)',medium:'rgba(180,130,0,.4)',hard:'rgba(200,39,44,.3)',hell:'rgba(120,0,120,.4)'};
+    const borders = {easy:'var(--green)',medium:'#b8820a',hard:'var(--red)',hell:'#aa00aa'};
+    badge.textContent = labels[diff] || diff;
+    badge.style.background = colors[diff] || '';
+    badge.style.border = '1px solid ' + (borders[diff] || 'var(--border)');
+    badge.style.color = diff === 'hell' ? '#e060e0' : diff === 'hard' ? '#ff8080' : diff === 'medium' ? '#f0c040' : '#6fcf6f';
+  }
+  loadEndlessRound();
+}
+
+function loadEndlessRound() {
+  const container = document.getElementById('endless-game-container');
+  const idx  = endlessState.modeIdx;
+  const diff = endlessState.diff;
+
+  if (idx === 1) {
+    // Composants: only items that HAVE components
+    const pool = ITEMS.filter(i => i.components && i.components.length > 0);
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    const target = pool[Math.floor(Math.random() * pool.length)];
+    renderEndlessComps(target, diff);
+  } else if (idx === 2) {
+    const pool = ITEMS.filter(i => i.stats && Object.keys(i.stats).length > 0);
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    const target = pool[Math.floor(Math.random() * pool.length)];
+    renderEndlessStats(target, diff);
+  } else if (idx === 3) {
+    const pool = ABILITIES.length > 0 ? ABILITIES : [];
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    const good = pool.filter(a => (a.rawDesc||a.ratio||'').length > 40);
+    const target = (good.length ? good : pool)[Math.floor(Math.random() * (good.length || pool.length))];
+    renderEndlessAbility(target, diff);
+  } else if (idx === 4) {
+    const pool = SKINS.length > 0 ? SKINS : [];
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    const nonBase = pool.filter(s => s.skinNum !== 0 && !((s.name||'').toLowerCase().includes('classique')));
+    const src = nonBase.length ? nonBase : pool;
+    const target = src[Math.floor(Math.random() * src.length)];
+    renderEndlessSkin(target, diff);
+  }
+}
+
+// ── Comps renderer ───────────────────────────────────────────────
+function renderEndlessComps(item, diff) {
+  endlessState.target  = item;
+  endlessState.guessed = new Set();
+  const answerPool = ITEMS.filter(i => i.components && i.components.length > 0);
+
+  // Decide which components to show
+  let shownComps = item.components || [];
+  if (diff === 'hard') shownComps = shownComps.slice(0, 1); // only 1
+  const showPrice = (diff === 'easy');
+
+  const compsHtml = shownComps.map(c =>
+    '<div class="item-comp">' +
+    '<img src="' + c.img + '" alt="">' +
+    '<span class="comp-name">' + c.name + '</span>' +
+    '<span class="price">' + (c.price ? ('🪙 '+c.price) : '') + '</span>' +
+    '</div>'
+  ).join('');
+
+  const priceHtml = showPrice
+    ? '<div class="clue-box" style="padding:10px;margin-top:10px;">' +
+        '<div class="clue-label">Prix total</div>' +
+        '<div class="clue-value" style="font-size:1.2em;">' + (item.price || '—') + ' 🪙</div>' +
+      '</div>'
+    : '';
+
+  document.getElementById('endless-game-container').innerHTML =
+    '<div class="panel" style="margin-bottom:12px;">' +
+      '<div class="panel-title">🛡 Composants' + (diff==='hard' ? ' <span style="color:var(--red);font-size:.75em;">(1/' + (item.components||[]).length + ' visible)</span>' : '') + '</div>' +
+      '<div class="item-components">' + (compsHtml || '<span style="color:var(--silver);">—</span>') + '</div>' +
+      priceHtml +
+      '<div class="input-row" style="margin-top:12px;">' +
+        '<div class="autocomplete-wrapper">' +
+          '<input type="text" id="el-input" placeholder="Nom de l\'objet…" autocomplete="off">' +
+          '<div class="autocomplete-list" id="el-ac"></div>' +
+        '</div>' +
+        '<button class="btn" onclick="submitEndless()">Deviner</button>' +
+      '</div>' +
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div>' +
+    '</div>';
+
+  initEndlessAC('el-input','el-ac', q =>
+    (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      .map(x => ({label:x.name, img:x.img, id:x.id}))
+  );
+}
+
+// ── Stats renderer ───────────────────────────────────────────────
+function renderEndlessStats(item, diff) {
+  endlessState.target  = item;
+  endlessState.guessed = new Set();
+  const answerPool = ITEMS;
+
+  const statsRows = Object.entries(item.stats || {}).map(function(entry) {
+    var label = entry[0], stat = entry[1];
+    var icon = '📊', displayVal;
+    if (stat && typeof stat === 'object' && 'value' in stat) {
+      icon = stat.icon || '📊';
+      displayVal = typeof stat.value === 'string' ? stat.value : '+' + stat.value;
+    } else {
+      displayVal = typeof stat === 'string' ? (stat.includes('%') ? stat : '+' + stat) : '+' + stat;
+    }
+    return '<div class="stat-row">' +
+      '<span class="stat-icon-label"><span class="stat-emoji">' + icon + '</span> ' + label + '</span>' +
+      '<span class="stat-val">' + displayVal + '</span>' +
+      '</div>';
+  }).join('');
+
+  const descHtml = (diff === 'easy' && item.desc && item.desc.trim())
+    ? '<div class="item-desc show" style="margin-top:10px;">📖 ' + item.desc + '</div>'
+    : '';
+
+  document.getElementById('endless-game-container').innerHTML =
+    '<div class="panel" style="margin-bottom:12px;">' +
+      '<div class="panel-title">📊 Stats</div>' +
+      '<div class="stats-grid" style="margin-bottom:12px;">' + (statsRows || '<span style="color:var(--silver);">—</span>') + '</div>' +
+      descHtml +
+      '<div class="input-row" style="margin-top:12px;">' +
+        '<div class="autocomplete-wrapper">' +
+          '<input type="text" id="el-input" placeholder="Nom de l\'objet…" autocomplete="off">' +
+          '<div class="autocomplete-list" id="el-ac"></div>' +
+        '</div>' +
+        '<button class="btn" onclick="submitEndless()">Deviner</button>' +
+      '</div>' +
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div>' +
+    '</div>';
+
+  initEndlessAC('el-input','el-ac', q =>
+    (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      .map(x => ({label:x.name, img:x.img, id:x.id}))
+  );
+}
+
+// ── Ability renderer ─────────────────────────────────────────────
+function renderEndlessAbility(ab, diff) {
+  endlessState.target  = ab;
+  endlessState.guessed = new Set();
+
+  // Anonymize the description — remove champion name
+  const rawText   = ab.rawDesc || ab.ratio || '???';
+  const anonText  = anonymizeText(rawText, ab.championId);
+
+  // Build clue based on difficulty
+  let clueHtml = '';
+  if (diff === 'easy') {
+    // image (visible, not blurred) + spell name + description
+    clueHtml =
+      '<div class="ability-clue-box">' +
+        '<div class="spell-icon-wrap" style="visibility:visible;">' +
+          '<img src="' + ab.img + '" style="width:68px;height:68px;" alt="">' +
+          '<div class="key-badge show">' + (ab.key || '?') + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div style="font-family:\'Cinzel\',serif;color:var(--gold-light);font-size:.9em;margin-bottom:6px;">' + ab.name + '</div>' +
+          '<div class="ability-ratio-text">' + anonText + '</div>' +
+        '</div>' +
+      '</div>';
+  } else if (diff === 'medium') {
+    // spell name + description, no image
+    clueHtml =
+      '<div class="ability-clue-box">' +
+        '<div>' +
+          '<div style="font-family:\'Cinzel\',serif;color:var(--gold-light);font-size:.9em;margin-bottom:6px;">Touche <strong>' + (ab.key || '?') + '</strong> — ' + ab.name + '</div>' +
+          '<div class="ability-ratio-text">' + anonText + '</div>' +
+        '</div>' +
+      '</div>';
+  } else {
+    // hard: description only
+    clueHtml =
+      '<div class="ability-clue-box">' +
+        '<div class="ability-ratio-text">' + anonText + '</div>' +
+      '</div>';
+  }
+
+  document.getElementById('endless-game-container').innerHTML =
+    '<div class="panel" style="margin-bottom:12px;">' +
+      '<div class="panel-title">✨ Capacité — Quel champion ?</div>' +
+      clueHtml +
+      '<div class="input-row" style="margin-top:12px;">' +
+        '<div class="autocomplete-wrapper">' +
+          '<input type="text" id="el-input" placeholder="Nom du champion…" autocomplete="off">' +
+          '<div class="autocomplete-list" id="el-ac"></div>' +
+        '</div>' +
+        '<button class="btn" onclick="submitEndless()">Deviner</button>' +
+      '</div>' +
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div>' +
+    '</div>';
+
+  initEndlessAC('el-input','el-ac', q =>
+    (q ? CHAMPIONS.filter(x => norm(x.name).includes(norm(q))) : CHAMPIONS.slice(0,20))
+      .map(x => ({label:x.name, img:cImg(x.id), id:x.id}))
+  );
+}
+
+// ── Skin renderer ────────────────────────────────────────────────
+function renderEndlessSkin(sk, diff) {
+  endlessState.target     = sk;
+  endlessState.guessed    = new Set();
+  endlessState.wrongCount = 0;
+
+  // Build image CSS filter based on difficulty
+  let filterStyle = '';
+  let wrapClass   = '';
+  if (diff === 'easy') {
+    filterStyle = 'filter:blur(10px);';
+  } else if (diff === 'hard') {
+    filterStyle = 'filter:blur(12px) grayscale(1);';
+  } else { // hell
+    filterStyle = 'filter:blur(14px) grayscale(1);';
+    wrapClass   = 'quarter';
+  }
+
+  const imgHtml = sk.imgUrl
+    ? '<div id="endless-skin-wrap" class="' + wrapClass + '">' +
+        '<img src="' + sk.imgUrl + '" id="endless-skin-img" style="width:100%;height:auto;display:block;' + filterStyle + '">' +
+      '</div>'
+    : '<div style="color:var(--silver);text-align:center;padding:20px;">Image non disponible</div>';
+
+  document.getElementById('endless-game-container').innerHTML =
+    '<div class="panel" style="margin-bottom:12px;">' +
+      '<div class="panel-title">🎨 Skin — Quel champion ?</div>' +
+      imgHtml +
+      '<div class="input-row" style="margin-top:12px;">' +
+        '<div class="autocomplete-wrapper">' +
+          '<input type="text" id="el-input" placeholder="Nom du champion…" autocomplete="off">' +
+          '<div class="autocomplete-list" id="el-ac"></div>' +
+        '</div>' +
+        '<button class="btn" onclick="submitEndless()">Deviner</button>' +
+      '</div>' +
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div>' +
+    '</div>';
+
+  initEndlessAC('el-input','el-ac', q =>
+    (q ? CHAMPIONS.filter(x => norm(x.name).includes(norm(q))) : CHAMPIONS.slice(0,20))
+      .map(x => ({label:x.name, img:cImg(x.id), id:x.id}))
+  );
+}
+
+// ── Autocomplete helper ──────────────────────────────────────────
+function initEndlessAC(inputId, acId, queryFn) {
+  const input = document.getElementById(inputId);
+  const ac    = document.getElementById(acId);
+  if (!input || !ac) return;
+  function render() {
+    const results = queryFn(norm(input.value.trim()));
+    ac.innerHTML = results.slice(0,8).map(r =>
+      '<div onclick="pickEndlessAC(\'' + inputId + '\',\'' + acId + '\',this)">' +
+      (r.img ? '<img src="' + r.img + '" alt="">' : '') +
+      '<span>' + r.label + '</span></div>'
+    ).join('');
+    ac.classList.toggle('open', results.length > 0 && input.value.length > 0);
+  }
+  input.oninput   = render;
+  input.onkeydown = e => { if (e.key === 'Enter') submitEndless(); };
+  document.addEventListener('click', e => { if (!ac.contains(e.target) && e.target !== input) ac.classList.remove('open'); }, {once:false});
+}
+
+function pickEndlessAC(inputId, acId, el) {
+  const input = document.getElementById(inputId);
+  const ac    = document.getElementById(acId);
+  if (input) input.value = el.querySelector('span').textContent;
+  if (ac) ac.classList.remove('open');
+}
+
+function submitEndless() {
+  const input  = document.getElementById('el-input');
+  const result = document.getElementById('el-result');
+  if (!input || !result) return;
+  const val = input.value.trim();
+  if (!val) return;
+  const target = endlessState.target;
+  const idx    = endlessState.modeIdx;
+  let correct = false, correctLabel = '';
+
+  if (idx === 1 || idx === 2) {
+    const found = ITEMS.find(x => norm(x.name) === norm(val));
+    if (!found) { result.className='result-msg fail'; result.style.display='block'; result.textContent='Objet inconnu : '+val; return; }
+    correct      = norm(found.name) === norm(target.name);
+    correctLabel = target.name;
+  } else if (idx === 3) {
+    const found = CHAMPIONS.find(x => norm(x.name) === norm(val));
+    if (!found) { result.className='result-msg fail'; result.style.display='block'; result.textContent='Champion introuvable : '+val; return; }
+    endlessState.guessed.add(found.id);
+    correct      = found.id === target.championId;
+    correctLabel = target.championId;
+  } else if (idx === 4) {
+    const found = CHAMPIONS.find(x => norm(x.name) === norm(val));
+    if (!found) { result.className='result-msg fail'; result.style.display='block'; result.textContent='Champion introuvable : '+val; return; }
+    endlessState.guessed.add(found.id);
+    // On wrong guess: reduce blur slightly
+    if (found.id !== target.championId) {
+      endlessState.wrongCount++;
+      const img = document.getElementById('endless-skin-img');
+      if (img) {
+        const blur = Math.max(0, (endlessState.diff==='hell'?14:endlessState.diff==='hard'?12:10) - endlessState.wrongCount*2);
+        const gs   = endlessState.diff !== 'easy' ? ' grayscale(1)' : '';
+        img.style.filter = 'blur(' + blur + 'px)' + gs;
+      }
+    }
+    correct      = found.id === target.championId;
+    correctLabel = target.championId;
+  }
+
+  if (correct) {
+    endlessState.streak++;
+    document.getElementById('endless-streak-val').textContent = endlessState.streak;
+    result.className = 'result-msg success'; result.style.display = 'block';
+    result.textContent = '✅ Correct ! (' + correctLabel + ') — Prochain dans 1s…';
+    input.disabled = true;
+    setTimeout(() => { input.disabled = false; loadEndlessRound(); }, 1200);
+  } else {
+    endlessState.active = false;
+    const key  = endlessState.modeIdx + '_' + endlessState.diff;
+    const best = parseInt(localStorage.getItem('endless_best_'+key)||'0');
+    if (endlessState.streak > best) localStorage.setItem('endless_best_'+key, endlessState.streak);
+    document.getElementById('endless-final-score').textContent = endlessState.streak;
+    document.getElementById('endless-game-over').classList.add('show');
+    result.className = 'result-msg fail'; result.style.display = 'block';
+    result.textContent = '❌ Incorrect — C\'était : ' + correctLabel;
+    input.disabled = true;
+  }
+}
+
+function restartEndless() { startEndless(endlessState.modeIdx, endlessState.diff); }
+
+function endlessBackToMenu() {
+  endlessState.active = false;
+  endlessState.streak = 0;
+  document.getElementById('endless-select-screen').style.display = 'block';
+  document.getElementById('endless-game-screen').style.display   = 'none';
+  showEndlessBestScores();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════════════════════════
+loadLang('fr_FR').then(()=>{
+  applyI18n();
+  // Always init targets with daily seed first
+  initChamp();initItem2();initItem3();initAbil();initSkin();
+  // Then try to restore saved progress for today
+  try {
+    const saved = JSON.parse(localStorage.getItem('loldle_progress') || 'null');
+    if (saved) restoreProgress(saved);
+  } catch(e){}
+  updateCatalogue();
+}).catch(err=>{
+  document.body.innerHTML=`<div style="color:#C89B3C;font-family:Cinzel,serif;text-align:center;padding:60px;font-size:1.1em;">
+    ❌ Impossible de charger les données.<br><br>
+    <div style="background:#0A1428;border:1px solid #463714;padding:24px;display:inline-block;margin-top:16px;font-family:sans-serif;font-size:.85em;color:#F0E6D3;text-align:left;max-width:520px;">
+      <b style="color:#C89B3C;">Comment lancer le jeu :</b><br><br>
+      1. Ouvre un terminal (cmd / PowerShell / Terminal)<br>
+      2. Va dans le dossier du jeu :<br>
+      &nbsp;&nbsp;<code style="background:#000;padding:2px 8px;color:#4FC3F7;">cd C:/Users/Toi/loldle</code><br><br>
+      3. Lance le serveur :<br>
+      &nbsp;&nbsp;<code style="background:#000;padding:2px 8px;color:#4FC3F7;">python -m http.server 8000</code><br><br>
+      4. Ouvre dans ton navigateur :<br>
+      &nbsp;&nbsp;<code style="background:#000;padding:2px 8px;color:#4FC3F7;">http://localhost:8000/loldle.html</code><br><br>
+      <span style="color:#A0A0A0;font-size:.9em;">Si "python" ne marche pas, essaie <code style="background:#000;padding:1px 6px;">python3</code> ou installe Python sur <a href="https://python.org" style="color:#4FC3F7;">python.org</a></span>
+    </div>
+  </div>`;
+});
+</script>
+</body>
+</html>

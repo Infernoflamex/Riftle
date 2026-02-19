@@ -30,6 +30,7 @@ header::after{content:'';position:absolute;bottom:0;left:50%;transform:translate
 
 /* ── LANG + TABS ── */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;background:rgba(0,0,0,.25);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;}
+.topbar-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .lang-wrap{display:flex;align-items:center;gap:8px;}
 .lang-wrap label{color:var(--silver);font-size:.75em;letter-spacing:2px;text-transform:uppercase;}
 .lang-select{background:rgba(0,0,0,.6);border:1px solid var(--border);color:var(--gold-light);font-family:'Exo 2',sans-serif;font-size:.85em;padding:5px 26px 5px 10px;cursor:pointer;outline:none;border-radius:2px;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C89B3C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
@@ -38,13 +39,40 @@ header::after{content:'';position:absolute;bottom:0;left:50%;transform:translate
 .lang-select option{background:#0A1428;color:var(--gold-light);}
 .lang-loading{display:none;color:var(--silver);font-size:.75em;}
 .lang-loading.show{display:inline;}
+/* Mode buttons */
+.mode-wrap{display:flex;gap:4px;}
+.mode-btn{padding:5px 12px;background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;border-radius:2px;}
+.mode-btn:hover{border-color:var(--gold);color:var(--gold-light);}
+.mode-btn.active{background:linear-gradient(135deg,rgba(200,155,60,.3),rgba(200,155,60,.1));border-color:var(--gold);color:var(--gold);}
+/* Feedback icon */
+.feedback-icon{color:var(--silver);opacity:.55;transition:opacity .2s,color .2s;display:flex;align-items:center;text-decoration:none;}
+.feedback-icon:hover{opacity:1;color:var(--gold);}
 .tabs{display:flex;gap:4px;flex-wrap:wrap;}
-.tab{padding:7px 14px;background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;clip-path:polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%);}
+.tab{padding:7px 14px;background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;border-radius:2px;}
 .tab:hover{border-color:var(--gold);color:var(--gold-light);}
 .tab.active{background:linear-gradient(135deg,rgba(200,155,60,.3),rgba(200,155,60,.1));border-color:var(--gold);color:var(--gold);}
 .tab .num{display:inline-block;width:16px;height:16px;background:var(--gold-dark);border-radius:50%;font-size:.72em;line-height:16px;text-align:center;margin-right:5px;color:var(--gold-light);}
 .tab.done .num{background:var(--green);}
 .tab.done{border-color:var(--green);color:#6fcf6f;}
+/* Endless mode panel */
+#endless-panel{background:var(--blue-dark);min-height:calc(100vh - 140px);}
+.endless-modes{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:24px;}
+.endless-card{background:linear-gradient(135deg,rgba(13,27,42,.95),rgba(9,20,40,.9));border:1px solid var(--border);padding:20px 28px;cursor:pointer;transition:all .2s;min-width:140px;position:relative;border-radius:2px;}
+.endless-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-dark),transparent);}
+.endless-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.endless-card .ec-icon{font-size:1.8em;margin-bottom:8px;}
+.endless-card .ec-name{font-family:'Cinzel',serif;color:var(--gold-light);font-size:.85em;letter-spacing:2px;}
+.endless-score-box{background:rgba(0,0,0,.4);border:1px solid var(--border);padding:12px 20px;display:inline-block;margin-bottom:16px;}
+.endless-score-box span{font-family:'Cinzel',serif;font-size:1.6em;color:var(--gold);}
+.endless-score-box div{color:var(--silver);font-size:.75em;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.endless-game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.endless-streak{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1em;letter-spacing:2px;}
+.endless-back{background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;padding:5px 12px;cursor:pointer;border-radius:2px;transition:all .2s;}
+.endless-back:hover{border-color:var(--gold);color:var(--gold);}
+.endless-game-over{background:rgba(200,39,44,.15);border:1px solid var(--red);padding:18px;text-align:center;margin-top:14px;display:none;}
+.endless-game-over.show{display:block;}
+.endless-game-over h3{color:#ff8080;font-family:'Cinzel',serif;font-size:1.1em;letter-spacing:2px;margin-bottom:8px;}
+.endless-game-over p{color:var(--silver);font-size:.85em;}
 
 /* ── LAYOUT: sidebar + main ── */
 .page-layout{display:flex;gap:0;min-height:calc(100vh - 140px);}
@@ -204,18 +232,21 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 </header>
 
 <div class="topbar">
-  <div class="lang-wrap">
-    <label for="lang-select" data-i18n="lang_label">🌐 Langue :</label>
-    <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
-      <option value="fr_FR">🇫🇷 Français</option>
-      <option value="en_US">🇬🇧 English</option>
-      <option value="es_ES">🇪🇸 Español</option>
-      <option value="de_DE">🇩🇪 Deutsch</option>
-      <option value="ko_KR">🇰🇷 한국어</option>
-    </select>
-    <span class="lang-loading" id="lang-loading">⏳</span>
+  <div class="topbar-left">
+    <div class="lang-wrap">
+      <label for="lang-select" data-i18n="lang_label">🌐 Langue :</label>
+      <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+        <option value="fr_FR">🇫🇷 Français</option>
+        <option value="en_US">🇬🇧 English</option>
+      </select>
+      <span class="lang-loading" id="lang-loading">⏳</span>
+    </div>
+    <div class="mode-wrap">
+      <button class="mode-btn active" id="mode-classic" onclick="setMode('classic')" title="Mode classique — 5 épreuves du jour">⚔ <span data-i18n="mode_classic">Classique</span></button>
+      <button class="mode-btn" id="mode-endless" onclick="setMode('endless')" title="Mode infini — choisissez une épreuve et jouez jusqu'à une erreur">∞ <span data-i18n="mode_endless">Infini</span></button>
+    </div>
   </div>
-  <div class="tabs">
+  <div class="tabs" id="tabs-bar">
     <button class="tab active" onclick="switchTab(0)" id="tab0"><span class="num">1</span><span data-i18n="tab1">Titre</span></button>
     <button class="tab" onclick="switchTab(1)" id="tab1"><span class="num">2</span><span data-i18n="tab2">Composants</span></button>
     <button class="tab" onclick="switchTab(2)" id="tab2"><span class="num">3</span><span data-i18n="tab3">Stats</span></button>
@@ -223,8 +254,12 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
     <button class="tab" onclick="switchTab(4)" id="tab4"><span class="num">5</span><span data-i18n="tab5">Skin</span></button>
     <button class="tab" onclick="showFinalScore()" style="margin-left:8px;border-color:var(--gold);color:var(--gold);" id="results-tab">🏆</button>
   </div>
+  <a class="feedback-icon" href="mailto:votre@email.com?subject=RIFTle%20-%20Suggestion%20%2F%20Erreur" title="Signaler une erreur ou suggestion">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  </a>
 </div>
 
+<div id="classic-view">
 <div class="page-layout">
 
 <!-- ═══════════════ CATALOGUE SIDEBAR ═══════════════ -->
@@ -438,6 +473,51 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 
 </div><!-- /main-content -->
 </div><!-- /page-layout -->
+</div><!-- /classic-view -->
+
+<!-- ═══════════════ ENDLESS MODE PANEL ═══════════════ -->
+<div id="endless-panel" style="display:none;">
+  <div class="main-content" style="max-width:720px;margin:0 auto;">
+  <div id="endless-select-screen">
+    <h2 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.4em;letter-spacing:4px;margin-bottom:8px;text-align:center;">∞ <span data-i18n="mode_endless">Infini</span></h2>
+    <p style="color:var(--silver);font-size:.87em;margin-bottom:22px;text-align:center;" data-i18n="endless_intro">Choisissez une épreuve et jouez sans fin — une seule erreur et c'est terminé !</p>
+    <div class="endless-modes">
+      <div class="endless-card" onclick="startEndless(1)">
+        <div class="ec-icon">🛡</div>
+        <div class="ec-name" data-i18n="tab2">Composants</div>
+      </div>
+      <div class="endless-card" onclick="startEndless(2)">
+        <div class="ec-icon">📊</div>
+        <div class="ec-name" data-i18n="tab3">Stats</div>
+      </div>
+      <div class="endless-card" onclick="startEndless(3)">
+        <div class="ec-icon">✨</div>
+        <div class="ec-name" data-i18n="tab4">Capacité</div>
+      </div>
+      <div class="endless-card" onclick="startEndless(4)">
+        <div class="ec-icon">🎨</div>
+        <div class="ec-name" data-i18n="tab5">Skin</div>
+      </div>
+    </div>
+    <div id="endless-best-scores" style="text-align:center;margin-top:10px;color:var(--silver);font-size:.8em;"></div>
+  </div>
+  <div id="endless-game-screen" style="display:none;">
+    <div class="endless-game-header">
+      <button class="endless-back" onclick="endlessBackToMenu()">← <span data-i18n="endless_back">Choisir une épreuve</span></button>
+      <div class="endless-streak">🔥 <span data-i18n="endless_streak">Série</span> : <span id="endless-streak-val">0</span></div>
+    </div>
+    <div id="endless-game-container"></div>
+    <div class="endless-game-over" id="endless-game-over">
+      <h3>💀 <span data-i18n="endless_gameover">Partie terminée !</span></h3>
+      <p><span data-i18n="endless_score_msg">Score final :</span> <strong id="endless-final-score" style="color:var(--gold);"></strong></p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+        <button class="btn" onclick="restartEndless()" data-i18n="endless_retry">Rejouer</button>
+        <button class="btn secondary" onclick="endlessBackToMenu()" data-i18n="endless_change">Changer d'épreuve</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════════════════════════════
@@ -485,6 +565,12 @@ const I18N = {
     no_desc:'(Pas de description disponible)',
     filter_search:'Rechercher…',
     partial_region:'Region proche',
+    mode_classic:'Classique', mode_endless:'Infini',
+    endless_intro:'Choisissez une épreuve et jouez sans fin — une seule erreur et c\'est terminé !',
+    endless_back:'Choisir une épreuve', endless_streak:'Série',
+    endless_gameover:'Partie terminée !', endless_score_msg:'Score final :',
+    endless_retry:'Rejouer', endless_change:'Changer d\'épreuve',
+    endless_best:'Meilleur score',
   },
   en_US: {
     subtitle:'Five challenges · Progressive hints · Become legend',
@@ -523,6 +609,12 @@ const I18N = {
     no_desc:'(No description available)',
     filter_search:'Search…',
     partial_region:'Close region',
+    mode_classic:'Classic', mode_endless:'Endless',
+    endless_intro:'Choose a challenge and play forever — one wrong answer and it\'s over!',
+    endless_back:'Choose a challenge', endless_streak:'Streak',
+    endless_gameover:'Game Over!', endless_score_msg:'Final score:',
+    endless_retry:'Play again', endless_change:'Change challenge',
+    endless_best:'Best score',
   },
   es_ES: {
     subtitle:'Cinco pruebas · Pistas progresivas · Conviértete en leyenda',
@@ -1999,12 +2091,25 @@ function restoreProgress(data) {
   skinChampFound = data.skinChampFound || false;
   skinBonusUsed = data.skinBonusUsed || false;
 
-  // Re-render attempt history
+  // Re-render Part 1 wordle table from saved champRows
+  if (data.champRows && data.champRows.length) {
+    S.champRows = data.champRows.map(r => {
+      const champ  = CHAMPIONS.find(c => c.id === r.champId);
+      const target = CHAMPIONS.find(c => c.id === r.targetId) || S.champTarget;
+      if (!champ || !target) return null;
+      const meta  = CHAMP_META[champ.id]  || {gender:"?",region:"?",race:"?",skins:0};
+      const tmeta = CHAMP_META[target.id] || {gender:"?",region:"?",race:"?",skins:0};
+      return { champ, meta, target, tmeta };
+    }).filter(Boolean);
+    renderChampTable();
+  }
+
+  // Re-render attempt history for parts 2-5
   if (data.attempts) {
-    Object.entries({champ:'champ-attempts',item2:'item2-attempts',item3:'item3-attempts',abil:'abil-attempts',skin:'skin-attempts'})
+    Object.entries({item2:"item2-attempts",item3:"item3-attempts",abil:"abil-attempts",skin:"skin-attempts"})
       .forEach(([key,domId])=>{
         const list = data.attempts[key] || [];
-        list.forEach(a=>addTry(domId, a.ok, a.text, a.img||''));
+        list.forEach(a=>addTry(domId, a.ok, a.text, a.img||""));
       });
   }
 
@@ -2064,6 +2169,291 @@ function restoreProgress(data) {
 
 // Save progress after every submit action — patch all submit functions
 // We wrap by renaming originals with a suffix _inner
+
+// ═══════════════════════════════════════════════════════════════════
+// MODE SWITCH (Classic / Endless)
+// ═══════════════════════════════════════════════════════════════════
+let currentMode = 'classic';
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('mode-classic').classList.toggle('active', mode === 'classic');
+  document.getElementById('mode-endless').classList.toggle('active', mode === 'endless');
+
+  const classicView  = document.getElementById('classic-view');
+  const endlessPanel = document.getElementById('endless-panel');
+  const tabsBar      = document.getElementById('tabs-bar');
+  const resultsTab   = document.getElementById('results-tab');
+
+  if (mode === 'classic') {
+    classicView.style.display  = '';
+    endlessPanel.style.display = 'none';
+    if (tabsBar)    tabsBar.style.display    = '';
+    if (resultsTab) resultsTab.style.display = '';
+  } else {
+    classicView.style.display  = 'none';
+    endlessPanel.style.display = 'block';
+    if (tabsBar)    tabsBar.style.display    = 'none';
+    if (resultsTab) resultsTab.style.display = 'none';
+    showEndlessBestScores();
+    document.getElementById('endless-select-screen').style.display = 'block';
+    document.getElementById('endless-game-screen').style.display   = 'none';
+  }
+}
+
+// ── Endless Game State ────────────────────────────────────────────
+let endlessState = {
+  modeIdx: null,  // 1=items/comps, 2=stats, 3=ability, 4=skin
+  streak: 0,
+  active: false,
+};
+
+function showEndlessBestScores() {
+  const box = document.getElementById('endless-best-scores');
+  const labels = ['🛡 Composants','📊 Stats','✨ Capacité','🎨 Skin'];
+  let html = `<div style="margin-top:10px;color:var(--silver);font-size:.8em;letter-spacing:1px;">${t('endless_best')} : `;
+  const scores = [1,2,3,4].map(i => {
+    const v = parseInt(localStorage.getItem('endless_best_'+i)||'0');
+    return `${labels[i-1]} <strong style="color:var(--gold)">${v}</strong>`;
+  });
+  box.innerHTML = html + scores.join(' &nbsp;|&nbsp; ') + '</div>';
+}
+
+function startEndless(modeIdx) {
+  endlessState.modeIdx = modeIdx;
+  endlessState.streak = 0;
+  endlessState.active = true;
+  document.getElementById('endless-select-screen').style.display = 'none';
+  document.getElementById('endless-game-screen').style.display = 'block';
+  document.getElementById('endless-game-over').classList.remove('show');
+  document.getElementById('endless-streak-val').textContent = '0';
+  loadEndlessRound();
+}
+
+function loadEndlessRound() {
+  const container = document.getElementById('endless-game-container');
+  const idx = endlessState.modeIdx;
+  // Pick a random target from the loaded data
+  let target = null, pool = null;
+  if (idx === 1 || idx === 2) {
+    pool = ITEMS || [];
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    target = pool[Math.floor(Math.random()*pool.length)];
+    renderEndlessItem(target, idx === 1 ? 'comps' : 'stats');
+  } else if (idx === 3) {
+    pool = ABILITIES || [];
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    target = pool[Math.floor(Math.random()*pool.length)];
+    renderEndlessAbility(target);
+  } else if (idx === 4) {
+    pool = SKINS || [];
+    if (!pool.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
+    const nonClassic = pool.filter(s => !s.name.toLowerCase().includes('classique') && !s.name.toLowerCase().includes('classic'));
+    target = (nonClassic.length ? nonClassic : pool)[Math.floor(Math.random()*(nonClassic.length||pool.length))];
+    renderEndlessSkin(target);
+  }
+}
+
+function renderEndlessItem(item, subtype) {
+  const container = document.getElementById('endless-game-container');
+  if (subtype === 'comps') {
+    const comps = (item.from || []).map(cid => {
+      const c = (ITEMS||[]).find(x=>x.id===cid);
+      return c ? `<div style="text-align:center;padding:8px;background:rgba(0,0,0,.4);border:1px solid var(--border);display:inline-block;margin:4px;">
+        <img src="${c.img}" style="width:44px;height:44px;object-fit:contain;display:block;margin:0 auto 4px;">
+        <div style="font-size:.7em;color:var(--silver);">${c.name}</div>
+      </div>` : '';
+    }).join('');
+    container.innerHTML = `
+      <div class="panel" style="margin-bottom:12px;">
+        <div class="panel-title">🛡 Composants</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:12px;min-height:60px;">${comps||'<span style="color:var(--silver);font-size:.85em;">Pas de composants</span>'}</div>
+        <div class="clue-box" style="padding:10px;">
+          <div class="clue-label">Prix total</div>
+          <div class="clue-value" style="font-size:1.2em;">${item.total || item.price || '—'} gold</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="input-row">
+            <div class="autocomplete-wrapper">
+              <input type="text" id="el-input" placeholder="${t('item_placeholder')}" autocomplete="off">
+              <div class="autocomplete-list" id="el-ac"></div>
+            </div>
+            <button class="btn" onclick="submitEndless()">${t('guess_btn')}</button>
+          </div>
+          <div class="result-msg" id="el-result" style="margin-top:10px;"></div>
+        </div>
+      </div>`;
+  } else {
+    const statsHtml = Object.entries(item.stats||{}).map(([k,v])=>`
+      <div class="stat-row"><div class="stat-icon-label"><span>${k}</span></div><span class="stat-val">${v}</span></div>`).join('');
+    container.innerHTML = `
+      <div class="panel" style="margin-bottom:12px;">
+        <div class="panel-title">📊 Stats</div>
+        <div class="stats-grid" style="margin-bottom:12px;">${statsHtml||'<span style="color:var(--silver);">Pas de stats</span>'}</div>
+        <div class="input-row">
+          <div class="autocomplete-wrapper">
+            <input type="text" id="el-input" placeholder="${t('item_placeholder')}" autocomplete="off">
+            <div class="autocomplete-list" id="el-ac"></div>
+          </div>
+          <button class="btn" onclick="submitEndless()">${t('guess_btn')}</button>
+        </div>
+        <div class="result-msg" id="el-result" style="margin-top:10px;"></div>
+      </div>`;
+  }
+  endlessState.target = item;
+  endlessState.guessed = new Set();
+  initEndlessAC('el-input','el-ac', q => {
+    const pool = (ITEMS||[]).filter(x => !endlessState.guessed.has(x.id));
+    return (q ? pool.filter(x=>norm(x.name).includes(norm(q))) : pool.slice(0,20))
+      .map(x=>({label:x.name, img:x.img, id:x.id}));
+  });
+}
+
+function renderEndlessAbility(ab) {
+  const container = document.getElementById('endless-game-container');
+  container.innerHTML = `
+    <div class="panel" style="margin-bottom:12px;">
+      <div class="ability-clue-box" style="margin-bottom:12px;">
+        <div class="spell-icon-wrap"><img src="${ab.img}" style="width:68px;height:68px;filter:grayscale(1) brightness(.5);" alt="Sort"></div>
+        <div class="ability-ratio-text">${ab.rawDesc||ab.ratio||'...'}</div>
+      </div>
+      <div class="input-row">
+        <div class="autocomplete-wrapper">
+          <input type="text" id="el-input" placeholder="${t('p1_placeholder')}" autocomplete="off">
+          <div class="autocomplete-list" id="el-ac"></div>
+        </div>
+        <button class="btn" onclick="submitEndless()">${t('guess_btn')}</button>
+      </div>
+      <div class="result-msg" id="el-result" style="margin-top:10px;"></div>
+    </div>`;
+  endlessState.target = ab;
+  endlessState.guessed = new Set();
+  initEndlessAC('el-input','el-ac', q => {
+    const pool = (CHAMPIONS||[]).filter(x => !endlessState.guessed.has(x.id));
+    return (q ? pool.filter(x=>norm(x.name).includes(norm(q))) : pool.slice(0,20))
+      .map(x=>({label:x.name, img:x.img, id:x.id}));
+  });
+}
+
+function renderEndlessSkin(sk) {
+  const container = document.getElementById('endless-game-container');
+  const imgHtml = sk.imgUrl ? `<div style="width:100%;max-width:480px;height:200px;margin:0 auto 12px;border:1px solid var(--border);overflow:hidden;background:#000;">
+    <img src="${sk.imgUrl}" style="width:100%;height:100%;object-fit:cover;filter:blur(16px) brightness(.6);" id="endless-skin-img">
+  </div>` : '';
+  container.innerHTML = `
+    <div class="panel" style="margin-bottom:12px;">
+      <div class="panel-title">🎨 Skin — Champion ?</div>
+      ${imgHtml}
+      <div class="input-row">
+        <div class="autocomplete-wrapper">
+          <input type="text" id="el-input" placeholder="${t('p1_placeholder')}" autocomplete="off">
+          <div class="autocomplete-list" id="el-ac"></div>
+        </div>
+        <button class="btn" onclick="submitEndless()">${t('guess_btn')}</button>
+      </div>
+      <div class="result-msg" id="el-result" style="margin-top:10px;"></div>
+    </div>`;
+  endlessState.target = sk;
+  endlessState.guessed = new Set();
+  endlessState.wrongCount = 0;
+  initEndlessAC('el-input','el-ac', q => {
+    const pool = (CHAMPIONS||[]).filter(x => !endlessState.guessed.has(x.id));
+    return (q ? pool.filter(x=>norm(x.name).includes(norm(q))) : pool.slice(0,20))
+      .map(x=>({label:x.name, img:x.img, id:x.id}));
+  });
+}
+
+function initEndlessAC(inputId, acId, queryFn) {
+  const input = document.getElementById(inputId);
+  const ac = document.getElementById(acId);
+  if(!input||!ac) return;
+  input.oninput = () => {
+    const results = queryFn(norm(input.value));
+    ac.innerHTML = results.slice(0,8).map(r=>`<div data-id="${r.id||r.label}" onclick="pickEndlessAC('${inputId}','${acId}',this)">
+      ${r.img?`<img src="${r.img}" alt="">`:''}<span>${r.label}</span></div>`).join('');
+    ac.classList.toggle('open', results.length>0 && input.value.length>0);
+  };
+  input.onkeydown = e => { if(e.key==='Enter') submitEndless(); };
+}
+
+function pickEndlessAC(inputId, acId, el) {
+  const input = document.getElementById(inputId);
+  const ac = document.getElementById(acId);
+  if(input) input.value = el.querySelector('span').textContent;
+  if(ac) ac.classList.remove('open');
+}
+
+function submitEndless() {
+  const input = document.getElementById('el-input');
+  const result = document.getElementById('el-result');
+  if(!input||!result) return;
+  const val = input.value.trim();
+  if(!val) return;
+  const target = endlessState.target;
+  const idx = endlessState.modeIdx;
+  let correct = false;
+  let correctLabel = '';
+
+  if (idx === 1 || idx === 2) {
+    const found = (ITEMS||[]).find(x=>norm(x.name)===norm(val));
+    if(!found){ result.className='result-msg fail'; result.style.display='block'; result.textContent=t('unknown_item'); return; }
+    endlessState.guessed.add(found.id);
+    correct = found.id === target.id;
+    correctLabel = target.name;
+  } else if (idx === 3) {
+    const found = (CHAMPIONS||[]).find(x=>norm(x.name)===norm(val));
+    if(!found){ result.className='result-msg fail'; result.style.display='block'; result.textContent=t('unknown_champ'); return; }
+    endlessState.guessed.add(found.id);
+    correct = found.id === target.championId;
+    correctLabel = target.championId;
+  } else if (idx === 4) {
+    const found = (CHAMPIONS||[]).find(x=>norm(x.name)===norm(val));
+    if(!found){ result.className='result-msg fail'; result.style.display='block'; result.textContent=t('unknown_champ'); return; }
+    endlessState.guessed.add(found.id);
+    // Reveal more on wrong
+    if(found.id !== target.championId) {
+      endlessState.wrongCount = (endlessState.wrongCount||0)+1;
+      const img = document.getElementById('endless-skin-img');
+      if(img) img.style.filter = `blur(${Math.max(0,16-endlessState.wrongCount*3)}px) brightness(.6)`;
+    }
+    correct = found.id === target.championId;
+    correctLabel = target.championId;
+  }
+
+  if (correct) {
+    endlessState.streak++;
+    document.getElementById('endless-streak-val').textContent = endlessState.streak;
+    result.className='result-msg success'; result.style.display='block';
+    result.textContent = `✅ Correct ! (${correctLabel}) — Prochain dans 1s…`;
+    input.disabled = true;
+    setTimeout(() => {
+      input.disabled = false;
+      loadEndlessRound();
+    }, 1200);
+  } else {
+    // Game over
+    endlessState.active = false;
+    const best = parseInt(localStorage.getItem('endless_best_'+idx)||'0');
+    if(endlessState.streak > best) localStorage.setItem('endless_best_'+idx, endlessState.streak);
+    document.getElementById('endless-final-score').textContent = endlessState.streak;
+    document.getElementById('endless-game-over').classList.add('show');
+    result.className='result-msg fail'; result.style.display='block';
+    result.textContent = `❌ Incorrect — C'était : ${correctLabel}`;
+    input.disabled = true;
+  }
+}
+
+function restartEndless() {
+  startEndless(endlessState.modeIdx);
+}
+
+function endlessBackToMenu() {
+  endlessState.active = false;
+  endlessState.streak = 0;
+  document.getElementById('endless-select-screen').style.display = 'block';
+  document.getElementById('endless-game-screen').style.display = 'none';
+  showEndlessBestScores();
+}
 
 // ═══════════════════════════════════════════════════════════════════
 // BOOT

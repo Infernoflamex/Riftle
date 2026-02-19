@@ -1503,27 +1503,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3004.png"
   },
   {
-    "id": 3005,
-    "name": "Ghostcrawlers",
-    "price": 1000,
-    "desc": "45 Move Speed Wall Walk (0s) Gain the ability to walk through walls for 6 seconds. While inside walls, gain 125 move speed. Casting a spell or attacking will end this effect.",
-    "stats": {
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Boots",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3005.png"
-  },
-  {
     "id": 3006,
     "name": "Berserker's Greaves",
     "price": 1100,

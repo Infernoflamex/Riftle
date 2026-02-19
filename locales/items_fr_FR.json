@@ -1403,27 +1403,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3004.png"
   },
   {
-    "id": 3005,
-    "name": "Bottes fantomatiques",
-    "price": 1000,
-    "desc": "+45 vitesse de déplacement Perméabilité (0 sec) Vous gagnez la capacité de traverser les murs pendant 6 sec. Tant que vous êtes à l'intérieur d'un mur, vous gagnez +125 vitesse de déplacement. Lancer une compétence ou attaquer met fin à cet effet.",
-    "stats": {
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Bottes",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3005.png"
-  },
-  {
     "id": 3006,
     "name": "Jambières du berzerker",
     "price": 1100,

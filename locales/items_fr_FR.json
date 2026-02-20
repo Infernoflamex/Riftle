@@ -4716,37 +4716,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3916.png"
   },
   {
-    "id": 4003,
-    "name": "Ligne de vie",
-    "price": 1600,
-    "desc": "Propriété active - Ancre d'âme (0 sec) Vous marquez le sol sous vos pieds. 4 sec plus tard, vous retournez à l'emplacement de la marque. Vous pouvez relancer cet effet à tout moment pendant la durée d'Ancre d'âme pour retourner à l'emplacement de la marque plus tôt.",
-    "stats": {
-      "AD": {
-        "value": 25,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Rectrix",
-        "price": 775,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6690.png"
-      },
-      {
-        "name": "Épée longue",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4003.png"
-  },
-  {
     "id": 4005,
     "name": "Mandat impérial",
     "price": 2250,
@@ -4874,46 +4843,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4015.png"
   },
   {
-    "id": 4016,
-    "name": "Promesse ineffable",
-    "price": 2500,
-    "desc": "Promesse Vous gagnez 20% de la puissance de l'allié auquel vous avez fait une promesse, et vous octroyez 20% de votre accélération de compétence à l'allié auquel vous avez fait une promesse. PROPRIÉTÉ ACTIVE (0 sec) Promesse Vous faites une promesse à un allié.",
-    "stats": {
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 25,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4016.png"
-  },
-  {
-    "id": 4017,
-    "name": "Hachette infernale",
-    "price": 2500,
-    "desc": "Carbonisation (0 sec) par cible Votre prochaine compétence réussie brûle de 0 à 0 des PV actuels des ennemis en leur infligeant des dégâts physiques en 4 sec, selon le nombre de PV max qu'ils ont de plus que vous. Le maximum de dégâts bonus est atteint à 2500 PV de différence.",
-    "stats": {
-      "AD": {
-        "value": 35,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "HP": {
-        "value": 2500,
-        "icon": "❤️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4017.png"
-  },
-  {
     "id": 4401,
     "name": "Force de la nature",
     "price": 2800,
@@ -4953,47 +4882,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4401.png"
-  },
-  {
-    "id": 4402,
-    "name": "Médaillon d'excitation",
-    "price": 2950,
-    "desc": "Éternité : vous récupérez du mana équivalent à 15% des dégâts avant mitigation que vous infligent les champions et des PV équivalents à 25% du mana que vous dépensez (jusqu'à 20 par compétence lancée et par seconde).Excitation : après avoir utilisé une compétence, vous récupérez 3% de vos PV manquants et 3% de votre mana manquant en 3 sec. « Sus aux Noxiens ! » – Bobdyr, gardien du temple",
-    "stats": {
-      "Mana": {
-        "value": 300,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 400,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Catalyseur de l'éternité",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3803.png"
-      },
-      {
-        "name": "Marteau de Caulfield",
-        "price": 1050,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4402.png"
   },
   {
     "id": 4403,

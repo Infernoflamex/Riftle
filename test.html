@@ -244,7 +244,7 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 <body>
 
 <header>
-  <div class="logo">RIF<span>tle</span></div>
+  <div class="logo">LOL<span>dle</span></div>
   <div class="subtitle" data-i18n="subtitle">Cinq épreuves · Indices progressifs · Devenez légende</div>
 </header>
 
@@ -1717,8 +1717,8 @@ const SKIN_W = 500, SKIN_H = 280;
 // Change ZOOM_START to make the initial zoom tighter (higher = more zoomed in)
 // Change ZOOM_STEP to control how much it unzooms per wrong answer
 // Change ZOOM_ERRORS to set how many errors before fully revealed (max 20)
-const ZOOM_START  = 3.0;   // ← initial zoom multiplier (e.g. 2 = zoomed 2x)
-const ZOOM_STEP   = 0.3;   // ← how much zoom decreases per wrong answer
+const ZOOM_START  = 2.0;   // ← initial zoom multiplier (e.g. 2 = zoomed 2x)
+const ZOOM_STEP   = 0.2;   // ← how much zoom decreases per wrong answer
 const ZOOM_ERRORS = 9999;  // ← wrong answers before full reveal (effectively unlimited)
 // ────────────────────────────────────────────────────────────────────
 
@@ -2361,18 +2361,20 @@ function renderEndlessComps(item, diff) {
   endlessState.guessed = new Set();
   const answerPool = ITEMS.filter(i => i.components && i.components.length > 0);
 
-  // Decide which components to show
-  let shownComps = item.components || [];
-  if (diff === 'hard') shownComps = shownComps.slice(0, 1); // only 1
+  const allComps  = item.components || [];
+  // hard = reveal 1, medium/easy = reveal all
+  const revealN   = (diff === 'hard') ? 1 : allComps.length;
   const showPrice = (diff === 'easy');
 
-  const compsHtml = shownComps.map(c =>
-    '<div class="item-comp">' +
-    '<img src="' + c.img + '" alt="">' +
-    '<span class="comp-name">' + c.name + '</span>' +
-    '<span class="price">' + (c.price ? ('🪙 '+c.price) : '') + '</span>' +
-    '</div>'
-  ).join('');
+  // Build tiles: revealed = real data, locked = ??? greyed out (like classic mode)
+  const compsHtml = allComps.map((c, i) => {
+    const locked = i >= revealN;
+    return '<div class="item-comp' + (locked ? ' locked' : '') + '">' +
+      '<img src="' + (locked ? '' : c.img) + '" alt=""' + (locked ? ' style="opacity:0"' : '') + '>' +
+      '<span class="comp-name">' + (locked ? '???' : c.name) + '</span>' +
+      '<span class="price">' + (locked ? '' : (c.price ? '🪙 '+c.price : '')) + '</span>' +
+    '</div>';
+  }).join('');
 
   const priceHtml = showPrice
     ? '<div class="clue-box" style="padding:10px;margin-top:10px;">' +
@@ -2381,10 +2383,16 @@ function renderEndlessComps(item, diff) {
       '</div>'
     : '';
 
+  const diffLabel = diff === 'hard'
+    ? ' <span style="color:var(--red);font-size:.75em;">(1/' + allComps.length + ' révélé)</span>'
+    : diff === 'medium'
+    ? ' <span style="color:#f0c040;font-size:.75em;">(sans prix total)</span>'
+    : '';
+
   document.getElementById('endless-game-container').innerHTML =
     '<div class="panel" style="margin-bottom:12px;">' +
-      '<div class="panel-title">🛡 Composants' + (diff==='hard' ? ' <span style="color:var(--red);font-size:.75em;">(1/' + (item.components||[]).length + ' visible)</span>' : '') + '</div>' +
-      '<div class="item-components">' + (compsHtml || '<span style="color:var(--silver);">—</span>') + '</div>' +
+      '<div class="panel-title">🛡 Composants' + diffLabel + '</div>' +
+      '<div class="item-components" id="el-comps-display">' + (compsHtml || '<span style="color:var(--silver);">—</span>') + '</div>' +
       priceHtml +
       '<div class="input-row" style="margin-top:12px;">' +
         '<div class="autocomplete-wrapper">' +
@@ -2579,6 +2587,132 @@ function pickEndlessAC(inputId, acId, el) {
   if (ac) ac.classList.remove('open');
 }
 
+// ── Reveal helpers — called after every answer (correct OR wrong) ──
+
+function revealEndlessComps(target) {
+  // Show all components revealed + full price
+  const allComps = (target.components || []).map(c =>
+    '<div class="item-comp">' +
+    '<img src="' + c.img + '" alt="">' +
+    '<span class="comp-name">' + c.name + '</span>' +
+    '<span class="price">' + (c.price ? ('🪙 '+c.price) : '') + '</span>' +
+    '</div>'
+  ).join('');
+  const compsEl = document.getElementById('el-comps-display');
+  if (compsEl) compsEl.innerHTML = allComps || '—';
+  // Show total price
+  let priceEl = document.querySelector('#endless-game-container .clue-box .clue-value');
+  if (!priceEl) {
+    // Price box wasn't shown (medium/hard) — inject it
+    const panel = document.querySelector('#endless-game-container .panel');
+    if (panel) {
+      const box = document.createElement('div');
+      box.className = 'clue-box';
+      box.style.padding = '10px';
+      box.style.marginTop = '10px';
+      box.innerHTML = '<div class="clue-label">Prix total</div>' +
+        '<div class="clue-value" style="font-size:1.2em;">' + (target.price||'—') + ' 🪙</div>';
+      // insert before input-row
+      const inputRow = panel.querySelector('.input-row');
+      if (inputRow) panel.insertBefore(box, inputRow);
+    }
+  } else {
+    priceEl.textContent = (target.price||'—') + ' 🪙';
+  }
+  // Show item image + full name banner
+  const panel = document.querySelector('#endless-game-container .panel');
+  if (panel) {
+    const rev = document.createElement('div');
+    rev.className = 'answer-reveal show';
+    rev.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px;margin-top:10px;';
+    rev.innerHTML =
+      '<img src="' + target.img + '" style="width:56px;height:56px;object-fit:contain;border:1px solid var(--gold);">' +
+      '<strong style="color:var(--gold);font-family:Cinzel,serif;font-size:1em;">' + target.name + '</strong>';
+    const resultEl = panel.querySelector('.result-msg');
+    if (resultEl) panel.insertBefore(rev, resultEl);
+  }
+}
+
+function revealEndlessStats(target) {
+  const panel = document.querySelector('#endless-game-container .panel');
+  if (!panel) return;
+  // Show full description if not already visible
+  let descEl = panel.querySelector('.item-desc');
+  if (descEl) { descEl.classList.add('show'); }
+  else if (target.desc && target.desc.trim()) {
+    const d = document.createElement('div');
+    d.className = 'item-desc show';
+    d.style.marginTop = '10px';
+    d.textContent = '📖 ' + target.desc;
+    const inputRow = panel.querySelector('.input-row');
+    if (inputRow) panel.insertBefore(d, inputRow);
+  }
+  // Show item image + name
+  const rev = document.createElement('div');
+  rev.className = 'answer-reveal show';
+  rev.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px;margin-top:10px;';
+  rev.innerHTML =
+    '<img src="' + target.img + '" style="width:56px;height:56px;object-fit:contain;border:1px solid var(--gold);">' +
+    '<strong style="color:var(--gold);font-family:Cinzel,serif;font-size:1em;">' + target.name + '</strong>';
+  const resultEl = panel.querySelector('.result-msg');
+  if (resultEl) panel.insertBefore(rev, resultEl);
+}
+
+function revealEndlessAbility(target) {
+  const panel = document.querySelector('#endless-game-container .panel');
+  if (!panel) return;
+  const champ = CHAMPIONS.find(c => c.id === target.championId);
+  const champName = champ ? champ.name : target.championId;
+  // Replace clue box with full reveal
+  const clueBox = panel.querySelector('.ability-clue-box');
+  if (clueBox) {
+    clueBox.innerHTML =
+      '<div class="spell-icon-wrap" style="visibility:visible;">' +
+        '<img src="' + target.img + '" style="width:68px;height:68px;" alt="">' +
+        '<div class="key-badge show">' + (target.key||'?') + '</div>' +
+      '</div>' +
+      '<div>' +
+        '<div style="font-family:Cinzel,serif;color:var(--gold-light);font-size:.9em;margin-bottom:4px;">' +
+          '<strong>' + target.name + '</strong>' +
+        '</div>' +
+        '<div style="color:var(--silver);font-size:.8em;margin-bottom:6px;">Touche : <strong style="color:var(--gold)">' + (target.key||'?') + '</strong></div>' +
+        '<div class="ability-ratio-text">' + (target.rawDesc||target.ratio||'') + '</div>' +
+      '</div>';
+  }
+  // Champion reveal banner
+  const rev = document.createElement('div');
+  rev.className = 'answer-reveal show';
+  rev.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px;margin-top:10px;';
+  rev.innerHTML =
+    '<img src="' + cImg(target.championId) + '" style="width:56px;height:56px;border-radius:2px;border:2px solid var(--gold);">' +
+    '<strong style="color:var(--gold);font-family:Cinzel,serif;font-size:1em;">' + champName + '</strong>';
+  const resultEl = panel.querySelector('.result-msg');
+  if (resultEl) panel.insertBefore(rev, resultEl);
+}
+
+function revealEndlessSkin(target) {
+  // Restore image to full unblurred, full resolution
+  const wrap = document.getElementById('endless-skin-wrap');
+  const img  = document.getElementById('endless-skin-img');
+  if (wrap) { wrap.classList.remove('quarter'); wrap.style.maxWidth = '700px'; wrap.style.width = '100%'; }
+  if (img)  { img.style.filter = 'none'; }
+  // Show skin name banner
+  const panel = document.querySelector('#endless-game-container .panel');
+  if (!panel) return;
+  const champ = CHAMPIONS.find(c => c.id === target.championId);
+  const rev = document.createElement('div');
+  rev.className = 'answer-reveal show';
+  rev.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px;margin-top:10px;';
+  rev.innerHTML =
+    (champ ? '<img src="' + cImg(champ.id) + '" style="width:48px;height:48px;border-radius:2px;border:2px solid var(--gold);">' : '') +
+    '<div>' +
+      '<div style="color:var(--gold);font-family:Cinzel,serif;font-size:1em;">' + (target.name || target.championId) + '</div>' +
+      '<div style="color:var(--silver);font-size:.8em;margin-top:2px;">' + (champ ? champ.name : target.championId) + '</div>' +
+    '</div>';
+  const resultEl = panel.querySelector('.result-msg');
+  if (resultEl) panel.insertBefore(rev, resultEl);
+}
+
 function submitEndless() {
   const input  = document.getElementById('el-input');
   const result = document.getElementById('el-result');
@@ -2604,37 +2738,44 @@ function submitEndless() {
     const found = CHAMPIONS.find(x => norm(x.name) === norm(val));
     if (!found) { result.className='result-msg fail'; result.style.display='block'; result.textContent='Champion introuvable : '+val; return; }
     endlessState.guessed.add(found.id);
-    // On wrong guess: reduce blur slightly
     if (found.id !== target.championId) {
       endlessState.wrongCount++;
       const img = document.getElementById('endless-skin-img');
       if (img) {
         const blur = Math.max(0, (endlessState.diff==='hell'?14:endlessState.diff==='hard'?12:10) - endlessState.wrongCount*2);
         const gs   = endlessState.diff !== 'easy' ? ' grayscale(1)' : '';
-        img.style.filter = 'blur(' + blur + 'px)' + gs;
+        img.style.filter = 'blur('+blur+'px)'+gs;
       }
     }
     correct      = found.id === target.championId;
     correctLabel = target.championId;
   }
 
+  // Always reveal after answer
+  input.disabled = true;
+  if (idx === 1)      revealEndlessComps(target);
+  else if (idx === 2) revealEndlessStats(target);
+  else if (idx === 3) revealEndlessAbility(target);
+  else if (idx === 4) revealEndlessSkin(target);
+
   if (correct) {
     endlessState.streak++;
     document.getElementById('endless-streak-val').textContent = endlessState.streak;
     result.className = 'result-msg success'; result.style.display = 'block';
-    result.textContent = '✅ Correct ! (' + correctLabel + ') — Prochain dans 1s…';
-    input.disabled = true;
-    setTimeout(() => { input.disabled = false; loadEndlessRound(); }, 1200);
+    result.textContent = '✅ Correct ! — Prochain dans 2s…';
+    setTimeout(() => { input.disabled = false; loadEndlessRound(); }, 2000);
   } else {
     endlessState.active = false;
     const key  = endlessState.modeIdx + '_' + endlessState.diff;
     const best = parseInt(localStorage.getItem('endless_best_'+key)||'0');
     if (endlessState.streak > best) localStorage.setItem('endless_best_'+key, endlessState.streak);
     document.getElementById('endless-final-score').textContent = endlessState.streak;
-    document.getElementById('endless-game-over').classList.add('show');
+    // Delay game-over panel so player can see the reveal
     result.className = 'result-msg fail'; result.style.display = 'block';
     result.textContent = '❌ Incorrect — C\'était : ' + correctLabel;
-    input.disabled = true;
+    setTimeout(() => {
+      document.getElementById('endless-game-over').classList.add('show');
+    }, 1500);
   }
 }
 

@@ -1728,42 +1728,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3036.png"
   },
   {
-    "id": 3039,
-    "name": "Jugement d'Atma",
-    "price": 2900,
-    "desc": "Poigne ferme Vous gagnez 0-30% de chances de coup critique selon vos PV bonus.",
-    "stats": {
-      "HP": {
-        "value": 700,
-        "icon": "❤️",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "20%",
-        "icon": "🎯",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Cape d'agilité",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1018.png"
-      },
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3039.png"
-  },
-  {
     "id": 3041,
     "name": "Voleur d'âmes de Mejai",
     "price": 1500,

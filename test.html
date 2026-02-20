@@ -71,7 +71,7 @@ header::after{content:'';position:absolute;bottom:0;left:50%;transform:translate
 .endless-streak{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1em;letter-spacing:2px;}
 .endless-back{background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;padding:5px 12px;cursor:pointer;border-radius:2px;transition:all .2s;}
 .endless-back:hover{border-color:var(--gold);color:var(--gold);}
-.endless-game-over{background:rgba(200,39,44,.15);border:1px solid var(--red);padding:18px;text-align:center;margin-top:14px;display:none;}
+.endless-game-over{background:rgba(20,20,25,0.95);border:1px solid var(--border);padding:18px;text-align:center;display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:600;width:92%;max-width:520px;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.6);}
 .endless-game-over.show{display:block;}
 .endless-game-over h3{color:#ff8080;font-family:'Cinzel',serif;font-size:1.1em;letter-spacing:2px;margin-bottom:8px;}
 .endless-game-over p{color:var(--silver);font-size:.85em;}
@@ -597,6 +597,7 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
           <span id="endless-skips-display" style="color:var(--gold);font-weight:700;">0</span>
           <button id="endless-skip-btn" class="btn secondary" style="padding:3px 10px;font-size:.75em;" onclick="skipEndless()" data-i18n="skip_btn">Passer</button>
         </div>
+        <button class="btn secondary" style="font-size:.82em;padding:6px 10px;" onclick="showLeaderboardPanel()" title="Classement">🏆</button>
       </div>
     </div>
     <div id="endless-game-container"></div>
@@ -616,13 +617,14 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
         <button class="btn" onclick="restartEndless()" data-i18n="endless_retry">Rejouer</button>
         <button class="btn secondary" onclick="endlessBackToMenu()" data-i18n="endless_change">Changer d'épreuve</button>
         <button class="btn secondary" onclick="showLeaderboardPanel()" data-i18n="lb_see_btn">Classement 🏆</button>
+        <button class="btn secondary" onclick="document.getElementById('endless-game-over').classList.remove('show')" style="min-width:40px;">Fermer</button>
       </div>
     </div>
     <!-- Leaderboard panel (shown inline) -->
     <div id="endless-leaderboard-panel" style="display:none;margin-top:16px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1em;" data-i18n="lb_title">Classement Infini</h3>
-        <button class="btn secondary" style="font-size:.75em;padding:4px 10px;" onclick="document.getElementById('endless-leaderboard-panel').style.display='none'" data-i18n="lb_close">Fermer</button>
+        <button class="btn secondary" style="font-size:.75em;padding:4px 10px;" onclick="closeLeaderboardPanel()" data-i18n="lb_close">Fermer</button>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="lb-filter-row"></div>
       <div id="lb-table-container" style="overflow-x:auto;"></div>
@@ -1184,38 +1186,46 @@ async function loadLang(lang) {
   if (langCache[lang]) { applyLang(langCache[lang], lang); return; }
   setLangLoading(true);
   try {
-    const [cr, ir] = await Promise.all([
-      fetch(`./locales/champions_${lang}.json`),
-      fetch(`./locales/items_${lang}.json`)
+    // Fetch localized resources from /locales
+    const base = './locales';
+    const champUrl = `${base}/champions_${lang}.json`;
+    const itemsUrl = `${base}/items_${lang}.json`;
+    const abilUrl  = `${base}/abilities_${lang}.json`;
+    const skinsUrl = `${base}/skins.json`;
+
+    const [cR,iR,aR,sR] = await Promise.all([
+      fetch(champUrl).catch(()=>null),
+      fetch(itemsUrl).catch(()=>null),
+      fetch(abilUrl).catch(()=>null),
+      fetch(skinsUrl).catch(()=>null)
     ]);
-    if (!cr.ok) throw new Error(`champions_${lang}.json (${cr.status})`);
-    if (!ir.ok) throw new Error(`items_${lang}.json (${ir.status})`);
-    const [champions, rawItems] = await Promise.all([cr.json(), ir.json()]);
 
-    let abilitiesData = null;
-    try { const r=await fetch(`./locales/abilities_${lang}.json`); if(r.ok) abilitiesData=await r.json(); } catch(e){}
+    const championsData = cR && cR.ok ? await cR.json() : [];
+    const rawItems = iR && iR.ok ? await iR.json() : [];
+    const abilitiesData = aR && aR.ok ? await aR.json() : [];
+    const skinsData = sR && sR.ok ? await sR.json() : [];
 
-    let skinsData = langCache['__skins__'] || null;
-    if(!skinsData){
-      try {
-        const r=await fetch('./locales/skins.json');
-        if(r.ok){ skinsData=await r.json(); langCache['__skins__']=skinsData; console.log('✅ skins.json loaded:',skinsData.length,'skins'); }
-        else console.warn('⚠️ skins.json HTTP',r.status);
-      } catch(e){ console.warn('⚠️ skins.json not found:',e.message); }
-    }
+    // Normalize champions: allow either array or DDragon-style object
+    let champions = [];
+    if (Array.isArray(championsData)) champions = championsData;
+    else if (championsData && championsData.data) champions = Object.values(championsData.data).map(c=>({ id:c.id, name:c.name, title:c.title, img:`${DD}/img/champion/${c.id}.png` }));
 
-    const items = rawItems.filter(i=>i.price>0).map(i=>({
+    // Normalize items: ensure img and component imgs
+    const items = (Array.isArray(rawItems) ? rawItems : []).map(i=>({
       ...i,
-      img:`${DD}/img/item/${i.id}.png`,
-      components:(i.components||[]).map(c=>({...c,img:c.img&&c.img.startsWith('http')?c.img:`${DD}/img/item/${c.img||c.imgId||''}.png`}))
+      img: i.img && i.img.startsWith('http') ? i.img : `${DD}/img/item/${i.id}.png`,
+      components: (i.components||[]).map(c => ({
+        ...c,
+        img: c.img && c.img.startsWith('http') ? c.img : (c.img ? `${DD}/img/item/${c.img}` : (c.imgId?`${DD}/img/item/${c.imgId}.png` : ''))
+      }))
     }));
 
-    const cached = {champions, items, abilities:abilitiesData, skins:skinsData};
+    const cached = { champions, items, abilities: abilitiesData || [], skins: skinsData || [] };
     langCache[lang] = cached;
     applyLang(cached, lang);
   } catch(err) {
     console.error(err);
-    showLangError(err.message);
+    showLangError(err.message || String(err));
   } finally { setLangLoading(false); }
 }
 
@@ -2558,30 +2568,34 @@ function renderEndlessComps(item, diff, item2) {
   endlessState.target  = item;
   endlessState.target2 = item2 || null;
   endlessState.guessed = new Set();
+  // track per-target solved state for hell mode (store target ids)
+  endlessState.hellSolved = new Set();
+  // allow revealing full price for one item only per hell round
+  endlessState.hellPriceRevealed = false;
   const answerPool = ITEMS.filter(i => i.components && i.components.length > 0);
-
   let clueHtml = '';
-  if (diff === 'hell' && item2) {
-    // Combine stats of two items and show total price
-    const combinedStats = {};
-    [item, item2].forEach(it => {
-      Object.entries(it.stats||{}).forEach(([k,v]) => {
-        const val = (v && typeof v === 'object') ? (v.value||0) : v;
-        const icon= (v && typeof v === 'object') ? v.icon : '📊';
-        if (!combinedStats[k]) combinedStats[k] = {value:0, icon};
-        combinedStats[k].value += (parseFloat(val)||0);
-      });
-    });
-    const statsHtml = buildStatsRows(combinedStats);
-    const combinedPrice = (item.price||0) + (item2.price||0);
-    clueHtml =
-      '<div class="panel-title">💀 ' + t('diff_hell') + ' — Stats + Prix combinés de 2 objets</div>' +
-      '<div class="stats-grid" style="margin-bottom:10px;">' + (statsHtml||'—') + '</div>' +
-      '<div class="clue-box" style="padding:10px;margin-bottom:12px;">' +
-        '<div class="clue-label">' + t('p2_price') + '</div>' +
-        '<div class="clue-value" style="font-size:1.2em;">' + combinedPrice + ' 🪙</div>' +
-      '</div>';
-  } else {
+  // helper to render components html for an item with N revealed components
+  const makeCompsHtml = (it, revealN) => {
+    const comps = it.components || [];
+    return comps.map((c, i) => {
+      const isRevealed = (i < revealN);
+      return '<div class="item-comp' + (isRevealed ? '' : ' locked') + '">' +
+        '<img src="' + (isRevealed ? c.img : '') + '" alt=""' + (isRevealed ? '' : ' style="opacity:0"') + '>' +
+        '<span class="comp-name">' + (isRevealed ? c.name : '???') + '</span>' +
+        '<span class="price">' + (isRevealed ? (c.price ? '🪙 ' + c.price : '') : '🪙 ???') + '</span>' +
+        '</div>';
+    }).join('');
+  };
+
+  // ── Fixed Hell Mode Logic for Components ─────────────────────────
+if (diff === 'hell' && item2) {
+  const combinedPrice = (item.price || 0) + (item2.price || 0);
+  const compsHtml = makeCompsHtml(item, 1) + makeCompsHtml(item2, 1);
+
+  clueHtml =
+    '<div class="panel-title">💀 ' + t('diff_hell') + ' — ' + t('p2_comps') + ' (2 Objets)</div>' +
+    '<div class="item-components" id="el-comps-display">' + (compsHtml || '—') + '</div>';
+}else {
     const allComps = item.components || [];
     const revealN  = (diff === 'hard') ? 1 : allComps.length;
     const showPrice= (diff === 'easy' || diff === 'hard'); // both easy and hard show price
@@ -2601,21 +2615,72 @@ function renderEndlessComps(item, diff, item2) {
       (showPrice ? '<div class="clue-box" style="padding:10px;margin-top:10px;"><div class="clue-label">'+t('p2_price')+'</div><div class="clue-value" style="font-size:1.2em;">'+(item.price||'—')+' 🪙</div></div>' : '');
   }
 
-  document.getElementById('endless-game-container').innerHTML =
-    '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
-    '<div class="input-row" style="margin-top:12px;">' +
-      '<div class="autocomplete-wrapper">' +
-        '<input type="text" id="el-input" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
-        '<div class="autocomplete-list" id="el-ac"></div>' +
+  // For hell mode with two items, render two inputs (sequential answers)
+  if (diff === 'hell' && item2) {
+    document.getElementById('endless-game-container').innerHTML =
+      '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
+      '<div class="input-row" style="margin-top:12px;display:flex;gap:8px;align-items:flex-start;">' +
+        '<div style="flex:1">' +
+          '<div class="autocomplete-wrapper">' +
+            '<input type="text" id="el-input-1" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
+            '<div class="autocomplete-list" id="el-ac-1"></div>' +
+          '</div>' +
+          '<div style="margin-top:6px"><button class="btn" onclick="submitEndless(1)">'+t('guess_btn')+'</button></div>' +
+        '</div>' +
+        '<div style="flex:1">' +
+          '<div class="autocomplete-wrapper">' +
+            '<input type="text" id="el-input-2" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
+            '<div class="autocomplete-list" id="el-ac-2"></div>' +
+          '</div>' +
+          '<div style="margin-top:6px"><button class="btn" onclick="submitEndless(2)">'+t('guess_btn')+'</button></div>' +
+        '</div>' +
       '</div>' +
-      '<button class="btn" onclick="submitEndless()">'+t('guess_btn')+'</button>' +
-    '</div>' +
-    '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div>' +
+      // split comps display into two slots so we can reveal them individually
+      '<div style="display:flex;gap:10px;margin-top:12px;">' +
+        '<div style="flex:1">' +
+          '<div class="item-components" id="el-comps-1" style="">' + (makeCompsHtml(item,1) || '—') + '</div>' +
+          '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
+            '<div id="el-price-1" style="color:var(--silver);">Prix : •••</div>' +
+            '<button class="btn secondary" id="el-price-btn-1" onclick="revealPrice(1)">Afficher prix</button>' +
+          '</div>' +
+        '</div>' +
+        '<div style="flex:1">' +
+          '<div class="item-components" id="el-comps-2">' + (makeCompsHtml(item2,1) || '—') + '</div>' +
+          '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
+            '<div id="el-price-2" style="color:var(--silver);">Prix : •••</div>' +
+            '<button class="btn secondary" id="el-price-btn-2" onclick="revealPrice(2)">Afficher prix</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '</div>';
 
-  initEndlessAC('el-input','el-ac', q =>
-    (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
-      .map(x => ({label:x.name, img:x.img, id:x.id}))
-  );
+    initEndlessAC('el-input-1','el-ac-1', q =>
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+        .map(x => ({label:x.name, img:x.img, id:x.id}))
+    );
+    initEndlessAC('el-input-2','el-ac-2', q =>
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+        .map(x => ({label:x.name, img:x.img, id:x.id}))
+    );
+  }
+  else {
+    document.getElementById('endless-game-container').innerHTML =
+      '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
+      '<div class="input-row" style="margin-top:12px;">' +
+        '<div class="autocomplete-wrapper">' +
+          '<input type="text" id="el-input" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
+          '<div class="autocomplete-list" id="el-ac"></div>' +
+        '</div>' +
+        '<button class="btn" onclick="submitEndless()">'+t('guess_btn')+'</button>' +
+      '</div>' +
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
+
+    initEndlessAC('el-input','el-ac', q =>
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+        .map(x => ({label:x.name, img:x.img, id:x.id}))
+    );
+  }
 }
 
 // ── Stats renderer ───────────────────────────────────────────────
@@ -2623,7 +2688,9 @@ function renderEndlessStats(item, diff, item2) {
   endlessState.target  = item;
   endlessState.target2 = item2 || null;
   endlessState.guessed = new Set();
+  endlessState.hellSolved = new Set();
   const answerPool = ITEMS;
+  endlessState.hellPriceRevealed = false;
 
   let clueHtml = '';
   if (diff === 'hell' && item2) {
@@ -2648,21 +2715,78 @@ function renderEndlessStats(item, diff, item2) {
       '<div class="stats-grid" style="margin-bottom:12px;">' + (statsHtml||'—') + '</div>' + descHtml;
   }
 
-  document.getElementById('endless-game-container').innerHTML =
-    '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
-    '<div class="input-row" style="margin-top:12px;">' +
-      '<div class="autocomplete-wrapper">' +
-        '<input type="text" id="el-input" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
-        '<div class="autocomplete-list" id="el-ac"></div>' +
-      '</div>' +
-      '<button class="btn" onclick="submitEndless()">'+t('guess_btn')+'</button>' +
-    '</div>' +
-    '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
+  if (diff === 'hell' && item2) {
+    // show combined stats but provide two inputs and two reveal slots
+    // compute combined stats for slot rendering to avoid complex inline IIFE
+    (function(){
+      const combinedStatsForSlots = {};
+      [item,item2].forEach(it=>{ Object.entries(it.stats||{}).forEach(([k,v]) => {
+        const val = (v && typeof v === 'object') ? (v.value||0) : v;
+        const icon = (v && typeof v === 'object') ? v.icon : '📊';
+        if (!combinedStatsForSlots[k]) combinedStatsForSlots[k] = {value:0, icon};
+        combinedStatsForSlots[k].value += (parseFloat(val)||0);
+      }); });
+      document.getElementById('endless-game-container').innerHTML =
+        '<div class="panel" style="margin-bottom:12px;">' +
+        '<div class="panel-title">💀 ' + t('diff_hell') + ' — Stats combinées de 2 objets</div>' +
+        '<div class="stats-grid" style="margin-bottom:12px;">' + (buildStatsRows(combinedStatsForSlots)||'—') + '</div>' +
+        '<div class="input-row" style="margin-top:12px;display:flex;gap:8px;align-items:flex-start;">' +
+          '<div style="flex:1">' +
+            '<div class="autocomplete-wrapper">' +
+              '<input type="text" id="el-input-1" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
+              '<div class="autocomplete-list" id="el-ac-1"></div>' +
+            '</div>' +
+            '<div style="margin-top:6px"><button class="btn" onclick="submitEndless(1)">'+t('guess_btn')+'</button></div>' +
+            '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
+              '<div id="el-price-1" style="color:var(--silver);">Prix : •••</div>' +
+              '<button class="btn secondary" id="el-price-btn-1" onclick="revealPrice(1)">Afficher prix</button>' +
+            '</div>' +
+          '</div>' +
+          '<div style="flex:1">' +
+            '<div class="autocomplete-wrapper">' +
+              '<input type="text" id="el-input-2" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
+              '<div class="autocomplete-list" id="el-ac-2"></div>' +
+            '</div>' +
+            '<div style="margin-top:6px"><button class="btn" onclick="submitEndless(2)">'+t('guess_btn')+'</button></div>' +
+            '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
+              '<div id="el-price-2" style="color:var(--silver);">Prix : •••</div>' +
+              '<button class="btn secondary" id="el-price-btn-2" onclick="revealPrice(2)">Afficher prix</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;gap:10px;margin-top:12px;">' +
+          '<div class="stats-grid" id="el-stats-1" style="flex:1">—</div>' +
+          '<div class="stats-grid" id="el-stats-2" style="flex:1">—</div>' +
+        '</div>' +
+        '<div class="result-msg" id="el-result" style="margin-top:10px;"></div>' +
+        '</div>';
+    })();
 
-  initEndlessAC('el-input','el-ac', q =>
-    (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
-      .map(x => ({label:x.name, img:x.img, id:x.id}))
-  );
+    initEndlessAC('el-input-1','el-ac-1', q =>
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+        .map(x => ({label:x.name, img:x.img, id:x.id}))
+    );
+    initEndlessAC('el-input-2','el-ac-2', q =>
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+        .map(x => ({label:x.name, img:x.img, id:x.id}))
+    );
+  } else {
+    document.getElementById('endless-game-container').innerHTML =
+      '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
+      '<div class="input-row" style="margin-top:12px;">' +
+        '<div class="autocomplete-wrapper">' +
+          '<input type="text" id="el-input" placeholder="'+t('item_placeholder')+'" autocomplete="off">' +
+          '<div class="autocomplete-list" id="el-ac"></div>' +
+        '</div>' +
+        '<button class="btn" onclick="submitEndless()">'+t('guess_btn')+'</button>' +
+      '</div>' +
+      '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
+
+    initEndlessAC('el-input','el-ac', q =>
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+        .map(x => ({label:x.name, img:x.img, id:x.id}))
+    );
+  }
 }
 
 // ── Ability renderer ─────────────────────────────────────────────
@@ -2760,6 +2884,21 @@ function revealEndlessComps(target) {
   _insertRevealBanner(target.img, target.name);
 }
 
+// Reveal just one of the two comps slots (1 or 2)
+function revealSingleEndlessComps(target, slotIndex) {
+  const slot = document.getElementById('el-comps-' + slotIndex);
+  if (!slot) return;
+  const html = (target.components||[]).map(c =>
+    '<div class="item-comp"><img src="'+c.img+'" alt=""><span class="comp-name">'+c.name+'</span><span class="price">'+(c.price?'🪙 '+c.price:'')+'</span></div>'
+  ).join('');
+  slot.innerHTML = html;
+  _insertRevealBanner(target.img, target.name);
+  // show price if price was previously revealed for the round
+  const priceEl = document.getElementById('el-price-'+slotIndex);
+  const btn = document.getElementById('el-price-btn-'+slotIndex);
+  if (priceEl && endlessState.hellPriceRevealed) { priceEl.textContent = 'Prix : '+(target.price||'—')+' 🪙'; if(btn) btn.disabled=true; }
+}
+
 function revealEndlessStats(target) {
   const panel = document.querySelector('#endless-game-container .panel'); if(!panel) return;
   let descEl = panel.querySelector('.item-desc');
@@ -2770,6 +2909,25 @@ function revealEndlessStats(target) {
     const ir=panel.querySelector('.input-row'); if(ir) panel.insertBefore(d,ir);
   }
   _insertRevealBanner(target.img, target.name);
+}
+
+// Reveal stats for a single slot (1 or 2)
+function revealSingleEndlessStats(target, slotIndex) {
+  const panel = document.querySelector('#endless-game-container .panel'); if(!panel) return;
+  const slot = document.getElementById('el-stats-' + slotIndex);
+  if (!slot) return;
+  // Replace slot content with the target's stats
+  slot.innerHTML = buildStatsRows(target.stats) || '—';
+  // also show description if present
+  if (target.desc && target.desc.trim()) {
+    const d = document.createElement('div'); d.className='item-desc show'; d.style.marginTop='10px';
+    d.textContent='📖 '+target.desc;
+    slot.appendChild(d);
+  }
+  _insertRevealBanner(target.img, target.name);
+  const priceEl = document.getElementById('el-price-'+slotIndex);
+  const btn = document.getElementById('el-price-btn-'+slotIndex);
+  if (priceEl && endlessState.hellPriceRevealed) { priceEl.textContent = 'Prix : '+(target.price||'—')+' 🪙'; if(btn) btn.disabled=true; }
 }
 
 function revealEndlessAbility(target) {
@@ -2836,16 +2994,67 @@ function pickEndlessAC(inputId, acId, el) {
 }
 
 // ── Submit ───────────────────────────────────────────────────────
-function submitEndless() {
-  const input  = document.getElementById('el-input');
+function submitEndless(inputSlot) {
   const result = document.getElementById('el-result');
-  if (!input||!result) return;
-  const val = input.value.trim(); if(!val) return;
+  if (!result) return;
   const target = endlessState.target;
+  const target2 = endlessState.target2 || null;
   const idx    = endlessState.modeIdx;
   let correct = false, correctLabel = '';
+  const genericInput = document.getElementById('el-input');
+  const val = genericInput ? genericInput.value.trim() : '';
+  // Special handling: comps/stats hell mode with two targets -> sequential two-input handling
+  if ((idx === 1 || idx === 2) && endlessState.diff === 'hell' && target2) {
+    const in1 = document.getElementById('el-input-1');
+    const in2 = document.getElementById('el-input-2');
+    if (!in1 || !in2) return;
 
-  if (idx === 1 || idx === 2) {
+    // determine which input is being submitted
+    let inputEl = null;
+    if (typeof inputSlot === 'string') inputEl = document.getElementById(inputSlot);
+    else if (typeof inputSlot === 'number') inputEl = document.getElementById('el-input-' + inputSlot);
+    else inputEl = (document.activeElement===in1?in1:(document.activeElement===in2?in2:(!in1.disabled?in1:in2)));
+
+    const v = inputEl.value.trim();
+    if (!v) { result.className='result-msg fail'; result.style.display='block'; result.textContent=t('lb_no_name'); return; }
+    // prevent same answer in both inputs when other is not yet solved
+    const other = (inputEl===in1?in2:in1);
+    if (other.value && !other.disabled && norm(v) === norm(other.value.trim())) {
+      result.className='result-msg fail'; result.style.display='block'; result.textContent='Les réponses doivent être différentes.'; return;
+    }
+    const found = ITEMS.find(x => norm(x.name)===norm(v));
+    if (!found) { result.className='result-msg fail'; result.style.display='block'; result.textContent=t('unknown_item')+': '+v; return; }
+
+    // decide which target this answer matches (if any) and that it's not already solved
+    let matched = null, matchedIdx = null;
+    if (!endlessState.hellSolved.has(target.id) && found.id === target.id) { matched = target; matchedIdx = 1; }
+    else if (!endlessState.hellSolved.has(target2.id) && found.id === target2.id) { matched = target2; matchedIdx = 2; }
+
+    if (!matched) {
+      // wrong answer -> end run
+      correct = false; correctLabel = (found?found.name:v);
+    } else {
+      // correct single answer
+      endlessState.hellSolved.add(matched.id);
+      inputEl.disabled = true; inputEl.classList.add('solved');
+      if (idx === 1) revealSingleEndlessComps(matched, matchedIdx);
+      else if (idx === 2) revealSingleEndlessStats(matched, matchedIdx);
+      // if both solved => mark overall correct
+      if (endlessState.hellSolved.has(target.id) && endlessState.hellSolved.has(target2.id)) {
+        correct = true; correctLabel = target.name + ' + ' + target2.name;
+      } else {
+        // not finished yet: show success for single answer and wait for next
+        result.className='result-msg success'; result.style.display='block'; result.textContent='✅ Correct ! — Reste 1 réponse…';
+        // focus other input
+        setTimeout(()=>{ if (!other.disabled) { other.focus(); } }, 150);
+        return;
+      }
+    }
+  }
+  else if (idx === 1 || idx === 2) {
+    const input  = document.getElementById('el-input');
+    if (!input) return;
+    const val = input.value.trim(); if(!val) return;
     const found = ITEMS.find(x => norm(x.name)===norm(val));
     if (!found) { result.className='result-msg fail'; result.style.display='block'; result.textContent=t('unknown_item')+': '+val; return; }
     correct      = norm(found.name)===norm(target.name);
@@ -2874,11 +3083,15 @@ function submitEndless() {
   }
 
   // Always reveal
-  input.disabled = true;
-  if (idx===1)      revealEndlessComps(target);
-  else if (idx===2) revealEndlessStats(target);
-  else if (idx===3) revealEndlessAbility(target);
-  else if (idx===4) revealEndlessSkin(target);
+  if ((idx===1 || idx===2) && endlessState.diff === 'hell' && target2) {
+    // reveals handled per-slot for hell mode
+  } else {
+    const inputEl = document.getElementById('el-input'); if (inputEl) inputEl.disabled = true;
+    if (idx===1)      revealEndlessComps(target);
+    else if (idx===2) revealEndlessStats(target);
+    else if (idx===3) revealEndlessAbility(target);
+    else if (idx===4) revealEndlessSkin(target);
+  }
 
   if (correct) {
     endlessState.streak++;
@@ -2896,7 +3109,14 @@ function submitEndless() {
     updateSkipsHUD();
     result.className='result-msg success'; result.style.display='block';
     result.textContent='✅ Correct ! — Prochain dans 2s…';
-    setTimeout(() => { input.disabled=false; loadEndlessRound(); }, 2000);
+    setTimeout(() => {
+      if ((idx===1 || idx===2) && endlessState.diff==='hell' && endlessState.target2) {
+        const in1=document.getElementById('el-input-1'), in2=document.getElementById('el-input-2'); if(in1) in1.disabled=false; if(in2) in2.disabled=false;
+      } else {
+        const inpt=document.getElementById('el-input'); if (inpt) inpt.disabled=false;
+      }
+      loadEndlessRound();
+    }, 2000);
   } else {
     endlessState.active = false;
     const key  = endlessState.modeIdx+'_'+endlessState.diff;
@@ -2904,6 +3124,18 @@ function submitEndless() {
     if (endlessState.streak>best) localStorage.setItem('endless_best_'+key, endlessState.streak);
     document.getElementById('endless-final-score').textContent = endlessState.streak;
     result.className='result-msg fail'; result.style.display='block';
+    // If hell mode with two targets, reveal both answers
+    if ((idx===1 || idx===2) && endlessState.diff === 'hell' && target2) {
+      // disable inputs
+      const in1 = document.getElementById('el-input-1'), in2 = document.getElementById('el-input-2'); if (in1) in1.disabled = true; if (in2) in2.disabled = true;
+      // reveal both
+      if (idx===1) {
+        revealSingleEndlessComps(target, 1); revealSingleEndlessComps(target2, 2);
+      } else {
+        revealSingleEndlessStats(target, 1); revealSingleEndlessStats(target2, 2);
+      }
+      correctLabel = target.name + ' + ' + target2.name;
+    }
     result.textContent='❌ Incorrect — C\'était : '+correctLabel;
     setTimeout(() => { document.getElementById('endless-game-over').classList.add('show'); }, 1500);
   }
@@ -2936,10 +3168,16 @@ async function submitLeaderboard() {
     list.push(entry);
     list.sort((a,b) => b.score-a.score);
     const top = list.slice(0,100); // keep top 100
-    await window.storage.set('lb_'+key, JSON.stringify(top), true);
+    if (window.storage && typeof window.storage.set === 'function') {
+      await window.storage.set('lb_'+key, JSON.stringify(top), true);
+    } else {
+      localStorage.setItem('lb_'+key, JSON.stringify(top));
+    }
     status.textContent = t('lb_saved');
     status.style.color = 'var(--green)';
     document.getElementById('endless-leaderboard-form').style.display = 'none';
+    // refresh leaderboard table for current key
+    try { loadLeaderboardTab(key); } catch(e){}
   } catch(e) {
     status.textContent = t('lb_error');
     status.style.color = 'var(--red)';
@@ -2947,25 +3185,49 @@ async function submitLeaderboard() {
 }
 
 async function safeStorageGet(key) {
-  try { const r = await window.storage.get(key, true); return r ? r.value : null; }
-  catch(e) { return null; }
+  try {
+    if (window.storage && typeof window.storage.get === 'function') {
+      const r = await window.storage.get(key, true); return r ? r.value : null;
+    }
+    const raw = localStorage.getItem(key); return raw ? raw : null;
+  } catch(e) { return null; }
 }
 
 async function showLeaderboardPanel() {
   const panel = document.getElementById('endless-leaderboard-panel');
+  // hide main endless panel and show leaderboard as the main content
+  const main = document.getElementById('endless-panel'); if (main) main.style.display = 'none';
   panel.style.display = 'block';
-  // Build filter buttons for all keys
-  const allKeys = ['1_easy','1_medium','1_hard','1_hell','2_easy','2_hard','2_hell','3_easy','3_medium','3_hard','4_easy','4_hard','4_hell'];
-  const names   = {'1':'🛡','2':'📊','3':'✨','4':'🎨'};
-  const diffs   = {easy:t('diff_easy'),medium:t('diff_medium'),hard:t('diff_hard'),hell:t('diff_hell')};
+  // style as main content
+  panel.style.position = 'relative'; panel.style.marginTop = ''; panel.style.padding = '18px'; panel.style.maxWidth = '980px'; panel.style.margin = '18px auto';
+  // Render categories -> modes UI (click a category to reveal modes, then pick a mode)
+  const categories = [
+    {id:'1', label:t('p2_comps'), icon:'🛡', modes:['easy','medium','hard','hell']},
+    {id:'2', label:t('p3_stats'), icon:'📊', modes:['easy','hard','hell']},
+    {id:'3', label:t('es_abil_title'), icon:'✨', modes:['easy','medium','hard']},
+    {id:'4', label:t('es_skin_title'), icon:'🎨', modes:['easy','hard','hell']}
+  ];
   const filterRow = document.getElementById('lb-filter-row');
-  const current   = endlessState.modeIdx+'_'+endlessState.diff;
-  filterRow.innerHTML = allKeys.map(k => {
-    const [idx,d] = k.split('_');
-    const active  = k===current ? 'style="border-color:var(--gold);color:var(--gold);"' : '';
-    return '<button class="btn secondary" style="font-size:.72em;padding:3px 8px;" '+active+' onclick="loadLeaderboardTab(\''+k+'\')">'+names[idx]+' '+diffs[d]+'</button>';
-  }).join('');
-  loadLeaderboardTab(current);
+  filterRow.innerHTML = categories.map(cat =>
+    '<button class="btn secondary" style="font-size:.82em;padding:6px 10px;margin-right:6px;" onclick="(function(){ buildModesFor(\''+cat.id+'\'); })()">'+cat.icon+' '+cat.label+'</button>'
+  ).join('');
+  // Insert modes row placeholder
+  let modeRow = document.getElementById('lb-mode-row');
+  if (!modeRow) {
+    modeRow = document.createElement('div'); modeRow.id='lb-mode-row'; modeRow.style.margin='8px 0 12px'; filterRow.parentNode.insertBefore(modeRow, filterRow.nextSibling);
+  }
+  // Helper to populate modes for a category
+  window.buildModesFor = function(catId) {
+    const cat = categories.find(c=>c.id===catId); if(!cat) return;
+    const diffs = {easy:t('diff_easy'),medium:t('diff_medium'),hard:t('diff_hard'),hell:t('diff_hell')};
+    modeRow.innerHTML = cat.modes.map(m =>
+      '<button class="btn" style="font-size:.78em;padding:5px 10px;margin-right:6px;" onclick="loadLeaderboardTab(\''+cat.id+'_'+m+'\')">'+diffs[m]+'</button>'
+    ).join('');
+    // auto-open first mode
+    if (cat.modes.length) loadLeaderboardTab(cat.id+'_'+cat.modes[0]);
+  };
+  // Auto-click first category
+  if (categories.length) window.buildModesFor(categories[0].id);
 }
 
 async function loadLeaderboardTab(key) {
@@ -2980,7 +3242,14 @@ async function loadLeaderboardTab(key) {
   try {
     const raw  = await safeStorageGet('lb_'+key);
     const list = raw ? JSON.parse(raw) : [];
-    if (!list.length) { container.innerHTML = '<div style="color:var(--silver);font-size:.85em;padding:10px;">'+t('lb_empty')+'</div>'; return; }
+    if (!list.length) {
+      // Show helpful debug if there are stored lb_* keys but not for this mode
+      const keys = Object.keys(localStorage).filter(k=>k.startsWith('lb_'));
+      let note = '<div style="color:var(--silver);font-size:.85em;padding:10px;">'+t('lb_empty')+'<br/>';
+      if (keys.length) note += 'Local keys: '+keys.join(', ');
+      note += '</div>';
+      container.innerHTML = note; return;
+    }
     let rows = list.slice(0,50).map((e,i) =>
       '<tr style="'+(i%2?'background:rgba(255,255,255,.03)':'')+'">' +
         '<td style="padding:5px 10px;color:var(--gold);">'+(i+1)+'</td>' +
@@ -2997,6 +3266,23 @@ async function loadLeaderboardTab(key) {
   } catch(e) {
     container.innerHTML = '<div style="color:var(--red);font-size:.85em;padding:10px;">Erreur de chargement.</div>';
   }
+}
+
+function closeLeaderboardPanel() {
+  const panel = document.getElementById('endless-leaderboard-panel'); if (panel) panel.style.display = 'none';
+  const main = document.getElementById('endless-panel'); if (main) main.style.display = '';
+}
+
+function revealPrice(slotIndex) {
+  if (!endlessState || endlessState.hellPriceRevealed) return;
+  const target = (slotIndex===1 ? endlessState.target : endlessState.target2);
+  if (!target) return;
+  // reveal price in UI
+  const priceEl = document.getElementById('el-price-'+slotIndex);
+  const btn = document.getElementById('el-price-btn-'+slotIndex);
+  if (priceEl) priceEl.textContent = 'Prix : '+(target.price||'—')+' 🪙';
+  if (btn) btn.disabled = true;
+  endlessState.hellPriceRevealed = true;
 }
 
 // ═══════════════════════════════════════════════════════════════════

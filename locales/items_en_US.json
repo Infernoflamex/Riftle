@@ -1828,42 +1828,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3036.png"
   },
   {
-    "id": 3039,
-    "name": "Atma's Reckoning",
-    "price": 2900,
-    "desc": "700 Health Big Hands Gain 0-30% Critical Strike Chance, scaling with your bonus Health.",
-    "stats": {
-      "HP": {
-        "value": 700,
-        "icon": "❤️",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "20%",
-        "icon": "🎯",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Cloak of Agility",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1018.png"
-      },
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3039.png"
-  },
-  {
     "id": 3041,
     "name": "Mejai's Soulstealer",
     "price": 1500,

@@ -435,7 +435,7 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
   </div>
   <div class="panel">
     <div id="skin-display-wrapper">
-      <canvas id="skin-canvas" width="500" height="280"></canvas>
+      <canvas id="skin-canvas" width="500" height="280" oncontextmenu="return false" ondragstart="return false"></canvas>
     </div>
     <!-- Phase 1: guess champion -->
     <div id="skin-phase1">
@@ -2843,7 +2843,7 @@ function renderEndlessSkin(sk, diff) {
 
   const imgHtml = sk.imgUrl
     ? '<div id="endless-skin-wrap" class="'+wrapClass+'">' +
-        '<img src="'+sk.imgUrl+'" id="endless-skin-img" style="width:100%;height:auto;display:block;'+filterStyle+'">' +
+        '<img src="'+sk.imgUrl+'" id="endless-skin-img" style="width:100%;height:auto;display:block;'+filterStyle+'" oncontextmenu="return false" ondragstart="return false">' +
       '</div>'
     : '<div style="color:var(--silver);text-align:center;padding:20px;">Image non disponible</div>';
 

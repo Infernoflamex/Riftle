@@ -3359,73 +3359,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3124.png"
   },
   {
-    "id": 3128,
-    "name": "Bracelet de feu mortel",
-    "price": 2900,
-    "desc": "Propriété active - Le silence : vous infligez des dégâts magiques équivalents à 15% des PV max de la cible. Après quoi, la cible subit15% de dégâts en plus pendant 4 sec (90(0 sec)).",
-    "stats": {
-      "AP": {
-        "value": 120,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Baguette trop grosse",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Codex méphitique",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3128.png"
-  },
-  {
-    "id": 3131,
-    "name": "Épée du divin",
-    "price": 2300,
-    "desc": "Propriété active - Bénédiction divine : octroie +100% de vitesse d'attaque et +100% de chances de coup critique pendant 3 sec ou pour 3 attaques de base (90(0 sec)).",
-    "stats": {
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "25%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Dague dentelée",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      },
-      {
-        "name": "Dague",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      },
-      {
-        "name": "Dague",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3131.png"
-  },
-  {
     "id": 3133,
     "name": "Marteau de Caulfield",
     "price": 1050,
@@ -5155,36 +5088,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4633.png"
   },
   {
-    "id": 4638,
-    "name": "Pierre de balise attentive",
-    "price": 1100,
-    "desc": "Cache arcanique Cet objet peut stocker jusqu'à 3 Balises de contrôle achetées.",
-    "stats": {
-      "MR": {
-        "value": 15,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 10,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4638.png"
-  },
-  {
     "id": 4642,
     "name": "Miroir en verre de Bandle",
     "price": 900,
@@ -5219,42 +5122,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4642.png"
-  },
-  {
-    "id": 4643,
-    "name": "Pierre de balise vigilante",
-    "price": 2300,
-    "desc": "Cache arcanique Cet objet peut stocker jusqu'à 3 Balises de contrôle achetées. Contemplation Le nombre de Balises camouflées et de Balises de contrôle que vous pouvez poser est augmenté de 1.",
-    "stats": {
-      "MR": {
-        "value": 30,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 250,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Pierre de balise attentive",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4638.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4643.png"
   },
   {
     "id": 4645,

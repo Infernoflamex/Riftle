@@ -45,8 +45,10 @@ header::after{content:'';position:absolute;bottom:0;left:50%;transform:translate
 .mode-btn:hover{border-color:var(--gold);color:var(--gold-light);}
 .mode-btn.active{background:linear-gradient(135deg,rgba(200,155,60,.3),rgba(200,155,60,.1));border-color:var(--gold);color:var(--gold);}
 /* Feedback icon */
-.feedback-icon{color:var(--silver);opacity:.55;transition:opacity .2s,color .2s;display:flex;align-items:center;text-decoration:none;}
+.feedback-icon{color:var(--silver);opacity:.55;transition:opacity .2s,color .2s;display:flex;align-items:center;text-decoration:none;position:relative;}
 .feedback-icon:hover{opacity:1;color:var(--gold);}
+.feedback-icon .fb-tooltip{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--blue-panel);border:1px solid var(--border);color:var(--gold-light);font-size:.72em;padding:6px 12px;white-space:nowrap;z-index:300;pointer-events:none;border-radius:2px;}
+.feedback-icon:hover .fb-tooltip{display:block;}
 .tabs{display:flex;gap:4px;flex-wrap:wrap;}
 .tab{padding:7px 14px;background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;border-radius:2px;}
 .tab:hover{border-color:var(--gold);color:var(--gold-light);}
@@ -69,7 +71,7 @@ header::after{content:'';position:absolute;bottom:0;left:50%;transform:translate
 .endless-streak{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1em;letter-spacing:2px;}
 .endless-back{background:transparent;border:1px solid var(--border);color:var(--silver);font-family:'Exo 2',sans-serif;font-size:.75em;padding:5px 12px;cursor:pointer;border-radius:2px;transition:all .2s;}
 .endless-back:hover{border-color:var(--gold);color:var(--gold);}
-.endless-game-over{background:rgba(200,39,44,.15);border:1px solid var(--red);padding:18px;text-align:center;margin-top:14px;display:none;}
+.endless-game-over{background:rgba(20,20,25,0.95);border:1px solid var(--border);padding:18px;text-align:center;display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:600;width:92%;max-width:520px;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.6);}
 .endless-game-over.show{display:block;}
 .endless-game-over h3{color:#ff8080;font-family:'Cinzel',serif;font-size:1.1em;letter-spacing:2px;margin-bottom:8px;}
 .endless-game-over p{color:var(--silver);font-size:.85em;}
@@ -244,7 +246,7 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 <body>
 
 <header>
-  <div class="logo">RIF<span>tle</span></div>
+  <div class="logo">LOL<span>dle</span></div>
   <div class="subtitle" data-i18n="subtitle">Cinq épreuves · Indices progressifs · Devenez légende</div>
 </header>
 
@@ -259,10 +261,14 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
       <span class="lang-loading" id="lang-loading">⏳</span>
     </div>
     <div class="mode-wrap">
-      <button class="mode-btn active" id="mode-classic" onclick="setMode('classic')" title="Mode classique — 5 épreuves du jour">⚔ <span data-i18n="mode_classic">Classique</span></button>
-      <button class="mode-btn" id="mode-endless" onclick="setMode('endless')" title="Mode infini — choisissez une épreuve et jouez jusqu'à une erreur">∞ <span data-i18n="mode_endless">Infini</span></button>
+      <button class="mode-btn active" id="mode-classic" onclick="setMode('classic')">⚔ <span data-i18n="mode_classic">Classique</span></button>
+      <button class="mode-btn" id="mode-endless" onclick="setMode('endless')">∞ <span data-i18n="mode_endless">Infini</span></button>
     </div>
   </div>
+  <a class="feedback-icon" href="mailto:votre@email.com?subject=RIFTle%20-%20Suggestion%20%2F%20Erreur">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span class="fb-tooltip" data-i18n="feedback_tooltip">Signaler une erreur ou suggérer une idée</span>
+  </a>
   <div class="tabs" id="tabs-bar">
     <button class="tab active" onclick="switchTab(0)" id="tab0"><span class="num">1</span><span data-i18n="tab1">Titre</span></button>
     <button class="tab" onclick="switchTab(1)" id="tab1"><span class="num">2</span><span data-i18n="tab2">Composants</span></button>
@@ -271,9 +277,6 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
     <button class="tab" onclick="switchTab(4)" id="tab4"><span class="num">5</span><span data-i18n="tab5">Skin</span></button>
     <button class="tab" onclick="showFinalScore()" style="margin-left:8px;border-color:var(--gold);color:var(--gold);" id="results-tab">🏆</button>
   </div>
-  <a class="feedback-icon" href="mailto:votre@email.com?subject=RIFTle%20-%20Suggestion%20%2F%20Erreur" title="Signaler une erreur ou suggestion">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-  </a>
 </div>
 
 <div id="classic-view">
@@ -497,77 +500,85 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
   <div class="page-layout" style="min-height:calc(100vh - 100px);">
   <div class="main-content">
   <div id="endless-select-screen">
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.4em;letter-spacing:4px;margin-bottom:8px;text-align:center;">∞ Mode Infini</h2>
-    <p style="color:var(--silver);font-size:.87em;margin-bottom:22px;text-align:center;">Choisissez une épreuve et une difficulté — une seule erreur et c'est terminé !</p>
+    <h2 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.4em;letter-spacing:4px;margin-bottom:8px;text-align:center;">∞ <span data-i18n="mode_endless">Infini</span></h2>
+    <p style="color:var(--silver);font-size:.87em;margin-bottom:22px;text-align:center;" data-i18n="endless_intro">Choisissez une épreuve et une difficulté — une seule erreur et c'est terminé !</p>
 
     <!-- Composants -->
     <div class="endless-section-block">
-      <div class="endless-section-title">🛡 Composants d'Objet</div>
+      <div class="endless-section-title">🛡 <span data-i18n="es_comps_title">Composants d'Objet</span></div>
       <div class="endless-diff-row">
         <div class="endless-card" onclick="startEndless(1,'easy')">
-          <div class="ec-diff easy">Facile</div>
-          <div class="ec-desc">Tous composants + prix total</div>
+          <div class="ec-diff easy" data-i18n="diff_easy">Facile</div>
+          <div class="ec-desc" data-i18n="es_comps_easy">Tous composants + prix total</div>
         </div>
         <div class="endless-card" onclick="startEndless(1,'medium')">
-          <div class="ec-diff medium">Moyen</div>
-          <div class="ec-desc">Tous composants, sans prix</div>
+          <div class="ec-diff medium" data-i18n="diff_medium">Moyen</div>
+          <div class="ec-desc" data-i18n="es_comps_medium">Tous composants, sans prix</div>
         </div>
         <div class="endless-card" onclick="startEndless(1,'hard')">
-          <div class="ec-diff hard">Difficile</div>
-          <div class="ec-desc">1 composant seulement, sans prix</div>
+          <div class="ec-diff hard" data-i18n="diff_hard">Difficile</div>
+          <div class="ec-desc" data-i18n="es_comps_hard">1 composant + prix total</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(1,'hell')">
+          <div class="ec-diff hell" data-i18n="diff_hell">Enfer</div>
+          <div class="ec-desc" data-i18n="es_comps_hell">Stats combinées de 2 objets + prix</div>
         </div>
       </div>
     </div>
 
     <!-- Stats -->
     <div class="endless-section-block">
-      <div class="endless-section-title">📊 Stats d'Objet</div>
+      <div class="endless-section-title">📊 <span data-i18n="es_stats_title">Stats d'Objet</span></div>
       <div class="endless-diff-row">
         <div class="endless-card" onclick="startEndless(2,'easy')">
-          <div class="ec-diff easy">Facile</div>
-          <div class="ec-desc">Stats + description</div>
+          <div class="ec-diff easy" data-i18n="diff_easy">Facile</div>
+          <div class="ec-desc" data-i18n="es_stats_easy">Stats + description</div>
         </div>
         <div class="endless-card" onclick="startEndless(2,'hard')">
-          <div class="ec-diff hard">Difficile</div>
-          <div class="ec-desc">Stats uniquement</div>
+          <div class="ec-diff hard" data-i18n="diff_hard">Difficile</div>
+          <div class="ec-desc" data-i18n="es_stats_hard">Stats uniquement</div>
+        </div>
+        <div class="endless-card" onclick="startEndless(2,'hell')">
+          <div class="ec-diff hell" data-i18n="diff_hell">Enfer</div>
+          <div class="ec-desc" data-i18n="es_stats_hell">Stats combinées de 2 objets</div>
         </div>
       </div>
     </div>
 
     <!-- Capacité -->
     <div class="endless-section-block">
-      <div class="endless-section-title">✨ Capacité de Champion</div>
+      <div class="endless-section-title">✨ <span data-i18n="es_abil_title">Capacité de Champion</span></div>
       <div class="endless-diff-row">
         <div class="endless-card" onclick="startEndless(3,'easy')">
-          <div class="ec-diff easy">Facile</div>
-          <div class="ec-desc">Image + nom du sort + description</div>
+          <div class="ec-diff easy" data-i18n="diff_easy">Facile</div>
+          <div class="ec-desc" data-i18n="es_abil_easy">Image + nom + description</div>
         </div>
         <div class="endless-card" onclick="startEndless(3,'medium')">
-          <div class="ec-diff medium">Moyen</div>
-          <div class="ec-desc">Nom du sort + description</div>
+          <div class="ec-diff medium" data-i18n="diff_medium">Moyen</div>
+          <div class="ec-desc" data-i18n="es_abil_medium">Nom du sort + description</div>
         </div>
         <div class="endless-card" onclick="startEndless(3,'hard')">
-          <div class="ec-diff hard">Difficile</div>
-          <div class="ec-desc">Description uniquement</div>
+          <div class="ec-diff hard" data-i18n="diff_hard">Difficile</div>
+          <div class="ec-desc" data-i18n="es_abil_hard">Description uniquement</div>
         </div>
       </div>
     </div>
 
     <!-- Skin -->
     <div class="endless-section-block">
-      <div class="endless-section-title">🎨 Skin Mystère</div>
+      <div class="endless-section-title">🎨 <span data-i18n="es_skin_title">Skin Mystère</span></div>
       <div class="endless-diff-row">
         <div class="endless-card" onclick="startEndless(4,'easy')">
-          <div class="ec-diff easy">Facile</div>
-          <div class="ec-desc">Image floue, couleurs</div>
+          <div class="ec-diff easy" data-i18n="diff_easy">Facile</div>
+          <div class="ec-desc" data-i18n="es_skin_easy">Image floue, couleurs</div>
         </div>
         <div class="endless-card" onclick="startEndless(4,'hard')">
-          <div class="ec-diff hard">Difficile</div>
-          <div class="ec-desc">Image floue, noir & blanc</div>
+          <div class="ec-diff hard" data-i18n="diff_hard">Difficile</div>
+          <div class="ec-desc" data-i18n="es_skin_hard">Image floue, noir & blanc</div>
         </div>
         <div class="endless-card" onclick="startEndless(4,'hell')">
-          <div class="ec-diff hell">Enfer</div>
-          <div class="ec-desc">¼ de l'image, flou, N&B</div>
+          <div class="ec-diff hell" data-i18n="diff_hell">Enfer</div>
+          <div class="ec-desc" data-i18n="es_skin_hell">¼ de l'image, flou, N&B</div>
         </div>
       </div>
     </div>
@@ -577,27 +588,53 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 
   <div id="endless-game-screen" style="display:none;">
     <div class="endless-game-header">
-      <button class="endless-back" onclick="endlessBackToMenu()">← Choisir une épreuve</button>
-      <div style="display:flex;align-items:center;gap:12px;">
+      <button class="endless-back" onclick="endlessBackToMenu()">← <span data-i18n="endless_back">Choisir une épreuve</span></button>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
         <span id="endless-diff-badge" style="font-size:.72em;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:2px;"></span>
-        <div class="endless-streak">🔥 Série : <span id="endless-streak-val">0</span></div>
+        <div class="endless-streak">🔥 <span data-i18n="endless_streak">Série</span> : <span id="endless-streak-val">0</span></div>
+        <div id="endless-skips-hud" style="display:flex;align-items:center;gap:6px;font-size:.82em;color:var(--silver);">
+          <span data-i18n="skip_label">Passes :</span>
+          <span id="endless-skips-display" style="color:var(--gold);font-weight:700;">0</span>
+          <button id="endless-skip-btn" class="btn secondary" style="padding:3px 10px;font-size:.75em;" onclick="skipEndless()" data-i18n="skip_btn">Passer</button>
+        </div>
+        <button class="btn secondary" style="font-size:.82em;padding:6px 10px;" onclick="showLeaderboardPanel()" title="Classement">🏆</button>
       </div>
     </div>
     <div id="endless-game-container"></div>
     <div class="endless-game-over" id="endless-game-over">
-      <h3>💀 Partie terminée !</h3>
-      <p>Score final : <strong id="endless-final-score" style="color:var(--gold);"></strong></p>
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
-        <button class="btn" onclick="restartEndless()">Rejouer</button>
-        <button class="btn secondary" onclick="endlessBackToMenu()">Changer d'épreuve</button>
+      <h3>💀 <span data-i18n="endless_gameover">Partie terminée !</span></h3>
+      <p><span data-i18n="endless_score_msg">Score final :</span> <strong id="endless-final-score" style="color:var(--gold);"></strong></p>
+      <div id="endless-leaderboard-form" style="margin:14px 0;padding:14px;background:rgba(0,0,0,.3);border:1px solid var(--border);">
+        <div style="color:var(--gold-light);font-size:.85em;margin-bottom:8px;" data-i18n="lb_submit_prompt">Enregistrer votre score ?</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input type="text" id="lb-name-input" maxlength="20" placeholder="Votre pseudo…" data-i18n-placeholder="lb_name_placeholder"
+            style="flex:1;min-width:140px;background:rgba(0,0,0,.5);border:1px solid var(--border);color:var(--text);padding:6px 10px;font-family:'Exo 2',sans-serif;">
+          <button class="btn" onclick="submitLeaderboard()" data-i18n="lb_submit_btn">Envoyer</button>
+        </div>
+        <div id="lb-submit-status" style="margin-top:6px;font-size:.78em;color:var(--silver);"></div>
       </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+        <button class="btn" onclick="restartEndless()" data-i18n="endless_retry">Rejouer</button>
+        <button class="btn secondary" onclick="endlessBackToMenu()" data-i18n="endless_change">Changer d'épreuve</button>
+        <button class="btn secondary" onclick="showLeaderboardPanel()" data-i18n="lb_see_btn">Classement 🏆</button>
+        <button class="btn secondary" onclick="document.getElementById('endless-game-over').classList.remove('show')" style="min-width:40px;">Fermer</button>
+      </div>
+    </div>
+    <!-- Leaderboard panel (shown inline) -->
+    <div id="endless-leaderboard-panel" style="display:none;margin-top:16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1em;" data-i18n="lb_title">Classement Infini</h3>
+        <button class="btn secondary" style="font-size:.75em;padding:4px 10px;" onclick="closeLeaderboardPanel()" data-i18n="lb_close">Fermer</button>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="lb-filter-row"></div>
+      <div id="lb-table-container" style="overflow-x:auto;"></div>
     </div>
   </div>
   </div>
   </div>
 </div>
-<script>
 
+<script>
 // ═══════════════════════════════════════════════════════════════════
 // CONFIG
 // ═══════════════════════════════════════════════════════════════════
@@ -3277,7 +3314,6 @@ loadLang('fr_FR').then(()=>{
     </div>
   </div>`;
 });
-
 </script>
 </body>
 </html>

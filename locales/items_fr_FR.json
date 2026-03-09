@@ -3,7 +3,7 @@
     "id": 1001,
     "name": "Bottes",
     "price": 300,
-    "desc": "+25 vitesse de déplacement",
+    "desc": "",
     "stats": {
       "Speed": {
         "value": 25,
@@ -15,25 +15,19 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
   },
   {
-    "id": 1011,
-    "name": "Ceinture du géant",
-    "price": 900,
+    "id": 1004,
+    "name": "Charme féérique",
+    "price": 200,
     "desc": "",
     "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
+      "Mana Regen%": {
+        "value": "50%",
+        "icon": "🔵",
+        "percent": true
       }
     },
-    "components": [
-      {
-        "name": "Cristal de rubis",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
+    "components": [],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1004.png"
   },
   {
     "id": 1018,
@@ -192,21 +186,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1038.png"
   },
   {
-    "id": 1040,
-    "name": "Lame d'obsidienne",
-    "price": 350,
-    "desc": "Brûlure : blesser des monstres de la jungle leur applique une brûlure qui inflige 0 pts de dégâts magiques en 5 sec.Chemin automatique : lancer 5 fois Châtiment consomme cet objet et améliore votre Attaque-Châtiment, ce qui augmente ses dégâts contre les monstres à 900.Chasseur : tuer des grands monstres de la jungle vous octroie de l'expérience supplémentaire.Respiration : dans la jungle ou la rivière, vous régénérez jusqu'à 0 pts de mana par seconde (selon votre mana manquant). Consommer cet objet vous octroie tous ses effets de façon permanente et augmente les dégâts de Châtiment contre les monstres. Si vous avez gagné plus de PO en tuant des sbires qu'en tuant des monstres de la jungle, les PO et l'expérience que vous rapportent les sbires sont largement réduites. Les soins ne sont pas réduits pour les attaques à effet de zone. Si vous avez deux niveaux de moins que le niveau moyen des champions de la partie, tuer des monstres vous rapporte de l'expérience supplémentaire.",
-    "stats": {
-      "Omnivamp": {
-        "value": "8%",
-        "icon": "💜",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1040.png"
-  },
-  {
     "id": 1042,
     "name": "Dague",
     "price": 250,
@@ -282,76 +261,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1053.png"
-  },
-  {
-    "id": 1054,
-    "name": "Bouclier de Doran",
-    "price": 450,
-    "desc": "Focalisation cicatrisante Vous récupérez 4 PV toutes les 5 sec. Après avoir subi des dégâts d'un champion ennemi, vous récupérez des PV en 8 sec. Coup de main Vos attaques infligent 5 pts de dégâts physiques bonus aux sbires.",
-    "stats": {
-      "HP": {
-        "value": 110,
-        "icon": "❤️",
-        "percent": false
-      },
-      "HP Regen": {
-        "value": 0.8,
-        "icon": "💚",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1054.png"
-  },
-  {
-    "id": 1055,
-    "name": "Lame de Doran",
-    "price": 450,
-    "desc": "+2.5% d'omnivampirisme",
-    "stats": {
-      "HP": {
-        "value": 80,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 10,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Omnivamp": {
-        "value": "2.5%",
-        "icon": "💜",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1055.png"
-  },
-  {
-    "id": 1056,
-    "name": "Anneau de Doran",
-    "price": 400,
-    "desc": "Drain Restaure 1 mana toutes les secondes, ce bonus passe à 2 mana par seconde pendant 5 sec après avoir infligé des dégâts à un champion ennemi. Si vous ne pouvez pas récupérer de mana, vous récupérez 45% de cette valeur en PV à la place. Coup de main Vos attaques infligent 5 pts de dégâts physiques bonus aux sbires.",
-    "stats": {
-      "HP": {
-        "value": 90,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 18,
-        "icon": "✨",
-        "percent": false
-      },
-      "Mana": {
-        "value": 1,
-        "icon": "💙",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1056.png"
   },
   {
     "id": 1057,
@@ -495,6 +404,11 @@
         "value": 10,
         "icon": "⏱️",
         "percent": false
+      },
+      "Lethality": {
+        "value": 5,
+        "icon": "🗡️",
+        "percent": false
       }
     },
     "components": [
@@ -573,112 +487,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2031.png"
   },
   {
-    "id": 2049,
-    "name": "Amulette du gardien",
-    "price": 500,
-    "desc": "Récupération Vous récupérez 10 pts de mana toutes les 5 sec. Si vous ne pouvez pas récupérer de mana, vous récupérez 3 PV à la place.",
-    "stats": {
-      "AP": {
-        "value": 20,
-        "icon": "✨",
-        "percent": false
-      },
-      "HP": {
-        "value": 3,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2049.png"
-  },
-  {
-    "id": 2050,
-    "name": "Linceul du gardien",
-    "price": 500,
-    "desc": "",
-    "stats": {
-      "HP": {
-        "value": 300,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 35,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2050.png"
-  },
-  {
-    "id": 2051,
-    "name": "Corne du gardien",
-    "price": 950,
-    "desc": "Récupération : vous récupérez 20 PV toutes les 5 sec.Vaillance : vous bloquez 15 pts de dégâts venant des attaques et des compétences des champions (25% d'efficacité contre les compétences de dégâts sur la durée).",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "HP Regen": {
-        "value": 4,
-        "icon": "💚",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2051.png"
-  },
-  {
-    "id": 2065,
-    "name": "Chant de guerre de Shurelya",
-    "price": 2200,
-    "desc": "Discours exaltant Vous octroyez +30% de vitesse de déplacement pendant 4 sec aux alliés proches.",
-    "stats": {
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Feu follet éthéré",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3113.png"
-      },
-      {
-        "name": "Miroir en verre de Bandle",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4642.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2065.png"
-  },
-  {
     "id": 2138,
     "name": "Élixir de fer",
     "price": 500,
@@ -688,6 +496,11 @@
         "value": 300,
         "icon": "❤️",
         "percent": false
+      },
+      "Tenacity": {
+        "value": "25%",
+        "icon": "🔰",
+        "percent": true
       }
     },
     "components": [],
@@ -707,109 +520,6 @@
     },
     "components": [],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2140.png"
-  },
-  {
-    "id": 2420,
-    "name": "Protège-bras du savant",
-    "price": 1600,
-    "desc": "Pause temporelle (usage unique) Vous entrez en stase pendant 2.5 sec.",
-    "stats": {
-      "AP": {
-        "value": 40,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Tome d'amplification",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      },
-      {
-        "name": "Armure d'étoffe",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Tome d'amplification",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2420.png"
-  },
-  {
-    "id": 2421,
-    "name": "Protège-bras pulvérisé",
-    "price": 1600,
-    "desc": "Fracture du temps Le Protège-bras est brisé, mais peut être amélioré. Après que vous avez brisé un Protège-bras, le marchand ne vous vend plus que des Protège-bras pulvérisés.",
-    "stats": {
-      "AP": {
-        "value": 40,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Tome d'amplification",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      },
-      {
-        "name": "Armure d'étoffe",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Tome d'amplification",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2421.png"
-  },
-  {
-    "id": 2501,
-    "name": "Armure sanguine",
-    "price": 3300,
-    "desc": "Tyrannie Vous gagnez des dégâts d'attaque équivalents à 2.5% de vos PV bonus. Représailles Vous gagnez jusqu'à +12% de dégâts d'attaque selon un pourcentage de vos PV manquants.",
-    "stats": {
-      "HP": {
-        "value": 550,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Foreuse",
-        "price": 1150,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2021.png"
-      },
-      {
-        "name": "Foreuse",
-        "price": 1150,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2021.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2501.png"
   },
   {
     "id": 2502,
@@ -903,6 +613,11 @@
         "value": 400,
         "icon": "❤️",
         "percent": false
+      },
+      "HP Regen%": {
+        "value": "100%",
+        "icon": "💚",
+        "percent": true
       }
     },
     "components": [
@@ -1042,6 +757,11 @@
         "value": "5%",
         "icon": "💜",
         "percent": true
+      },
+      "Tenacity": {
+        "value": "20%",
+        "icon": "🔰",
+        "percent": true
       }
     },
     "components": [
@@ -1074,14 +794,14 @@
         "icon": "⚔️",
         "percent": false
       },
-      "Létality": {
-        "value": 22,
-        "icon": "🗡️",
-        "percent": false
-      },
       "AH": {
         "value": 15,
         "icon": "⏱️",
+        "percent": false
+      },
+      "Lethality": {
+        "value": 22,
+        "icon": "🗡️",
         "percent": false
       }
     },
@@ -1232,6 +952,11 @@
         "value": 20,
         "icon": "⏱️",
         "percent": false
+      },
+      "Tenacity": {
+        "value": "25%",
+        "icon": "🔰",
+        "percent": true
       }
     },
     "components": [
@@ -1263,6 +988,16 @@
         "value": 200,
         "icon": "❤️",
         "percent": false
+      },
+      "Heal & Shield": {
+        "value": "8%",
+        "icon": "💊",
+        "percent": true
+      },
+      "Mana Regen%": {
+        "value": "75%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -1321,47 +1056,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3002.png"
   },
   {
-    "id": 3003,
-    "name": "Bâton de l'archange",
-    "price": 2900,
-    "desc": "Effroi Vous gagnez de la puissance équivalente à 1% de votre mana bonus. Flux de mana (8 sec, max 5 charges) Quand vous touchez une cible avec une compétence, vous gagnez +5 mana max (doublé contre les champions). Cet objet se transforme en Étreinte du séraphin à +360 mana max.",
-    "stats": {
-      "Mana": {
-        "value": 600,
-        "icon": "💙",
-        "percent": false
-      },
-      "AP": {
-        "value": 70,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 25,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Larme de la déesse",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3070.png"
-      },
-      {
-        "name": "Chapitre perdu",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3802.png"
-      },
-      {
-        "name": "Codex méphitique",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3003.png"
-  },
-  {
     "id": 3004,
     "name": "Manamune",
     "price": 2900,
@@ -1403,46 +1097,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3004.png"
   },
   {
-    "id": 3006,
-    "name": "Jambières du berzerker",
-    "price": 1100,
-    "desc": "+45 vitesse de déplacement",
-    "stats": {
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "25%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Bottes",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      },
-      {
-        "name": "Dague",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      },
-      {
-        "name": "Dague",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3006.png"
-  },
-  {
     "id": 3009,
     "name": "Bottes de célérité",
     "price": 1000,
-    "desc": "+55 vitesse de déplacement Rapidité Réduit de 25% l'efficacité des ralentissements.",
+    "desc": "Rapidité Réduit de 25% l'efficacité des ralentissements.",
     "stats": {
       "Speed": {
         "value": 55,
@@ -1458,32 +1116,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3009.png"
-  },
-  {
-    "id": 3020,
-    "name": "Chaussures de sorcier",
-    "price": 1100,
-    "desc": "+12 pénétration magique +45 vitesse de déplacement",
-    "stats": {
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      },
-      "Magic Pen": {
-        "value": 12,
-        "icon": "🌀",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Bottes",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3020.png"
   },
   {
     "id": 3024,
@@ -1572,6 +1204,11 @@
         "value": 75,
         "icon": "⚔️",
         "percent": false
+      },
+      "Crit Dmg": {
+        "value": "30%",
+        "icon": "💥",
+        "percent": true
       }
     },
     "components": [
@@ -1692,68 +1329,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3035.png"
   },
   {
-    "id": 3036,
-    "name": "Salutations de Dominik",
-    "price": 3300,
-    "desc": "Tueur de géants Vous infligez jusqu'à 15% de dégâts bonus aux champions en fonction de leurs PV bonus. Bonus de dégâts maximum atteint à partir de 1500 PV bonus.",
-    "stats": {
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 35,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "HP": {
-        "value": 1500,
-        "icon": "❤️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Dernier souffle",
-        "price": 1450,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3035.png"
-      },
-      {
-        "name": "Carquois zénithien",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6670.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3036.png"
-  },
-  {
-    "id": 3041,
-    "name": "Voleur d'âmes de Mejai",
-    "price": 1500,
-    "desc": "Gloire Participer à une élimination vous fait gagner des effets Gloire (25 effets cumulés max). Vous perdez 10 effets Gloire en cas de mort. Vous gagnez +5 puissance par effet Gloire et +10% en vitesse de déplacement si vous avez 10 effets Gloire ou plus.",
-    "stats": {
-      "HP": {
-        "value": 100,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 20,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Sceau noir",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1082.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3041.png"
-  },
-  {
     "id": 3044,
     "name": "Phage",
     "price": 1100,
@@ -1829,7 +1404,7 @@
     "id": 3047,
     "name": "Coques en acier",
     "price": 1200,
-    "desc": "+45 vitesse de déplacement Placage Les dégâts que vous infligent les attaques sont réduits de 10%.",
+    "desc": "Placage Les dégâts que vous infligent les attaques sont réduits de 10%.",
     "stats": {
       "Speed": {
         "value": 45,
@@ -1855,52 +1430,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3047.png"
-  },
-  {
-    "id": 3050,
-    "name": "Convergence de Zeke",
-    "price": 2200,
-    "desc": "Tempête cryopyrique Lancer votre ultime invoque une tempête autour de vous pendant 5 sec. La tempête inflige 30 pts de dégâts magiques par seconde aux champions ennemis et les ralentit de 30%.",
-    "stats": {
-      "MR": {
-        "value": 25,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 300,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Gemme exaltante",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Armure d'étoffe",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Cape de néant",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1033.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3050.png"
   },
   {
     "id": 3051,
@@ -1937,37 +1466,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3051.png"
-  },
-  {
-    "id": 3053,
-    "name": "Gage de Sterak",
-    "price": 3200,
-    "desc": "Griffes qui happent Vous gagnez des dégâts d'attaque bonus. Lien vital Si des dégâts sont censés vous laisser moins de 30% de vos PV, vous gagnez au préalable un bouclier qui se désagrège progressivement pendant 4.5 sec.",
-    "stats": {
-      "HP": {
-        "value": 400,
-        "icon": "❤️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Pioche",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      },
-      {
-        "name": "Foreuse",
-        "price": 1150,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2021.png"
-      },
-      {
-        "name": "Cristal de rubis",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3053.png"
   },
   {
     "id": 3057,
@@ -2010,6 +1508,11 @@
         "value": 10,
         "icon": "⏱️",
         "percent": false
+      },
+      "HP Regen%": {
+        "value": "100%",
+        "icon": "💚",
+        "percent": true
       }
     },
     "components": [
@@ -2438,63 +1941,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3078.png"
   },
   {
-    "id": 3082,
-    "name": "Mailles du gardien",
-    "price": 1000,
-    "desc": "Dur comme fer Les dégâts que vous infligent les attaques sont réduits.",
-    "stats": {
-      "AR": {
-        "value": 40,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Armure d'étoffe",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Armure d'étoffe",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3082.png"
-  },
-  {
-    "id": 3083,
-    "name": "Armure de Warmog",
-    "price": 3100,
-    "desc": "Cœur de Warmog Si vous avez 2000 PV bonus et n'avez pas subi de dégâts pendant 8 sec, vous récupérez 0 PV par seconde. Vitalité de Warmog Vous gagnez des PV bonus équivalents à 12% de vos PV d'objets (0).",
-    "stats": {
-      "HP": {
-        "value": 1000,
-        "icon": "❤️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Bracelet cristallin",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3801.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3083.png"
-  },
-  {
     "id": 3084,
     "name": "Cœuracier",
     "price": 3000,
@@ -2504,6 +1950,11 @@
         "value": 900,
         "icon": "❤️",
         "percent": false
+      },
+      "HP Regen%": {
+        "value": "100%",
+        "icon": "💚",
+        "percent": true
       }
     },
     "components": [
@@ -2524,42 +1975,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3084.png"
-  },
-  {
-    "id": 3085,
-    "name": "Ouragan de Runaan",
-    "price": 2650,
-    "desc": "Fureur du vent Vos attaques tirent des projectiles sur 2 ennemis bonus près de la cible. Chaque projectile inflige des dégâts physiques et applique vos effets à l'impact.",
-    "stats": {
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "Atk Speed": {
-        "value": "40%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Zèle",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3086.png"
-      },
-      {
-        "name": "Fronde de l'éclaireur",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3144.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3085.png"
   },
   {
     "id": 3086,
@@ -2639,68 +2054,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3087.png"
   },
   {
-    "id": 3089,
-    "name": "Coiffe de Rabadon",
-    "price": 3500,
-    "desc": "Opus magique Vous augmentez votre puissance totale de 30%.",
-    "stats": {
-      "AP": {
-        "value": 130,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Baguette trop grosse",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Baguette trop grosse",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3089.png"
-  },
-  {
-    "id": 3091,
-    "name": "Au bout du rouleau",
-    "price": 2800,
-    "desc": "Conflit Vos attaques infligent des dégâts magiques bonus à l'impact.",
-    "stats": {
-      "MR": {
-        "value": 45,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "50%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Arc courbe",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      },
-      {
-        "name": "Manteau de Négatron",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1057.png"
-      },
-      {
-        "name": "Arc courbe",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3091.png"
-  },
-  {
     "id": 3094,
     "name": "Canon ultrarapide",
     "price": 2650,
@@ -2735,47 +2088,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3094.png"
-  },
-  {
-    "id": 3095,
-    "name": "Lame tempête",
-    "price": 3000,
-    "desc": "Énergisant Vos déplacements et vos attaques permettent d'énergiser une attaque. Éclair Vos attaques énergisées appliquent 0 pts de dégâts magiques bonus et vous octroient +45% de vitesse de déplacement pendant 1.5 sec.",
-    "stats": {
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 50,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "20%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "BF Glaive",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1038.png"
-      },
-      {
-        "name": "Cape d'agilité",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1018.png"
-      },
-      {
-        "name": "Fronde de l'éclaireur",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3144.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3095.png"
   },
   {
     "id": 3100,
@@ -2817,37 +2129,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3100.png"
-  },
-  {
-    "id": 3102,
-    "name": "Voile de la banshee",
-    "price": 3000,
-    "desc": "Invalidation Vous gagnez un bouclier antisorts qui bloque la prochaine compétence ennemie.",
-    "stats": {
-      "MR": {
-        "value": 40,
-        "icon": "🔮",
-        "percent": false
-      },
-      "AP": {
-        "value": 105,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Baguette trop grosse",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Barrière verdoyante",
-        "price": 1600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4632.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3102.png"
   },
   {
     "id": 3105,
@@ -2905,6 +2186,16 @@
         "value": 15,
         "icon": "⏱️",
         "percent": false
+      },
+      "Heal & Shield": {
+        "value": "10%",
+        "icon": "💊",
+        "percent": true
+      },
+      "Mana Regen%": {
+        "value": "100%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -2953,47 +2244,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
   },
   {
-    "id": 3109,
-    "name": "Vœu du chevalier",
-    "price": 2300,
-    "desc": "Sacrifice Quand l'allié digne est proche, vous redirigez vers vous 12% des dégâts qu'il subit et vous récupérez des PV équivalents à 10% des dégâts qu'il inflige aux champions.Serment (0 sec) Vous désignez un allié qui est digne de votre aide.",
-    "stats": {
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 40,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Gemme exaltante",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Cotte de mailles",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1031.png"
-      },
-      {
-        "name": "Collier rafraîchissant",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1006.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3109.png"
-  },
-  {
     "id": 3110,
     "name": "Cœur gelé",
     "price": 2500,
@@ -3030,57 +2280,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3110.png"
   },
   {
-    "id": 3111,
-    "name": "Sandales de Mercure",
-    "price": 1250,
-    "desc": "+45 vitesse de déplacement",
-    "stats": {
-      "MR": {
-        "value": 20,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Bottes",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      },
-      {
-        "name": "Cape de néant",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1033.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3111.png"
-  },
-  {
-    "id": 3112,
-    "name": "Orbe du gardien",
-    "price": 950,
-    "desc": "Récupération : vous récupérez 10 pts de mana toutes les 5 sec. Si vous ne pouvez pas récupérer de mana, vous récupérez 15 PV à la place.",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3112.png"
-  },
-  {
     "id": 3113,
     "name": "Feu follet éthéré",
     "price": 900,
@@ -3107,81 +2306,30 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3113.png"
   },
   {
-    "id": 3115,
-    "name": "Dent de Nashor",
-    "price": 2900,
-    "desc": "Morsure d'Icathia Vos attaques infligent des dégâts magiques bonus à l'impact.",
+    "id": 3114,
+    "name": "Idole interdite",
+    "price": 600,
+    "desc": "",
     "stats": {
-      "AP": {
-        "value": 80,
-        "icon": "✨",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "50%",
-        "icon": "⚡",
+      "Heal & Shield": {
+        "value": "8%",
+        "icon": "💊",
         "percent": true
       },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
+      "Mana Regen%": {
+        "value": "50%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
       {
-        "name": "Arc courbe",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      },
-      {
-        "name": "Baguette explosive",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1026.png"
-      },
-      {
-        "name": "Codex méphitique",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
+        "name": "Charme féérique",
+        "price": 200,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1004.png"
       }
     ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3115.png"
-  },
-  {
-    "id": 3116,
-    "name": "Sceptre de Rylai",
-    "price": 2600,
-    "desc": "Couche de givre Vos compétences blessantes ralentissent les ennemis de 30% pendant 1 sec.",
-    "stats": {
-      "HP": {
-        "value": 400,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 65,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Baguette explosive",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1026.png"
-      },
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Tome d'amplification",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3116.png"
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3114.png"
   },
   {
     "id": 3118,
@@ -3220,145 +2368,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3118.png"
   },
   {
-    "id": 3119,
-    "name": "Approche de l'hiver",
-    "price": 2400,
-    "desc": "Effroi Vous gagnez 0 PV. Flux de mana (8 sec, max 4 charges) Quand vous touchez une cible avec une attaque ou une compétence, vous gagnez +3 mana max (doublé contre les champions). Cet objet se transforme en Fimbulvetr à +360 mana max.",
-    "stats": {
-      "Mana": {
-        "value": 500,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 550,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Larme de la déesse",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3070.png"
-      },
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Gemme exaltante",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3119.png"
-  },
-  {
-    "id": 3123,
-    "name": "Marque du bourreau",
-    "price": 800,
-    "desc": "Hémorragie Infliger des dégâts physiques aux champions leur inflige 40% d'Hémorragie pendant 3 sec.",
-    "stats": {
-      "AD": {
-        "value": 15,
-        "icon": "⚔️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Épée longue",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3123.png"
-  },
-  {
-    "id": 3124,
-    "name": "Lame enragée de Guinsoo",
-    "price": 3000,
-    "desc": "Courroux Vos attaques infligent 30 pts de dégâts magiques bonus à l'impact. Frappe furieuse Vos attaques vous octroient +8% de vitesse d'attaque pendant 3 sec (effet cumulable 4 fois). Une fois au max d'effets cumulés, toutes les trois attaques, vous appliquez deux fois vos effets à l'impact.",
-    "stats": {
-      "AP": {
-        "value": 30,
-        "icon": "✨",
-        "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "25%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Tome d'amplification",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      },
-      {
-        "name": "Arc courbe",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      },
-      {
-        "name": "Pioche",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3124.png"
-  },
-  {
-    "id": 3133,
-    "name": "Marteau de Caulfield",
-    "price": 1050,
-    "desc": "",
-    "stats": {
-      "AD": {
-        "value": 20,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Épée longue",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      },
-      {
-        "name": "Poussière luisante",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2022.png"
-      },
-      {
-        "name": "Épée longue",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
-  },
-  {
     "id": 3134,
     "name": "Dague dentelée",
     "price": 1000,
@@ -3367,6 +2376,11 @@
       "AD": {
         "value": 20,
         "icon": "⚔️",
+        "percent": false
+      },
+      "Lethality": {
+        "value": 10,
+        "icon": "🗡️",
         "percent": false
       }
     },
@@ -3507,99 +2521,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3140.png"
-  },
-  {
-    "id": 3142,
-    "name": "Lame spectre de Youmuu",
-    "price": 2800,
-    "desc": "Hantise Vous gagnez +0 vitesse de déplacement en dehors des combats. Marche spectrale Vous gagnez de la vitesse de déplacement et devenez fantomatique pendant 0 sec.",
-    "stats": {
-      "AD": {
-        "value": 55,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Dague dentelée",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      },
-      {
-        "name": "Rectrix",
-        "price": 775,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6690.png"
-      },
-      {
-        "name": "Épée longue",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3142.png"
-  },
-  {
-    "id": 3143,
-    "name": "Présage de Randuin",
-    "price": 2700,
-    "desc": "Vigueur Les coups critiques vous infligent 30% de dégâts en moins. Humilité Vous ralentissez les ennemis proches de 70% pendant 2 sec.",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 75,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Mailles du gardien",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3082.png"
-      },
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3143.png"
-  },
-  {
-    "id": 3144,
-    "name": "Fronde de l'éclaireur",
-    "price": 600,
-    "desc": "Dans le mille Blesser un champion lui inflige des dégâts magiques bonus. Les attaques réduisent ce délai de récupération de 1 sec.",
-    "stats": {
-      "Atk Speed": {
-        "value": "20%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Dague",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      },
-      {
-        "name": "Dague",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3144.png"
   },
   {
     "id": 3145,
@@ -3859,41 +2780,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3156.png"
   },
   {
-    "id": 3157,
-    "name": "Sablier de Zhonya",
-    "price": 3250,
-    "desc": "Pause temporelle Vous entrez en stase pendant 2.5 sec.",
-    "stats": {
-      "AP": {
-        "value": 105,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 50,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Baguette trop grosse",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Protège-bras du savant",
-        "price": 1600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2420.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3157.png"
-  },
-  {
     "id": 3158,
     "name": "Bottes de lucidité",
     "price": 900,
-    "desc": "+45 vitesse de déplacement Savoir ionien Vous gagnez +10 accélération de sort d'invocateur.",
+    "desc": "Savoir ionien Vous gagnez +10 accélération de sort d'invocateur.",
     "stats": {
       "Speed": {
         "value": 45,
@@ -3934,11 +2824,6 @@
       "AD": {
         "value": 45,
         "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 25,
-        "icon": "⏱️",
         "percent": false
       }
     },
@@ -4003,29 +2888,139 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3165.png"
   },
   {
-    "id": 3177,
-    "name": "Lame du gardien",
-    "price": 950,
-    "desc": "",
+    "id": 3170,
+    "name": "Célérité martiale",
+    "price": 1000,
+    "desc": "Rapidité Réduit de 40% l'efficacité des ralentissements. Ferveur noxienne Vous gagnez de la force adaptative équivalente à 5% de votre vitesse de déplacement.",
     "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
+      "Speed": {
+        "value": 65,
+        "icon": "👟",
         "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
+      }
+    },
+    "components": [
+      {
+        "name": "Bottes de célérité",
+        "price": 1000,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3009.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3170.png"
+  },
+  {
+    "id": 3171,
+    "name": "Lucidité pourpre",
+    "price": 900,
+    "desc": "Savoir ionien Vous gagnez +20 accélération de sort d'invocateur. Hâte noxienne Renforcer ou protéger vos alliés avec des compétences, infliger des dégâts aux champions ennemis avec des compétences ou lancer un sort d'invocateur vous octroie +0 vitesse de déplacement pendant 4 sec. Hâte noxienne ne peut se déclencher qu'une fois par compétence lancée.",
+    "stats": {
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
         "percent": false
       },
       "AH": {
-        "value": 15,
+        "value": 20,
         "icon": "⏱️",
         "percent": false
       }
     },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3177.png"
+    "components": [
+      {
+        "name": "Bottes de lucidité",
+        "price": 900,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3158.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3171.png"
+  },
+  {
+    "id": 3172,
+    "name": "Jambières de métal",
+    "price": 1100,
+    "desc": "Allure noxienne Attaquer des champions vous octroie de la vitesse de déplacement à l'impact (ce bonus diminue en 2 sec).",
+    "stats": {
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
+        "percent": false
+      },
+      "Atk Speed": {
+        "value": "40%",
+        "icon": "⚡",
+        "percent": true
+      },
+      "Lifesteal": {
+        "value": "5%",
+        "icon": "🩸",
+        "percent": true
+      }
+    },
+    "components": [
+      {
+        "name": "Jambières du berzerker",
+        "price": 1100,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3006.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3172.png"
+  },
+  {
+    "id": 3173,
+    "name": "Broyeuses à chaînes",
+    "price": 1250,
+    "desc": "Persévérance noxienne (0 sec) Quand vous subissez des dégâts magiques d'un champion, vous gagnez un bouclier anti-dégâts magiques de 0 PV pendant 5 sec.",
+    "stats": {
+      "MR": {
+        "value": 30,
+        "icon": "🔮",
+        "percent": false
+      },
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
+        "percent": false
+      },
+      "Tenacity": {
+        "value": "30%",
+        "icon": "🔰",
+        "percent": true
+      }
+    },
+    "components": [
+      {
+        "name": "Sandales de Mercure",
+        "price": 1250,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3111.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3173.png"
+  },
+  {
+    "id": 3174,
+    "name": "Avancée blindée",
+    "price": 1200,
+    "desc": "Placage Les dégâts que vous infligent les attaques sont réduits de 10%. Endurance noxienne (0 sec) Quand vous subissez des dégâts physiques d'un champion, vous gagnez un bouclier anti-dégâts physiques de 0 PV pendant 5 sec.",
+    "stats": {
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
+        "percent": false
+      },
+      "AR": {
+        "value": 35,
+        "icon": "🛡️",
+        "percent": false
+      }
+    },
+    "components": [
+      {
+        "name": "Coques en acier",
+        "price": 1200,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3047.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3174.png"
   },
   {
     "id": 3179,
@@ -4041,6 +3036,11 @@
       "AH": {
         "value": 15,
         "icon": "⏱️",
+        "percent": false
+      },
+      "Lethality": {
+        "value": 18,
+        "icon": "🗡️",
         "percent": false
       }
     },
@@ -4100,31 +3100,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3181.png"
   },
   {
-    "id": 3184,
-    "name": "Marteau du gardien",
-    "price": 950,
-    "desc": "",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 25,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Lifesteal": {
-        "value": "5%",
-        "icon": "🩸",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3184.png"
-  },
-  {
     "id": 3190,
     "name": "Médaillon de l'Iron Solari",
     "price": 2200,
@@ -4171,73 +3146,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3190.png"
   },
   {
-    "id": 3211,
-    "name": "Manteau de spectre",
-    "price": 1250,
-    "desc": "",
-    "stats": {
-      "MR": {
-        "value": 35,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Cristal de rubis",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      },
-      {
-        "name": "Cape de néant",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1033.png"
-      },
-      {
-        "name": "Collier rafraîchissant",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1006.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3211.png"
-  },
-  {
-    "id": 3222,
-    "name": "Bénédiction de Mikael",
-    "price": 2300,
-    "desc": "Purification Vous dissipez tous les contrôles de foule qui affectent un champion allié (sauf les projections dans les airs et les neutralisations) et vous lui rendez 100 - 250 PV.",
-    "stats": {
-      "HP": {
-        "value": 250,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Gemme exaltante",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Idole interdite",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3114.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3222.png"
-  },
-  {
     "id": 3302,
     "name": "Terminus",
     "price": 3000,
@@ -4269,31 +3177,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3302.png"
   },
   {
-    "id": 3430,
-    "name": "Rite des ruines",
-    "price": 2500,
-    "desc": "Ruine et courroux Quand vous lancez une compétence, vous gagnez +2.5% de chances de coup critique pendant 6 sec (max +20%). Sauvetage désespéré Vos compétences ont des chances (égales à vos chances de coup critique) d'octroyer un bouclier de 0 à votre partenaire ou à vous-même pendant 3 sec.",
-    "stats": {
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3430.png"
-  },
-  {
     "id": 3504,
     "name": "Encensoir ardent",
     "price": 2200,
@@ -4307,6 +3190,16 @@
       "Speed": {
         "value": "4%",
         "icon": "👟",
+        "percent": true
+      },
+      "Heal & Shield": {
+        "value": "10%",
+        "icon": "💊",
+        "percent": true
+      },
+      "Mana Regen%": {
+        "value": "125%",
+        "icon": "🔵",
         "percent": true
       }
     },
@@ -4366,47 +3259,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3508.png"
   },
   {
-    "id": 3742,
-    "name": "Plaque du mort",
-    "price": 2900,
-    "desc": "Naufrageur Vous déplacer vous octroie jusqu'à +20 vitesse de déplacement bonus. Votre prochaine attaque consomme cette vitesse de déplacement bonus pour infliger des dégâts physiques bonus. Insubmersible Réduit de 15% l'efficacité des ralentissements.",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 55,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Plaque de lune ailée",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3066.png"
-      },
-      {
-        "name": "Cristal de rubis",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      },
-      {
-        "name": "Cotte de mailles",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1031.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3742.png"
-  },
-  {
     "id": 3748,
     "name": "Hydre titanesque",
     "price": 3300,
@@ -4452,6 +3304,11 @@
         "value": 200,
         "icon": "❤️",
         "percent": false
+      },
+      "HP Regen%": {
+        "value": "100%",
+        "icon": "💚",
+        "percent": true
       }
     },
     "components": [
@@ -4560,6 +3417,11 @@
         "value": 50,
         "icon": "⚔️",
         "percent": false
+      },
+      "Lethality": {
+        "value": 15,
+        "icon": "🗡️",
+        "percent": false
       }
     },
     "components": [
@@ -4627,6 +3489,11 @@
         "value": 20,
         "icon": "⏱️",
         "percent": false
+      },
+      "Mana Regen%": {
+        "value": "125%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -4642,102 +3509,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4005.png"
-  },
-  {
-    "id": 4010,
-    "name": "Malédiction du sanguinaire",
-    "price": 2500,
-    "desc": "Vile décomposition Infliger des dégâts magiques avec des compétences ou des compétences passives à des champions réduit leur résistance magique de 7.5% pendant 6 sec (jusqu'à 30%).",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 60,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4010.png"
-  },
-  {
-    "id": 4011,
-    "name": "Épée de l'aube",
-    "price": 2500,
-    "desc": "Effervescence Vous gagnez+1.2% de vitesse d'attaque tous les 1% d'efficacité des soins et boucliers que vous avez. Menthe poivrée à l'impact, vous rendez 0 PV au champion allié proche qui a le moins de PV.",
-    "stats": {
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 45,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4011.png"
-  },
-  
-  {
-    "id": 4013,
-    "name": "Tresse électrique",
-    "price": 3000,
-    "desc": "Chaîne d'éclairs : vous infligez 20% de dégâts de compétences en moins. Lors de la seconde cadence de 1, les ennemis qui ont subi des dégâts de vos compétences transmettent 66.6% des dégâts de compétence à un autre ennemi proche (en priorisant les champions).",
-    "stats": {
-      "MR": {
-        "value": 30,
-        "icon": "🔮",
-        "percent": false
-      },
-      "AP": {
-        "value": 70,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 30,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4013.png"
-  },
-  {
-    "id": 4015,
-    "name": "Perplexité",
-    "price": 2500,
-    "desc": "Tueur de géants Vous infligez jusqu'à 15% de dégâts bonus aux champions qui ont plus de PV max que vous. Les dégâts bonus max sont atteints quand la différence de PV est supérieure à 2500.",
-    "stats": {
-      "AP": {
-        "value": 60,
-        "icon": "✨",
-        "percent": false
-      },
-      "Speed": {
-        "value": "5%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4015.png"
   },
   {
     "id": 4401,
@@ -4779,102 +3550,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4401.png"
-  },
-  {
-    "id": 4403,
-    "name": "Spatule dorée",
-    "price": 7187,
-    "desc": "Action : vous êtes continuellement en feu ! « Ça doit bien servir à quelque chose... » « Elle peut TOUT faire ! »",
-    "stats": {
-      "MR": {
-        "value": 30,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Mana": {
-        "value": 250,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 250,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 120,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 30,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "30%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 70,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "50%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Lifesteal": {
-        "value": "10%",
-        "icon": "🩸",
-        "percent": true
-      },
-      "Speed": {
-        "value": "10%",
-        "icon": "👟",
-        "percent": true
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Zèle",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3086.png"
-      },
-      {
-        "name": "BF Glaive",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1038.png"
-      },
-      {
-        "name": "Sceptre vampirique",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1053.png"
-      },
-      {
-        "name": "Gemme exaltante",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Baguette trop grosse",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Égide de la légion",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3105.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4403.png"
   },
   {
     "id": 4628,
@@ -5052,6 +3727,36 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4633.png"
   },
   {
+    "id": 4638,
+    "name": "Pierre de balise attentive",
+    "price": 1100,
+    "desc": "Cache arcanique Cet objet peut stocker jusqu'à 3 Balises de contrôle achetées.",
+    "stats": {
+      "MR": {
+        "value": 15,
+        "icon": "🔮",
+        "percent": false
+      },
+      "HP": {
+        "value": 150,
+        "icon": "❤️",
+        "percent": false
+      },
+      "AR": {
+        "value": 10,
+        "icon": "🛡️",
+        "percent": false
+      },
+      "AH": {
+        "value": 10,
+        "icon": "⏱️",
+        "percent": false
+      }
+    },
+    "components": [],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4638.png"
+  },
+  {
     "id": 4642,
     "name": "Miroir en verre de Bandle",
     "price": 900,
@@ -5066,6 +3771,11 @@
         "value": 10,
         "icon": "⏱️",
         "percent": false
+      },
+      "Mana Regen%": {
+        "value": "100%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -5086,6 +3796,42 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4642.png"
+  },
+  {
+    "id": 4643,
+    "name": "Pierre de balise vigilante",
+    "price": 2300,
+    "desc": "Cache arcanique Cet objet peut stocker jusqu'à 3 Balises de contrôle achetées. Contemplation Le nombre de Balises camouflées et de Balises de contrôle que vous pouvez poser est augmenté de 1.",
+    "stats": {
+      "MR": {
+        "value": 30,
+        "icon": "🔮",
+        "percent": false
+      },
+      "HP": {
+        "value": 250,
+        "icon": "❤️",
+        "percent": false
+      },
+      "AR": {
+        "value": 25,
+        "icon": "🛡️",
+        "percent": false
+      },
+      "AH": {
+        "value": 20,
+        "icon": "⏱️",
+        "percent": false
+      }
+    },
+    "components": [
+      {
+        "name": "Pierre de balise attentive",
+        "price": 1100,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4638.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4643.png"
   },
   {
     "id": 4645,
@@ -5153,47 +3899,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4646.png"
-  },
-  {
-    "id": 6333,
-    "name": "Danse de la mort",
-    "price": 3300,
-    "desc": "Insensible à la douleur Un pourcentage des dégâts subis vous sont infligés en différé en 3 sec. Massacre Quand un champion meurt dans les 3 sec après que vous l'avez blessé, vous purgez les dégâts restants d'Insensible à la douleur et vous récupérez des PV en 2 sec.",
-    "stats": {
-      "AR": {
-        "value": 50,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AD": {
-        "value": 60,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Sceau d'acier",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2019.png"
-      },
-      {
-        "name": "Pioche",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      },
-      {
-        "name": "Marteau de Caulfield",
-        "price": 1050,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6333.png"
   },
   {
     "id": 6609,
@@ -5292,6 +3997,16 @@
         "value": 15,
         "icon": "⏱️",
         "percent": false
+      },
+      "Heal & Shield": {
+        "value": "10%",
+        "icon": "💊",
+        "percent": true
+      },
+      "Mana Regen%": {
+        "value": "125%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -5328,6 +4043,11 @@
         "value": 20,
         "icon": "⏱️",
         "percent": false
+      },
+      "Mana Regen%": {
+        "value": "125%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -5364,6 +4084,11 @@
         "value": 20,
         "icon": "⏱️",
         "percent": false
+      },
+      "Mana Regen%": {
+        "value": "125%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -5390,6 +4115,16 @@
         "value": 45,
         "icon": "✨",
         "percent": false
+      },
+      "Heal & Shield": {
+        "value": "16%",
+        "icon": "💊",
+        "percent": true
+      },
+      "Mana Regen%": {
+        "value": "100%",
+        "icon": "🔵",
+        "percent": true
       }
     },
     "components": [
@@ -5453,73 +4188,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6631.png"
   },
   {
-    "id": 6653,
-    "name": "Tourment de Liandry",
-    "price": 3000,
-    "desc": "Tourment Les compétences blessantes brûlent les ennemis, leur infligeant 2% de leurs PV max en dégâts magiques chaque seconde pendant 3 sec. Souffrance Pour chaque seconde passée en combat avec des champions ennemis, vous infligez 2% de dégâts bonus (jusqu'à 6%).",
-    "stats": {
-      "HP": {
-        "value": 300,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 60,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Déguisement hanté",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3147.png"
-      },
-      {
-        "name": "Cendres fatidiques",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2508.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6653.png"
-  },
-  {
-    "id": 6655,
-    "name": "Écho de Luden",
-    "price": 2750,
-    "desc": "Écho Les compétences blessantes tirent 6 échos qui infligent des dégâts magiques bonus à la cible et aux ennemis proches. Les échos restants sont redirigés vers la cible principale et lui infligent 20% des dégâts.",
-    "stats": {
-      "Mana": {
-        "value": 600,
-        "icon": "💙",
-        "percent": false
-      },
-      "AP": {
-        "value": 100,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Chapitre perdu",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3802.png"
-      },
-      {
-        "name": "Alternateur Hextech",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3145.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6655.png"
-  },
-  {
     "id": 6657,
     "name": "Bâton séculaire",
     "price": 2600,
@@ -5554,37 +4222,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6657.png"
-  },
-  {
-    "id": 6660,
-    "name": "Cendres de Bami",
-    "price": 900,
-    "desc": "Immolation Subir ou infliger des dégâts vous permet d'infliger des dégâts magiques aux ennemis proches pendant 3 sec.",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 5,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Cristal de rubis",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      },
-      {
-        "name": "Poussière luisante",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2022.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6660.png"
   },
   {
     "id": 6662,
@@ -5647,6 +4284,11 @@
         "value": 10,
         "icon": "⏱️",
         "percent": false
+      },
+      "HP Regen%": {
+        "value": "100%",
+        "icon": "💚",
+        "percent": true
       }
     },
     "components": [
@@ -5662,47 +4304,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6664.png"
-  },
-  {
-    "id": 6665,
-    "name": "Jak'Sho, le Protéiforme",
-    "price": 3200,
-    "desc": "Vigueur de Néantin Après 5 sec de combat contre des champions, vous augmentez votre armure et votre résistance magique bonus de 30% jusqu'à la fin du combat.",
-    "stats": {
-      "MR": {
-        "value": 45,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 45,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Ceinture du géant",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Cotte de mailles",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1031.png"
-      },
-      {
-        "name": "Manteau de Négatron",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1057.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6665.png"
   },
   {
     "id": 6670,
@@ -5863,6 +4464,11 @@
         "value": 50,
         "icon": "⚔️",
         "percent": false
+      },
+      "Lethality": {
+        "value": 10,
+        "icon": "🗡️",
+        "percent": false
       }
     },
     "components": [
@@ -5947,63 +4553,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6692.png"
   },
   {
-    "id": 6694,
-    "name": "Rancune de Serylda",
-    "price": 3000,
-    "desc": "Froid mordant Vos compétences blessantes ralentissent de 30% pendant 1 sec les ennemis qui ont moins de 50% de leurs PV.",
-    "stats": {
-      "AD": {
-        "value": 45,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Marteau de Caulfield",
-        "price": 1050,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
-      },
-      {
-        "name": "Dernier souffle",
-        "price": 1450,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3035.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6694.png"
-  },
-  {
-    "id": 6695,
-    "name": "Crochet de serpent",
-    "price": 2500,
-    "desc": "Briseur de boucliers Infliger des dégâts à un champion ennemi réduit les boucliers qu'il reçoit de 0% pendant 3 sec. Si l'ennemi n'était pas déjà affecté par Briseur de boucliers, vous réduisez ses boucliers actuels de 0%.",
-    "stats": {
-      "AD": {
-        "value": 55,
-        "icon": "⚔️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Dague dentelée",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      },
-      {
-        "name": "Pioche",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6695.png"
-  },
-  {
     "id": 6696,
     "name": "Arc axiomatique",
     "price": 2750,
@@ -6017,6 +4566,11 @@
       "AH": {
         "value": 20,
         "icon": "⏱️",
+        "percent": false
+      },
+      "Lethality": {
+        "value": 18,
+        "icon": "🗡️",
         "percent": false
       }
     },
@@ -6049,6 +4603,11 @@
         "value": 10,
         "icon": "⏱️",
         "percent": false
+      },
+      "Lethality": {
+        "value": 18,
+        "icon": "🗡️",
+        "percent": false
       }
     },
     "components": [
@@ -6080,6 +4639,11 @@
         "value": 10,
         "icon": "⏱️",
         "percent": false
+      },
+      "Lethality": {
+        "value": 18,
+        "icon": "🗡️",
+        "percent": false
       }
     },
     "components": [
@@ -6110,6 +4674,11 @@
       "AH": {
         "value": 10,
         "icon": "⏱️",
+        "percent": false
+      },
+      "Lethality": {
+        "value": 18,
+        "icon": "🗡️",
         "percent": false
       }
     },
@@ -6146,6 +4715,11 @@
       "Speed": {
         "value": 200,
         "icon": "👟",
+        "percent": false
+      },
+      "Lethality": {
+        "value": 18,
+        "icon": "🗡️",
         "percent": false
       }
     },
@@ -6205,78 +4779,33 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/8020.png"
   },
   {
-    "id": 994403,
-    "name": "Golden Spatula",
-    "price": 2500,
-    "desc": "90 Attack Damage 110 Ability Power 200 Health 20 Magic Resist 20 Ability Haste Doing Something You are permanently On Fire! \"It must do something... Declined, it does EVERYTHING\"",
+    "id": 1006,
+    "name": "Rejuvenation Bead",
+    "price": 300,
+    "desc": "",
     "stats": {
-      "MR": {
-        "value": 20,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Mana": {
-        "value": 200,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 110,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 20,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "15%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 90,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "40%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Lifesteal": {
-        "value": "10%",
-        "icon": "🩸",
-        "percent": true
-      },
-      "Speed": {
-        "value": "10%",
-        "icon": "👟",
-        "percent": true
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Mana Regen%": {
-        "value": "100%",
-        "icon": "🔵",
-        "percent": true
-      },
       "HP Regen%": {
-        "value": "50%",
+        "value": "100%",
         "icon": "💚",
         "percent": true
       }
     },
     "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/994403.png"
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1006.png"
+  },
+  {
+    "id": 2139,
+    "name": "Elixir of Sorcery",
+    "price": 500,
+    "desc": "Consume Grants 50 Ability Power and 15% Mana Regen for 3 minutes. While active, damaging a champion or turret deals 25 bonus true damage (5s against champions).",
+    "stats": {
+      "AP": {
+        "value": 50,
+        "icon": "✨",
+        "percent": false
+      }
+    },
+    "components": [],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2139.png"
   }
 ]

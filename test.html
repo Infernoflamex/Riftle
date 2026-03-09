@@ -246,7 +246,7 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 <body>
 
 <header>
-  <div class="logo">LOL<span>dle</span></div>
+  <div class="logo">RIF<span>tle</span></div>
   <div class="subtitle" data-i18n="subtitle">Cinq épreuves · Indices progressifs · Devenez légende</div>
 </header>
 
@@ -521,7 +521,7 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
         </div>
         <div class="endless-card" onclick="startEndless(1,'hell')">
           <div class="ec-diff hell" data-i18n="diff_hell">Enfer</div>
-          <div class="ec-desc" data-i18n="es_comps_hell">Stats combinées de 2 objets + prix</div>
+          <div class="ec-desc" data-i18n="es_comps_hell">Composants de 2 objets + prix total</div>
         </div>
       </div>
     </div>
@@ -638,7 +638,10 @@ button.btn.secondary{background:transparent;border:1px solid var(--gold-dark);co
 // ═══════════════════════════════════════════════════════════════════
 // CONFIG
 // ═══════════════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════════════
 const VERSION = '16.3.1';
+const WEBSITE_VERSION = '1.0'; // Update this when making changes
 const DD = `https://ddragon.leagueoflegends.com/cdn/${VERSION}`;
 
 // ── i18n strings ──────────────────────────────────────────────────
@@ -1411,29 +1414,34 @@ const acCursors={};
 function makeAC(inputId,listId,getResults,submitFn,guessedSet){
   const inp=document.getElementById(inputId), lst=document.getElementById(listId);
   acCursors[listId]=-1;
+  let allResults=[]; // store all results for keyboard navigation
   function render(q){
     lst.innerHTML=''; acCursors[listId]=-1;
     if(!q){lst.classList.remove('open');return;}
-    const all=getResults(q).slice(0,12);
+    const all=getResults(q); // remove slice limit to show all results
     if(!all.length){lst.classList.remove('open');return;}
+    allResults=all; // store all results
     const sorted=[...all.filter(r=>!guessedSet||!guessedSet.has(r.label.toLowerCase())),...all.filter(r=>guessedSet&&guessedSet.has(r.label.toLowerCase()))];
-    sorted.forEach(r=>{
+    sorted.forEach((r,idx)=>{
       const used=guessedSet&&guessedSet.has(r.label.toLowerCase());
       const d=document.createElement('div'); if(used) d.classList.add('already-guessed');
+      d.dataset.originalIndex=all.indexOf(r); // store original index for proper lookup
       if(r.img){const im=document.createElement('img');im.src=r.img;im.alt='';d.appendChild(im);}
       const sp=document.createElement('span');sp.textContent=r.label+(used?' ✗':'');d.appendChild(sp);
       if(!used) d.addEventListener('mousedown',e=>{e.preventDefault();inp.value=r.label;lst.classList.remove('open');acCursors[listId]=-1;});
       lst.appendChild(d);
     });
     lst.classList.add('open');
+    // setup scrollable container if many results
+    if(sorted.length>12) lst.style.maxHeight='200px';
   }
   inp.addEventListener('input',()=>render(norm(inp.value.trim())));
   inp.addEventListener('keydown',e=>{
     const items=[...lst.querySelectorAll('div:not(.already-guessed)')];
     let idx=acCursors[listId];
-    if(e.key==='ArrowDown'){e.preventDefault();idx=Math.min(idx+1,items.length-1);acCursors[listId]=idx;lst.querySelectorAll('div').forEach(d=>d.classList.remove('ac-sel'));if(items[idx])items[idx].classList.add('ac-sel');}
-    else if(e.key==='ArrowUp'){e.preventDefault();idx=Math.max(idx-1,0);acCursors[listId]=idx;lst.querySelectorAll('div').forEach(d=>d.classList.remove('ac-sel'));if(items[idx])items[idx].classList.add('ac-sel');}
-    else if(e.key==='Enter'){e.preventDefault();const pick=idx>=0?idx:0;if(items.length>0&&items[pick])inp.value=items[pick].querySelector('span').textContent;lst.classList.remove('open');acCursors[listId]=-1;submitFn();}
+    if(e.key==='ArrowDown'){e.preventDefault();idx=Math.min(idx+1,items.length-1);acCursors[listId]=idx;lst.querySelectorAll('div').forEach(d=>d.classList.remove('ac-sel'));if(items[idx]){items[idx].classList.add('ac-sel');items[idx].scrollIntoView({block:'nearest'});}}
+    else if(e.key==='ArrowUp'){e.preventDefault();idx=Math.max(idx-1,-1);acCursors[listId]=idx;lst.querySelectorAll('div').forEach(d=>d.classList.remove('ac-sel'));if(items[idx]&&idx>=0){items[idx].classList.add('ac-sel');items[idx].scrollIntoView({block:'nearest'});}}
+    else if(e.key==='Enter'){e.preventDefault();const pick=idx>=0?idx:0;if(items.length>0&&items[pick]){inp.value=items[pick].querySelector('span').textContent.replace(' ✗','');lst.classList.remove('open');acCursors[listId]=-1;submitFn();}}
     else if(e.key==='Escape'){lst.classList.remove('open');acCursors[listId]=-1;}
   });
   document.addEventListener('click',e=>{if(!lst.contains(e.target)&&e.target!==inp)lst.classList.remove('open');});
@@ -1822,8 +1830,8 @@ const SKIN_W = 500, SKIN_H = 280;
 // Change ZOOM_START to make the initial zoom tighter (higher = more zoomed in)
 // Change ZOOM_STEP to control how much it unzooms per wrong answer
 // Change ZOOM_ERRORS to set how many errors before fully revealed (max 20)
-const ZOOM_START  = 2.0;   // ← initial zoom multiplier (e.g. 2 = zoomed 2x)
-const ZOOM_STEP   = 0.2;   // ← how much zoom decreases per wrong answer
+const ZOOM_START  = 3.0;   // ← initial zoom multiplier (e.g. 2 = zoomed 2x)
+const ZOOM_STEP   = 0.4;   // ← how much zoom decreases per wrong answer
 const ZOOM_ERRORS = 9999;  // ← wrong answers before full reveal (effectively unlimited)
 // ────────────────────────────────────────────────────────────────────
 
@@ -2483,11 +2491,12 @@ function loadEndlessRound() {
     const base = ITEMS.filter(i => i.components && i.components.length > 0);
     if (!base.length) { container.innerHTML = '<p style="color:var(--silver);">Données non chargées.</p>'; return; }
     if (diff === 'hell') {
-      // Two random items with components
+      // Two random items with components - both must be unique
       const t1 = pickUnique(base, x => x.id);
       addToRecent(t1.id);
       const rest = base.filter(x => x.id !== t1.id);
-      const t2 = rest[Math.floor(Math.random() * rest.length)];
+      const t2 = pickUnique(rest, x => x.id);
+      addToRecent(t2.id);
       renderEndlessComps(t1, diff, t2);
     } else {
       const target = pickUnique(base, x => x.id);
@@ -2501,7 +2510,8 @@ function loadEndlessRound() {
       const t1 = pickUnique(base, x => x.id);
       addToRecent(t1.id);
       const rest = base.filter(x => x.id !== t1.id);
-      const t2 = rest[Math.floor(Math.random() * rest.length)];
+      const t2 = pickUnique(rest, x => x.id);
+      addToRecent(t2.id);
       renderEndlessStats(t1, diff, t2);
     } else {
       const target = pickUnique(base, x => x.id);
@@ -2569,7 +2579,7 @@ function renderEndlessComps(item, diff, item2) {
   endlessState.target2 = item2 || null;
   endlessState.guessed = new Set();
   // track per-target solved state for hell mode (store target ids)
-  endlessState.hellSolved = new Set();
+  if (!endlessState.hellSolved) endlessState.hellSolved = new Set();
   // allow revealing full price for one item only per hell round
   endlessState.hellPriceRevealed = false;
   const answerPool = ITEMS.filter(i => i.components && i.components.length > 0);
@@ -2617,8 +2627,10 @@ if (diff === 'hell' && item2) {
 
   // For hell mode with two items, render two inputs (sequential answers)
   if (diff === 'hell' && item2) {
+    const combinedPrice = (item.price || 0) + (item2.price || 0);
     document.getElementById('endless-game-container').innerHTML =
       '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
+      '<div class="clue-box" style="padding:10px;margin-bottom:12px;"><div class="clue-label">Prix total combiné</div><div class="clue-value" style="font-size:1.2em;">'+combinedPrice+' 🪙</div></div>' +
       '<div class="input-row" style="margin-top:12px;display:flex;gap:8px;align-items:flex-start;">' +
         '<div style="flex:1">' +
           '<div class="autocomplete-wrapper">' +
@@ -2640,29 +2652,27 @@ if (diff === 'hell' && item2) {
       '<div style="display:flex;gap:10px;margin-top:12px;">' +
         '<div style="flex:1">' +
           '<div class="item-components" id="el-comps-1" style="">' + (makeCompsHtml(item,1) || '—') + '</div>' +
-          '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
-            '<div id="el-price-1" style="color:var(--silver);">Prix : •••</div>' +
-            '<button class="btn secondary" id="el-price-btn-1" onclick="revealPrice(1)">Afficher prix</button>' +
-          '</div>' +
         '</div>' +
         '<div style="flex:1">' +
           '<div class="item-components" id="el-comps-2">' + (makeCompsHtml(item2,1) || '—') + '</div>' +
-          '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
-            '<div id="el-price-2" style="color:var(--silver);">Prix : •••</div>' +
-            '<button class="btn secondary" id="el-price-btn-2" onclick="revealPrice(2)">Afficher prix</button>' +
-          '</div>' +
         '</div>' +
       '</div>' +
       '</div>';
 
     initEndlessAC('el-input-1','el-ac-1', q =>
-      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool)
         .map(x => ({label:x.name, img:x.img, id:x.id}))
     );
     initEndlessAC('el-input-2','el-ac-2', q =>
-      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool)
         .map(x => ({label:x.name, img:x.img, id:x.id}))
     );
+    // If some answers were already solved (e.g. after language change), re-apply solved UI
+    try {
+      if (endlessState.hellSolved.has(item.id)) { const in1 = document.getElementById('el-input-1'); if (in1) { in1.disabled = true; in1.classList.add('solved'); } revealSingleEndlessComps(item,1); }
+      if (item2 && endlessState.hellSolved.has(item2.id)) { const in2 = document.getElementById('el-input-2'); if (in2) { in2.disabled = true; in2.classList.add('solved'); } revealSingleEndlessComps(item2,2); }
+      if (endlessState.hellPriceRevealed) { endlessState.hellPriceRevealed = true; }
+    } catch (e) { /* defensive: ignore if DOM not ready */ }
   }
   else {
     document.getElementById('endless-game-container').innerHTML =
@@ -2677,7 +2687,7 @@ if (diff === 'hell' && item2) {
       '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
 
     initEndlessAC('el-input','el-ac', q =>
-      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool)
         .map(x => ({label:x.name, img:x.img, id:x.id}))
     );
   }
@@ -2688,7 +2698,7 @@ function renderEndlessStats(item, diff, item2) {
   endlessState.target  = item;
   endlessState.target2 = item2 || null;
   endlessState.guessed = new Set();
-  endlessState.hellSolved = new Set();
+  if (!endlessState.hellSolved) endlessState.hellSolved = new Set();
   const answerPool = ITEMS;
   endlessState.hellPriceRevealed = false;
 
@@ -2730,6 +2740,7 @@ function renderEndlessStats(item, diff, item2) {
         '<div class="panel" style="margin-bottom:12px;">' +
         '<div class="panel-title">💀 ' + t('diff_hell') + ' — Stats combinées de 2 objets</div>' +
         '<div class="stats-grid" style="margin-bottom:12px;">' + (buildStatsRows(combinedStatsForSlots)||'—') + '</div>' +
+        '<div class="clue-box" style="padding:10px;margin-bottom:12px;"><div class="clue-label">Prix total combiné</div><div class="clue-value" style="font-size:1.2em;">'+(item.price+item2.price)+' 🪙</div></div>' +
         '<div class="input-row" style="margin-top:12px;display:flex;gap:8px;align-items:flex-start;">' +
           '<div style="flex:1">' +
             '<div class="autocomplete-wrapper">' +
@@ -2737,10 +2748,6 @@ function renderEndlessStats(item, diff, item2) {
               '<div class="autocomplete-list" id="el-ac-1"></div>' +
             '</div>' +
             '<div style="margin-top:6px"><button class="btn" onclick="submitEndless(1)">'+t('guess_btn')+'</button></div>' +
-            '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
-              '<div id="el-price-1" style="color:var(--silver);">Prix : •••</div>' +
-              '<button class="btn secondary" id="el-price-btn-1" onclick="revealPrice(1)">Afficher prix</button>' +
-            '</div>' +
           '</div>' +
           '<div style="flex:1">' +
             '<div class="autocomplete-wrapper">' +
@@ -2748,10 +2755,6 @@ function renderEndlessStats(item, diff, item2) {
               '<div class="autocomplete-list" id="el-ac-2"></div>' +
             '</div>' +
             '<div style="margin-top:6px"><button class="btn" onclick="submitEndless(2)">'+t('guess_btn')+'</button></div>' +
-            '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">' +
-              '<div id="el-price-2" style="color:var(--silver);">Prix : •••</div>' +
-              '<button class="btn secondary" id="el-price-btn-2" onclick="revealPrice(2)">Afficher prix</button>' +
-            '</div>' +
           '</div>' +
         '</div>' +
         '<div style="display:flex;gap:10px;margin-top:12px;">' +
@@ -2763,13 +2766,19 @@ function renderEndlessStats(item, diff, item2) {
     })();
 
     initEndlessAC('el-input-1','el-ac-1', q =>
-      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool)
         .map(x => ({label:x.name, img:x.img, id:x.id}))
     );
     initEndlessAC('el-input-2','el-ac-2', q =>
-      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool)
         .map(x => ({label:x.name, img:x.img, id:x.id}))
     );
+    // Re-apply any previously-solved state after re-render (language change)
+    try {
+      if (endlessState.hellSolved.has(item.id)) { const in1 = document.getElementById('el-input-1'); if (in1) { in1.disabled = true; in1.classList.add('solved'); } revealSingleEndlessStats(item,1); }
+      if (item2 && endlessState.hellSolved.has(item2.id)) { const in2 = document.getElementById('el-input-2'); if (in2) { in2.disabled = true; in2.classList.add('solved'); } revealSingleEndlessStats(item2,2); }
+      if (endlessState.hellPriceRevealed) { endlessState.hellPriceRevealed = true; }
+    } catch (e) { }
   } else {
     document.getElementById('endless-game-container').innerHTML =
       '<div class="panel" style="margin-bottom:12px;">' + clueHtml +
@@ -2783,7 +2792,7 @@ function renderEndlessStats(item, diff, item2) {
       '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
 
     initEndlessAC('el-input','el-ac', q =>
-      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool.slice(0,20))
+      (q ? answerPool.filter(x => norm(x.name).includes(norm(q))) : answerPool)
         .map(x => ({label:x.name, img:x.img, id:x.id}))
     );
   }
@@ -2826,7 +2835,7 @@ function renderEndlessAbility(ab, diff) {
     '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
 
   initEndlessAC('el-input','el-ac', q =>
-    (q ? CHAMPIONS.filter(x => norm(x.name).includes(norm(q))) : CHAMPIONS.slice(0,20))
+    (q ? CHAMPIONS.filter(x => norm(x.name).includes(norm(q))) : CHAMPIONS)
       .map(x => ({label:x.name, img:cImg(x.id), id:x.id}))
   );
 }
@@ -2861,7 +2870,7 @@ function renderEndlessSkin(sk, diff) {
     '<div class="result-msg" id="el-result" style="margin-top:10px;"></div></div>';
 
   initEndlessAC('el-input','el-ac', q =>
-    (q ? CHAMPIONS.filter(x => norm(x.name).includes(norm(q))) : CHAMPIONS.slice(0,20))
+    (q ? CHAMPIONS.filter(x => norm(x.name).includes(norm(q))) : CHAMPIONS)
       .map(x => ({label:x.name, img:cImg(x.id), id:x.id}))
   );
 }
@@ -2974,16 +2983,25 @@ function initEndlessAC(inputId, acId, queryFn) {
   const input = document.getElementById(inputId);
   const ac    = document.getElementById(acId);
   if (!input||!ac) return;
+  let selectedIdx = -1;
   function render() {
     const results = queryFn(norm(input.value.trim()));
-    ac.innerHTML = results.slice(0,8).map(r =>
-      '<div onclick="pickEndlessAC(\''+inputId+'\',\''+acId+'\',this)">' +
-      (r.img?'<img src="'+r.img+'" alt="">':'')+'<span>'+r.label+'</span></div>'
+    selectedIdx = -1;
+    ac.innerHTML = results.map((r,i) =>
+      '<div onclick="pickEndlessAC(\''+inputId+'\',\''+acId+'\',this)" data-idx="'+i+'">' +
+      (r.img?'<img src="'+r.img+'" alt="">':'')+' <span>'+r.label+'</span></div>'
     ).join('');
     ac.classList.toggle('open', results.length>0 && input.value.length>0);
+    if(results.length>12) ac.style.maxHeight='200px';
   }
   input.oninput   = render;
-  input.onkeydown = e => { if(e.key==='Enter') submitEndless(); };
+  input.onkeydown = e => {
+    const items = [...ac.querySelectorAll('div')];
+    if(e.key==='ArrowDown'){ e.preventDefault(); selectedIdx=Math.min(selectedIdx+1,items.length-1); items.forEach(d=>d.classList.remove('ac-sel')); if(items[selectedIdx]){items[selectedIdx].classList.add('ac-sel');items[selectedIdx].scrollIntoView({block:'nearest'});} }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); selectedIdx=Math.max(selectedIdx-1,-1); items.forEach(d=>d.classList.remove('ac-sel')); if(items[selectedIdx]&&selectedIdx>=0){items[selectedIdx].classList.add('ac-sel');items[selectedIdx].scrollIntoView({block:'nearest'});} }
+    else if(e.key==='Enter'){ e.preventDefault(); if(selectedIdx>=0 && items[selectedIdx]) items[selectedIdx].click(); else if(items.length>0) items[0].click(); }
+    else if(e.key==='Escape'){ ac.classList.remove('open'); }
+  };
   document.addEventListener('click', e => { if(!ac.contains(e.target)&&e.target!==input) ac.classList.remove('open'); });
 }
 
@@ -3273,23 +3291,14 @@ function closeLeaderboardPanel() {
   const main = document.getElementById('endless-panel'); if (main) main.style.display = '';
 }
 
-function revealPrice(slotIndex) {
-  if (!endlessState || endlessState.hellPriceRevealed) return;
-  const target = (slotIndex===1 ? endlessState.target : endlessState.target2);
-  if (!target) return;
-  // reveal price in UI
-  const priceEl = document.getElementById('el-price-'+slotIndex);
-  const btn = document.getElementById('el-price-btn-'+slotIndex);
-  if (priceEl) priceEl.textContent = 'Prix : '+(target.price||'—')+' 🪙';
-  if (btn) btn.disabled = true;
-  endlessState.hellPriceRevealed = true;
-}
-
 // ═══════════════════════════════════════════════════════════════════
 // BOOT
 // ═══════════════════════════════════════════════════════════════════
 loadLang('fr_FR').then(()=>{
   applyI18n();
+  // Update version display
+  const versionDisplay = document.getElementById('version-display');
+  if (versionDisplay) versionDisplay.textContent = `Patch ${VERSION} · v${WEBSITE_VERSION}`;
   // Always init targets with daily seed first
   initChamp();initItem2();initItem3();initAbil();initSkin();
   // Then try to restore saved progress for today
@@ -3315,5 +3324,11 @@ loadLang('fr_FR').then(()=>{
   </div>`;
 });
 </script>
+
+<!-- Version display at bottom right -->
+<div style="position:fixed;bottom:10px;right:10px;font-size:.7em;color:var(--silver);font-family:'Exo 2',sans-serif;letter-spacing:1px;text-align:right;z-index:100;">
+  <div id="version-display">Patch 16.3.1 · v1.0</div>
+</div>
+
 </body>
 </html>

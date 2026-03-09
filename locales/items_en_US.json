@@ -45,27 +45,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1006.png"
   },
   {
-    "id": 1011,
-    "name": "Giant's Belt",
-    "price": 900,
-    "desc": "350 Health",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Ruby Crystal",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-  },
-  {
     "id": 1018,
     "name": "Cloak of Agility",
     "price": 600,
@@ -84,7 +63,7 @@
     "id": 1026,
     "name": "Blasting Wand",
     "price": 850,
-    "desc": "45 Ability Power",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 45,
@@ -114,7 +93,7 @@
     "id": 1028,
     "name": "Ruby Crystal",
     "price": 400,
-    "desc": "150 Health",
+    "desc": "",
     "stats": {
       "HP": {
         "value": 150,
@@ -222,21 +201,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1038.png"
   },
   {
-    "id": 1040,
-    "name": "Obsidian Edge",
-    "price": 350,
-    "desc": "Sear: Damaging jungle monsters burns them for magic damage over 5 seconds.Auto Path: Smiting 5 times consumes this item and upgrades your Attack-Smite, increasing its damage to monsters to 900.Huntsman: Killing large jungle monsters grants bonus experience.Recoup: Regen up to Mana (based on missing mana) per second when in the jungle or river. Consuming this item grants all item effects permanently and increases Smite damage to monsters. If you have gained more gold from minions than jungle monsters, gold and experience from minions is heavily reduced. Healing is not reduced on AoE attacks. If two levels behind the average champion level of the game, monster kills grant bonus experience.",
-    "stats": {
-      "Omnivamp": {
-        "value": "8%",
-        "icon": "💜",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1040.png"
-  },
-  {
     "id": 1042,
     "name": "Dagger",
     "price": 250,
@@ -276,7 +240,7 @@
     "id": 1052,
     "name": "Amplifying Tome",
     "price": 400,
-    "desc": "20 Ability Power",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 20,
@@ -314,76 +278,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1053.png"
   },
   {
-    "id": 1054,
-    "name": "Doran's Shield",
-    "price": 450,
-    "desc": "110 Health Enduring Focus Restore 4 Health every 5 seconds. After taking damage from a champion, restore Health over 8 seconds. Helping Hand Attacks deal 5 bonus physical damage to minions.",
-    "stats": {
-      "HP": {
-        "value": 110,
-        "icon": "❤️",
-        "percent": false
-      },
-      "HP Regen": {
-        "value": 0.8,
-        "icon": "💚",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1054.png"
-  },
-  {
-    "id": 1055,
-    "name": "Doran's Blade",
-    "price": 450,
-    "desc": "10 Attack Damage 80 Health 2.5% Omnivamp",
-    "stats": {
-      "HP": {
-        "value": 80,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 10,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Omnivamp": {
-        "value": "2.5%",
-        "icon": "💜",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1055.png"
-  },
-  {
-    "id": 1056,
-    "name": "Doran's Ring",
-    "price": 400,
-    "desc": "18 Ability Power 90 Health Drain Restore 1 Mana every second, increased to 2 Mana per second for 5 seconds after dealing damage to an enemy champion. If you can't gain Mana, heal for 45% of this value instead. Helping Hand Attacks deal 5 bonus physical damage to minions.",
-    "stats": {
-      "HP": {
-        "value": 90,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 18,
-        "icon": "✨",
-        "percent": false
-      },
-      "Mana": {
-        "value": 1,
-        "icon": "💙",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1056.png"
-  },
-  {
     "id": 1057,
     "name": "Negatron Cloak",
     "price": 850,
@@ -408,7 +302,7 @@
     "id": 1058,
     "name": "Needlessly Large Rod",
     "price": 1200,
-    "desc": "65 Ability Power",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 65,
@@ -423,7 +317,7 @@
     "id": 1082,
     "name": "Dark Seal",
     "price": 350,
-    "desc": "15 Ability Power 50 Health Glory Takedowns grant Glory, up to 10. 5 Glory is lost on death. Gain 4 Ability Power per Glory.",
+    "desc": "Glory Takedowns grant Glory, up to 10. 5 Glory is lost on death. Gain 4 Ability Power per Glory.",
     "stats": {
       "HP": {
         "value": 50,
@@ -514,7 +408,7 @@
     "id": 2020,
     "name": "The Brutalizer",
     "price": 1337,
-    "desc": "25 Attack Damage 10 Ability Haste 5 Lethality",
+    "desc": "25 Attack Damage 5 Lethality",
     "stats": {
       "AD": {
         "value": 25,
@@ -550,7 +444,7 @@
     "id": 2021,
     "name": "Tunneler",
     "price": 1150,
-    "desc": "15 Attack Damage 250 Health",
+    "desc": "15 Attack Damage",
     "stats": {
       "HP": {
         "value": 250,
@@ -581,7 +475,7 @@
     "id": 2022,
     "name": "Glowing Mote",
     "price": 250,
-    "desc": "5 Ability Haste",
+    "desc": "",
     "stats": {
       "AH": {
         "value": 5,
@@ -606,127 +500,6 @@
     },
     "components": [],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2031.png"
-  },
-  {
-    "id": 2049,
-    "name": "Guardian's Amulet",
-    "price": 500,
-    "desc": "20 Ability Power 20 Ability Haste Recovery Restores 10 Mana every 5 seconds. If you can't gain mana, restores 3 Health instead.",
-    "stats": {
-      "AP": {
-        "value": 20,
-        "icon": "✨",
-        "percent": false
-      },
-      "HP": {
-        "value": 3,
-        "icon": "❤️",
-        "percent": false
-      },
-      "Mana": {
-        "value": 10,
-        "icon": "💙",
-        "percent": false
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Heal & Shield": {
-        "value": "15%",
-        "icon": "💊",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2049.png"
-  },
-  {
-    "id": 2050,
-    "name": "Guardian's Shroud",
-    "price": 500,
-    "desc": "300 Health 35 Ability Power 15 Ability Haste",
-    "stats": {
-      "HP": {
-        "value": 300,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 35,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2050.png"
-  },
-  {
-    "id": 2051,
-    "name": "Guardian's Horn",
-    "price": 950,
-    "desc": "150 Health Recovery: Restores 20 Health every 5 seconds.Undaunted: Blocks 15 damage from attacks and spells from champions (25% effectiveness vs. damage over time abilities).",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "HP Regen": {
-        "value": 4,
-        "icon": "💚",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2051.png"
-  },
-  {
-    "id": 2065,
-    "name": "Shurelya's Battlesong",
-    "price": 2200,
-    "desc": "50 Ability Power 15 Ability Haste Inspiring Speech Grant nearby allies 30% Move Speed for 4 seconds.",
-    "stats": {
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Mana Regen%": {
-        "value": "125%",
-        "icon": "🔵",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Aether Wisp",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3113.png"
-      },
-      {
-        "name": "Bandleglass Mirror",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4642.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2065.png"
   },
   {
     "id": 2138,
@@ -779,113 +552,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2140.png"
   },
   {
-    "id": 2420,
-    "name": "Seeker's Armguard",
-    "price": 1600,
-    "desc": "40 Ability Power Time Stop (Single use) Enter Stasis for 2.5 seconds.",
-    "stats": {
-      "AP": {
-        "value": 40,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Amplifying Tome",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      },
-      {
-        "name": "Cloth Armor",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Amplifying Tome",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2420.png"
-  },
-  {
-    "id": 2421,
-    "name": "Shattered Armguard",
-    "price": 1600,
-    "desc": "40 Ability Power Shattered Time Armguard is broken, but can still be upgraded. After breaking one Armguard, the shopkeeper will only sell you Shattered Armguard.",
-    "stats": {
-      "AP": {
-        "value": 40,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Amplifying Tome",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      },
-      {
-        "name": "Cloth Armor",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Amplifying Tome",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2421.png"
-  },
-  {
-    "id": 2501,
-    "name": "Overlord's Bloodmail",
-    "price": 3300,
-    "desc": "30 Attack Damage 550 Health Tyranny Gain 2.5% of your bonus Health as Attack Damage. Retribution Gain up to 12% increased Attack Damage based on your percent missing Health.",
-    "stats": {
-      "HP": {
-        "value": 550,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Tunneler",
-        "price": 1150,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2021.png"
-      },
-      {
-        "name": "Tunneler",
-        "price": 1150,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2021.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2501.png"
-  },
-  {
     "id": 2502,
     "name": "Unending Despair",
     "price": 2800,
-    "desc": "400 Health 15 Ability Haste Anguish Every 4 seconds while in combat with champions, deal magic damage to nearby enemy champions and heal for 250% of the damage dealt.",
+    "desc": "Anguish Every 4 seconds while in combat with champions, deal magic damage to nearby enemy champions and heal for 250% of the damage dealt.",
     "stats": {
       "HP": {
         "value": 400,
@@ -926,7 +596,7 @@
     "id": 2503,
     "name": "Blackfire Torch",
     "price": 2800,
-    "desc": "80 Ability Power 20 Ability Haste Baleful Blaze Damaging Abilities deals bonus magic damage for 3 seconds. Blackfire For each enemy champion, epic and large monster affected by your Baleful Blaze, gain 4% Ability Power.",
+    "desc": "Baleful Blaze Damaging Abilities deals bonus magic damage for 3 seconds. Blackfire For each enemy champion, epic and large monster affected by your Baleful Blaze, gain 4% Ability Power.",
     "stats": {
       "Mana": {
         "value": 600,
@@ -962,7 +632,7 @@
     "id": 2504,
     "name": "Kaenic Rookern",
     "price": 2900,
-    "desc": "400 Health 80 Magic Resist Magebane After not taking magic damage for 15 seconds, gain a magic shield.",
+    "desc": "80 Magic Resist Magebane After not taking magic damage for 15 seconds, gain a magic shield.",
     "stats": {
       "MR": {
         "value": 80,
@@ -998,7 +668,7 @@
     "id": 2508,
     "name": "Fated Ashes",
     "price": 900,
-    "desc": "30 Ability Power Inflame Damaging Abilities deal 15 bonus magic damage over 3 seconds. Deals an additional 45 magic damage to monsters.",
+    "desc": "Inflame Damaging Abilities deal 15 bonus magic damage over 3 seconds. Deals an additional 45 magic damage to monsters.",
     "stats": {
       "AP": {
         "value": 30,
@@ -1019,7 +689,7 @@
     "id": 2510,
     "name": "Dusk and Dawn",
     "price": 3100,
-    "desc": "350 Health 70 Ability Power 20 Ability Haste Spellblade (0s) After using an Ability, your next Attack deals bonus magic damage On-Hit and applies On-Hit effects an additional time.",
+    "desc": "Spellblade (0s) After using an Ability, your next Attack deals bonus magic damage On-Hit and applies On-Hit effects an additional time.",
     "stats": {
       "HP": {
         "value": 350,
@@ -1147,7 +817,7 @@
     "id": 2520,
     "name": "Bastionbreaker",
     "price": 3200,
-    "desc": "55 Attack Damage 22 Lethality 15 Ability Haste Shaped Charge (0s) Dealing Ability damage to a Champion or Epic Monster deals an additional true damage. Sabotage Taking down a champion within 3 seconds of damaging them grants Sabotage for 90 seconds. While you have Sabotage, your next Attack against an Epic Monster or Turret deals an additional true damage over 3 seconds.",
+    "desc": "55 Attack Damage 22 Lethality Shaped Charge (0s) Dealing Ability damage to a Champion or Epic Monster deals an additional true damage. Sabotage Taking down a champion within 3 seconds of damaging them grants Sabotage for 90 seconds. While you have Sabotage, your next Attack against an Epic Monster or Turret deals an additional true damage over 3 seconds.",
     "stats": {
       "AD": {
         "value": 55,
@@ -1183,7 +853,7 @@
     "id": 2522,
     "name": "Actualizer",
     "price": 2800,
-    "desc": "90 Ability Power 10 Ability Haste Mana Made Real (0s) For 8 seconds, your mana is Empowered. While Empowered, your spells cost 100% more Mana, you gain increased Ability damage, Shielding, and Healing, and your basic ability cooldowns progress 30% faster.",
+    "desc": "Mana Made Real (0s) For 8 seconds, your mana is Empowered. While Empowered, your spells cost 100% more Mana, you gain increased Ability damage, Shielding, and Healing, and your basic ability cooldowns progress 30% faster.",
     "stats": {
       "Mana": {
         "value": 300,
@@ -1255,7 +925,7 @@
     "id": 2524,
     "name": "Bandlepipes",
     "price": 2300,
-    "desc": "200 Health 15 Ability Haste 20 Magic Resist Fanfare Slowing or Immobilizing an enemy champion grants Fanfare for seconds. Fanfare grants you 20 Move Speed. While you have Fanfare, nearby allies, including yourself, gain Attack Speed.",
+    "desc": "20 Magic Resist Fanfare Slowing or Immobilizing an enemy champion grants Fanfare for seconds. Fanfare grants you 20 Move Speed. While you have Fanfare, nearby allies, including yourself, gain Attack Speed.",
     "stats": {
       "MR": {
         "value": 20,
@@ -1270,11 +940,6 @@
       "AR": {
         "value": 20,
         "icon": "🛡️",
-        "percent": false
-      },
-      "Speed": {
-        "value": 20,
-        "icon": "👟",
         "percent": false
       },
       "AH": {
@@ -1306,7 +971,7 @@
     "id": 2525,
     "name": "Protoplasm Harness",
     "price": 2500,
-    "desc": "600 Health 20 Ability Haste Lifeline (0s) Taking damage that would reduce your Health below 30% causes you to gain maximum Health for 5 seconds, then heal Health over the duration. While regenerating Health, you gain 15% increased Size, 10% Move Speed, and 25% Tenacity.",
+    "desc": "Lifeline (0s) Taking damage that would reduce your Health below 30% causes you to gain maximum Health for 5 seconds, then heal Health over the duration. While regenerating Health, you gain 15% increased Size, 10% Move Speed, and 25% Tenacity.",
     "stats": {
       "HP": {
         "value": 600,
@@ -1342,7 +1007,7 @@
     "id": 2526,
     "name": "Whispering Circlet",
     "price": 2250,
-    "desc": "200 Health Harmony Gain % Heal and Shield Power. Manaflow (8s, max 5 charges) Landing Abilities grants 4 max Mana (doubled vs. champions). Transforms into Diadem of Songs at 360 max Mana.",
+    "desc": "Harmony Gain % Heal and Shield Power. Manaflow (8s, max 5 charges) Landing Abilities grants 4 max Mana (doubled vs. champions). Transforms into Diadem of Songs at 360 max Mana.",
     "stats": {
       "Mana": {
         "value": 300,
@@ -1388,7 +1053,7 @@
     "id": 3002,
     "name": "Trailblazer",
     "price": 2400,
-    "desc": "250 Health Lead the Way While moving, build up to 20 bonus Move Speed. At max speed:Create a trail that grants allied champions Move Speed equal to 15% of yours. If you are Melee, your next Attack Slows the target by 50% for 1 second.",
+    "desc": "Lead the Way While moving, build up to 20 bonus Move Speed. At max speed:Create a trail that grants allied champions Move Speed equal to 15% of yours. If you are Melee, your next Attack Slows the target by 50% for 1 second.",
     "stats": {
       "HP": {
         "value": 250,
@@ -1421,51 +1086,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3002.png"
   },
   {
-    "id": 3003,
-    "name": "Archangel's Staff",
-    "price": 2900,
-    "desc": "70 Ability Power 25 Ability Haste Awe Gain Ability Power equal to 1% bonus Mana. Manaflow (8s, max 5 charges) Landing Abilities grants 5 max Mana (doubled vs. champions). Transforms into Seraph's Embrace at 360 max Mana.",
-    "stats": {
-      "Mana": {
-        "value": 600,
-        "icon": "💙",
-        "percent": false
-      },
-      "AP": {
-        "value": 70,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 25,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Tear of the Goddess",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3070.png"
-      },
-      {
-        "name": "Lost Chapter",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3802.png"
-      },
-      {
-        "name": "Fiendish Codex",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3003.png"
-  },
-  {
     "id": 3004,
     "name": "Manamune",
     "price": 2900,
-    "desc": "35 Attack Damage 15 Ability Haste Awe Gain bonus Attack Damage. Manaflow (8s, max 4 charges) Landing Attacks and Abilities grants 3 max Mana (doubled vs. champions). Transforms into Muramana at 360 max Mana.",
+    "desc": "35 Attack Damage Awe Gain bonus Attack Damage. Manaflow (8s, max 4 charges) Landing Attacks and Abilities grants 3 max Mana (doubled vs. champions). Transforms into Muramana at 360 max Mana.",
     "stats": {
       "Mana": {
         "value": 500,
@@ -1503,42 +1127,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3004.png"
   },
   {
-    "id": 3006,
-    "name": "Berserker's Greaves",
-    "price": 1100,
-    "desc": "45 Move Speed",
-    "stats": {
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "25%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Boots",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      },
-      {
-        "name": "Dagger",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      },
-      {
-        "name": "Dagger",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3006.png"
-  },
-  {
     "id": 3009,
     "name": "Boots of Swiftness",
     "price": 1000,
@@ -1560,36 +1148,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3009.png"
   },
   {
-    "id": 3020,
-    "name": "Sorcerer's Shoes",
-    "price": 1100,
-    "desc": "12 Magic Penetration 45 Move Speed",
-    "stats": {
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      },
-      "Magic Pen": {
-        "value": 12,
-        "icon": "🌀",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Boots",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3020.png"
-  },
-  {
     "id": 3024,
     "name": "Glacial Buckler",
     "price": 900,
-    "desc": "10 Ability Haste",
+    "desc": "",
     "stats": {
       "Mana": {
         "value": 300,
@@ -1797,67 +1359,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3035.png"
   },
   {
-    "id": 3036,
-    "name": "Lord Dominik's Regards",
-    "price": 3300,
-    "desc": "35 Attack Damage Giant Slayer Deal up to 15% bonus damage against champions based on their bonus Health. Maximum damage bonus reached at 1500 bonus Health.",
-    "stats": {
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 35,
-        "icon": "⚔️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Last Whisper",
-        "price": 1450,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3035.png"
-      },
-      {
-        "name": "Noonquiver",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6670.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3036.png"
-  },
-  {
-    "id": 3041,
-    "name": "Mejai's Soulstealer",
-    "price": 1500,
-    "desc": "20 Ability Power 100 Health Glory Takedowns grant Glory, up to 25. 10 Glory is lost on death. Gain 5 Ability Power per Glory and 10% Move Speed at 10 or higher Glory.",
-    "stats": {
-      "HP": {
-        "value": 100,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 20,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Dark Seal",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1082.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3041.png"
-  },
-  {
     "id": 3044,
     "name": "Phage",
     "price": 1100,
-    "desc": "15 Attack Damage 200 Health Rage Attacking grants Move Speed for 2 seconds.",
+    "desc": "15 Attack Damage Rage Attacking grants Move Speed for 2 seconds.",
     "stats": {
       "HP": {
         "value": 200,
@@ -1957,52 +1462,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3047.png"
   },
   {
-    "id": 3050,
-    "name": "Zeke's Convergence",
-    "price": 2200,
-    "desc": "300 Health 25 Magic Resist 10 Ability Haste Frostfire Tempest Casting your Ultimate summons a storm around you for 5 seconds. The storm deals 30 magic damage per second to enemy champions and Slows them by 30%.",
-    "stats": {
-      "MR": {
-        "value": 25,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 300,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 25,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Kindlegem",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Cloth Armor",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Null-Magic Mantle",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1033.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3050.png"
-  },
-  {
     "id": 3051,
     "name": "Hearthbound Axe",
     "price": 1200,
@@ -2039,46 +1498,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3051.png"
   },
   {
-    "id": 3053,
-    "name": "Sterak's Gage",
-    "price": 3200,
-    "desc": "400 Health The Claws that Catch Gain bonus Attack Damage. Lifeline Taking damage that would reduce your Health below 30% grants a decaying Shield for 4.5 seconds.",
-    "stats": {
-      "HP": {
-        "value": 400,
-        "icon": "❤️",
-        "percent": false
-      },
-      "Tenacity": {
-        "value": "20%",
-        "icon": "🔰",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Pickaxe",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      },
-      {
-        "name": "Tunneler",
-        "price": 1150,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2021.png"
-      },
-      {
-        "name": "Ruby Crystal",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3053.png"
-  },
-  {
     "id": 3057,
     "name": "Sheen",
     "price": 900,
-    "desc": "10 Ability Haste Spellblade After using an Ability, your next Attack deals bonus physical damage On-Hit.",
+    "desc": "Spellblade After using an Ability, your next Attack deals bonus physical damage On-Hit.",
     "stats": {
       "AH": {
         "value": 10,
@@ -2099,7 +1522,7 @@
     "id": 3065,
     "name": "Spirit Visage",
     "price": 2700,
-    "desc": "400 Health 50 Magic Resist 10 Ability Haste Boundless Vitality Heals and Shields on you are increased by 25%.",
+    "desc": "50 Magic Resist Boundless Vitality Heals and Shields on you are increased by 25%.",
     "stats": {
       "MR": {
         "value": 50,
@@ -2140,7 +1563,7 @@
     "id": 3066,
     "name": "Winged Moonplate",
     "price": 800,
-    "desc": "200 Health",
+    "desc": "",
     "stats": {
       "HP": {
         "value": 200,
@@ -2166,7 +1589,7 @@
     "id": 3067,
     "name": "Kindlegem",
     "price": 800,
-    "desc": "200 Health 10 Ability Haste",
+    "desc": "",
     "stats": {
       "HP": {
         "value": 200,
@@ -2197,7 +1620,7 @@
     "id": 3068,
     "name": "Sunfire Aegis",
     "price": 2700,
-    "desc": "350 Health 10 Ability Haste Immolate After taking or dealing damage, deal magic damage per second to nearby enemies for 3 seconds.",
+    "desc": "Immolate After taking or dealing damage, deal magic damage per second to nearby enemies for 3 seconds.",
     "stats": {
       "HP": {
         "value": 350,
@@ -2248,7 +1671,7 @@
     "id": 3071,
     "name": "Black Cleaver",
     "price": 3000,
-    "desc": "40 Attack Damage 400 Health 20 Ability Haste Carve Dealing physical damage to champions reduces their Armor by 6% for 6 seconds. (stacks 5 times). Fervor Dealing physical damage grants 20 Move Speed for 2 seconds.",
+    "desc": "40 Attack Damage Carve Dealing physical damage to champions reduces their Armor by 6% for 6 seconds. (stacks 5 times). Fervor Dealing physical damage grants 20 Move Speed for 2 seconds.",
     "stats": {
       "HP": {
         "value": 400,
@@ -2330,7 +1753,7 @@
     "id": 3073,
     "name": "Experimental Hexplate",
     "price": 3000,
-    "desc": "40 Attack Damage 450 Health Hexcharged Gain 30 Ultimate Ability Haste. Overdrive After casting your Ultimate, gain 50% Attack Speed and 20% Move Speed for 8 seconds.",
+    "desc": "40 Attack Damage Hexcharged Gain 30 Ultimate Ability Haste. Overdrive After casting your Ultimate, gain 50% Attack Speed and 20% Move Speed for 8 seconds.",
     "stats": {
       "HP": {
         "value": 450,
@@ -2371,7 +1794,7 @@
     "id": 3074,
     "name": "Ravenous Hydra",
     "price": 3300,
-    "desc": "65 Attack Damage 15 Ability Haste Cleave Attacks deal physical damage to nearby enemies.Ravenous Crescent Deal physical damage to enemies around you. Your Life Steal applies to this damage.",
+    "desc": "65 Attack Damage Cleave Attacks deal physical damage to nearby enemies.Ravenous Crescent Deal physical damage to enemies around you. Your Life Steal applies to this damage.",
     "stats": {
       "AD": {
         "value": 65,
@@ -2412,7 +1835,7 @@
     "id": 3075,
     "name": "Thornmail",
     "price": 2450,
-    "desc": "150 Health Thorns When struck by an Attack, deal magic damage to the attacker and apply 40% Wounds for 3 seconds if they are a champion.",
+    "desc": "Thorns When struck by an Attack, deal magic damage to the attacker and apply 40% Wounds for 3 seconds if they are a champion.",
     "stats": {
       "HP": {
         "value": 150,
@@ -2500,7 +1923,7 @@
     "id": 3078,
     "name": "Trinity Force",
     "price": 3333,
-    "desc": "36 Attack Damage 333 Health 15 Ability Haste Spellblade After using an Ability, your next Attack deals bonus physical damage On-Hit. Quicken Attacking grants 20 Move Speed for 2 seconds.",
+    "desc": "36 Attack Damage Spellblade After using an Ability, your next Attack deals bonus physical damage On-Hit. Quicken Attacking grants 20 Move Speed for 2 seconds.",
     "stats": {
       "HP": {
         "value": 333,
@@ -2548,72 +1971,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3078.png"
   },
   {
-    "id": 3082,
-    "name": "Warden's Mail",
-    "price": 1000,
-    "desc": "Rock Solid Reduce incoming damage from Attacks.",
-    "stats": {
-      "AR": {
-        "value": 40,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Cloth Armor",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      },
-      {
-        "name": "Cloth Armor",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1029.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3082.png"
-  },
-  {
-    "id": 3083,
-    "name": "Warmog's Armor",
-    "price": 3100,
-    "desc": "1000 Health Warmog's Heart If you have 2000 bonus Health and have not taken damage within 8 seconds, restore Health per second. Warmog's Vitality Gain bonus Health equal to 12% of your Item Health (0).",
-    "stats": {
-      "HP": {
-        "value": 1000,
-        "icon": "❤️",
-        "percent": false
-      },
-      "HP Regen%": {
-        "value": "100%",
-        "icon": "💚",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Crystalline Bracer",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3801.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3083.png"
-  },
-  {
     "id": 3084,
     "name": "Heartsteel",
     "price": 3000,
-    "desc": "900 Health Colossal Consumption (0s) per target If an enemy champion is nearby for a few seconds, your next Attack against them deals 70 plus 6% of your max Health as bonus physical damage and grants 8% of the damage as max Health. Goliath For each 1000 max Health, gain 3% increased size, up to 30%.",
+    "desc": "Colossal Consumption (0s) per target If an enemy champion is nearby for a few seconds, your next Attack against them deals 70 plus 6% of your max Health as bonus physical damage and grants 8% of the damage as max Health. Goliath For each 1000 max Health, gain 3% increased size, up to 30%.",
     "stats": {
       "HP": {
         "value": 900,
@@ -2644,42 +2005,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3084.png"
-  },
-  {
-    "id": 3085,
-    "name": "Runaan's Hurricane",
-    "price": 2650,
-    "desc": "Wind's Fury Attacks fire bolts at 2 additional enemies near the target. Each bolt deals physical damage and applies On-Hit effects.",
-    "stats": {
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "Atk Speed": {
-        "value": "40%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Zeal",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3086.png"
-      },
-      {
-        "name": "Scout's Slingshot",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3144.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3085.png"
   },
   {
     "id": 3086,
@@ -2759,73 +2084,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3087.png"
   },
   {
-    "id": 3089,
-    "name": "Rabadon's Deathcap",
-    "price": 3500,
-    "desc": "130 Ability Power Magical Opus Increases your total Ability Power by 30%.",
-    "stats": {
-      "AP": {
-        "value": 130,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Needlessly Large Rod",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Needlessly Large Rod",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3089.png"
-  },
-  {
-    "id": 3091,
-    "name": "Wit's End",
-    "price": 2800,
-    "desc": "45 Magic Resist Fray Attacks deal bonus magic damage On-Hit.",
-    "stats": {
-      "MR": {
-        "value": 45,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "50%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Tenacity": {
-        "value": "20%",
-        "icon": "🔰",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Recurve Bow",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      },
-      {
-        "name": "Negatron Cloak",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1057.png"
-      },
-      {
-        "name": "Recurve Bow",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3091.png"
-  },
-  {
     "id": 3094,
     "name": "Rapid Firecannon",
     "price": 2650,
@@ -2862,51 +2120,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3094.png"
   },
   {
-    "id": 3095,
-    "name": "Stormrazor",
-    "price": 3000,
-    "desc": "50 Attack Damage Energized Moving and Attacking generates an Energized Attack. Bolt Your Energized Attack applies bonus magic damage and grants 45% Movement Speed for 1.5 seconds.",
-    "stats": {
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 50,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "20%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "B. F. Sword",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1038.png"
-      },
-      {
-        "name": "Cloak of Agility",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1018.png"
-      },
-      {
-        "name": "Scout's Slingshot",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3144.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3095.png"
-  },
-  {
     "id": 3100,
     "name": "Lich Bane",
     "price": 2900,
-    "desc": "100 Ability Power 10 Ability Haste Spellblade After using an Ability, your next Attack deals bonus magic damage On-Hit.",
+    "desc": "Spellblade After using an Ability, your next Attack deals bonus magic damage On-Hit.",
     "stats": {
       "AP": {
         "value": 100,
@@ -2944,41 +2161,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3100.png"
   },
   {
-    "id": 3102,
-    "name": "Banshee's Veil",
-    "price": 3000,
-    "desc": "105 Ability Power 40 Magic Resist Annul Grants a Spell Shield that blocks the next enemy Ability.",
-    "stats": {
-      "MR": {
-        "value": 40,
-        "icon": "🔮",
-        "percent": false
-      },
-      "AP": {
-        "value": 105,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Needlessly Large Rod",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Verdant Barrier",
-        "price": 1600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4632.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3102.png"
-  },
-  {
     "id": 3105,
     "name": "Aegis of the Legion",
     "price": 1100,
-    "desc": "25 Magic Resist 10 Ability Haste",
+    "desc": "25 Magic Resist",
     "stats": {
       "MR": {
         "value": 25,
@@ -3014,7 +2200,7 @@
     "id": 3107,
     "name": "Redemption",
     "price": 2300,
-    "desc": "30 Ability Power 15 Ability Haste Intervention Restore 150 - 350 Health to allied units and deal 10% max Health true damage to enemy champions after 2.5 seconds.",
+    "desc": "Intervention Restore 150 - 350 Health to allied units and deal 10% max Health true damage to enemy champions after 2.5 seconds.",
     "stats": {
       "AP": {
         "value": 30,
@@ -3060,7 +2246,7 @@
     "id": 3108,
     "name": "Fiendish Codex",
     "price": 850,
-    "desc": "25 Ability Power 10 Ability Haste",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 25,
@@ -3088,56 +2274,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
   },
   {
-    "id": 3109,
-    "name": "Knight's Vow",
-    "price": 2300,
-    "desc": "200 Health 10 Ability Haste Sacrifice While near your Worthy ally, take 12% of the damage they receive and heal for 10% of the damage they deal to champions.Pledge (0s) Designate an ally as Worthy.",
-    "stats": {
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 40,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "HP Regen%": {
-        "value": "100%",
-        "icon": "💚",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Kindlegem",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Chain Vest",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1031.png"
-      },
-      {
-        "name": "Rejuvenation Bead",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1006.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3109.png"
-  },
-  {
     "id": 3110,
     "name": "Frozen Heart",
     "price": 2500,
-    "desc": "20 Ability Haste Winter's Caress Reduce the Attack Speed of nearby champions by 20%.",
+    "desc": "Winter's Caress Reduce the Attack Speed of nearby champions by 20%.",
     "stats": {
       "Mana": {
         "value": 400,
@@ -3170,71 +2310,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3110.png"
   },
   {
-    "id": 3111,
-    "name": "Mercury's Treads",
-    "price": 1250,
-    "desc": "20 Magic Resist 45 Move Speed",
-    "stats": {
-      "MR": {
-        "value": 20,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Speed": {
-        "value": 45,
-        "icon": "👟",
-        "percent": false
-      },
-      "Tenacity": {
-        "value": "30%",
-        "icon": "🔰",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Boots",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1001.png"
-      },
-      {
-        "name": "Null-Magic Mantle",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1033.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3111.png"
-  },
-  {
-    "id": 3112,
-    "name": "Guardian's Orb",
-    "price": 950,
-    "desc": "50 Ability Power 150 Health Recovery: Restores 10 Mana every 5 seconds. If you can't gain mana, restores 15 Health instead.",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      },
-      "Mana": {
-        "value": 10,
-        "icon": "💙",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3112.png"
-  },
-  {
     "id": 3113,
     "name": "Aether Wisp",
     "price": 900,
-    "desc": "30 Ability Power",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 30,
@@ -3283,87 +2362,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3114.png"
   },
   {
-    "id": 3115,
-    "name": "Nashor's Tooth",
-    "price": 2900,
-    "desc": "80 Ability Power 15 Ability Haste Icathian Bite Attacks deal bonus magic damage On-Hit.",
-    "stats": {
-      "AP": {
-        "value": 80,
-        "icon": "✨",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "50%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Recurve Bow",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      },
-      {
-        "name": "Blasting Wand",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1026.png"
-      },
-      {
-        "name": "Fiendish Codex",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3108.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3115.png"
-  },
-  {
-    "id": 3116,
-    "name": "Rylai's Crystal Scepter",
-    "price": 2600,
-    "desc": "65 Ability Power 400 Health Rimefrost Damaging Abilities Slow enemies by 30% for 1 second.",
-    "stats": {
-      "HP": {
-        "value": 400,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 65,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Blasting Wand",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1026.png"
-      },
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Amplifying Tome",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3116.png"
-  },
-  {
     "id": 3118,
     "name": "Malignance",
     "price": 2700,
-    "desc": "90 Ability Power 15 Ability Haste Scorn Gain 20 Ultimate Ability Haste. Hatefog Damaging a champion with your Ultimate burns the ground beneath them for 3s, dealing magic damage per second and reducing their Magic Resist.",
+    "desc": "Scorn Gain 20 Ultimate Ability Haste. Hatefog Damaging a champion with your Ultimate burns the ground beneath them for 3s, dealing magic damage per second and reducing their Magic Resist.",
     "stats": {
       "Mana": {
         "value": 600,
@@ -3394,145 +2396,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3118.png"
-  },
-  {
-    "id": 3119,
-    "name": "Winter's Approach",
-    "price": 2400,
-    "desc": "550 Health 15 Ability Haste Awe Gain Health. Manaflow (8s, max 4 charges) Landing Attacks and Abilities grant 3 max Mana (doubled vs. champions). Transforms into Fimbulwinter at 360 max Mana.",
-    "stats": {
-      "Mana": {
-        "value": 500,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 550,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Tear of the Goddess",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3070.png"
-      },
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Kindlegem",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3119.png"
-  },
-  {
-    "id": 3123,
-    "name": "Executioner's Calling",
-    "price": 800,
-    "desc": "15 Attack Damage Grievous Wounds Dealing physical damage to champions applies 40% Wounds for 3 seconds.",
-    "stats": {
-      "AD": {
-        "value": 15,
-        "icon": "⚔️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Long Sword",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3123.png"
-  },
-  {
-    "id": 3124,
-    "name": "Guinsoo's Rageblade",
-    "price": 3000,
-    "desc": "30 Attack Damage 30 Ability Power Wrath Attacks deal 30 bonus magic damage On-Hit. Seething Strike Attacks grant 8% Attack Speed for 3 seconds. (stacks 4 times). While fully stacked, every third Attack applies On-Hit effects twice.",
-    "stats": {
-      "AP": {
-        "value": 30,
-        "icon": "✨",
-        "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "25%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Amplifying Tome",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1052.png"
-      },
-      {
-        "name": "Recurve Bow",
-        "price": 700,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1043.png"
-      },
-      {
-        "name": "Pickaxe",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3124.png"
-  },
-  {
-    "id": 3133,
-    "name": "Caulfield's Warhammer",
-    "price": 1050,
-    "desc": "20 Attack Damage 10 Ability Haste",
-    "stats": {
-      "AD": {
-        "value": 20,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Long Sword",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      },
-      {
-        "name": "Glowing Mote",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2022.png"
-      },
-      {
-        "name": "Long Sword",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
   },
   {
     "id": 3134,
@@ -3569,7 +2432,7 @@
     "id": 3135,
     "name": "Void Staff",
     "price": 3000,
-    "desc": "95 Ability Power",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 95,
@@ -3595,7 +2458,7 @@
     "id": 3137,
     "name": "Cryptbloom",
     "price": 3000,
-    "desc": "75 Ability Power 20 Ability Haste Life from Death When a champion that you damaged within 3 seconds dies, a nova spreads from their corpse that heals.",
+    "desc": "Life from Death When a champion that you damaged within 3 seconds dies, a nova spreads from their corpse that heals.",
     "stats": {
       "AP": {
         "value": 75,
@@ -3690,108 +2553,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3140.png"
   },
   {
-    "id": 3142,
-    "name": "Youmuu's Ghostblade",
-    "price": 2800,
-    "desc": "55 Attack Damage 18 Lethality Haunt Gain Move Speed while out of combat. Wraith Step Gain Move Speed and Ghosting for seconds.",
-    "stats": {
-      "AD": {
-        "value": 55,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      },
-      "Lethality": {
-        "value": 18,
-        "icon": "🗡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Serrated Dirk",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      },
-      {
-        "name": "Rectrix",
-        "price": 775,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6690.png"
-      },
-      {
-        "name": "Long Sword",
-        "price": 350,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1036.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3142.png"
-  },
-  {
-    "id": 3143,
-    "name": "Randuin's Omen",
-    "price": 2700,
-    "desc": "350 Health Resilience Receive 30% less damage from Critical Strikes. Humility Slow nearby enemies by 70% for 2 seconds.",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 75,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Warden's Mail",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3082.png"
-      },
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3143.png"
-  },
-  {
-    "id": 3144,
-    "name": "Scout's Slingshot",
-    "price": 600,
-    "desc": "Bullseye Damaging a champion deals bonus magic damage. Attacks reduce this cooldown by 1 second.",
-    "stats": {
-      "Atk Speed": {
-        "value": "20%",
-        "icon": "⚡",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Dagger",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      },
-      {
-        "name": "Dagger",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1042.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3144.png"
-  },
-  {
     "id": 3145,
     "name": "Hextech Alternator",
     "price": 1100,
-    "desc": "45 Ability Power Revved Damaging a champion deals bonus magic damage.",
+    "desc": "Revved Damaging a champion deals bonus magic damage.",
     "stats": {
       "AP": {
         "value": 45,
@@ -3817,7 +2582,7 @@
     "id": 3146,
     "name": "Hextech Gunblade",
     "price": 3000,
-    "desc": "80 Ability Power 40 Attack Damage ACTIVE (0s) Lightning Bolt Shocks the target enemy champion, dealing magic damage and slowing them by 25% for 1.5 seconds.",
+    "desc": "40 Attack Damage ACTIVE (0s) Lightning Bolt Shocks the target enemy champion, dealing magic damage and slowing them by 25% for 1.5 seconds.",
     "stats": {
       "AP": {
         "value": 80,
@@ -3858,7 +2623,7 @@
     "id": 3147,
     "name": "Haunting Guise",
     "price": 1300,
-    "desc": "30 Ability Power 200 Health Madness For each second in combat with enemy champions, deal 2% bonus damage, up to 6%.",
+    "desc": "Madness For each second in combat with enemy champions, deal 2% bonus damage, up to 6%.",
     "stats": {
       "HP": {
         "value": 200,
@@ -3889,7 +2654,7 @@
     "id": 3152,
     "name": "Hextech Rocketbelt",
     "price": 2650,
-    "desc": "70 Ability Power 300 Health 20 Ability Haste Supersonic Dash in target direction, unleashing missiles that deal magic damage.",
+    "desc": "Supersonic Dash in target direction, unleashing missiles that deal magic damage.",
     "stats": {
       "HP": {
         "value": 300,
@@ -4007,7 +2772,7 @@
     "id": 3156,
     "name": "Maw of Malmortius",
     "price": 3100,
-    "desc": "60 Attack Damage 15 Ability Haste 40 Magic Resist Lifeline Taking magic damage that would reduce your Health below 30% grants a magic damage Shield for 3 seconds and 10% Omnivamp until end of combat.",
+    "desc": "60 Attack Damage 40 Magic Resist Lifeline Taking magic damage that would reduce your Health below 30% grants a magic damage Shield for 3 seconds and 10% Omnivamp until end of combat.",
     "stats": {
       "MR": {
         "value": 40,
@@ -4045,41 +2810,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3156.png"
   },
   {
-    "id": 3157,
-    "name": "Zhonya's Hourglass",
-    "price": 3250,
-    "desc": "105 Ability Power Time Stop Enter Stasis for 2.5 seconds.",
-    "stats": {
-      "AP": {
-        "value": 105,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 50,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Needlessly Large Rod",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Seeker's Armguard",
-        "price": 1600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2420.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3157.png"
-  },
-  {
     "id": 3158,
     "name": "Ionian Boots of Lucidity",
     "price": 900,
-    "desc": "10 Ability Haste 45 Move Speed Ionian Insight Gain 10 Summoner Spell Haste.",
+    "desc": "45 Move Speed Ionian Insight Gain 10 Summoner Spell Haste.",
     "stats": {
       "Speed": {
         "value": 45,
@@ -4110,7 +2844,7 @@
     "id": 3161,
     "name": "Spear of Shojin",
     "price": 3100,
-    "desc": "45 Attack Damage 450 Health Dragonforce Gain 25 Basic Ability Haste. Focused Will Dealing damage with Abilities increases your Champion's Ability and Passive damage by 3% for 6 seconds. (stacks 4 times).",
+    "desc": "Dragonforce Gain 25 Basic Ability Haste. Focused Will Dealing damage with Abilities increases your Champion's Ability and Passive damage by 3% for 6 seconds. (stacks 4 times).",
     "stats": {
       "HP": {
         "value": 450,
@@ -4146,7 +2880,7 @@
     "id": 3165,
     "name": "Morellonomicon",
     "price": 2850,
-    "desc": "75 Ability Power 350 Health 15 Ability Haste Grievous Wounds Dealing magic damage to champions applies 40% Wounds for 3 seconds.",
+    "desc": "Grievous Wounds Dealing magic damage to champions applies 40% Wounds for 3 seconds.",
     "stats": {
       "HP": {
         "value": 350,
@@ -4184,35 +2918,145 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3165.png"
   },
   {
-    "id": 3177,
-    "name": "Guardian's Blade",
-    "price": 950,
-    "desc": "30 Attack Damage 150 Health 15 Ability Haste",
+    "id": 3170,
+    "name": "Swiftmarch",
+    "price": 1000,
+    "desc": "65 Move Speed Fleetfooted Reduce the effectiveness of Slows by 40%. Noxian Fervor Gain 5% of your Move Speed as Adaptive Force.",
     "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
+      "Speed": {
+        "value": 65,
+        "icon": "👟",
         "percent": false
-      },
-      "AD": {
-        "value": 30,
-        "icon": "⚔️",
+      }
+    },
+    "components": [
+      {
+        "name": "Boots of Swiftness",
+        "price": 1000,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3009.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3170.png"
+  },
+  {
+    "id": 3171,
+    "name": "Crimson Lucidity",
+    "price": 900,
+    "desc": "45 Move Speed Ionian Insight Gain 20 Summoner Spell Haste. Noxian Haste Empowering or protecting allies with abilities, dealing damage to enemy Champions with abilities, or casting a Summoner Spell grants Move Speed for 4 seconds. Noxian Haste can only be triggered once per Ability cast.",
+    "stats": {
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
         "percent": false
       },
       "AH": {
-        "value": 15,
+        "value": 20,
         "icon": "⏱️",
         "percent": false
       }
     },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3177.png"
+    "components": [
+      {
+        "name": "Ionian Boots of Lucidity",
+        "price": 900,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3158.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3171.png"
+  },
+  {
+    "id": 3172,
+    "name": "Gunmetal Greaves",
+    "price": 1100,
+    "desc": "45 Move Speed Noxian Gait Attacks against Champions grant Move Speed On-Hit decaying over 2 seconds.",
+    "stats": {
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
+        "percent": false
+      },
+      "Atk Speed": {
+        "value": "40%",
+        "icon": "⚡",
+        "percent": true
+      },
+      "Lifesteal": {
+        "value": "5%",
+        "icon": "🩸",
+        "percent": true
+      }
+    },
+    "components": [
+      {
+        "name": "Berserker's Greaves",
+        "price": 1100,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3006.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3172.png"
+  },
+  {
+    "id": 3173,
+    "name": "Chainlaced Crushers",
+    "price": 1250,
+    "desc": "30 Magic Resist 45 Move Speed Noxian Persistence (0s) After taking magic damage from a Champion, gain a magic shield for 5 seconds.",
+    "stats": {
+      "MR": {
+        "value": 30,
+        "icon": "🔮",
+        "percent": false
+      },
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
+        "percent": false
+      },
+      "Tenacity": {
+        "value": "30%",
+        "icon": "🔰",
+        "percent": true
+      }
+    },
+    "components": [
+      {
+        "name": "Mercury's Treads",
+        "price": 1250,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3111.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3173.png"
+  },
+  {
+    "id": 3174,
+    "name": "Armored Advance",
+    "price": 1200,
+    "desc": "45 Move Speed Plating Reduces incoming damage from Attacks by 10%. Noxian Endurance (0s) After taking physical damage from a Champion, gain a physical shield for 5 seconds.",
+    "stats": {
+      "Speed": {
+        "value": 45,
+        "icon": "👟",
+        "percent": false
+      },
+      "AR": {
+        "value": 35,
+        "icon": "🛡️",
+        "percent": false
+      }
+    },
+    "components": [
+      {
+        "name": "Plated Steelcaps",
+        "price": 1200,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3047.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3174.png"
   },
   {
     "id": 3179,
     "name": "Umbral Glaive",
     "price": 2800,
-    "desc": "60 Attack Damage 18 Lethality 15 Ability Haste Nightstalker After being unseen by enemies briefly, your next attack against a champion deals an additional true damage. Blackout When you are near enemy Stealth Wards and traps, reveal them briefly. While revealing wards, your attacks deal bonus damage to them.",
+    "desc": "60 Attack Damage 18 Lethality Nightstalker After being unseen by enemies briefly, your next attack against a champion deals an additional true damage. Blackout When you are near enemy Stealth Wards and traps, reveal them briefly. While revealing wards, your attacks deal bonus damage to them.",
     "stats": {
       "AD": {
         "value": 60,
@@ -4248,7 +3092,7 @@
     "id": 3181,
     "name": "Hullbreaker",
     "price": 3000,
-    "desc": "40 Attack Damage 500 Health Skipper Every fifth Attack against champions and epic monsters deals bonus physical damage, increased against Structures. Boarding Party Nearby allied siege and super minions gain Armor and Magic Resist.",
+    "desc": "40 Attack Damage Skipper Every fifth Attack against champions and epic monsters deals bonus physical damage, increased against Structures. Boarding Party Nearby allied siege and super minions gain Armor and Magic Resist.",
     "stats": {
       "HP": {
         "value": 500,
@@ -4286,35 +3130,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3181.png"
   },
   {
-    "id": 3184,
-    "name": "Guardian's Hammer",
-    "price": 950,
-    "desc": "25 Attack Damage 150 Health",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AD": {
-        "value": 25,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Lifesteal": {
-        "value": "5%",
-        "icon": "🩸",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3184.png"
-  },
-  {
     "id": 3190,
     "name": "Locket of the Iron Solari",
     "price": 2200,
-    "desc": "200 Health 25 Magic Resist 10 Ability Haste Devotion Grant nearby allies a 200 - 360 Shield that decays over 2.5 seconds.",
+    "desc": "25 Magic Resist Devotion Grant nearby allies a 200 - 360 Shield that decays over 2.5 seconds.",
     "stats": {
       "MR": {
         "value": 25,
@@ -4357,88 +3176,6 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3190.png"
   },
   {
-    "id": 3211,
-    "name": "Spectre's Cowl",
-    "price": 1250,
-    "desc": "200 Health 35 Magic Resist",
-    "stats": {
-      "MR": {
-        "value": 35,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "HP Regen%": {
-        "value": "100%",
-        "icon": "💚",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Ruby Crystal",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      },
-      {
-        "name": "Null-Magic Mantle",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1033.png"
-      },
-      {
-        "name": "Rejuvenation Bead",
-        "price": 300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1006.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3211.png"
-  },
-  {
-    "id": 3222,
-    "name": "Mikael's Blessing",
-    "price": 2300,
-    "desc": "250 Health 15 Ability Haste Purify Remove all crowd control debuffs (excluding Airborne and Suppression) from an ally champion and restore 100 - 250 Health.",
-    "stats": {
-      "HP": {
-        "value": 250,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Heal & Shield": {
-        "value": "12%",
-        "icon": "💊",
-        "percent": true
-      },
-      "Mana Regen%": {
-        "value": "100%",
-        "icon": "🔵",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Kindlegem",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Forbidden Idol",
-        "price": 600,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3114.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3222.png"
-  },
-  {
     "id": 3302,
     "name": "Terminus",
     "price": 3000,
@@ -4470,35 +3207,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3302.png"
   },
   {
-    "id": 3430,
-    "name": "Rite Of Ruin",
-    "price": 2500,
-    "desc": "50 Ability Power 15 Ability Haste Wrath and Ruin On spell cast, gain 2.5% critical chance for 6 seconds, stacking up to 20%. Salvage the Wreckage Your spells have a chance equal to your crit chance to grant you or your targeted ally a shield for for 3s.",
-    "stats": {
-      "AP": {
-        "value": 50,
-        "icon": "✨",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "25%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3430.png"
-  },
-  {
     "id": 3504,
     "name": "Ardent Censer",
     "price": 2200,
-    "desc": "45 Ability Power Sanctify Healing or Shielding an ally enhances you both for 6 seconds, granting 25% Attack Speed and 20 magic damage On-Hit.",
+    "desc": "Sanctify Healing or Shielding an ally enhances you both for 6 seconds, granting 25% Attack Speed and 20 magic damage On-Hit.",
     "stats": {
       "AP": {
         "value": 45,
@@ -4508,11 +3220,6 @@
       "Speed": {
         "value": "4%",
         "icon": "👟",
-        "percent": true
-      },
-      "Atk Speed": {
-        "value": "25%",
-        "icon": "⚡",
         "percent": true
       },
       "Heal & Shield": {
@@ -4544,7 +3251,7 @@
     "id": 3508,
     "name": "Essence Reaver",
     "price": 3050,
-    "desc": "50 Attack Damage 20 Ability Haste Spellblade After using an Ability, your next Attack deals bonus physical damage and grants Mana On-Hit.",
+    "desc": "50 Attack Damage Spellblade After using an Ability, your next Attack deals bonus physical damage and grants Mana On-Hit.",
     "stats": {
       "Crit Chance": {
         "value": "25%",
@@ -4582,51 +3289,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3508.png"
   },
   {
-    "id": 3742,
-    "name": "Dead Man's Plate",
-    "price": 2900,
-    "desc": "350 Health Shipwrecker While moving, build up to 20 bonus Move Speed. Your next Attack discharges built up Move Speed to deal bonus physical damage. Unsinkable Reduce the effectiveness of Slows by 15%.",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 55,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Speed": {
-        "value": "4%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Winged Moonplate",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3066.png"
-      },
-      {
-        "name": "Ruby Crystal",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      },
-      {
-        "name": "Chain Vest",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1031.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3742.png"
-  },
-  {
     "id": 3748,
     "name": "Titanic Hydra",
     "price": 3300,
-    "desc": "40 Attack Damage 600 Health Cleave Attacks deal physical damage on-hit and to enemies behind the target. Titanic Crescent Empower your next Cleave to deal bonus physical damage On-Hit and deal bonus physical damage to enemies behind the target.",
+    "desc": "40 Attack Damage Cleave Attacks deal physical damage on-hit and to enemies behind the target. Titanic Crescent Empower your next Cleave to deal bonus physical damage On-Hit and deal bonus physical damage to enemies behind the target.",
     "stats": {
       "HP": {
         "value": 600,
@@ -4662,7 +3328,7 @@
     "id": 3801,
     "name": "Crystalline Bracer",
     "price": 800,
-    "desc": "200 Health",
+    "desc": "",
     "stats": {
       "HP": {
         "value": 200,
@@ -4693,7 +3359,7 @@
     "id": 3802,
     "name": "Lost Chapter",
     "price": 1200,
-    "desc": "40 Ability Power 10 Ability Haste Enlighten Levelling up restores 20% max Mana over 3 seconds.",
+    "desc": "Enlighten Levelling up restores 20% max Mana over 3 seconds.",
     "stats": {
       "Mana": {
         "value": 300,
@@ -4734,7 +3400,7 @@
     "id": 3803,
     "name": "Catalyst of Aeons",
     "price": 1300,
-    "desc": "300 Health Eternity Restores 10% of the damage taken from champions as Mana. Casting an Ability heals for 25% of Mana spent.",
+    "desc": "Eternity Restores 10% of the damage taken from champions as Mana. Casting an Ability heals for 25% of Mana spent.",
     "stats": {
       "Mana": {
         "value": 375,
@@ -4770,7 +3436,7 @@
     "id": 3814,
     "name": "Edge of Night",
     "price": 3000,
-    "desc": "50 Attack Damage 15 Lethality 250 Health Annul Grants a Spell Shield that blocks the next enemy Ability.",
+    "desc": "50 Attack Damage 15 Lethality Annul Grants a Spell Shield that blocks the next enemy Ability.",
     "stats": {
       "HP": {
         "value": 250,
@@ -4821,7 +3487,7 @@
     "id": 3916,
     "name": "Oblivion Orb",
     "price": 800,
-    "desc": "25 Ability Power Grievous Wounds Dealing magic damage to champions applies 40% Wounds for 3 seconds.",
+    "desc": "Grievous Wounds Dealing magic damage to champions applies 40% Wounds for 3 seconds.",
     "stats": {
       "AP": {
         "value": 25,
@@ -4842,7 +3508,7 @@
     "id": 4005,
     "name": "Imperial Mandate",
     "price": 2250,
-    "desc": "60 Ability Power 20 Ability Haste Coordinated Fire (0s) per target Slowing or Immobilizing an enemy champion marks them for 5 seconds. Ally champion damage detonates the mark, dealing magic damage equal to 10% of current health.",
+    "desc": "Coordinated Fire (0s) per target Slowing or Immobilizing an enemy champion marks them for 5 seconds. Ally champion damage detonates the mark, dealing magic damage equal to 10% of current health.",
     "stats": {
       "AP": {
         "value": 60,
@@ -4875,120 +3541,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4005.png"
   },
   {
-    "id": 4010,
-    "name": "Bloodletter's Curse",
-    "price": 2500,
-    "desc": "60 Ability Power 350 Health 15 Ability Haste Vile Decay Dealing magic damage with abilities or passives to champions reduces their Magic Resist by 7.5% for 6 seconds, up to 30%.",
-    "stats": {
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 60,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4010.png"
-  },
-  {
-    "id": 4011,
-    "name": "Sword of Blossoming Dawn",
-    "price": 2500,
-    "desc": "45 Ability Power 200 Health 15 Ability Haste Effervescence Gain +1.2% Attack Speed for every 1% Heal and Shield Power you have. Peppermint On-Hit, heal the lowest health ally champion near you for , prioritizing lower health allies.",
-    "stats": {
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 45,
-        "icon": "✨",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "1.2%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Heal & Shield": {
-        "value": "12%",
-        "icon": "💊",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4011.png"
-  },
-  {
-    "id": 4013,
-    "name": "Lightning Braid",
-    "price": 3000,
-    "desc": "70 Ability Power 30 Magic Resist Chain Lightning: You deal 20% reduced ability damage. On a 1 second cadence, enemies you've damaged with abilities chain 66.6% of the ability damage you've dealt them to another nearby enemy, prioritizing champions.",
-    "stats": {
-      "MR": {
-        "value": 30,
-        "icon": "🔮",
-        "percent": false
-      },
-      "AP": {
-        "value": 70,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 30,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Tenacity": {
-        "value": "30%",
-        "icon": "🔰",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4013.png"
-  },
-  {
-    "id": 4015,
-    "name": "Perplexity",
-    "price": 2500,
-    "desc": "60 Ability Power Giant Slayer Deal up to 15% bonus damage against champions with greater max Health than you. Max damage increase reached when Health difference is greater than 2500.",
-    "stats": {
-      "AP": {
-        "value": 60,
-        "icon": "✨",
-        "percent": false
-      },
-      "Speed": {
-        "value": "5%",
-        "icon": "👟",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4015.png"
-  },
-  {
     "id": 4401,
     "name": "Force of Nature",
     "price": 2800,
-    "desc": "400 Health 55 Magic Resist Steadfast Gain 70 Magic Resist and 6% bonus Move Speed after taking magic damage from Champions 8 times.",
+    "desc": "55 Magic Resist Steadfast Gain 70 Magic Resist and 6% bonus Move Speed after taking magic damage from Champions 8 times.",
     "stats": {
       "MR": {
         "value": 55,
@@ -5026,116 +3582,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4401.png"
   },
   {
-    "id": 4403,
-    "name": "The Golden Spatula",
-    "price": 7187,
-    "desc": "70 Attack Damage 120 Ability Power 250 Health 30 Magic Resist 20 Ability Haste Doing Something: You are permanently On Fire! \"It must do something... Declined, it does EVERYTHING\"",
-    "stats": {
-      "MR": {
-        "value": 30,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Mana": {
-        "value": 250,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 250,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 120,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 30,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "30%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 70,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "50%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Lifesteal": {
-        "value": "10%",
-        "icon": "🩸",
-        "percent": true
-      },
-      "Speed": {
-        "value": "10%",
-        "icon": "👟",
-        "percent": true
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Mana Regen%": {
-        "value": "100%",
-        "icon": "🔵",
-        "percent": true
-      },
-      "HP Regen%": {
-        "value": "100%",
-        "icon": "💚",
-        "percent": true
-      }
-    },
-    "components": [
-      {
-        "name": "Zeal",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3086.png"
-      },
-      {
-        "name": "B. F. Sword",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1038.png"
-      },
-      {
-        "name": "Vampiric Scepter",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1053.png"
-      },
-      {
-        "name": "Kindlegem",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3067.png"
-      },
-      {
-        "name": "Needlessly Large Rod",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1058.png"
-      },
-      {
-        "name": "Aegis of the Legion",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3105.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4403.png"
-  },
-  {
     "id": 4628,
     "name": "Horizon Focus",
     "price": 2700,
-    "desc": "75 Ability Power 25 Ability Haste Hypershot Dealing Ability damage to champions at 600 range or greater Reveals them for 6 seconds. Focus When Hypershot is triggered, Reveal all other enemy champions within 1400 range of them for 3 seconds.",
+    "desc": "Hypershot Dealing Ability damage to champions at 600 range or greater Reveals them for 6 seconds. Focus When Hypershot is triggered, Reveal all other enemy champions within 1400 range of them for 3 seconds.",
     "stats": {
       "AP": {
         "value": 75,
@@ -5171,7 +3621,7 @@
     "id": 4629,
     "name": "Cosmic Drive",
     "price": 3000,
-    "desc": "70 Ability Power 350 Health 25 Ability Haste Spelldance Dealing magic or true damage to champions grants Move Speed for 4 seconds.",
+    "desc": "Spelldance Dealing magic or true damage to champions grants Move Speed for 4 seconds.",
     "stats": {
       "HP": {
         "value": 350,
@@ -5217,7 +3667,7 @@
     "id": 4630,
     "name": "Blighting Jewel",
     "price": 1100,
-    "desc": "25 Ability Power",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 25,
@@ -5238,7 +3688,7 @@
     "id": 4632,
     "name": "Verdant Barrier",
     "price": 1600,
-    "desc": "40 Ability Power 25 Magic Resist Annul Grants a Spell Shield that blocks the next enemy Ability.",
+    "desc": "25 Magic Resist Annul Grants a Spell Shield that blocks the next enemy Ability.",
     "stats": {
       "MR": {
         "value": 25,
@@ -5274,7 +3724,7 @@
     "id": 4633,
     "name": "Riftmaker",
     "price": 3100,
-    "desc": "70 Ability Power 350 Health 15 Ability Haste Void Corruption For each second in combat with enemy champions, deal 2% bonus damage, up to 8%. At maximum strength, gain Omnivamp. Void Infusion Gain 2% of your bonus Health as Ability Power.",
+    "desc": "Void Corruption For each second in combat with enemy champions, deal 2% bonus damage, up to 8%. At maximum strength, gain Omnivamp. Void Infusion Gain 2% of your bonus Health as Ability Power.",
     "stats": {
       "HP": {
         "value": 350,
@@ -5307,10 +3757,40 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4633.png"
   },
   {
+    "id": 4638,
+    "name": "Watchful Wardstone",
+    "price": 1100,
+    "desc": "15 Magic Resist Arcane Cache This item can store up to 3 purchased Control Wards.",
+    "stats": {
+      "MR": {
+        "value": 15,
+        "icon": "🔮",
+        "percent": false
+      },
+      "HP": {
+        "value": 150,
+        "icon": "❤️",
+        "percent": false
+      },
+      "AR": {
+        "value": 10,
+        "icon": "🛡️",
+        "percent": false
+      },
+      "AH": {
+        "value": 10,
+        "icon": "⏱️",
+        "percent": false
+      }
+    },
+    "components": [],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4638.png"
+  },
+  {
     "id": 4642,
     "name": "Bandleglass Mirror",
     "price": 900,
-    "desc": "20 Ability Power 10 Ability Haste",
+    "desc": "",
     "stats": {
       "AP": {
         "value": 20,
@@ -5348,10 +3828,46 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4642.png"
   },
   {
+    "id": 4643,
+    "name": "Vigilant Wardstone",
+    "price": 2300,
+    "desc": "30 Magic Resist Arcane Cache This item can store up to 3 purchased Control Wards. Behold Increase your Stealth Ward and Control Ward placement caps by 1.",
+    "stats": {
+      "MR": {
+        "value": 30,
+        "icon": "🔮",
+        "percent": false
+      },
+      "HP": {
+        "value": 250,
+        "icon": "❤️",
+        "percent": false
+      },
+      "AR": {
+        "value": 25,
+        "icon": "🛡️",
+        "percent": false
+      },
+      "AH": {
+        "value": 20,
+        "icon": "⏱️",
+        "percent": false
+      }
+    },
+    "components": [
+      {
+        "name": "Watchful Wardstone",
+        "price": 1100,
+        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4638.png"
+      }
+    ],
+    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4643.png"
+  },
+  {
     "id": 4645,
     "name": "Shadowflame",
     "price": 3200,
-    "desc": "110 Ability Power 15 Magic Penetration Cinderbloom Magic and true damage Critically Strikes enemies below 40% Health, dealing 20% increased damage.",
+    "desc": "15 Magic Penetration Cinderbloom Magic and true damage Critically Strikes enemies below 40% Health, dealing 20% increased damage.",
     "stats": {
       "AP": {
         "value": 110,
@@ -5382,7 +3898,7 @@
     "id": 4646,
     "name": "Stormsurge",
     "price": 2800,
-    "desc": "90 Ability Power 15 Magic Penetration Stormraider Dealing 25% of a champion's maximum Health within 2.5s applies Squall to them. Squall After 2 seconds, deal magic damage. If the target dies before Squall triggers, it damages nearby enemies.",
+    "desc": "15 Magic Penetration Stormraider Dealing 25% of a champion's maximum Health within 2.5s applies Squall to them. Squall After 2 seconds, deal magic damage. If the target dies before Squall triggers, it damages nearby enemies.",
     "stats": {
       "AP": {
         "value": 90,
@@ -5415,51 +3931,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/4646.png"
   },
   {
-    "id": 6333,
-    "name": "Death's Dance",
-    "price": 3300,
-    "desc": "60 Attack Damage 15 Ability Haste Ignore Pain A percentage of damage taken is dealt to you over 3 seconds instead. Defy When a champion that you damaged within 3 seconds dies, cleanse Ignore Pain's remaining damage and restore Health over 2 seconds.",
-    "stats": {
-      "AR": {
-        "value": 50,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "AD": {
-        "value": 60,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Steel Sigil",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2019.png"
-      },
-      {
-        "name": "Pickaxe",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      },
-      {
-        "name": "Caulfield's Warhammer",
-        "price": 1050,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6333.png"
-  },
-  {
     "id": 6609,
     "name": "Chempunk Chainsword",
     "price": 3100,
-    "desc": "45 Attack Damage 450 Health 15 Ability Haste Hackshorn Dealing physical damage applies 40% Wounds to enemy champions for 3 seconds.",
+    "desc": "45 Attack Damage Hackshorn Dealing physical damage applies 40% Wounds to enemy champions for 3 seconds.",
     "stats": {
       "HP": {
         "value": 450,
@@ -5500,7 +3975,7 @@
     "id": 6610,
     "name": "Sundered Sky",
     "price": 3100,
-    "desc": "45 Attack Damage 400 Health 10 Ability Haste Lightshield Strike Your first Attack against a champion Critically Strikes and restores Health.",
+    "desc": "45 Attack Damage Lightshield Strike Your first Attack against a champion Critically Strikes and restores Health.",
     "stats": {
       "HP": {
         "value": 400,
@@ -5541,7 +4016,7 @@
     "id": 6616,
     "name": "Staff of Flowing Water",
     "price": 2250,
-    "desc": "35 Ability Power 15 Ability Haste Rapids Healing or Shielding an ally grants you both 45 Ability Power for 6 seconds.",
+    "desc": "Rapids Healing or Shielding an ally grants you both 45 Ability Power for 6 seconds.",
     "stats": {
       "AP": {
         "value": 35,
@@ -5582,7 +4057,7 @@
     "id": 6617,
     "name": "Moonstone Renewer",
     "price": 2200,
-    "desc": "25 Ability Power 200 Health 20 Ability Haste Starlit Grace Healing or shielding an ally chains the effect to another ally (excluding yourself), healing 30% or shielding 35% of the original amount.",
+    "desc": "Starlit Grace Healing or shielding an ally chains the effect to another ally (excluding yourself), healing 30% or shielding 35% of the original amount.",
     "stats": {
       "HP": {
         "value": 200,
@@ -5623,7 +4098,7 @@
     "id": 6620,
     "name": "Echoes of Helia",
     "price": 2200,
-    "desc": "35 Ability Power 200 Health 20 Ability Haste Soul Siphon Gain 35% of pre-mitigation damage dealt to champions as Soul Charges. Healing or Shielding an ally consumes all Soul Charges to restore Health.",
+    "desc": "Soul Siphon Gain 35% of pre-mitigation damage dealt to champions as Soul Charges. Healing or Shielding an ally consumes all Soul Charges to restore Health.",
     "stats": {
       "HP": {
         "value": 200,
@@ -5664,7 +4139,7 @@
     "id": 6621,
     "name": "Dawncore",
     "price": 2500,
-    "desc": "45 Ability Power First Light Gain 2% Heal and Shield Power and 10 Ability Power per 100% Base Mana Regen.",
+    "desc": "First Light Gain 2% Heal and Shield Power and 10 Ability Power per 100% Base Mana Regen.",
     "stats": {
       "AP": {
         "value": 45,
@@ -5705,7 +4180,7 @@
     "id": 6631,
     "name": "Stridebreaker",
     "price": 3300,
-    "desc": "40 Attack Damage 450 Health Cleave Attacks deal physical damage to nearby enemies. Breaking Shockwave Deal physical damage and Slow nearby enemies by 35%. Gain 35% decaying Move Speed per champion hit for 3 seconds.",
+    "desc": "40 Attack Damage Cleave Attacks deal physical damage to nearby enemies. Breaking Shockwave Deal physical damage and Slow nearby enemies by 35%. Gain 35% decaying Move Speed per champion hit for 3 seconds.",
     "stats": {
       "HP": {
         "value": 450,
@@ -5743,77 +4218,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6631.png"
   },
   {
-    "id": 6653,
-    "name": "Liandry's Torment",
-    "price": 3000,
-    "desc": "60 Ability Power 300 Health Torment Damaging Abilities burn enemies for 2% max Health magic damage per second for 3 seconds. Suffering For each second in combat with enemy champions, deal 2% bonus damage, up to 6%.",
-    "stats": {
-      "HP": {
-        "value": 300,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 60,
-        "icon": "✨",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Haunting Guise",
-        "price": 1300,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3147.png"
-      },
-      {
-        "name": "Fated Ashes",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2508.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6653.png"
-  },
-  {
-    "id": 6655,
-    "name": "Luden's Echo",
-    "price": 2750,
-    "desc": "100 Ability Power 10 Ability Haste Echo Damaging Abilities fire 6 Echoes that deal bonus magic damage to the target and nearby enemies. Remaining Echoes fire on the primary target, dealing 20% damage.",
-    "stats": {
-      "Mana": {
-        "value": 600,
-        "icon": "💙",
-        "percent": false
-      },
-      "AP": {
-        "value": 100,
-        "icon": "✨",
-        "percent": false
-      },
-      "AH": {
-        "value": 10,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Lost Chapter",
-        "price": 1200,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3802.png"
-      },
-      {
-        "name": "Hextech Alternator",
-        "price": 1100,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3145.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6655.png"
-  },
-  {
     "id": 6657,
     "name": "Rod of Ages",
     "price": 2600,
-    "desc": "45 Ability Power 350 Health Timeless This item gains 10 Health, 30 Mana and 3 Ability Power every 60 seconds up to 10 times. Upon reaching max stacks, gain a level. Eternity Taking damage from champions restores 10% of the damage as Mana. Casting an ability heals for 25% of Mana spent.",
+    "desc": "Timeless This item gains 10 Health, 30 Mana and 3 Ability Power every 60 seconds up to 10 times. Upon reaching max stacks, gain a level. Eternity Taking damage from champions restores 10% of the damage as Mana. Casting an ability heals for 25% of Mana spent.",
     "stats": {
       "Mana": {
         "value": 500,
@@ -5846,41 +4254,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6657.png"
   },
   {
-    "id": 6660,
-    "name": "Bami's Cinder",
-    "price": 900,
-    "desc": "150 Health 5 Ability Haste Immolate After taking or dealing damage, deal magic damage to nearby enemies for 3 seconds.",
-    "stats": {
-      "HP": {
-        "value": 150,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AH": {
-        "value": 5,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Ruby Crystal",
-        "price": 400,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1028.png"
-      },
-      {
-        "name": "Glowing Mote",
-        "price": 250,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/2022.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6660.png"
-  },
-  {
     "id": 6662,
     "name": "Iceborn Gauntlet",
     "price": 2900,
-    "desc": "300 Health 15 Ability Haste Spellblade After using an Ability, your next Attack deals bonus physical damage On-Hit and creates a frost field for 2s that Slows.",
+    "desc": "Spellblade After using an Ability, your next Attack deals bonus physical damage On-Hit and creates a frost field for 2s that Slows.",
     "stats": {
       "HP": {
         "value": 300,
@@ -5921,7 +4298,7 @@
     "id": 6664,
     "name": "Hollow Radiance",
     "price": 2800,
-    "desc": "400 Health 40 Magic Resist 10 Ability Haste Immolate After taking or dealing damage, deal magic damage per second to nearby enemies for 3 seconds. Desolate Killing an enemy deals magic damage around them.",
+    "desc": "40 Magic Resist Immolate After taking or dealing damage, deal magic damage per second to nearby enemies for 3 seconds. Desolate Killing an enemy deals magic damage around them.",
     "stats": {
       "MR": {
         "value": 40,
@@ -5957,47 +4334,6 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6664.png"
-  },
-  {
-    "id": 6665,
-    "name": "Jak'Sho, The Protean",
-    "price": 3200,
-    "desc": "350 Health 45 Magic Resist Voidborn Resilience After 5 seconds of champion combat, increase your bonus Armor and Magic Resist by 30% until end of combat.",
-    "stats": {
-      "MR": {
-        "value": 45,
-        "icon": "🔮",
-        "percent": false
-      },
-      "HP": {
-        "value": 350,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AR": {
-        "value": 45,
-        "icon": "🛡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Giant's Belt",
-        "price": 900,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1011.png"
-      },
-      {
-        "name": "Chain Vest",
-        "price": 800,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1031.png"
-      },
-      {
-        "name": "Negatron Cloak",
-        "price": 850,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1057.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6665.png"
   },
   {
     "id": 6670,
@@ -6214,7 +4550,7 @@
     "id": 6692,
     "name": "Eclipse",
     "price": 2900,
-    "desc": "60 Attack Damage 15 Ability Haste Ever Rising Moon Hitting a champion with 2 separate Attacks or Abilities within 2 seconds grants you a Shield for 2 seconds.",
+    "desc": "60 Attack Damage Ever Rising Moon Hitting a champion with 2 separate Attacks or Abilities within 2 seconds grants you a Shield for 2 seconds.",
     "stats": {
       "AD": {
         "value": 60,
@@ -6247,72 +4583,10 @@
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6692.png"
   },
   {
-    "id": 6694,
-    "name": "Serylda's Grudge",
-    "price": 3000,
-    "desc": "45 Attack Damage 15 Ability Haste Bitter Cold Damaging Abilities Slow enemies below 50% Health by 30% for 1 second.",
-    "stats": {
-      "AD": {
-        "value": 45,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "AH": {
-        "value": 15,
-        "icon": "⏱️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Caulfield's Warhammer",
-        "price": 1050,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3133.png"
-      },
-      {
-        "name": "Last Whisper",
-        "price": 1450,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3035.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6694.png"
-  },
-  {
-    "id": 6695,
-    "name": "Serpent's Fang",
-    "price": 2500,
-    "desc": "55 Attack Damage 15 Lethality Shield Reaver Damaging an enemy champion reduces Shields they gain by % for 3 seconds. If they were not already affected by Shield Reaver, reduce Shields on them by %.",
-    "stats": {
-      "AD": {
-        "value": 55,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Lethality": {
-        "value": 15,
-        "icon": "🗡️",
-        "percent": false
-      }
-    },
-    "components": [
-      {
-        "name": "Serrated Dirk",
-        "price": 1000,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/3134.png"
-      },
-      {
-        "name": "Pickaxe",
-        "price": 875,
-        "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/1037.png"
-      }
-    ],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/6695.png"
-  },
-  {
     "id": 6696,
     "name": "Axiom Arc",
     "price": 2750,
-    "desc": "55 Attack Damage 18 Lethality 20 Ability Haste Flux When a champion that you damaged within 3 seconds dies, refund some of your Ultimate Ability's total cooldown.",
+    "desc": "55 Attack Damage 18 Lethality Flux When a champion that you damaged within 3 seconds dies, refund some of your Ultimate Ability's total cooldown.",
     "stats": {
       "AD": {
         "value": 55,
@@ -6348,7 +4622,7 @@
     "id": 6697,
     "name": "Hubris",
     "price": 3000,
-    "desc": "60 Attack Damage 18 Lethality 10 Ability Haste Eminence When a champion that you damaged within 3 seconds dies, gain 15 Attack Damage plus 2 per champion killed for 90 seconds.",
+    "desc": "60 Attack Damage 18 Lethality Eminence When a champion that you damaged within 3 seconds dies, gain 15 Attack Damage plus 2 per champion killed for 90 seconds.",
     "stats": {
       "AD": {
         "value": 60,
@@ -6384,7 +4658,7 @@
     "id": 6698,
     "name": "Profane Hydra",
     "price": 2850,
-    "desc": "55 Attack Damage 18 Lethality 10 Ability Haste Cleave Attacks deal physical damage to nearby enemies. Heretical Cleave Deal physical damage around you.",
+    "desc": "55 Attack Damage 18 Lethality Cleave Attacks deal physical damage to nearby enemies. Heretical Cleave Deal physical damage around you.",
     "stats": {
       "AD": {
         "value": 55,
@@ -6420,7 +4694,7 @@
     "id": 6699,
     "name": "Voltaic Cyclosword",
     "price": 3000,
-    "desc": "55 Attack Damage 18 Lethality 10 Ability Haste Galvanize Dashes and Stealth stack Energized 75% faster. Firmament Your Energized Attack deals bonus physical damage and Slows for 0.75 seconds.",
+    "desc": "55 Attack Damage 18 Lethality Galvanize Dashes and Stealth stack Energized 75% faster. Firmament Your Energized Attack deals bonus physical damage and Slows for 0.75 seconds.",
     "stats": {
       "AD": {
         "value": 55,
@@ -6497,7 +4771,7 @@
     "id": 8020,
     "name": "Abyssal Mask",
     "price": 2650,
-    "desc": "350 Health 45 Magic Resist 15 Ability Haste Unmake Nearby enemy champions take 12% more magic damage.",
+    "desc": "45 Magic Resist Unmake Nearby enemy champions take 12% more magic damage.",
     "stats": {
       "MR": {
         "value": 45,
@@ -6528,80 +4802,5 @@
       }
     ],
     "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/8020.png"
-  },
-  {
-    "id": 994403,
-    "name": "Golden Spatula",
-    "price": 2500,
-    "desc": "90 Attack Damage 110 Ability Power 200 Health 20 Magic Resist 20 Ability Haste Doing Something You are permanently On Fire! \"It must do something... Declined, it does EVERYTHING\"",
-    "stats": {
-      "MR": {
-        "value": 20,
-        "icon": "🔮",
-        "percent": false
-      },
-      "Mana": {
-        "value": 200,
-        "icon": "💙",
-        "percent": false
-      },
-      "HP": {
-        "value": 200,
-        "icon": "❤️",
-        "percent": false
-      },
-      "AP": {
-        "value": 110,
-        "icon": "✨",
-        "percent": false
-      },
-      "AR": {
-        "value": 20,
-        "icon": "🛡️",
-        "percent": false
-      },
-      "Crit Chance": {
-        "value": "15%",
-        "icon": "🎯",
-        "percent": true
-      },
-      "AD": {
-        "value": 90,
-        "icon": "⚔️",
-        "percent": false
-      },
-      "Atk Speed": {
-        "value": "40%",
-        "icon": "⚡",
-        "percent": true
-      },
-      "Lifesteal": {
-        "value": "10%",
-        "icon": "🩸",
-        "percent": true
-      },
-      "Speed": {
-        "value": "10%",
-        "icon": "👟",
-        "percent": true
-      },
-      "AH": {
-        "value": 20,
-        "icon": "⏱️",
-        "percent": false
-      },
-      "Mana Regen%": {
-        "value": "100%",
-        "icon": "🔵",
-        "percent": true
-      },
-      "HP Regen%": {
-        "value": "50%",
-        "icon": "💚",
-        "percent": true
-      }
-    },
-    "components": [],
-    "img": "https://ddragon.leagueoflegends.com/cdn/16.3.1/img/item/994403.png"
   }
 ]
